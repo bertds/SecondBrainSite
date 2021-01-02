@@ -28,18 +28,47 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><p></p>
+      <div id="content"><h1 id="todo">todo</h1>
+
+<p>set : string opdelen in verzameling van chars die in string zitten &gt; unieke chars<br />
+Map<br />
+Sorted met key. Subfunctie niet vergeten waarde te return. </p>
+
+<p>def cal_weight(weight): <span class="tag">calculate</span> the weight by the sum of the digits<br />
+    return (sum(map(int,weight)));</p>
+
+<p>def order_weight(strng):<br />
+    <span class="tag">split</span> the string and string sort alphabetically so double digitweights come first<br />
+    weight_str = sorted(strng.split(" "));<br />
+    <span class="tag">for</span> each number calculate digit weight and use that as key for second sorting<br />
+    return ' '.join(sorted(weight_str, key=cal_weight));</p>
+
+<p>list.pop() -> remove and return last item list<br />
+list.pop(0) -> remove and return first item list</p>
+
+<p>return int(''.join(number)); &gt; hang alle ellementen van een lijst aan elkaar</p>
+
+<p>import itertools; &gt; maak oa combinaties met alle elementen van een lijst</p>
+
+<p>numberPart = number[-digitAmount:];<br />
+        numberPrefix = number[:-digitAmount];<br />
+        listNumbers = itertools.permutations(numberPart);</p>
+
+<p>import re<br />
+def highlight(code):<br />
+    code = re.sub(r"(F+)", '<span style="color: pink">\g&lt;1></span>', code)<br />
+    code = re.sub(r"(L+)", '<span style="color: red">\g&lt;1></span>', code)<br />
+    code = re.sub(r"(R+)", '<span style="color: green">\g&lt;1></span>', code)<br />
+    code = re.sub(r"(\d+)", '<span style="color: orange">\g&lt;1></span>', code)<br />
+    return code</p>
+
+<p>loop met indexering en inhoud element samen<br />
+for num, name in enumerate(presidents, start=1):<br />
+    print("President {}: {}".format(num, name))</p>
+
+<p>reverse a string : [::-1]</p>
 </div>
-      <div class="backlinks">
-
-<ul>
-<li><a href="regression.html">Regression</a></li>
-<li><a href="support-vector-machines.html">Support Vector Machines</a></li>
-<li><a href="cursus-topic-template.html">cursus_topic_template</a></li>
-</ul>
-
-</div>
-
+      
     </article>
   </div>
 

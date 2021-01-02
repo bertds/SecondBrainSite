@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <ul>
+        <a href="https://www.kmaasrud.com/brain"><img id="logo" src="https://raw.githubusercontent.com/kmaasrud/brain/master/brain.svg"></img></a>
+        <br>
+        <li><a href="https://www.kmaasrud.com/projects">Projects</a></li>
+        <li><a href="https://github.com/kmaasrud">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><h1 id="sklearn">sklearn</h1>
+
+<p>The choice should be more about your strategy and goals of your modeling, however there is a strong preference in the community for using K-fold cross-validation for both model selection and performance estimation.</p>
+
+<p>Also keep in mind you can use these sampling techniques for two very different goals: model selection and performance estimation.</p>
+
+<h3 id="split-holdout-vs-randomsplit">Split (Holdout) vs RandomSplit</h3>
+
+<p>Split vs Random Split. <strong>A split is just a split</strong>, usually for the purpose of having separate training and testing subsamples. But taking the first X% for a subsample and the remaining for another subsample _might not be a good idea because it can introduce very high bias._ There is where <strong>random split</strong> comes into play, by <strong>introducing randomness for the subsampling</strong>.</p>
+
+<h3 id="k-folds">K-folds</h3>
+
+<p>Als je van je train-validatie set je traingsdata moet selecteren is het afwegen hoeveel je hiervoor neemt. Hoe meer testdata hoe beter het model te trainen is maar hoe kleiner de validatie set dus het model is slechter te valideren. Als je de testset kleiner maakt is het model slechter getraind maar kan je wel beter valideren. Om dit op te lossen gebruiken we K-folds. We splitsen de test-validatie set in folds en die worden afwisselend als validatieset gebruikt en de rest als testdata.<br />
+<em>* Let op! Er is data leakage doordat model getraind is op alle data die als vaildatiedata heeft gediend. *</em> Het model scoort hierdoor beter op trainingsdata dan nieuwe data.<br />
+K = [5-15]</p>
+
+<p>In KFolds, <strong>each test set should not overlap</strong>, even with shuffle. With KFolds and shuffle, <strong>the data is shuffled once at the start,</strong> and then divided into the number of desired splits. The test data is always one of the splits, the train data is the rest.</p>
+
+<h3 id="leave-one-out">Leave one out</h3>
+
+<p>K-fold met K=N (aantal examples in de testdata)<br />
+Evenveel rondes als samples</p>
+
+<h3 id="bootstrap-cross-validation">Bootstrap cross-validation</h3>
+
+<h3 id="k-folds-vs-randomsplit">K-folds vs RandomSplit</h3>
+
+<p>K folds comprises in creating K subsamples. Because you now have a more significant number of samples (instead of 2), you can separate one of the subsamples for testing and the remaining subsamples for training, do this for every possible combination of testing/training folds and average the results. This is known as <strong>cross-validation</strong>. Doing K-fold cross-validation is like doing a (not random) split k times, and then averaging. _A small sample might not benefit from k-fold cross-validation, while a large sample usually always do benefit from cross-validation._ A <strong>random split is a more efficient (faster)</strong> way of estimating, but _might be more prone to sampling bias than k-fold cross-validation._ Combining stratification and random split is an attempt to have an effective and efficient sampling strategy that preserves label distribution.</p>
+
+<h3 id="shufflesplit">ShuffleSplit</h3>
+
+<p>In ShuffleSplit, <strong>the data is shuffled every time</strong>, and then split. This means <strong>the test sets may overlap</strong> between the splits.</p>
+
+<h2 id="stratification">Stratification</h2>
+
+<p>Stratification works by keeping the balance or ratio between labels/targets of the dataset. So if your whole dataset has two labels (e.g. Positive and Negative) and these have a 30/70 ratio, and you split in 10 subsamples, each stratified subsample should keep the same ratio. Reasoning: Because machine-learned model performance in general are very sensitive to a sample balancing, using this strategy often makes the models more stable for subsamples.</p>
+
+<h3 id="stratifiedkfold">StratifiedKFold</h3>
+
+<p>StratifiedKFold is a variation of KFold. First, <strong>StratifiedKFold shuffles your data, after that splits the data into n_splits parts and Done.</strong> Now, it will use each part as a test set. Note that it only and always shuffles data one time before splitting.<br />
+With shuffle = True, the data is shuffled by your random_state. Otherwise, the data is shuffled by np.random (as default). For example, with n_splits = 4, and your data has 3 classes (label) for y (dependent variable). 4 test sets cover all the data without any overlap.</p>
+
+<p><img src="https://i.stack.imgur.com/XJZve.png" alt="" /></p>
+
+<h3 id="stratifiedshufflesplit">StratifiedShuffleSplit</h3>
+
+<p>On the other hand, StratifiedShuffleSplit is a variation of ShuffleSplit. First, StratifiedShuffleSplit shuffles your data, and then it also splits the data into n_splits parts. However, it's not done yet. After this step, StratifiedShuffleSplit picks one part to use as a test set. Then it repeats the same process n_splits - 1 other times, to get n_splits - 1 other test sets. Look at the picture below, with the same data, but this time, the 4 test sets do not cover all the data, i.e there are overlaps among test sets.</p>
+
+<p><img src="https://i.stack.imgur.com/AGv9B.png" alt="" /></p>
+
+<h3 id="verschil-stratifiedkfold-en-stratifiedshufflesplit">Verschil StratifiedKFold en StratifiedShuffleSplit</h3>
+
+<p>So, the difference here is that StratifiedKFold just shuffles and splits once, therefore the test sets do not overlap, while StratifiedShuffleSplit shuffles each time before splitting, and it splits n_splits times, the test sets can overlap.</p>
+
+<p>Note: the two methods uses "stratified fold" (that why "stratified" appears in both names). It means each part preserves the same percentage of samples of each class (label) as the original data. You can read more at <a href="http://scikit-learn.org/stable/modules/cross_validation.html#cross-validation">cross_validation documents </a></p>
+</div>
+      
+    </article>
+  </div>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+
+</html>

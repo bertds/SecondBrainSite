@@ -29,7 +29,7 @@
     <article>
       <div id="content"><p>Welke stappen moet je nemen om van idee, data tot een model te komen dat in productie draait. </p>
 
-<pre><code class="mermaid lang-mermaid language-mermaid">graph TD;
+<pre><div class="mermaid">graph TD;
     A(Look at the big picture)
     B(Get the Data)
     C(Discover and visualise the Data)
@@ -81,7 +81,11 @@
     </article>
   </div>
 
-  <script defer src="mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize({startOnLoad:true});
+  </script>
+
 
   <!-- KaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"

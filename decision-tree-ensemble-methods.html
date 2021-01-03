@@ -31,13 +31,13 @@
       <div class="backlinks">
 
 <ul>
-<li><a href="ai-home">AI@home</a></li>
+<li><a href="ai-home.html">AI@home</a></li>
 </ul>
 
 </div>
 
 
-      <div id="content"><p><a href="q-decision-tree-ensemble-methods">Q Decision Tree Ensemble Methods</a></p>
+      <div id="content"><p><a href="q-decision-tree-ensemble-methods.html">Q Decision Tree Ensemble Methods</a></p>
 
 <h2 id="random-forest-trees">Random Forest Trees</h2>
 
@@ -45,14 +45,14 @@
 
 <h3 id="decision-trees">Decision trees</h3>
 
-<p><img src="decision-treedotpng" alt="decision_tree.png" /><br />
+<p><img src="decision-treedotpng.html" alt="decision_tree.png" /><br />
 blad van de boom = label van de klasse zelf</p>
 
 <p>je splits de data op obv feature values en blijft splitsen obv een vraag tot je zuivere groeperingen hebt.<br />
-<img src="example-splitdotpng" alt="example_split.png" /></p>
+<img src="example-splitdotpng.html" alt="example_split.png" /></p>
 
 <p><strong>Maar hoe bepaal je hoe en waar te splitsen ?</strong><br />
-<img src="where-to-splitdotpng" alt="where_to_split.png" /></p>
+<img src="where-to-splitdotpng.html" alt="where_to_split.png" /></p>
 
 <h4 id="entropy-en-information-gain">Entropy en information gain</h4>
 
@@ -70,7 +70,7 @@ Je gaat dan na hoeveel minder ordelijk/wanordelijk de scheiding nu is.<br />
 <strong>Information gain = entropy voor de split - entropy na de split</strong></p>
 
 <p><em>Splits telkens bij de split die je hoogste information gain oplevert.</em><br />
-<img src="entropydotpng" alt="entropy.png" /></p>
+<img src="entropydotpng.html" alt="entropy.png" /></p>
 
 <h4 id="gini-impurity">Gini impurity</h4>
 
@@ -85,7 +85,7 @@ Indien opgeplistst maak je gebruik van de gewogen Gini impurity. Voor elke zijde
 
 <p><em>Hoe kleiner het getal hoe zuiverder de scheiding is.</em><br />
 <em>Splits telkens bij de split di je de laagste Gini Impurity oplevert.</em><br />
-<img src="ginidotpng" alt="gini.png" /><br />
+<img src="ginidotpng.html" alt="gini.png" /><br />
 Bij de bepaling van decision tree staat default op Gini. Gini geeft zelfde resultaat als Entropy en rekent veel sneller. </p>
 
 <h5 id="nadeel-van-opbouw-kansenboom">Nadeel van opbouw kansenboom ?</h5>
@@ -96,7 +96,7 @@ Bij de bepaling van decision tree staat default op Gini. Gini geeft zelfde resul
 
 <p>Om de problematiek van neiging tot overfitting bij decision trees op te lossen.<br />
 Oplossing : combineer de voorspellingen van verschillende gerandomiseerde trees tot één model.<br />
-<img src="random-forestdotpng" alt="random_forest.png" /></p>
+<img src="random-forestdotpng.html" alt="random_forest.png" /></p>
 
 <p>_Nicolas de Condorcet (1743 - 1794)_</p>
 
@@ -105,7 +105,7 @@ Oplossing : combineer de voorspellingen van verschillende gerandomiseerde trees 
 </blockquote>
 
 <p>Op random stukken van de trainingset een decision tree maken. Elke tree een voorspelling laten doen en je gebruikt Majority voting (meerderheid wint) om te bepalen wat het eindresultaat is.<br />
-<img src="majority-votingdotpng" alt="majority_voting.png" /></p>
+<img src="majority-votingdotpng.html" alt="majority_voting.png" /></p>
 
 <h4 id="hyperparameters-van-een-random-forest-tree">Hyperparameters van een random forest tree</h4>
 
@@ -144,12 +144,12 @@ De classifiers moeten verschillend zijn van elkaar (diverse classifiers)</p>
 
 <h5 id="stacking"><strong>stacking</strong></h5>
 
-<p><img src="stackingdotpng" alt="stacking.png" /><br />
+<p><img src="stackingdotpng.html" alt="stacking.png" /><br />
 obv volledige trainingset ga je verschillende modellen trainen (SVM, Naibe Bayes, ..) Het resultaat ga je laten classificeren door een nieuwe classifier. De predicties van de modellen is input voor de classifier die de uiteindelijke predicties gaat doen. </p>
 
 <h5 id="bagging-bootstrap-aggregating"><strong>bagging (bootstrap aggregating)</strong></h5>
 
-<p><img src="ensemble-learnerdotpng" alt="ensemble_learner.png" /><br />
+<p><img src="ensemble-learnerdotpng.html" alt="ensemble_learner.png" /><br />
 <em>methode om de variantie te reduceren en overfitting te vermijden</em><br />
 maak verschillende subsets (bags) van traingingsdata om een model te trainen :<br />
     - neem een bepaalde percentage (meestal 60%) aan willekeurige datapunten  en in steek ze in de bag<br />
@@ -162,7 +162,7 @@ sklearn : bagging classifier <span class="tag">todo</span> voorbeeld uitwerken <
 
 <p>Dikwijls betere accuraatheid dan bagging methode. Gevoeliger voor overfitting en moeilijker te parallelliseren. </p>
 
-<h6 id="meest-bekend-algoritme-adaboost-adaptive-boostingadaboost-adaptive-boosting-">Meest bekend algoritme: <em><a href="adaboost-adaptive-boosting-">AdaBoost (Adaptive Boosting)</a>.</em></h6>
+<h6 id="meest-bekend-algoritme-adaboost-adaptive-boostingadaboost-adaptive-boosting-html">Meest bekend algoritme: <em><a href="adaboost-adaptive-boosting-.html">AdaBoost (Adaptive Boosting)</a>.</em></h6>
 
 <p>Principe: vergelijkbaar met bagging, maar verkeerd geclassificeerde samples bekomen een grotere kans om in de volgende bag te belanden.<br />
 werkwijze :<br />
@@ -173,7 +173,7 @@ werkwijze :<br />
     - dit doet je paar keer naagerlang het aantal modellen dat je wil hebben<br />
     - alle cases van alle vorige modellen die slecht scoren hebben bij het samenstellen van een nieuwe bag van trainingsdata, voor het nieuwe model, meer kans om geselecteerd te worden dan de andere cases. </p>
 
-<h6 id="gradient-boostinggradient-boosting"><a href="gradient-boosting">Gradient Boosting</a></h6>
+<h6 id="gradient-boostinggradient-boostinghtml"><a href="gradient-boosting.html">Gradient Boosting</a></h6>
 
 <h3 id="regressies-met-dicision-trees-en-ensemble-learning">Regressies met dicision trees en ensemble learning</h3>
 
@@ -183,7 +183,7 @@ werkwijze :<br />
 
 <p>Decision tree met per blad een continue waarde ipv een klasse.<br />
 Criteria gebruiken om bepaalde split te doen obv een feature.<br />
-<img src="ensemble-split-regressie1dotpng" alt="ensemble_split_regressie1.png" /></p>
+<img src="ensemble-split-regressie1dotpng.html" alt="ensemble_split_regressie1.png" /></p>
 
 <p>Bij regressie gebruiken we <strong>variantie</strong>  ipv <strong>entropy/gini index</strong>.</p>
 
@@ -205,7 +205,7 @@ Criteria gebruiken om bepaalde split te doen obv een feature.<br />
 
 <blockquote>
   <p><code>var()</code> – Variance Function in python pandas is used to calculate variance of a given set of numbers, Variance of a data frame, Variance of column or column wise variance in pandas python  and Variance of rows or row wise variance in pandas python, let’s see an example of each.<br />
-  <img src="variance-codedotpng" alt="variance_code.png" /></p>
+  <img src="variance-codedotpng.html" alt="variance_code.png" /></p>
 </blockquote>
 
 <p>Dan kunnen we voor een feature de gewogen variantie berekenen door voor alle waarden van een featuregroep de variantie te berekenen en van die resultaten de gewogen variantie te berekenen. Dit laatste doe je door van variantie van de featuregroep te vermenigvuldigen met het aantal waarden, hiervan de soms te maken en te delen door het totaal aantal waarden. </p>
@@ -216,13 +216,13 @@ Als de gewogen variantie kleiner is dan de total variantie wil zeggen dat je mee
 <p>Je kan dit ook doen voor andere features en dan de gewogen varianties vergelijken en die met de kleinste gewogen variantie is het meest geschikt om te gebruiken voor een split.<br />
 Eenmaal een split gekozen kan je dan kijken voor een deelgroep wat de gewogen variantie is en hiermee bepalen wat de beste volgende split is. </p>
 
-<p><img src="ensemble-split-regressie2dotpng" alt="ensemble_split_regressie2.png" /><br />
+<p><img src="ensemble-split-regressie2dotpng.html" alt="ensemble_split_regressie2.png" /><br />
 Het trainen van de modellen gebeurt op dezelfde manier via boosting, bagging, ... .</p>
 
-<p><img src="randomforestregressor-codedotpng" alt="randomforestregressor_code.png" /></p>
+<p><img src="randomforestregressor-codedotpng.html" alt="randomforestregressor_code.png" /></p>
 
 <p>Voor ensemble ga je niet zoals bij classificatie Majority voting gebruiken maar de mean van alle resultaten.<br />
-<img src="ensemble-regressie-meandotpng" alt="ensemble_regressie_mean.png" /></p>
+<img src="ensemble-regressie-meandotpng.html" alt="ensemble_regressie_mean.png" /></p>
 </div>
 
     </article>

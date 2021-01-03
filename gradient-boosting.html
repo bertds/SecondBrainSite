@@ -28,11 +28,11 @@
     <article>
       <div id="content"><h2 id="gradient-boosting">Gradient Boosting</h2>
 
-<p><em>Recall : <a href="Q Gradient Boosting">Q Gradient Boosting</a></em></p>
+<p><em>Recall : <a href="q-gradient-boosting.html">Q Gradient Boosting</a></em></p>
 
 <p><img src="gradient_boosting.png" alt="gradient_boosting.png" /></p>
 
-<p>Het volgende model zal de tekortkoming van vorig model compenseren. Geijkaardig aan <a href="AdaBoost (Adaptive Boosting)">AdaBoost (Adaptive Boosting)</a> maar manier waarop modellen getraind worden is verschillend :</p>
+<p>Het volgende model zal de tekortkoming van vorig model compenseren. Geijkaardig aan <a href="adaboost-adaptive-boosting-.html">AdaBoost (Adaptive Boosting)</a> maar manier waarop modellen getraind worden is verschillend :</p>
 
 <p><img src="gradient_boostingvb.png" alt="gradient_boostingvb.png" /><br />
 het eerste decision tree model wordt getraind op 60% van de trainingset. Men doet alle voorspellingen voor de volledige trainingsset met dat model en maakt een vector met het verschil tss het voorspelde en de gelabelde waarde (= afwijkingen).<br />
@@ -42,7 +42,7 @@ Ook de daaropvolgende modellen krijgen de afwijkingen van het model ervoor. </p>
 <p>De uiteindelijke predicities van een testset gebeuren dan door ghet eerste model een predictie te laten doen, het resultaat daarvan af te geven aan het volgende model. Dat model een predictie te laten doen enzovoort.<br />
 Het eindresultaat is dan de som van alle predicties. (6.5 in het vb)</p>
 
-<p>deze manier van trainen is nog geoptimaliseerd met als resultaat <a href="XGBoost">XGBoost</a></p>
+<p>deze manier van trainen is nog geoptimaliseerd met als resultaat <a href="xgboost.html">XGBoost</a></p>
 
 <p><code>GradientBoostingClassifier()</code><br />
     learningrate = 0.8 : voting power van de volgende modellen wordt steeds kleiner. deze modellen wegen steeds minder sterk door in het eindresultaat. hierdoor kan je overfitting tegen gaan. </p>
@@ -53,8 +53,8 @@ Het eindresultaat is dan de som van alle predicties. (6.5 in het vb)</p>
       <div class="backlinks">
 
 <ul>
-<li><a href="Decision Tree Ensemble Methods">Decision Tree Ensemble Methods</a></li>
-<li><a href="Q Gradient Boosting">Q Gradient Boosting</a></li>
+<li><a href="decision-tree-ensemble-methods.html">Decision Tree Ensemble Methods</a></li>
+<li><a href="q-gradient-boosting.html">Q Gradient Boosting</a></li>
 </ul>
 
 </div>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <ul>
+        <a href="https://www.kmaasrud.com/brain"><img id="logo" src="https://raw.githubusercontent.com/kmaasrud/brain/master/brain.svg"></img></a>
+        <br>
+        <li><a href="https://www.kmaasrud.com/projects">Projects</a></li>
+        <li><a href="https://github.com/kmaasrud">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div class="backlinks">
+
+<ul>
+<li><a href="ai-home">AI@home</a></li>
+<li><a href="classification">Classification</a></li>
+</ul>
+
+</div>
+
+
+      <div id="content"><p><a href="q-naive-bayes">Q Naive Bayes</a></p>
+
+<h3 id="voordelen-en-gebruik">Voordelen en gebruik</h3>
+
+<p>Supersnel<br />
+iets minder data<br />
+veel features</p>
+
+<p><a href="bayes-regel">Bayes-regel</a></p>
+
+<p>cases :<br />
+sentiment analysis - positief of negatief<br />
+film classificatie</p>
+
+<h3 id="discriminative-vs-generative">Discriminative vs Generative</h3>
+
+<h4 id="discriminative">Discriminative</h4>
+
+<p><strong>Classifier leert de grens tss twee klasses</strong><br />
+Logistic Regression<br />
+SVM</p>
+
+<p>Wat is de kans dat iets tot een bepaalde klasse behoort ? </p>
+
+<h4 id="generative">Generative</h4>
+
+<p><strong>Classifier leert de distributie van de verschillende klasses</strong><br />
+Bayes</p>
+
+<p>Wat maakt dat die features tot die bepaalde klasse horen ?<br />
+Wat zijn de eigenschappen van de klasses ?</p>
+
+<p>De kans dat een bepaalde klasses bepaalde features heeft. </p>
+
+<h3 id="naive-bayes-tekstclassificatie">Naive Bayes - Tekstclassificatie</h3>
+
+<p>$P(H|e) = \frac{P(e|H) P(H)}{P(e)}$</p>
+
+<p>H = hypothese (het bericht is spam)<br />
+e = evidence (de tekst in the bericht)</p>
+
+<p>$P(H|e)$ : de kans dat een bericht spam is gegeven de tekst van het bericht<br />
+$P(e|H)$ : de kans dat we deze tekst vinden in een spam bericht<br />
+$P(H)$ : de kans dat een willekeurig bericht spam is<br />
+$P(e)$ : de kans dat we deze tekst tegenkomen. De tekst moet worden weergegeven als meerdere stukken evidence, namelijk de woorden $W1, W2, ..., Wn$</p>
+
+<p>lastig om te berekenen =&gt; Naive Bayes gebruiken (beschouw elk woord onafhankelijk van de andere woorden)</p>
+
+<h4 id="laplacian-smoothing">Laplacian smoothing</h4>
+
+<p>Bron : https://howest.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=905811c1-47e7-4726-b2ad-aab30072227b<br />
+gebruiken voor woorden waarop niet getraind werd</p>
+
+<p>$P(Ws) = \frac{C(Ws) + \alpha}{N + \alpha V}$</p>
+
+<p>kleine $\alpha$: neiging tot overfitting<br />
+grote $\alpha$: neiging tot underfitting</p>
+
+<p>Als er meer nieuwe woorden zijn dan aantal getrainde woorden dan heb je te weinig trainingdata gebruikt. </p>
+
+<h4 id="log-likelihood">Log likelihood</h4>
+
+<p>Log van en product is de som van logaritmes<br />
+Het product van al die kansen wordt een som van logaritmese kansen.<br />
+Hierdoor vermijd je floating point underflow. (= kleinere getallen vermenigvuldigen 0.01 x 0.01 x 0.001 x ... wordt zo klein dat je ze niet meer kan voorstellen)</p>
+
+<p>$log(xy) = log(x) + log(y)$</p>
+
+<p>log likelihood van Ham  en van Spam berekenen en grootste getal heeft meeste waarschijnlijkheid (dit is <em>geen</em> percentage)</p>
+
+<h4 id="bag-of-words">Bag of words</h4>
+
+<p>Bag of words : collectie van unieke woorden die voorkomen in de volledige trainingset (na opkuis, ...). De uiteindelijke feature vector heeft dezelfde dimensie als de bag of words, die kan je gebruiken om classifier te trainen.</p>
+
+<h5 id="opkuis-tekst">Opkuis tekst</h5>
+
+<p><span class="tag">todo</span> python bib toevoegen<br />
+<span class="tag">todo</span> apart topic maken voor tekst data op te kuisen<br />
+verwijderen :</p>
+
+<ul>
+<li>html</li>
+<li>niet-letters</li>
+<li>stopwoorden</li>
+<li>korte woorden</li>
+</ul>
+
+<p>converteren :</p>
+
+<ul>
+<li>lowercase</li>
+<li>herleiden van woorden tot de stam</li>
+</ul>
+
+<p>niet relevante data (zoals te korte woorden) opkuisen zodat je minder features hebt wat zeker van belang is als je niet zoveel trainingsdata hebt. </p>
+
+<h5 id="bag-of-words-varianten">Bag of words varianten</h5>
+
+<h6 id="multi-variate-bernoulli-naive-bayes">Multi-variate Bernoulli Naive Bayes</h6>
+
+<p>Er wordt enkel bijgehouden of een woord in de bag of words al dan niet voorkomt in een document (0 of 1) en dus NIET de frequentie van voorkomen.<br />
+In de praktijk werkt het niet zo goed. </p>
+
+<h6 id="multinomial-naive-bayes">Multinomial Naive Bayes :</h6>
+
+<p>De frequentie (aantal keer) waarmee een woord uit de bag of words voorkomt in het document wordt bijgehouden. Scikit-learn : <span class="tag">CountVectorizer</span></p>
+
+<p>fit = lijst opbouwen van woorden &gt; feature vector maken (1000den features)<br />
+transform = per bericht count van woorden in bericht en mappen met features van fit</p>
+
+<h6 id="tf-idf-transformer">tf-idf transformer</h6>
+
+<p>aantal keren dat woord voorkomt in document delen door het aantal keer dat woord voorkomt in volledige trainingset<br />
+dit is om belang van het woord te bepalen. hoe uniek is het ? als het veel voorkomt brengt het weinig meerwaarde aan bericht om onderscheid te maken voor klasse bepaling</p>
+
+<p>eerst counts doen<br />
+fit op bag of words</p>
+
+<p>Voor tekstclassificatie zal Naive Bayes is soms beter dan logistic regression/SVM als er heel veel features zijn en minder data. Ook als je miljoenen teksten moet verwerken (snelheid is belangrijk).<br />
+Maar over het algemeen is log regr en SVM beter dan Naieve Bayes.</p>
+</div>
+
+    </article>
+  </div>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+
+</html>

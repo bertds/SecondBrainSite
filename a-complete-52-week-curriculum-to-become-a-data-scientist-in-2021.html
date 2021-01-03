@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <ul>
+        <a href="https://www.kmaasrud.com/brain"><img id="logo" src="https://raw.githubusercontent.com/kmaasrud/brain/master/brain.svg"></img></a>
+        <br>
+        <li><a href="https://www.kmaasrud.com/projects">Projects</a></li>
+        <li><a href="https://github.com/kmaasrud">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div class="backlinks">
+
+<ul>
+<li><a href="00-index">00_Index</a></li>
+</ul>
+
+</div>
+
+
+      <div id="content"><blockquote>
+  <p>“Everyone wants to eat, but few are willing to hunt”</p>
+</blockquote>
+
+<p>Bron : https://towardsdatascience.com/a-complete-52-week-curriculum-to-become-a-data-scientist-in-2021-2b5fc77bd160</p>
+
+<p>Introduction<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)</p>
+
+<p>If you want to be a data scientist but haven’t yet made the commitment, now is the time.</p>
+
+<p>Last year, I made a commitment to learn something new about data science every week for 52 weeks, and I think that was one of the best decisions I’ve ever made. You’d be surprised at how far you can get in a year.</p>
+
+<p>And so, I’m presenting to you a complete 52 weeks curriculum that you can do in 2021 as a new years resolution! It is crammed and it will be a grind, but it will be worth it.</p>
+
+<p>Immediately, you’ll notice that this guide does not start with machine learning, and I have good reasons for that. If you want to learn more about why machine learning comes in the later weeks, check out my article:</p>
+
+<p>A couple of notes before we dive into it:</p>
+
+<ul>
+<li>_This will_ <strong>_not_</strong> _cover everything that you need to know to be a fully equipped data scientist. That being said, this will cover what I believe are the most fundamental skills of a data scientist._</li>
+<li>_This assumes that you already know differential calculus since we all learned it in high school_</li>
+<li>_This curriculum will not include anything related to deep learning. Deep learning deserves its own 52 weeks on its own — it would be a disservice if I tried to squeeze it in!_</li>
+</ul>
+
+<p>With that said, let’s dive into it!</p>
+
+<p>Course Structure<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)</p>
+
+<ol>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> Statistics and Probability (Week 1 to Week 6)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> Mathematics (Week 7 to 12)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> SQL (Week 13 to Week 21)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> Python and Programming (Week 22 to Week 28)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> Pandas (Week 29 to Week 33)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> Visualizing Data (Week 34 to Week 35)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> Data Exploration and Preparation (Week 36 to Week 39)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> Machine Learning (Week 40 to Week 51)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> Data Science Project (Week 52)</li>
+</ol>
+
+<p>Statistics &amp; Probability<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)</p>
+
+<h2 id="why-statistics-and-probability">Why Statistics and Probability?</h2>
+
+<p>Data science and machine learning are essentially a modern version of statistics. By learning statistics first, you’ll have a much easier time when it comes to learning machine learning concepts and algorithms! Even though it may seem like you’re not getting anything tangible out of the first few weeks, it will be worth it in the later weeks.</p>
+
+<h2 id="week-1-descriptive-statistics"><strong>Week 1: Descriptive Statistics</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/descriptive-statistics-f2beeaf7a8df">Intro to Descriptive Statistics</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> [Another Intro to Descriptive Statistics](https://towardsdatascience.com/intro-to-descriptive-statistics-252e9c464ac9)</li>
+</ul>
+
+<h2 id="week-2-probability"><strong>Week 2: Probability</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/probability-library/basic-theoretical-probability/v/basic-probability">Theoretical probability</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/probability-library/probability-sample-spaces/v/events-and-outcomes-3">Sample spaces</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/probability-library/basic-set-ops/v/intersection-and-union-of-sets">Set operations</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/probability-library/addition-rule-lib/v/probability-with-playing-cards-and-venn-diagrams">Addition rule</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/probability-library/multiplication-rule-independent/v/compound-sample-spaces">Multiplication rule for independent events</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/probability-library/multiplication-rule-dependent/v/introduction-to-dependent-probability">Multiplication rule for dependent events</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/probability-library/conditional-probability-independence/v/calculating-conditional-probability">Conditional probability and independence</a></li>
+</ul>
+
+<h2 id="week-3-combinations-and-permutations"><strong>Week 3: Combinations and Permutations</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations/counting-principle-factorial/v/tree-diagram-to-count-outcomes">Counting principle and factorial</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations/permutation-lib/v/permutation-formula">Permutations</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> [Combinations](https://www.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations/combinations-lib/v/introduction-to-combinations)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/counting-permutations-and-combinations/combinatorics-probability/v/probability-using-combinations">Combinatorics</a></li>
+</ul>
+
+<h2 id="week-4-normal-distribution-and-sampling-distributions"><strong>Week 4: Normal Distribution and</strong> Sampling Distributions</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data/normal-distributions-library/v/ck12-org-normal-distribution-problems-qualitative-sense-of-normal-distributions">Normal distribution and the Empirical rule</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/sampling-distributions-library/what-is-a-sampling-distribution/v/introduction-to-sampling-distributions">Introduction to Sampling Distributions</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/sampling-distributions-library/sample-proportions/v/sampling-distribution-of-sample-proportion-part-1">Sampling distribution of a sample proportion</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/sampling-distributions-library/sample-means/v/statistics-sample-vs-population-mean">Sampling distribution of a sample mean</a></li>
+</ul>
+
+<h2 id="week-5-confidence-intervals"><strong>Week 5: Confidence Intervals</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/confidence-intervals-one-sample/introduction-to-confidence-intervals/v/confidence-intervals-and-margin-of-error">Introduction to Confidence Intervals</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/confidence-intervals-one-sample/estimating-population-proportion/v/confidence-interval-example">Estimating Sample Proportions</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/confidence-intervals-one-sample/estimating-population-mean/v/introduction-to-t-statistics">Estimating Sample Means</a></li>
+</ul>
+
+<h2 id="week-6-hypothesis-testing"><strong>Week 6: Hypothesis Testing</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample/idea-of-significance-tests/v/simple-hypothesis-testing">Introduction to Hypothesis Testing</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample/error-probabilities-and-power/v/introduction-to-type-i-and-type-ii-errors">Error probabilities and power</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample/tests-about-population-proportion/v/constructing-hypotheses-for-a-significance-test">Tests about a population proportion</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample/tests-about-population-mean/v/writing-hypotheses-for-significance-test-about-means">Tests about a population mean</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample/more-significance-testing-videos/v/hypothesis-testing-and-p-values">More videos</a></li>
+</ul>
+
+<p>Mathematics<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)===</p>
+
+<h2 id="why-mathematics">Why Mathematics?</h2>
+
+<p>Like statistics, many data science concepts build on fundamental mathematical concepts.</p>
+
+<p>In order to understand cost functions, you need to know differential calculus. In order to understand hypothesis testing, you need to understand integration. And to give more one more example, linear algebra is essential to learning deep learning concepts, recommendation systems, and principal component analysis.</p>
+
+<h2 id="week-7-vectors-and-spaces">Week 7: Vectors and Spaces</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/vectors/v/vector-introduction-linear-algebra">Vectors</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/linear-combinations/v/linear-combinations-and-span">Linear Combinations and Spans</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/linear-independence/v/linear-algebra-introduction-to-linear-independence">Linear Dependence and Independence</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/subspace-basis/v/linear-subspaces">Subspaces and the basis for a subspace</a></li>
+</ul>
+
+<h2 id="week-8-dot-product-and-matrix-transformations-pt-1"><strong>Week 8: Dot Product and</strong> Matrix Transformations pt. 1</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length">Vector dot and cross products</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/linear-transformations/v/a-more-formal-understanding-of-functions">Functions and Linear Transformations</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/composition-of-transformations/v/compositions-of-linear-transformations-1">Transformations and Matrix Multiplications</a></li>
+</ul>
+
+<h2 id="week-9-matrix-transformations-pt-2"><strong>Week 9: Matrix Transformations</strong> pt. 2</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-transformations/v/linear-algebra-introduction-to-the-inverse-of-a-function">Inverse Functions and Transformations</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-of-matrices/v/linear-algebra-deriving-a-method-for-determining-inverses">Inverses and Determinants</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/linear-algebra/matrix-transformations/matrix-transpose/v/linear-algebra-transpose-of-a-matrix">Transpose of a Matrix</a></li>
+</ul>
+
+<h2 id="week-10-eigenvalues-and-eigenvectors"><strong>Week 10: Eigenvalues and Eigenvectors</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.mathsisfun.com/algebra/eigenvalue.html">Eigenvalues and Eigenvectors</a></li>
+<li>_Anything that you couldn’t finish in the past few weeks!_</li>
+</ul>
+
+<h2 id="week-11-integrals"><strong>Week 11: Integrals</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/integral-calculus/ic-integration/ic-riemann-sums/v/simple-riemann-approximation-using-rectangles">Approximation with Riemann Sums</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/integral-calculus/ic-integration/ic-definite-integral-definition/v/riemann-sums-and-integrals">Definite Integrals with Riemann Sums</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/integral-calculus/ic-integration/ic-ftc-part-1/v/fundamental-theorem-of-calculus">The Fundamental Theorem of Calculus and Accumulation Functions</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/integral-calculus/ic-integration/ic-integral-prop/v/negative-definite-integrals">Properties of Definite Integrals</a></li>
+</ul>
+
+<h2 id="week-12-integrals-part-2"><strong>Week 12: Integrals Part 2!</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/integral-calculus/ic-integration/ic-ftc-part-2/v/connecting-the-first-and-second-fundamental-theorems-of-calculus">The Fundamental Theorem of Calculus and Definite Integrals</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/integral-calculus/ic-integration/ic-reverse-power-rule/v/indefinite-integrals-of-x-raised-to-a-power">Reverse Power Rule</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/integral-calculus/ic-integration/ic-common-indefinite-integrals/v/antiderivative-of-x-1">Indefinite Integrals of Common Functions</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.khanacademy.org/math/integral-calculus/ic-integration/ic-common-definite-integrals/v/reverse-power-rule-for-definite-integrals">Definite Integrals of Common Functions</a></li>
+</ul>
+
+<h1 id="sql">SQL</h1>
+
+<h2 id="why-sql">Why SQL?</h2>
+
+<p>SQL is arguably the most important skill to learn across <strong>any</strong> type of data-related profession, whether you’re a data scientist, data engineer, data analyst, business analyst, the list goes on.</p>
+
+<p>At its core, SQL is used to extract (or query) specific data from a database, so that you can do things like analyze the data, visualize the data, model the data, etc. Therefore, developing strong SQL skills will allow you to take your analyses, visualizations, and modeling to the next level because you will be able to extract and manipulate the data in advanced ways.</p>
+
+<p>I came across <a href="https://mode.com/sql-tutorial/">Mode’s curriculum</a> a while back and it is fantastic! So I would first get familiar with <a href="https://mode.com/sql-tutorial/sql-in-mode/">using SQL in Mode</a> and then you’ll be able to go through the topics below!</p>
+
+<h2 id="week-13-basic-sql"><strong>Week 13: Basic SQL</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/learn-beginner-sql-in-5-steps-in-5-minutes-c44c47fa39a1">Introduction to SQL</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-select-statement/">SELECT FROM statement</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-where/">WHERE statement</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-order-by/">ORDER BY statement</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-limit/">LIMIT statement</a></li>
+</ul>
+
+<h2 id="week-14-logical-and-comparison-operators"><strong>Week 14: LOGICAL and COMPARISON Operators</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-logical-operators/">Logical Operators</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-operators/">Comparison Operators</a></li>
+</ul>
+
+<h2 id="week-15-aggregates"><strong>Week 15: AGGREGATES</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-aggregate-functions/">Aggregate Functions</a> (COUNT, SUM, MIN/MAX, AVG)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-group-by/">GROUP BY</a> clause</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-having/">HAVING</a> clause</li>
+</ul>
+
+<h2 id="week-16-distinct-case-when"><strong>Week 16: DISTINCT, CASE WHEN</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-distinct/">DISTINCT</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> [CASE WHEN](https://mode.com/sql-tutorial/sql-case/)</li>
+</ul>
+
+<h2 id="week-17-joins-and-unions"><strong>Week 17: JOINS and UNIONS</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-joins/">JOINs</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-union/">UNIONs</a></li>
+</ul>
+
+<h2 id="week-18-subqueries-and-common-table-expressions"><strong>Week 18: Subqueries and Common Table Expressions</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> [Subqueries](https://mode.com/sql-tutorial/sql-sub-queries/)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://learnsql.com/blog/when-to-use-cte/">Common Table Expressions (CTEs)</a></li>
+</ul>
+
+<h2 id="week-19-string-manipulations"><strong>Week 19: String Manipulations</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-string-functions-for-cleaning/">String Functions in SQL</a> (LEFT/RIGHT, TRIM, STRPOS, SUBSTR, CONCAT, UPPER/LOWER, etc…)</li>
+</ul>
+
+<h2 id="week-20-date-time-manipulation"><strong>Week 20: Date-time manipulation</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.w3schools.com/sql/func_mysql_extract.asp">EXTRACT</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.w3schools.com/sql/func_mysql_date_add.asp">DATE_ADD()</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.w3schools.com/sql/func_mysql_date_sub.asp">DATE_SUB()</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.w3schools.com/sql/func_mysql_datediff.asp">DATE_DIFF()</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> _See_ <a href="https://www.w3schools.com/sql/func_mysql_adddate.asp">_here_</a> _for more functions (on the left of the webpage)_</li>
+</ul>
+
+<h2 id="week-21-windows-functions"><strong>Week 21: Windows Functions</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://mode.com/sql-tutorial/sql-window-functions/">Windows Functions</a> (ROW_NUMBER(), RANK(), DENSE_RANK(), LAG, LEAD, SUM, COUNT, AVG)</li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> _See_ <a href="https://www.postgresql.org/docs/8.4/functions-window.html">_here_</a> _for advanced window functions._</li>
+</ul>
+
+<p>Python and Programming<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)==</p>
+
+<h2 id="why-python">Why Python?</h2>
+
+<p>I started with Python, and I’ll probably stick with Python for the rest of my life. It’s so far ahead in terms of open source contributions, and it’s straightforward to learn. Feel free to go with R if you want, but I have no opinions or advice to provide regarding R.</p>
+
+<h2 id="week-22-introduction-to-python">Week 22: Introduction to Python</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=rfscVS0vtbw&amp;feature=youtu.be">Video: (0:00 to 1:03:10)</a></li>
+</ul>
+
+<h2 id="week-23-list-tuples-functions-conditional-statements-comparisons">Week 23: List, Tuples, Functions, Conditional Statements, Comparisons</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=rfscVS0vtbw&amp;feature=youtu.be">Video: (1:03:10 to 2:00:37)</a></li>
+</ul>
+
+<h2 id="week-24-dictionaries-loops-comments">Week 24: Dictionaries, Loops, Comments</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=rfscVS0vtbw&amp;feature=youtu.be">Video: (2:00:37 to 3:04:17)</a></li>
+</ul>
+
+<h2 id="week-25-tryexcept-reading-writing-files-classes-and-objects">Week 25: Try/Except, Reading &amp; Writing files, Classes and Objects</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=rfscVS0vtbw&amp;feature=youtu.be">Video: (3:04:17 to 4:20:43)</a></li>
+</ul>
+
+<h2 id="week-26-recursion">Week 26: Recursion</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=KEEKn7Me-ms">Video explanation of recursion</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://leetcode.com/explore/learn/card/recursion-i/">Course on recursion</a></li>
+</ul>
+
+<h2 id="week-27-binary-trees">Week 27: Binary Trees</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://leetcode.com/explore/learn/card/data-structure-tree/">Course on Binary Trees</a></li>
+</ul>
+
+<h2 id="week-28-apis-and-anaconda">Week 28: APIs and Anaconda</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=GZvSYJDk-us">APIs for beginners</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.mrdbourke.com/get-your-computer-ready-for-machine-learning-using-anaconda-miniconda-and-conda/">Getting Anaconda setup on your computer</a></li>
+</ul>
+
+<p>Pandas<br />
+<mark class="highlight"></mark>)==</p>
+
+<h2 id="why-pandas">Why Pandas?</h2>
+
+<p>Arguably the most important library to know in Python is Pandas, which is specifically meant for data manipulation and analysis.</p>
+
+<h2 id="week-29-getting-and-knowing-your-data">Week 29: Getting and Knowing your data</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=_jCSK4cMcVw&amp;feature=youtu.be">Follow along and learn — YouTube video</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/01_Getting_%26_Knowing_Your_Data/Chipotle/Exercise_with_Solutions.ipynb">Practice problem set #1</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/01_Getting_%26_Knowing_Your_Data/Occupation/Exercise_with_Solution.ipynb">Practice problem set #2</a></li>
+</ul>
+
+<h2 id="week-30-filtering-and-sorting">Week 30: Filtering and Sorting</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=ZZPiWZpdekA&amp;feature=youtu.be">Follow along and learn — YouTube video</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/02_Filtering_%26_Sorting/Euro12/Exercises_with_Solutions.ipynb">Practice problem set #1</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/02_Filtering_%26_Sorting/Fictional%20Army/Exercise_with_solutions.ipynb">Practice problem set #2</a></li>
+</ul>
+
+<h2 id="week-31-grouping">Week 31: Grouping</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=az67CMdmS6s&amp;feature=youtu.be">Follow along and learn — YouTube video</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/03_Grouping/Occupation/Exercises_with_solutions.ipynb">Practice problem set #1</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/03_Grouping/Regiment/Exercises_solutions.ipynb">Practice problem set #2</a></li>
+</ul>
+
+<h2 id="week-32-apply">Week 32: Apply</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=46lmk1JvcWA&amp;feature=youtu.be">Follow along and learn — YouTube video</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/04_Apply/Students_Alcohol_Consumption/Exercises_with_solutions.ipynb">Practice problem set #1</a></li>
+</ul>
+
+<h2 id="week-33-merge">Week 33: Merge</h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=6DbgcHBiOqo&amp;feature=youtu.be">Follow along and learn — YouTube video</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/05_Merge/Auto_MPG/Exercises_with_solutions.ipynb">Practice problem set #1</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://github.com/guipsamora/pandas_exercises/blob/master/05_Merge/Housing%20Market/Exercises_with_solutions.ipynb">Practice problem set #2</a></li>
+</ul>
+
+<p>Visualizing Data<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)</p>
+
+<h2 id="why-data-visualizations">Why Data Visualizations?</h2>
+
+<p>The ability to visualize data and insights is so important because it’s the easiest way to communicate intricate information and a lot of information at once. As a data scientist, you’re always selling yourself and your ideas, whether your pitching a new project or convincing others why your model should be productionalized — data visualizations are a great tool to help you with that.</p>
+
+<p>There are dozens of data visualization libraries out there, but I’m going to focus on two: Matplotlib and Plotly.</p>
+
+<h2 id="week-34-data-visualizations-with-matplotlib"><strong>Week 34: Data Visualizations with Matplotlib</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.datacamp.com/community/tutorials/matplotlib-tutorial-python">Introduction to Matplotlib</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.datacamp.com/community/tutorials/matplotlib-3d-volumetric-data">3-D Visualizations in Matplotlib</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/data-visualization-using-matplotlib-16f1aae5ce70">Types of Data Visualizations in Matplotlib</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.datacamp.com/community/blog/python-matplotlib-cheat-sheet">Cheatsheet</a></li>
+</ul>
+
+<h2 id="week-35-data-visualizations-with-plotly"><strong>Week 35: Data Visualizations with Plotly</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/interactive-visualizations-with-plotly-ea3f8feb87d1">Types of Visualizations in Plotly (beginner)</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/the-next-level-of-data-visualization-in-python-dd6e99039d5e">Types of Visualizations in Plotly (beginner and advanced)</a></li>
+</ul>
+
+<p>Data Exploration and Preparation<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)</p>
+
+<h2 id="why-data-exploration-and-preparation">Why Data Exploration and Preparation?</h2>
+
+<blockquote>
+  <p>“Garbage in, garbage out”</p>
+</blockquote>
+
+<p>The models that you create can only be as good as the data that you feed into it. To understand what the state of your data is in, i.e. whether it’s “good” or not, you have to explore the data and prepare the data. Therefore, for the next four weeks, I’m going to provide several amazing resources for you to go through and get a better understanding of what data exploration and preparation entails.</p>
+
+<h2 id="week-36-exploratory-data-analysis-eda"><strong>Week 36: Exploratory Data Analysis (EDA)</strong></h2>
+
+<p>Exploratory Data Analysis (EDA) can be difficult because there’s no one set way of doing it — but that’s also what keeps it exciting. Generally, you want to…</p>
+
+<ul>
+<li>Derive descriptive statistics (eg. central tendency)</li>
+<li>Perform uni-variable analysis (distributions and spread)</li>
+<li>Perform multi-variable analysis (scatterplots, correlation matrix, predictive power score, etc…)</li>
+<li>Check for missing data and check for outliers</li>
+</ul>
+
+<p>[ ] _Check out a beginner’s guide to EDA_ <a href="https://towardsdatascience.com/exploratory-data-analysis-dcb5e7189c4e">_here_</a>_._</p>
+
+<h2 id="week-37-data-preparation-feature-imputation-and-normalization"><strong>Week 37: Data Preparation: Feature Imputation and Normalization</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://en.wikipedia.org/wiki/Imputation_(statistics)#:~:text=In%20statistics%2C%20imputation%20is%20the,known%20as%20%22item%20imputation%22.">What is Feature Imputation?</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779">6 ways to impute missing data</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://stats.stackexchange.com/questions/10289/whats-the-difference-between-normalization-and-standardization">Normalization vs Standardization</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/">Example of implementing normalization vs standardization</a></li>
+</ul>
+
+<h2 id="week-38-feature-engineering-and-feature-selection"><strong>Week 38: Feature Engineering and Feature Selection</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.kaggle.com/learn/feature-engineering">Feature Engineering Mini Course</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://medium.com/analytics-vidhya/different-type-of-feature-engineering-encoding-techniques-for-categorical-variable-encoding-214363a016fb">Feature Encoding</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://machinelearningmastery.com/an-introduction-to-feature-selection/">An Introduction to Feature Selection</a></li>
+</ul>
+
+<h2 id="week-39-imbalanced-datasets"><strong>Week 39: Imbalanced Datasets</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://medium.com/analytics-vidhya/different-type-of-feature-engineering-encoding-techniques-for-categorical-variable-encoding-214363a016fb">An Introduction to Imbalanced Classification Problems</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://beckernick.github.io/oversampling-modeling/">The Right Way to Oversample in Predictive Modeling</a></li>
+</ul>
+
+<p>Machine Learning<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)</p>
+
+<h2 id="why-machine-learning">Why Machine Learning?</h2>
+
+<p>Everything that you’ve learned has led up to this point! Not only is machine learning interesting and exciting, but it is also a skill that all data scientists have. It’s true that modeling makes up a small portion of a data scientist’s time, but it doesn’t take away from its importance.</p>
+
+<p>Later in your career, you might notice that I left out some machine learning algorithms, like K Nearest-Neighbors, Gradient Boost, and CatBoost. This is completely intentional — if you can understand the following machine learning concepts, you’ll have the skills to learn any other machine learning algorithms in the future.</p>
+
+<h2 id="week-40-introduction-to-machine-learning"><strong>Week 40: Introduction to Machine Learning</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d">Supervised vs Unsupervised, Continuous vs Discrete</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229">Bias-variance tradeoff</a></li>
+</ul>
+
+<h2 id="week-41-linear-regression"><strong>Week 41: Linear Regression</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=nk2CQITm_eo">Linear Models: Linear Regression</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=zITIFTsivN8">Linear Models: Multiple Regression</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www2.isye.gatech.edu/~sman/courses/6739/SimpleLinearRegression.pdf">Mathematics behind linear regression</a></li>
+</ul>
+
+<h2 id="week-42-logistic-regression"><strong>Week 42: Logistic Regression</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=yIYKR4sgzI8&amp;t=448s">Introduction to Logistic Regression</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=vN5cNN2-HWE&amp;t=776s">Part 1: Coefficients</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=BfKanl1aSG0&amp;t=1s">Part 2: Maximum likelihood</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=xxFYro8QuXA&amp;t=24s">Part 3: R-squared and P-value</a></li>
+</ul>
+
+<h2 id="week-43-regularization"><strong>Week 43: Regularization</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=Q81RR3yKn30">Ridge Regression (L2)</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=NGf0voTMlcs">Lasso Regression (L1)</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=1dKRdX9bfIo">Elastic Net Regression</a></li>
+</ul>
+
+<h2 id="week-44-decision-trees"><strong>Week 44: Decision Trees</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=7VeUPuFGJHk&amp;t=345s">Decision Trees Introduction</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=wpNl-JwwplA">Feature Selection and Missing Date</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=q90UDEgYqeI">Implementing a Decision Tree in Python</a></li>
+</ul>
+
+<h2 id="week-45-naive-bayes"><strong>Week 45: Naïve Bayes</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/a-mathematical-explanation-of-naive-bayes-in-5-minutes-44adebcdb5f8">A Mathematical Explanation of Naïve Bayes</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/results?search_query=naive+bayes+statquest">Naïve Bayes (StatQuest)</a></li>
+</ul>
+
+<h2 id="week-46-support-vector-machines"><strong>Week 46: Support Vector Machines</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=efR1C6CvhmE">Intuition of Support Vector Machines</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=N1vOgolbjSc&amp;t=207s">Support Vector Machines in Python</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=_PwhiWxHK8o">A mathematical explanation of Support Vector Machines</a></li>
+</ul>
+
+<h2 id="week-47-clustering"><strong>Week 47: Clustering</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=4b5d3muPQmA&amp;t=1s">K-means clustering</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=7xHsRkOdVwo&amp;t=1s">Hierarchical clustering</a></li>
+</ul>
+
+<h2 id="week-48-principal-component-analysis"><strong>Week 48: Principal Component Analysis</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=FgakZw6K1QQ&amp;t=36s">Principal Component Analysis (PCA) step-by-step</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=g-Hb26agBFg">Another detailed explanation by Luis Serrano (I highly suggest you watch both)</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=fkf4IBRSeEc">Mathematical explanation of PCA</a></li>
+</ul>
+
+<h2 id="week-49-bootstrap-sampling-bagging-and-boosting"><strong>Week 49: Bootstrap Sampling, Bagging, and Boosting</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/what-is-bootstrap-sampling-in-machine-learning-and-why-is-it-important-a5bb90cbd89a">Bootstrap Sampling</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/ensemble-learning-bagging-and-boosting-explained-in-3-minutes-2e6d2240ae21">Ensemble learning, Bagging, Boosting</a></li>
+</ul>
+
+<h2 id="week-50-random-forests-and-other-boosted-trees"><strong>Week 50: Random Forests and Other Boosted Trees</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ">Random Forests pt.1</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=sQ870aTKqiM">Random Forests pt.2</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=OtD8wVaFm6E&amp;t=3s">XGBoost — Regression</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=8b1JEDvenQU">XGBoost — Classification</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=ZVFeW798-2I&amp;t=11s">XGBoost — Mathematical Details</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://www.youtube.com/watch?v=GrJP9FLV3FE">XGBoost in Python</a></li>
+</ul>
+
+<h2 id="week-51-model-evaluation-metrics"><strong>Week 51: Model Evaluation Metrics</strong></h2>
+
+<ul>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/how-to-evaluate-your-machine-learning-models-with-python-code-5f8d2d8d945b">Evaluation Metrics with Python Code</a></li>
+<li><input type="checkbox" class="task-list-item-checkbox" disabled> <a href="https://towardsdatascience.com/understanding-the-confusion-matrix-and-how-to-implement-it-in-python-319202e0fe4d">Understanding the confusion matrix and how to implement it in Python</a></li>
+</ul>
+
+<p>Week 52: Data Science Project<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)<mark class="highlight"></mark>)=</p>
+
+<p>If you feel comfortable with the materials above, you’re definitely ready to start your own data science project! Just in case, I’ve provided three ideas that you can use as inspiration to get started, but feel free to do whatever you like.</p>
+
+<h2 id="idea-1-sql-case-study">Idea 1: SQL Case Study</h2>
+
+<p><a href="https://mode.com/sql-tutorial/a-drop-in-user-engagement/"><strong>Link to the case</strong></a><strong>.</strong></p>
+
+<p>The objective of this case is to determine the cause for a drop in user engagement for a social network called Yammer. Before diving into the data, you should read the overview of what Yammer does <a href="https://mode.com/sql-tutorial/sql-business-analytics-training/">here</a>. There are 4 tables that you should work with.</p>
+
+<p>The link to the case above will provide you with much more detail pertaining to the problem, the data, and the questions that should be answered.</p>
+
+<p>Check out how I approached this case study <a href="https://towardsdatascience.com/sql-case-study-investigating-a-drop-in-user-engagement-510b27d0cbcc?source=friends_link&amp;sk=49cdc679e66cae75257b955db51f4fe5">here</a> if you’d like guidance.</p>
+
+<p>_Skills You’ll Develop_</p>
+
+<ul>
+<li>_SQL_</li>
+<li>_Data Analysis_</li>
+<li>_Data Visualization if you choose to visualize your insights._</li>
+</ul>
+
+<h2 id="idea-2-trustpilot-webscraper">Idea 2: Trustpilot Webscraper</h2>
+
+<p>Learning how to webscrape data is simple to learn and extremely useful, especially when it comes to collecting data for personal projects. Scraping a customer review website, like Trustpilot, is valuable for a company as it allows them to understand review trends (getting better or worse) and see what customers are saying via NLP.</p>
+
+<p>First I would get familiar with how Trustpilot is organized, and decide upon which kinds of businesses to analyze. Then I would take a look at this walkthrough of <a href="https://towardsdatascience.com/customer-reviews-identify-your-strengths-and-weaknesses-with-the-help-of-web-scraping-data-b87a3636ef55">how to scrape Trustpilot reviews</a>.</p>
+
+<p>_Skills You’ll Develop_</p>
+
+<ul>
+<li>_Writing Python Scripts_</li>
+<li>_Data Wrangling_</li>
+<li>_BeautifulSoup/Selenium (webscraping libraries)_</li>
+<li>_Data Analysis_</li>
+<li>_Take it further and apply NLP to extract insights from reviews._</li>
+</ul>
+
+<h2 id="idea-3-titanic-machine-learning-competition">Idea 3: Titanic Machine Learning Competition</h2>
+
+<p>In my opinion, there’s no better way of showing that you’re ready for a data science job than to showcase your code through competitions. Kaggle hosts a variety of competitions that involves building a model to optimize a certain metric, one of them being the <a href="https://www.kaggle.com/c/titanic">Titanic Machine Learning Competition</a>.</p>
+
+<p>If you want to get some inspiration and guidance, check out <a href="https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling">this step-by-step walkthrough</a> of one of the solutions.</p>
+
+<p>_Skills You’ll Develop_</p>
+
+<ul>
+<li>_Data Exploration and Cleaning with Pandas_</li>
+<li>_Feature Engineering_</li>
+<li>_Machine Learning Modelling_</li>
+</ul>
+</div>
+
+    </article>
+  </div>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+
+</html>

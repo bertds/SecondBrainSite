@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <ul>
+        <a href="https://www.kmaasrud.com/brain"><img id="logo" src="https://raw.githubusercontent.com/kmaasrud/brain/master/brain.svg"></img></a>
+        <br>
+        <li><a href="https://www.kmaasrud.com/projects">Projects</a></li>
+        <li><a href="https://github.com/kmaasrud">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div class="backlinks">
+
+<ul>
+<li><a href="ai-home">AI@home</a></li>
+</ul>
+
+</div>
+
+
+      <div id="content"><p><a href="q-decision-tree-ensemble-methods">Q Decision Tree Ensemble Methods</a></p>
+
+<h2 id="random-forest-trees">Random Forest Trees</h2>
+
+<p>zowel voor regressie als classificatie</p>
+
+<h3 id="decision-trees">Decision trees</h3>
+
+<p><img src="decision-treedotpng" alt="decision_tree.png" /><br />
+blad van de boom = label van de klasse zelf</p>
+
+<p>je splits de data op obv feature values en blijft splitsen obv een vraag tot je zuivere groeperingen hebt.<br />
+<img src="example-splitdotpng" alt="example_split.png" /></p>
+
+<p><strong>Maar hoe bepaal je hoe en waar te splitsen ?</strong><br />
+<img src="where-to-splitdotpng" alt="where_to_split.png" /></p>
+
+<h4 id="entropy-en-information-gain">Entropy en information gain</h4>
+
+<p>Entropy = maat voor de wanorde (lager getal = minder choas, meer op orde)<br />
+Eenheid van entropy = bit<br />
+Entropy H = maat voor de wanorde (gemiddlede informatieinhoud)</p>
+
+<p>$H = \sum_{i=1}^{N} p_i log_2( \frac{1}{p_i} )$<br />
+$H = - \sum_{i=1}^{N} p_i log_2(p_i)$</p>
+
+<p>Als scheidingslijn trekt dan is de entropy te bepalen door die voor elke kant van de scheidingslijn te berekenen en dan de som te maken van bekomen entropys vermenigvuldigd met een gewicht. Dat gewicht bepaal je door het aantal datapunten van die kant van de scheidingslijn te delen door het totaal aantal datapunten (zowel links als rechts van de scheidingslijn)</p>
+
+<p>Als je dan wil weten of dit beter of slechter is dan een vorige scheiding (of geen scheiding) dan kan je dit door de information gain te berekenen.<br />
+Je gaat dan na hoeveel minder ordelijk/wanordelijk de scheiding nu is.<br />
+<strong>Information gain = entropy voor de split - entropy na de split</strong></p>
+
+<p><em>Splits telkens bij de split die je hoogste information gain oplevert.</em><br />
+<img src="entropydotpng" alt="entropy.png" /></p>
+
+<h4 id="gini-impurity">Gini impurity</h4>
+
+<p>Alternatief voor gebruik van entropy. </p>
+
+<p>Gini impurity = maat voor hoe vaak een willekeurig gekozen element van de set verkeerd gelabeld zou worden als het willekeurig gelabeld werd volgens de disitributie van de labels in de subset (= mate van onzuiverheid)</p>
+
+<p>$G = 1 - \sum_{i=1}^{N} p^2_i$</p>
+
+<p>Voor elke klasse ga na hoe groot de kans is dat correct gelabeld is (= aantal voorkomens van die klasse / het totaal aantal voorkomens) en maak de som van de kwadraten. Dit kan je doen voor het geheel zonder/met op te splitsen.<br />
+Indien opgeplistst maak je gebruik van de gewogen Gini impurity. Voor elke zijde van de scheidingslijn bereken je de Gini impurity en vermenigvuldig je dit met een gewicht. Dat gewicht bepaal je door het aantal datapunten van die kant van de scheidingslijn te delen door het totaal aantal datapunten (zowel links als rechts van de scheidingslijn)</p>
+
+<p><em>Hoe kleiner het getal hoe zuiverder de scheiding is.</em><br />
+<em>Splits telkens bij de split di je de laagste Gini Impurity oplevert.</em><br />
+<img src="ginidotpng" alt="gini.png" /><br />
+Bij de bepaling van decision tree staat default op Gini. Gini geeft zelfde resultaat als Entropy en rekent veel sneller. </p>
+
+<h5 id="nadeel-van-opbouw-kansenboom">Nadeel van opbouw kansenboom ?</h5>
+
+<p>Je kan makkelijk overfitting krijgen doordat je probeert elke datapunt in zijn eigen hokje te krijgen. Je krijgt een enorme boom. Een manier om dat op te lossen is werken met Random Forest Trees.</p>
+
+<h3 id="random-forest-trees-2">Random forest trees</h3>
+
+<p>Om de problematiek van neiging tot overfitting bij decision trees op te lossen.<br />
+Oplossing : combineer de voorspellingen van verschillende gerandomiseerde trees tot één model.<br />
+<img src="random-forestdotpng" alt="random_forest.png" /></p>
+
+<p>_Nicolas de Condorcet (1743 - 1794)_</p>
+
+<blockquote>
+  <p>Given a jury of voters and assuming in- dependent errors. If the probability of <strong>each single person in the jury of being correct is above 50%</strong> then the proba- bility of the jury being correct tends to 100% as the number of persons in- crease.</p>
+</blockquote>
+
+<p>Op random stukken van de trainingset een decision tree maken. Elke tree een voorspelling laten doen en je gebruikt Majority voting (meerderheid wint) om te bepalen wat het eindresultaat is.<br />
+<img src="majority-votingdotpng" alt="majority_voting.png" /></p>
+
+<h4 id="hyperparameters-van-een-random-forest-tree">Hyperparameters van een random forest tree</h4>
+
+<ul>
+<li>n_estimators: number of trees in the forest. Meestal hoe meer hoe beter.</li>
+<li>Criterion: Gini of Entropy (default Gini)</li>
+<li>Maximum number of features: het maximum aantal features per boom.<br />
+<ul><br />
+<li>int : aantal features  </li><br />
+<li>float: percentage  </li><br />
+<li>’auto’: max_features = vierkantswortel van totaal aantal features</li><br />
+<li>’sqrt’: max_features = vierkantswortel van totaal aantal features</li><br />
+<li>'log2’: log van het totaal aantal features  </li><br />
+<li>Default worden alle features gebruikt.</li><br />
+</ul></li>
+<li>max_depth: de maximale diepte van de boom. Als je te maken hebt met noisy data is het aan te raden de maximale diepte beperkt te houden</li>
+<li>min_samples_split: het minimum aantal samples nodig om binnen een boom te blijven splitsen.</li>
+<li>min_samples_leaf: het minimum aantal samples dat zich aan een blad van de boom moet bevinden. Hoe groter deze waarde, hoe minder vatbaar voor overfitting.</li>
+<li>Bootstrap aggregating: Bagging (zie verder). Staat default op True.</li>
+<li>oob_score: de gemiddelde error bij het testen van een sample op bomen die niet op deze sample getraind zijn geweest.</li>
+</ul>
+
+<h2 id="ensemble-methodes">Ensemble Methodes</h2>
+
+<p>verzameling van methodes die we al gezien hebben.<br />
+classifiers die we al gezien hebben combineren tot één classifier</p>
+
+<h4 id="wat-zijn-ensembles">Wat zijn ensembles?</h4>
+
+<p>Een ensemble is een combinatie van verschillende classifiers die samen een uiteindelijke klasse voorspellen.</p>
+
+<p>Werken meestal beter dan een enkele classifier<br />
+De classifiers moeten verschillend zijn van elkaar (diverse classifiers)</p>
+
+<h4 id="hoe-een-ensemble-learner-bouwen">Hoe een ensemble learner bouwen ?</h4>
+
+<h5 id="stacking"><strong>stacking</strong></h5>
+
+<p><img src="stackingdotpng" alt="stacking.png" /><br />
+obv volledige trainingset ga je verschillende modellen trainen (SVM, Naibe Bayes, ..) Het resultaat ga je laten classificeren door een nieuwe classifier. De predicties van de modellen is input voor de classifier die de uiteindelijke predicties gaat doen. </p>
+
+<h5 id="bagging-bootstrap-aggregating"><strong>bagging (bootstrap aggregating)</strong></h5>
+
+<p><img src="ensemble-learnerdotpng" alt="ensemble_learner.png" /><br />
+<em>methode om de variantie te reduceren en overfitting te vermijden</em><br />
+maak verschillende subsets (bags) van traingingsdata om een model te trainen :<br />
+    - neem een bepaalde percentage (meestal 60%) aan willekeurige datapunten  en in steek ze in de bag<br />
+    - het is met teruglegging dus zelfde datapunt kan verschillende keren voorkomen in de bag<br />
+    - train met de bag een model/classifier (verschillende soorten modellen mogelijk of allemaal dezelfde)<br />
+gebruik majority voting om eindresultaat te bepalen<br />
+sklearn : bagging classifier <span class="tag">todo</span> voorbeeld uitwerken </p>
+
+<h5 id="boosting"><strong>boosting</strong></h5>
+
+<p>Dikwijls betere accuraatheid dan bagging methode. Gevoeliger voor overfitting en moeilijker te parallelliseren. </p>
+
+<h6 id="meest-bekend-algoritme-adaboost-adaptive-boostingadaboost-adaptive-boosting-">Meest bekend algoritme: <em><a href="adaboost-adaptive-boosting-">AdaBoost (Adaptive Boosting)</a>.</em></h6>
+
+<p>Principe: vergelijkbaar met bagging, maar verkeerd geclassificeerde samples bekomen een grotere kans om in de volgende bag te belanden.<br />
+werkwijze :<br />
+    - 60% van traininginset willekeurig kiezen (met teruglegging) en hiermee model trainen.<br />
+    - door dit model volledige trainingset doorsturen en predicites doen<br />
+    - alle predicties die verkeerd geclassificeerd zijn worden 'belangrijker' want bij<br />
+    - nieuwe bag maken met willekeurige data met <em>cases die slecht geclassificeerd waren gaan meer kans maken om in de bag terecht</em> te komen (ook hier met teruglegging)<br />
+    - dit doet je paar keer naagerlang het aantal modellen dat je wil hebben<br />
+    - alle cases van alle vorige modellen die slecht scoren hebben bij het samenstellen van een nieuwe bag van trainingsdata, voor het nieuwe model, meer kans om geselecteerd te worden dan de andere cases. </p>
+
+<h6 id="gradient-boostinggradient-boosting"><a href="gradient-boosting">Gradient Boosting</a></h6>
+
+<h3 id="regressies-met-dicision-trees-en-ensemble-learning">Regressies met dicision trees en ensemble learning</h3>
+
+<h4 id="randomforestregressor">RandomForestregressor</h4>
+
+<p>Je kan RandomForestRegressor toepassen om predicties te doen (getal ipv classificatie)</p>
+
+<p>Decision tree met per blad een continue waarde ipv een klasse.<br />
+Criteria gebruiken om bepaalde split te doen obv een feature.<br />
+<img src="ensemble-split-regressie1dotpng" alt="ensemble_split_regressie1.png" /></p>
+
+<p>Bij regressie gebruiken we <strong>variantie</strong>  ipv <strong>entropy/gini index</strong>.</p>
+
+<h5 id="variantievariance">Variantie/Variance</h5>
+
+<blockquote>
+  <p>In statistics, variance measures <a href="https://www.investopedia.com/terms/v/variability.asp">variability</a> from the average or mean. It is calculated by taking the differences between each number in the data set and the mean, then squaring the differences to make them positive, and finally dividing the sum of the squares by the number of values in the data set.</p>
+  
+  <p>Variance is calculated using the following formula:<br />
+  $\sigma^2 =\frac{ \sum_{i=1}^n(x_i - \bar{x})^2 }{n}$<br />
+  where:<br />
+  $x_i$ = the $i^{th}$ data point<br />
+  $\bar{x}$ = the mean of all data points<br />
+  n= the number of data points</p>
+</blockquote>
+
+<p>We beginnen met de totale variantie te bepalen (van target waarden)<br />
+*Hoe bepaal je variantie ? *</p>
+
+<blockquote>
+  <p><code>var()</code> – Variance Function in python pandas is used to calculate variance of a given set of numbers, Variance of a data frame, Variance of column or column wise variance in pandas python  and Variance of rows or row wise variance in pandas python, let’s see an example of each.<br />
+  <img src="variance-codedotpng" alt="variance_code.png" /></p>
+</blockquote>
+
+<p>Dan kunnen we voor een feature de gewogen variantie berekenen door voor alle waarden van een featuregroep de variantie te berekenen en van die resultaten de gewogen variantie te berekenen. Dit laatste doe je door van variantie van de featuregroep te vermenigvuldigen met het aantal waarden, hiervan de soms te maken en te delen door het totaal aantal waarden. </p>
+
+<p><em>Gewogen variantie vs totale variantie ?</em><br />
+Als de gewogen variantie kleiner is dan de total variantie wil zeggen dat je meer gelijksoortige gegevens bij elkaar hebt gestopt.  Minder onzekerheid. Dat is wat je wil. </p>
+
+<p>Je kan dit ook doen voor andere features en dan de gewogen varianties vergelijken en die met de kleinste gewogen variantie is het meest geschikt om te gebruiken voor een split.<br />
+Eenmaal een split gekozen kan je dan kijken voor een deelgroep wat de gewogen variantie is en hiermee bepalen wat de beste volgende split is. </p>
+
+<p><img src="ensemble-split-regressie2dotpng" alt="ensemble_split_regressie2.png" /><br />
+Het trainen van de modellen gebeurt op dezelfde manier via boosting, bagging, ... .</p>
+
+<p><img src="randomforestregressor-codedotpng" alt="randomforestregressor_code.png" /></p>
+
+<p>Voor ensemble ga je niet zoals bij classificatie Majority voting gebruiken maar de mean van alle resultaten.<br />
+<img src="ensemble-regressie-meandotpng" alt="ensemble_regressie_mean.png" /></p>
+</div>
+
+    </article>
+  </div>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+
+</html>

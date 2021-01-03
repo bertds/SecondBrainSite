@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <ul>
+        <a href="https://www.kmaasrud.com/brain"><img id="logo" src="https://raw.githubusercontent.com/kmaasrud/brain/master/brain.svg"></img></a>
+        <br>
+        <li><a href="https://www.kmaasrud.com/projects">Projects</a></li>
+        <li><a href="https://github.com/kmaasrud">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      
+
+      <div id="content"><h1 id="classification">Classification</h1>
+
+<p><a href="q-classification">Q Classification</a></p>
+
+<h2 id="classification-vs-clustering">classification vs clustering</h2>
+
+<h2 id="soorten-classificatie">soorten classificatie</h2>
+
+<ul>
+<li>binary classifications</li>
+<li>multiclass classifications</li>
+<li>multilabel classifications</li>
+</ul>
+
+<h2 id="algoritmes">algoritmes</h2>
+
+<h3 id="lineair-vs-non-lineair">lineair vs non-lineair</h3>
+
+<h3 id="lineair">lineair</h3>
+
+<ul>
+<li><a href="naive-bayes">Naive Bayes</a></li>
+<li><a href="logistic-regression">Logistic Regression</a></li>
+<li><p><a href="support-vector-machine-svm-">Support Vector Machine (SVM)</a></p>
+
+<h3 id="none-lineair">None-lineair</h3></li>
+<li><p><a href="artificial-neural-networks-multiplayer-perceptrons-">artificial neural networks (multiplayer perceptrons)</a></p></li>
+<li><a href="k-nearest-neighbors-k-nn-">K-nearest neighbors (k-NN)</a></li>
+<li><a href="a-decision-tree">a decision tree</a></li>
+</ul>
+
+<h2 id="performance">performance</h2>
+
+<ul>
+<li><em>Accuracy</em> is a simple metric, easy to interpret, but unfortunately does not work well with unbalanced samples.</li>
+<li><em>The confusion matrix</em> is a convenient presentation of the results in TP, FP, TN, and FN terms, which allows us to look more broadly at the predictions, also see the mistakes for each class. Cons — it is not easy to compare two matrices to measure the quality of the models.</li>
+<li><em>Precision</em> is a measure that shows how many of all predicted samples of a certain class were predicted correctly. It can be used to <strong>show how the algorithm works on a specific class</strong> but it is not exhaustive.</li>
+<li><em>Recall</em> <strong>shows how many of the real values of a specific class the model could predict.</strong> It shows well the quality of the model with small classes, but it is not exhaustive.</li>
+<li>F-<em>measure</em> is a combination of Precision and Recall metrics since tasks often need to be optimized concurrently. Not very intuitive to interpret, difficult to set an additional $\beta$-parameter.</li>
+<li><em>ROC-AUC</em> is the area under the ROC curve. The most popular metric for analyzing model performance as it predicts probabilities rather than classes. It helps to determine the relevant threshold for binary classification tasks but <strong>doesn't work well with unbalanced samples</strong>.</li>
+<li><em>AUC-PR</em> is the area under the Precision-Recall curve. It is a quality metric that is not related to the number of classes and therefore <strong>works well on unbalanced classes.</strong></li>
+<li><em>LogLoss</em> is a quality metric, which is <strong>based on the addition of a penalty for the model's confidence if a prediction is wrong</strong>. Easy to optimize and positively to reveal.</li>
+</ul>
+
+<h3 id="accuracy">Accuracy</h3>
+
+<p>The easiest way to determine a model performance is to count the number of correct answers out of a total number. In other words, we can check the accuracy. As we've mentioned above, this works well with a balanced dataset, where errors are more or less equally distributed per class.</p>
+
+<p>Accuracy is not a very relevant metric with unbalanced problems or when each class has a different error weight. </p>
+
+<p>$Accuracy = \frac{\text{Correct answers}}{\text{All answers}}$</p>
+
+<p>### Confusion matrix</p>
+
+<p>For binary classification problems, with classes marked as 0 and 1, we can define the following notions:</p>
+
+<p>True Positive (TP) — the real "ones" that were correctly predicted as "ones"<br />
+True Negative (TN) — the real "zeros" that were correctly predicted as "zeros"<br />
+False Positive (FP) — the real "zeros" that were predicted as "ones"<br />
+False Negative (FN) — the real "ones" that were predicted as "zeros"<br />
+This can be represented as a confusion matrix</p>
+
+<p>$Accuracy= \frac{TP+TN+FP+FN}{TP+TN}$</p>
+
+<h3 id="precision-and-recall">Precision and recall</h3>
+
+<p>These metrics are usually considered together since they are two sides of the same thing. Precision is the proportion of the predicted "ones" that were the real "ones". Recall is the fraction of all "ones" which were detected by a model.</p>
+
+<p>$Precision= \frac{TP+FP}{TP}$</p>
+
+<p>$Recall=\frac{TP}{TP+FN}$</p>
+
+<p><em>recall</em> demonstrates the algorithm's ability to detect some class in general<br />
+<em>precision</em> displays the ability to distinguish this class from other classes.</p>
+
+<h3 id="f-score">F-score</h3>
+
+<p>Precision and recall are two convenient metrics, and there is a way to optimize them. To do this, we can combine them into one, and the result will be the so-called F-score or F-measure.</p>
+
+<p>$F=\frac{2 \text { Precision } \times \text { Recall }}{\text { Precision }+\text { Recall }}$</p>
+
+<p>The F-score reaches its maximum when the precision and recall results are equal to one. It is close to zero if at least one of the two is close to zero. I</p>
+
+<p>If in your problem, one metric (either precision or recall) is more important than another, we can further complicate the formula. To establish the importance of a particular metric, we can introduce an additional beta parameter and recast the formula in the following form:</p>
+
+<p>${F}_{\beta}=\frac{\left(1+\beta^{2}\right) \text {Precision } \times \text { Recall}}{\beta^{2} \text {Precision } + \text { Recall}}$</p>
+
+<p>Regardless of the selected beta value, a good model should calculate a result close to 1.</p>
+
+<h3 id="auc-roc">AUC-ROC</h3>
+
+<p>The previous metrics, rigorously speaking, referred to a situation where the model predicts a result in zeros or ones (integers, if there are multiple classes). But many models do not output the class itself, but the probabilities of classes — real numbers from zero to one. In this case, the data scientist sets a threshold up to which all results are zeroed, and after which they become ones. However, in real practice, the threshold is often not so obvious. There is a way to evaluate the model without determining a specific threshold — to draw the Receiver Operating Characteristic Curve (ROC curve) and estimate the Area Under Curve (AUC).</p>
+
+<p>This curve is plotted in two coordinates — True Positive Rate (TPR) and False Positive Rate (FPR), which are defined in the above terminology as:</p>
+
+<p>$T P R=\frac{T P}{T P+F N}$</p>
+
+<p>$F P R=\frac{F P}{F P+T N}$</p>
+
+<p>The True Positive Rate, also known as the sensitivity, shows which percentage of class "1" objects we classified correctly. The False Positive Rate, also known as the specificity, shows the proportion of class "0" that were mistakenly classified as "1". If you look closely, you will notice that Sensitivity (TPR) and recall are the same, but they are usually called different terms depending on the task.</p>
+
+<p>Our ideal curve describes the case when the TPR is maximum, and the FPR is minimum, which means that the curve should tend to the point (0,1). Moreover, each point on the graph corresponds to the choice of a certain threshold.</p>
+
+<p>This metric is entirely different from the previous ones by the numbers you would expect from a good model. If the model predicts good results, then the ROC-AUC will be about 1 (a square with sides of 1), but a bad model will give results close to 0.5, which is equivalent to a random prediction.</p>
+
+<p><em>* hier spreken ze over de oppervlakte van de graf die ideaal de volledige 1 op 1 ruimte inneemt of eerder een driehoek vormt en maar de helft van de oppervlakte inneemt *</em></p>
+
+<h3 id="auc-pr">AUC-PR</h3>
+
+<p>The ROC-AUC metric also has a <em>significant drawback in its performance on unbalanced data</em>. It can give an inadequate evaluation of the algorithm's performance in unbalanced sets, as is the case with accuracy. For these reasons, similarly to the logic above, we can come back to the precision and recall terms and build a curve with these coordinates.</p>
+
+<p>this approach does not involve each class's quantity, so this approach is more relevant to unbalanced data. Likewise, try to avoid an area equal to 0.5.</p>
+
+<h3 id="logistic-loss">Logistic Loss</h3>
+
+<p>This feature is also called cross-entropy. This is a prevalent and essential metric derived from the maximum likelihood method, which we will talk about in another topic.</p>
+
+<p>$logloss=-\frac{1}{l} \cdot \sum_{i=1}^{l}\left(y_{i} \cdot \log \left(\hat{y}_{i}\right)+\left(1-y_{i}\right) \cdot \log \left(1-\hat{y}_{i}\right)\right)$</p>
+
+<p>Let's look at the formula more closely. We can understand that we are looking for maximum accuracy, taking into account the penalty for incorrect predictions. This metric is interesting in the way that we do not want to have high results. A good result will be close to 0.</p>
+</div>
+
+    </article>
+  </div>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+
+</html>

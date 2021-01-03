@@ -30,11 +30,11 @@
 
 <p><em>Recall : <a href="q-gradient-boosting.html">Q Gradient Boosting</a></em></p>
 
-<p><img src="gradient-boostingdotpng.html" alt="gradient_boosting.png" /></p>
+<p><img src="gradient_boosting.png" alt="gradient_boosting.png" /></p>
 
 <p>Het volgende model zal de tekortkoming van vorig model compenseren. Geijkaardig aan <a href="adaboost-adaptive-boosting-.html">AdaBoost (Adaptive Boosting)</a> maar manier waarop modellen getraind worden is verschillend :</p>
 
-<p><img src="gradient-boostingvbdotpng.html" alt="gradient_boostingvb.png" /><br />
+<p><img src="gradient_boostingvb.png" alt="gradient_boostingvb.png" /><br />
 het eerste decision tree model wordt getraind op 60% van de trainingset. Men doet alle voorspellingen voor de volledige trainingsset met dat model en maakt een vector met het verschil tss het voorspelde en de gelabelde waarde (= afwijkingen).<br />
 Het volgende model gaat nu obv dezelfde trainingsset als targetwaarde de afwijkingen van dit eerste model krijgen.<br />
 Ook de daaropvolgende modellen krijgen de afwijkingen van het model ervoor. </p>
@@ -47,7 +47,7 @@ Het eindresultaat is dan de som van alle predicties. (6.5 in het vb)</p>
 <p><code>GradientBoostingClassifier()</code><br />
     learningrate = 0.8 : voting power van de volgende modellen wordt steeds kleiner. deze modellen wegen steeds minder sterk door in het eindresultaat. hierdoor kan je overfitting tegen gaan. </p>
 
-<p><img src="gradient-boosting-vbdotpng.html" alt="gradient_boosting_vb.png" /></p>
+<p><img src="gradient_boosting_vb.png" alt="gradient_boosting_vb.png" /></p>
 </div>
 
       <div class="backlinks">

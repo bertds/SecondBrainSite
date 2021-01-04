@@ -77,7 +77,7 @@
 
 <p>Accuracy is not a very relevant metric with unbalanced problems or when each class has a different error weight. </p>
 
-<p>$Accuracy = \frac{\text{Correct answers}}{\text{All answers}}$</p>
+<p>$Accuracy = \dfrac{\text{Correct answers}}{\text{All answers}}$</p>
 
 <p>### Confusion matrix</p>
 
@@ -89,15 +89,15 @@ False Positive (FP) — the real "zeros" that were predicted as "ones"<br />
 False Negative (FN) — the real "ones" that were predicted as "zeros"<br />
 This can be represented as a confusion matrix</p>
 
-<p>$Accuracy= \frac{TP+TN+FP+FN}{TP+TN}$</p>
+<p>$Accuracy= \dfrac{TP+TN+FP+FN}{TP+TN}$</p>
 
 <h3 id="precision-and-recall">Precision and recall</h3>
 
 <p>These metrics are usually considered together since they are two sides of the same thing. Precision is the proportion of the predicted "ones" that were the real "ones". Recall is the fraction of all "ones" which were detected by a model.</p>
 
-<p>$Precision= \frac{TP+FP}{TP}$</p>
+<p>$Precision= \dfrac{TP+FP}{TP}$</p>
 
-<p>$Recall=\frac{TP}{TP+FN}$</p>
+<p>$Recall=\dfrac{TP}{TP+FN}$</p>
 
 <p><em>recall</em> demonstrates the algorithm's ability to detect some class in general<br />
 <em>precision</em> displays the ability to distinguish this class from other classes.</p>
@@ -106,13 +106,13 @@ This can be represented as a confusion matrix</p>
 
 <p>Precision and recall are two convenient metrics, and there is a way to optimize them. To do this, we can combine them into one, and the result will be the so-called F-score or F-measure.</p>
 
-<p>$F=\frac{2 \text { Precision } \times \text { Recall }}{\text { Precision }+\text { Recall }}$</p>
+<p>$F=\dfrac{2 \text { Precision } \times \text { Recall }}{\text { Precision }+\text { Recall }}$</p>
 
 <p>The F-score reaches its maximum when the precision and recall results are equal to one. It is close to zero if at least one of the two is close to zero. I</p>
 
 <p>If in your problem, one metric (either precision or recall) is more important than another, we can further complicate the formula. To establish the importance of a particular metric, we can introduce an additional beta parameter and recast the formula in the following form:</p>
 
-<p>${F}_{\beta}=\frac{\left(1+\beta^{2}\right) \text {Precision } \times \text { Recall}}{\beta^{2} \text {Precision } + \text { Recall}}$</p>
+<p>${F}_{\beta}=\dfrac{\left(1+\beta^{2}\right) \text {Precision } \times \text { Recall}}{\beta^{2} \text {Precision } + \text { Recall}}$</p>
 
 <p>Regardless of the selected beta value, a good model should calculate a result close to 1.</p>
 
@@ -122,9 +122,9 @@ This can be represented as a confusion matrix</p>
 
 <p>This curve is plotted in two coordinates — True Positive Rate (TPR) and False Positive Rate (FPR), which are defined in the above terminology as:</p>
 
-<p>$T P R=\frac{T P}{T P+F N}$</p>
+<p>$T P R=\dfrac{T P}{T P+F N}$</p>
 
-<p>$F P R=\frac{F P}{F P+T N}$</p>
+<p>$F P R=\dfrac{F P}{F P+T N}$</p>
 
 <p>The True Positive Rate, also known as the sensitivity, shows which percentage of class "1" objects we classified correctly. The False Positive Rate, also known as the specificity, shows the proportion of class "0" that were mistakenly classified as "1". If you look closely, you will notice that Sensitivity (TPR) and recall are the same, but they are usually called different terms depending on the task.</p>
 
@@ -144,7 +144,7 @@ This can be represented as a confusion matrix</p>
 
 <p>This feature is also called cross-entropy. This is a prevalent and essential metric derived from the maximum likelihood method, which we will talk about in another topic.</p>
 
-<p>$logloss=-\frac{1}{l} \cdot \sum_{i=1}^{l}\left(y_{i} \cdot \log \left(\hat{y}_{i}\right)+\left(1-y_{i}\right) \cdot \log \left(1-\hat{y}_{i}\right)\right)$</p>
+<p>$logloss=-\dfrac{1}{l} \cdot \sum_{i=1}^{l}\left(y_{i} \cdot \log \left(\hat{y}_{i}\right)+\left(1-y_{i}\right) \cdot \log \left(1-\hat{y}_{i}\right)\right)$</p>
 
 <p>Let's look at the formula more closely. We can understand that we are looking for maximum accuracy, taking into account the penalty for incorrect predictions. This metric is interesting in the way that we do not want to have high results. A good result will be close to 0.</p>
 </div>

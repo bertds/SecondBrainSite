@@ -33,27 +33,45 @@
 Date: 2020-11-21<br />
 Type: <a href="cursus-topic.html">Cursus topic</a><br />
 Related: <!-- Links to pages not referenced in the content --><br />
-Source :</p>
+Source :<br />
+Questionds : <a href="q-regression.html">Q Regression</a></p>
 
 <h2 id="notities">Notities</h2>
 
 <h4 id="enkelvoudige-linaire-regressie">Enkelvoudige linaire regressie</h4>
 
 <ul>
-<li>rechte die het dichtst bij alle punten ligt</li>
-<li>mbv <a href="kostenfunctie.html">kostenfunctie</a> bepalen welke parameters de beste zijn</li>
-<li>die parameters zoeken we met <a href="gradient-descent.html">gradient descent</a></li>
-<li><a href="learning-rate.html">learning rate</a> grote stappen is beter dan kleine stappen (dan duurt het lang om het optimaal punt te vinden) maar je kan over je optimaal punt stappen door dei grote stappen</li>
+<li>rechte die het dichtst bij alle punten ligt<br />
+<img src="enk_lin_reg_1.png" alt="enk_lin_reg_1.png" /></li>
+<li>mbv <a href="kostenfunctie.html">kostenfunctie</a> bepalen welke parameters de beste zijn<br />
+<img src="enk_lin_reg_2.png" alt="enk_lin_reg_2.png" /></li>
+<li>die parameters zoeken we met <a href="gradient-descent.html">gradient descent</a><br />
+<img src="gradient_descent_omega1.png" alt="gradient_descent_omega1.png" /><br />
+<img src="gradient_descent_omega2.png" alt="gradient_descent_omega2.png" /></li>
+<li><a href="learning-rate.html">learning rate</a> grote stappen is beter dan kleine stappen (dan duurt het lang om het optimaal punt te vinden) maar je kan over je optimaal punt stappen door te grote stappen<br />
+<img src="gradient_descent_lokvsgloboptimum.png" alt="gradient_descent_lokvsgloboptimum.png" /><br />
+<img src="gradient_descent_learning_rate.png" alt="gradient_descent_learning_rate.png" /></li>
 </ul>
 
 <h4 id="meervoudige-lineaire-regressie">Meervoudige lineaire regressie</h4>
 
 <ul>
-<li>meerdere features</li>
+<li>het model/hypothese wordt bepaald aan de hand van een trainingset met <strong>meerdere features</strong></li>
 <li><a href="stappenplan-dataanalyse.html">stappenplan dataanalyse</a><br />
 <ul><br />
+<li>consistentie van de dataset<br /><br />
+<ul><br /><br />
+<li>volledigheid van de dataset</li><br /><br />
+<li>inconsistenties</li><br /><br />
+<li>spreiding van de gegevens</li><br /><br />
+</ul></li><br />
 <li>statistische voor analyse<br /><br />
 <ul><br /><br />
+<li>uitschieters<br /><br /><br />
+<ul><br /><br /><br />
+<li>verwijderen van extreme waarden/samples</li><br /><br /><br />
+<li>geavanceerde technieken (bij clustering)</li><br /><br /><br />
+</ul></li><br /><br />
 <li>onderlinge correlaties zoeken mbv <a href="heatmap.html">heatmap</a> :<br /><br /><br />
 <ul><br /><br /><br />
 <li>+1: linair verband tss features ene omhoog en andere omhoog</li><br /><br /><br />
@@ -61,6 +79,7 @@ Source :</p>
 </ul></li><br /><br />
 <li>verhoudig tss features bekijken via <a href="pairplot.html">pairplot</a>:</li><br /><br />
 </ul></li><br />
+<li>dataset opsplitsen in features en targets</li><br />
 <li>data opsplisten in training en testset:<br /><br />
 <ul><br /><br />
 <li>randomize om alle cases te kunnen trainen</li><br /><br />
@@ -68,35 +87,80 @@ Source :</p>
 </ul></li><br />
 <li>testen van het model: (hiermee kunnen modellen vergeleken worden)<br /><br />
 <ul><br /><br />
-<li><a href="mae.html">MAE</a> mean absolute error</li><br /><br />
-<li><a href="mse.html">MSE</a> mean squared error &gt; extreme cases slechter laten scoren</li><br /><br />
-<li><a href="r2.html">R2</a> determinatiecoëfficient &gt; score zo dicht mogelijk bij 1</li><br /><br />
+<li><a href="mae.html">MAE</a> mean absolute error<br /><br /><br />
+$MAE = \dfrac{1}{n}\sum^n_{i=1}|y_i - \hat{y_i}|$<br /><br /><br />
+is het gemiddelde van de absolute waarden van het verschil tss de werkelijke waarden $y_i$ en de voorspelde waarden $\hat{y_i}$</li><br /><br />
+<li><a href="mse.html">MSE</a> mean squared error<br /><br /><br />
+$MSE = \dfrac{1}{n}\sum^n_{i=1}(y_i - \hat{y_i})^2$<br /><br /><br />
+is het gemiddelde van de gekwadrateerde waarden van het verschil tss de werkelijke waarden $y_i$ en de voorspelde waarden $\hat{y_i}$<br /><br /><br />
+-> hiermee gaan extreme cases slechter laten scoren</li><br /><br />
+<li><a href="r2.html">R2</a> determinatiecoëfficient<br /><br /><br />
+$R^2 = 1 - \dfrac{\sum^n_{i=1}(y_i - \hat{y_i})^2}{\sum^n_{i=1}(y_i - \bar{y})^2}$<br /><br /><br />
+zegt hoeveel van de variabiliteit verklaard wordt door het model. Perfecte voorspelling is $R^2$ = 1<br /><br /><br />
+Een negavtieve waarde voor $R^2$ betekent dat het model slechter scroot dan een horizontale lijn ($y_i = \bar{y}$)<br /><br /><br />
+-> score zo dicht mogelijk bij 1</li><br /><br />
 </ul></li><br />
 </ul></li>
 </ul>
 
 <h4 id="feature-engineering">Feature Engineering</h4>
 
+<h5 id="normalisatie-features-op-dezelfde-schaal-brengen-scalersscalershtml">normalisatie = features op dezelfde schaal brengen <a href="scalers.html">scalers</a></h5>
+
+<p>-> Gradient Descent convergeert minder snel als features op een verschillende schaalgrootte staan</p>
+
+<h6 id="min-max-scaler">min-max scaler</h6>
+
+<p><img src="minmax_scaling_ex.png" alt="minmax_scaling_ex.png" /></p>
+
 <ul>
-<li>normalisatie = features op dezelfde schaal brengen <a href="scalers.html">scalers</a><br />
-<ul><br />
-<li>min-max scaler</li><br />
-<li>standard scaler</li><br />
-<li>robust scaler</li><br />
-</ul></li>
-<li>nieuwe features toevoegen<br />
-<ul><br />
-<li>manueel kwadraat feature toevoegen</li><br />
-<li>combinatie van features maken</li><br />
-</ul></li>
-<li>hogere orde features<br />
-<ul><br />
-<li>feature in kwadraat, tot de 3de, 4de macht</li><br />
-</ul></li>
-<li><a href="one-hot-encoding.html">one hot encoding</a>:<br />
-<ul><br />
-<li>omzetten van label naar aparte features</li><br />
-</ul></li>
+<li>schaalt alle features tss 0 en 1</li>
+<li>werkt goed bij niet Gaussiaanse distributires en bij kleine variantie</li>
+<li>de scheefheid (skew) blijft bewaard</li>
+<li>gevoelig voor uitschieters</li>
+</ul>
+
+<h6 id="standard-scaler">standard scaler</h6>
+
+<p><img src="standaardscaler_ex.png" alt="standaardscaler_ex.png" /></p>
+
+<ul>
+<li>Geschaalde features:gemiddelde = 0 en standaardafwijking = 1.</li>
+<li>Geschaalde features schommelen rond 0 (soms nodig bij deep learning).</li>
+<li>Vervormt geen relatieve afstanden tussen de feature waarden.</li>
+<li>Kan beter overweg met uitschieters.</li>
+<li>Garandeert geen genormaliseerde data op exact dezelfde schaal.</li>
+</ul>
+
+<h6 id="robust-scaler">robust scaler</h6>
+
+<p><img src="robust_scaler_ex.png" alt="robust_scaler_ex.png" /></p>
+
+<ul>
+<li>Lijkt op MIN-MAX scaler maar gebruikt de interkwartielafstand ipv range.</li>
+<li>Houdt geen rekening met uitschieters.</li>
+<li>Gebruikt minder data bij het bepalen van de schaal.</li>
+<li>Range van de genormaliseerde data is groter dan bij MIN-MAX scaling.</li>
+<li>Garandeert geen genormaliseerde data op exact dezelfde schaal.</li>
+</ul>
+
+<h5 id="nieuwe-features-toevoegen">nieuwe features toevoegen</h5>
+
+<ul>
+<li>manueel kwadraat feature toevoegen</li>
+<li>combinatie van features maken</li>
+<li>nieuwe feature uit bestaande feature halen (bijv dag van de week uit datum, uit begin en eindpunt afstand halen)</li>
+<li><p>nieuwe opgemeten parameters</p>
+
+<h5 id="hogere-orde-features">hogere orde features</h5></li>
+<li><p>het verband tss features en target(s) is niet altijd lineair</p></li>
+<li><p>feature in kwadraat, tot de 3de, 4de macht<br />
+<img src="hogere_orde_feature_graph1.png" alt="hogere_orde_feature_graph1.png" /><br />
+<img src="hogere_orde_feature_graph2.png" alt="hogere_orde_feature_graph2.png" /></p>
+
+<h5 id="one-hot-encodingone-hot-encodinghtml"><a href="one-hot-encoding.html">one hot encoding</a>:</h5></li>
+<li><p>omzetten van label/categorische variabelen naar meerdere aparte features<br />
+<img src="onehot_encoding_ex.png" alt="onehot_encoding_ex.png" /></p></li>
 </ul>
 
 <h4 id="underfitting-overfitting">Underfitting, Overfitting</h4>
@@ -107,54 +171,22 @@ Source :</p>
 <li>model kan de trainingsdata niet modelleren</li><br />
 <li>en ook niet generaliseren op nieuwe data</li><br />
 <li>model is te eenvoudig</li><br />
+<li>model met een <strong>hoge bias</strong></li><br />
 </ul></li>
 <li>overfitting<br />
 <ul><br />
 <li>model benadert de trainingsdata te goed - scoort heel goed</li><br />
+<li>het model kan niet meer generaliseren</li><br />
+<li>de <strong>ruis</strong> van de willekeurige fluctuaties in de data wordt opgepikt door het model</li><br />
+<li>model met een <strong>hoge variance</strong></li><br />
 <li>maar scoort slechter op de testdata</li><br />
 <li>model is te complex</li><br />
-<li>als er veel features zijn dan is het moeilijker om overfitting te krijgen</li><br />
-</ul></li>
-<li><p><a href="regularisatie.html">regularisatie</a></p>
-
-<ul>
-<li>L1 regularisatie : absolute waarde</li>
-<li>L2 regularisatie : kwadraat</li>
-<li><p>hyperparameter tuning:</p>
-
-<ul>
-<li>waarden voor alpha 10000 wijst op underfitting. vooral het feit dat trainingsset slecht scoort wijst hierop.  </li>
-<li><p>waarden voor ahpha 0.01 wijst op overfitting en L2 score voor test set wijst erop dat het slechter scoort dan de gemiddelde prijs</p>
-
-<table>
-<thead>
-<tr>
-  <th></th>
-  <th>$\alpha$  = 10000</th>
-  <th>$\alpha$  = 0.01</th>
-  <th>$\alpha$  = 20</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>R2 score op test L2</td>
-  <td>0.29</td>
-  <td>-1.31</td>
-  <td>0.80</td>
-</tr>
-<tr>
-  <td>R2 score op training L2</td>
-  <td>0.29</td>
-  <td>0.99</td>
-  <td>0.95</td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="opsporen-van-uitschieters">Opsporen van uitschieters</h4></li>
-</ul></li>
+<li>als er veel features zijn dan is het moeilijker om overfitting te krijgen bij complex model<br /><br />
+(zie ook <a href="regression#regularisatie.html">Regularisatie</a> )</li><br />
 </ul></li>
 </ul>
+
+<h4 id="opsporen-van-uitschieters">Opsporen van uitschieters</h4>
 
 <p>uitschieters niet altijd te bepalen obv 1 feature op zich maar een combinatie van features (die soms zeer zeldzaam zijn !)</p>
 
@@ -195,7 +227,7 @@ als je features zou willen weglaten &gt; kijken naar features die weining invloe
 <li>andere plots zijn scatterplots</li>
 </ul>
 
-<h4 id="coeffcient-getraind-model">coeffcient getraind model</h4>
+<h4 id="coefficient-getraind-model">coeffIcient getraind model</h4>
 
 <ul>
 <li>coefficiant = $\theta$ - gewicht van de feature om tot kwaliteitsscore te komen</li>
@@ -207,34 +239,64 @@ als je features zou willen weglaten &gt; kijken naar features die weining invloe
 
 <h4 id="regularisatie">Regularisatie</h4>
 
-<p>Om overfitting tegen te gaan kan je regularisatie gebruiken = term toevoegen aan de kosten functie $+\lambda_1\sum_{j=1}^{n} |\theta_j|$ (als $\theta$ stijgt wordt model afgestraft)<br />
-Vermijden dat het model zich vastrijdt in ruis in de data:</p>
+<p>Methode om de mate van bias van een hypothese te regelen en een goed evenwicht te vinden tussen underfitting en overfitting. Je kan een extra kostenterm  toevoegen die het gebruik van hogere orde features afstraft tenzij ze de globale kostenfunctie doen dalen.  $+\lambda_1\sum_{j=1}^{n} |\theta_j|$ (als $\theta$ stijgt wordt model afgestraft)<br />
+Dit om te vermijden dat het model zich vastrijdt in ruis in de data:</p>
 
 <ul>
-<li>L1 regularisatie = absolute waarde $\theta$ </li>
-<li>L2 regularisatie = kwadraat van $\theta$ -> extreme waarden worden afgestraft</li>
+<li>Lasso Regression : L1 regularisatie = absolute waarde $\theta$<br />
+$J_L1 = \sum^n_{i=1}(target^{(i)} - output^{(i)}) + \lambda_1 \sum^m_{j=1}|\theta_j|$</li>
+<li>Rige Regression : L2 regularisatie = kwadraat van $\theta$ -> extreme waarden worden afgestraft<br />
+$J_L2 = \sum^n_{i=1}(target^{(i)} - output^{(i)}) + \lambda_2 \sum^m_{j=1}\theta^2_j$</li>
 </ul>
 
 <p>!Opgelet! $\theta_0$ = bias wordt NIET geregulariseerd.<br />
 Met $\lambda$ bepaal je hoe hard regularisatie meespeelt ($\lambda$ in scikit learn = $\alpha$)</p>
 
 <ul>
-<li>$\alpha$ zeer hoog =&gt; alle $\theta$ zeer laag of = 0</li>
-<li>$R^2$ score = 0 =&gt; model doet het niet beter dan als predicite steeds het gemiddelde zou zijn</li>
+<li>$\alpha$ :<br />
+<ul><br />
+<li>zeer hoog =&gt; alle $\theta$ worden zeer laag of = 0, hoge bias, lage variantie (underfitting)</li><br />
+<li>kleine waarde =&gt;  lage bias, hoge variantie (overfitting)</li><br />
+</ul></li>
+<li>$R^2$ score = 0 =&gt; model doet het niet beter dan als predictie steeds het gemiddelde zou zijn</li>
 <li>welke waarde voor $\alpha$ ?<br />
 <ul><br />
-<li>te hoog : underfitting, model te simpel</li><br />
-<li>te laag : overfitting</li><br />
 <li>bepaling : $\alpha$ laten variëren en $R^2$ score daar tegen zetten =&gt; optimum van $\alpha$ waar $R^2$ voor testset de hoogste waarde heeft</li><br />
 </ul></li>
 </ul>
 
-<h2 id="vragen">Vragen</h2>
+<ul>
+<li><p>voorbeeld hyperparameter tuning:</p>
 
 <ul>
-<li>5 standaardafwijkingen ?</li>
-<li><br />
--</li>
+<li>waarden voor alpha 10000 wijst op underfitting. vooral het feit dat trainingsset slecht scoort wijst hierop.  </li>
+<li><p>waarden voor ahpha 0.01 wijst op overfitting en L2 score voor test set wijst erop dat het slechter scoort dan de gemiddelde prijs</p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th>$\alpha$  = 10000</th>
+  <th>$\alpha$  = 0.01</th>
+  <th>$\alpha$  = 20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>R2 score op test L2</td>
+  <td>0.29</td>
+  <td>-1.31</td>
+  <td>0.80</td>
+</tr>
+<tr>
+  <td>R2 score op training L2</td>
+  <td>0.29</td>
+  <td>0.99</td>
+  <td>0.95</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
 </ul>
 </div>
 
@@ -242,6 +304,7 @@ Met $\lambda$ bepaal je hoe hard regularisatie meespeelt ($\lambda$ in scikit le
 
 <ul>
 <li><a href="ai-home.html">AI@home</a></li>
+<li><a href="q-regression.html">Q Regression</a></li>
 </ul>
 
 </div>

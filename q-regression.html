@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://github.com/bertds">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><p><a href="regression.html">Regression</a><br />
+<a href="anki.html">anki</a></p>
+
+<p>Q: Wat is lineaire regressie en wat is het verschil tss enkelvoudige en meervoudige lineaire regressie ?<br />
+A:<br />
+Een linaire regressie model bepaalt een rechte die zo dicht mogelijk bij de trainingspunten ligt om een target waarde te kunnen bepalen bij een predictie.<br />
+Bij meervoudige linaire regressie heb je meerdere features waarmee je je model wil trainen. </p>
+
+<p>Q: Hoe bepaal je bij linaire regressie welke parameters de beste zijn ?<br />
+A: mbv kostenfunctie kan je bepalen welke parameters de beste zijn</p>
+
+<p>Q: Hoe zoek je uit wat de beste parameters zijn bij lineaire regressie ?<br />
+A: met gradient descent</p>
+
+<p>Q: Wat is gradient descent ?<br />
+A: Gradient descent is an iterative optimization algorithm to find the minimum of a function.</p>
+
+<p>Q: wat is de learning rate ?<br />
+A: <strong>Learning rate</strong> gives the <strong>rate</strong> of speed where the gradient moves during gradient descent. Setting it too high would make your path instable, too low would make convergence slow. Put it to zero means your model isn't <strong>learning</strong> anything from the gradients.</p>
+
+<p>Q: Hoe kan je onderlinge correlaties zoeken tss features ?<br />
+A: heatmap, pairplot</p>
+
+<p>Q: Wat wil een correlatie van +1 zeggen in een heatmap ? Wat wil -1 zeggen ?<br />
+A: +1: linair verband tss features ene omhoog en andere omhoog<br />
+ -1 : lineair verband tss features ene omhoog en andere omlaag</p>
+
+<p>Q: Waarom/wanneer zou je je dataset niet random opsplitsen tss training en testset ?<br />
+A: als de volgorde van de data van belang is zoals in een tijdreeks</p>
+
+<p>Q: hoe kunnen we lineaire regressie modellen vergelijken ?<br />
+A: MAE, MSE, R2</p>
+
+<p>Q: Wat is MAE ?<br />
+A: mean absolute error</p>
+
+<p>Q: Wat is MSE ? Wat is het voordeel tov MAE ?<br />
+A: mean squared error. hiermee gaan extreme cases slechter scoren</p>
+
+<p>Q:  Wat is R2 ? Wat is een goede score ?<br />
+A: determinatiecëfficient. de score moet zo dicht mogelijk bij 1</p>
+
+<p>Q: wat is normalisatie van de features en waarom is van belang ?<br />
+A: hiermee breng je alle features op dezelfde schaal, hierdoor gaat het trainen sneller gaan en kan je obv de coeffient van de features zien welke feature van meer/minder belang is aangezien alle features op eenzelfde schaal staan. </p>
+
+<p>Q: hoe normaliseer je features ?<br />
+A: je gebruikt hiervoor een scaler (min-max, standard, robust)</p>
+
+<p>Q: Wanneer kan je best welke scaler gebruiken ?<br />
+A: </p>
+
+<ul>
+<li>standaard scaler : normale verdeling</li>
+<li>robust scaler : als je veel uitschieters hebt</li>
+<li>min max scaler (heel gevoelig aan uitschieters) : one hot encoding gebruikt hebt</li>
+</ul>
+
+<p>Q: wat kan feature engineering inhouden ?<br />
+A: feature normaliseren mbv scaler<br />
+nieuwe features toevoegen door combinaties te maken van features of door kwadraten toe te voegen<br />
+hogere orde features maken tot de 2de, 3de, 4de, ... macht<br />
+omzetten van labels naar aparte features</p>
+
+<p>Q: wat is one hot encoding ? hoe doe je dat ? waarom doe je dat ?<br />
+A: het omzetten van een label in aparte features zodat je een model kan trainen op een label. je kan een model namelijk niet trainen op labels (volkswagen, groente, hond, ... )</p>
+
+<p>Q: wat is underfitting, wat zegt dit over het model, waarom wil je dit vermijden en kan je dit vaststellen ?<br />
+A:  - model kan de trainingsdata niet modelleren<br />
+    - en ook niet generaliseren op nieuwe data<br />
+    - model is te eenvoudig<br />
+    - als de R2 score op de trainingset (en testet) slecht is (= slechter scoort dan gewoon gemiddelde van targetwaarde nemen) dan is er sprake van underfitting</p>
+
+<p>Q: wat is overfitting, wat zegt dit over het model, waarom wil je dit vermijden en kan je dit vaststellen ?<br />
+A: - model benadert de trainingsdata te goed - scoort heel goed<br />
+    - maar scoort slechter op de testdata<br />
+    - model is te complex<br />
+    - als er veel features zijn dan is het moeilijker om overfitting te krijgen<br />
+    - als de R2 score op de trainingset veel beter scoort dan die op de testset  dan is er sprake van overfitting (trainingset score bijna 1 en testset veel lager of zelfs negatief)</p>
+
+<p>Q: welke regularisatie methoden heb je ?<br />
+A:  </p>
+
+<ul>
+<li>L1 regularisatie = absolute waarde $\theta$ </li>
+<li>L2 regularisatie = kwadraat van $\theta$ -> extreme waarden worden afgestraft</li>
+</ul>
+
+<p>Q: wat is regularisatie?<br />
+A: Om overfitting tegen te gaan kan je regularisatie gebruiken = term toevoegen aan de kosten functie $+\lambda_1\sum_{j=1}^{n} |\theta_j|$ (als $\theta$ stijgt wordt model afgestraft) Hierdoor zorg je ervoor dat je model zich niet vastrijdt in ruis.</p>
+
+<p>Q: Hoe bepaal je welke de beste $\alpha$ waarde is bij regularisatie ? Wat is het effect als je die zeer hoog of zeer laag zou zetten ?<br />
+A: </p>
+
+<ul>
+<li>$\alpha$ zeer hoog =&gt; alle $\theta$ zeer laag of = 0</li>
+<li>$R^2$ score = 0 =&gt; model doet het niet beter dan als predicite steeds het gemiddelde zou zijn<br />
+welke waarde voor $\alpha$ ?<br />
+<ul><br />
+<li>te hoog : underfitting, model te simpel</li><br />
+<li>te laag : overfitting</li><br />
+<li>bepaling : $\alpha$ laten variëren en $R^2$ score daar tegen zetten =&gt; optimum van $\alpha$ waar $R^2$ voor testset de hoogste waarde heeft</li><br />
+</ul></li>
+</ul>
+
+<p>Q: wat zijn uitschieters in data ? hoe kunnen die ontstaan zijn ?<br />
+A: datapunten die ver buiten de gemiddelde waarden zitten kunnen het gevolg zijn van type fouten of fouten in sensors maar het kunnen ook terechte waarden zijn die je wil behouden. </p>
+
+<p>Q:  waarom wil je uitschieters in data toch bewaren ?<br />
+A: ze kunnen edge cases bevatten of net die zeldzame data punten die je wil gebruiken voor je business case (fraud detectie, cybercrime, kanker detectie, ...)</p>
+
+<p>Q: hoe kan je uitschieters in je data opkuisen ?<br />
+A: data kuisen door alls selectreren binnen de 5 standaardafwijkingen rond het gemiddelde</p>
+
+<p>Q: wat is een correlatie matrix en wat kan je er uit leren ?<br />
+A:  data analysts measure _correlation_ of two numerical variables to find an insight about their relationships. On a dataset with many attributes, the set of correlation values between pairs of its attributes form a matrix which is called a _correlation matrix_.<br />
+de correlatie waarde kan : </p>
+
+<ul>
+<li>positief : positieve correlatie tss feature en gewenst resultaat</li>
+<li>negatief : negatieve correlatie<br />
+! geeft enkel linaire samenhang !<br />
+onderlinge correlatie van features &gt; als de ene veranderd zal de andere op voorspelbare manier mee veranderen<br />
+als je features zou willen weglaten &gt; kijken naar features die weining invloed hebben op target en die sterke correlatie hebben met andere features</li>
+</ul>
+
+<p>Q:  wat is een pairplot ?<br />
+A: een pairplot genereert een matrix aan grafieken/plots die de correlatie tss features weergeeft. op hoofddiagonaal staan histograms (scatterplot met zichzelf zou rechte lijn geven) die geeft aan hoe de waarden van dat feature verdeeld zijn over de volledige value range. De andere plots zijn scatterplots. </p>
+
+<p>Q:<br />
+A: <span class="tag">todo</span> </p>
+</div>
+
+      <div class="backlinks">
+
+<ul>
+<li><a href="regression.html">Regression</a></li>
+</ul>
+
+</div>
+
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

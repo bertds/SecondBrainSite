@@ -27,44 +27,64 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><h1 id="aihome">AI@home</h1>
+      <div id="content"><h2 id="hierarchical-clustering">Hierarchical clustering</h2>
 
-<p>Tags: <span class="tag">AI</span><br />
-Start datum: 2020-10-03<br />
-Platform/School : Howest<br />
-Docent: <a href="wouter-gevaert.html">Wouter Gevaert</a><br />
-Type: <a href="cursus.html">Cursus</a><br />
-Related: <!-- Links to pages not referenced in the content --></p>
+<p>voor het vinden van de clusters :<br />
+neem de 2 punten die het dichtst bij elkaar liggen tot een cluster (deze cluster is opnieuw een datapunt), neem dan de volgende twee datapunten en ga zo door tot je 1 cluster overhoud op hierarchisch het hoogste niveau.<br />
+<img src="hierarchicalclustering1dotpng.html" alt="400" /><br />
+<img src="hierarchicalclustering2dotpng.html" alt="400" /><br />
+<img src="hierarchicalclustering3dotpng.html" alt="400" /></p>
 
-<h2 id="intro">Intro</h2>
-
-<p>Doelstelling van de module<br />
-AI en machine learning zijn overal om ons heen en maken (zonder dat we het altijd beseffen) deel uit van ons dagdagelijks leven. Denk maar aan de opkomst van chatbots en digitale assistenten, recommendation systems die je producten, films of muziek aanbevelen, de internetgiganten die je op maat gemaakte reklame voorschotelen, self-driving cars, face-unlock van smartphones, geavanceerde beeldfilters, noem maar op.</p>
-
-<p>Veel bedrijven beseffen dat als ze willen innoveren en concurrentieel blijven, ze verplicht zijn om AI en machine learning te integreren in hun businessprocessen. Dit kan gaan van human resources, aankoop, verkoop, productie, kwaliteitscontrole, enzoverder.</p>
-
-<p>Men voorziet de komende jaren een enorme nood aan IT-ers die in staat zijn deze integraties te realiseren.</p>
-
-<p>Deze module moet daartoe bijdragen. Het is niet zozeer de bedoeling om een diepgaande wiskundige en theoretische benadering tot AI te voorzien, maar wel om je in staat te stellen met kennis van zaken machine learning problemen praktisch op te lossen en uit te werken.</p>
-
-<h2 id="index">Index</h2>
+<p>Sterktes van hierarchical clustering:</p>
 
 <ul>
-<li><a href="intro-ai.html">Intro AI</a></li>
-<li><a href="regression.html">Regression</a></li>
-<li><a href="logistic-regression.html">Logistic Regression</a> <span class="tag">todo</span></li>
-<li><a href="support-vector-machines.html">Support Vector Machines</a> <span class="tag">todo</span></li>
-<li><a href="naive-bayes.html">Naive Bayes</a></li>
-<li><a href="decision-tree-ensemble-methods.html">Decision Tree Ensemble Methods</a></li>
-<li><a href="unsupervised-learning.html">Unsupervised Learning</a></li>
-<li><a href="introductie-neurale-netwerken.html">Introductie Neurale Netwerken</a></li>
+<li>Geen vooropgesteld aantal clusters nodig. Elk gewenst aantal clusters kan bekomen worden door het dendrogram op de juiste plaats af te snijden.</li>
+<li>De structuur van het dendrogram kan nuttig zijn. Bijvoorbeeld in biologie, productcategorieën.</li>
 </ul>
+
+<h3 id="hoe-bepaal-je-de-afstand-tss-twee-clusters">Hoe bepaal je de afstand tss twee clusters ?</h3>
+
+<p>Bepalen van de afstand tussen twee clusters : </p>
+
+<h4 id="single-linkage">single linkage</h4>
+
+<p>kleinste verschil zoeken<br />
+<img src="hierarchicalclustering-singlelinkagedotpng.html" alt="400" /></p>
+
+<p>$$L(r,s)=min(D(x_{ri},x_{sj}))$$</p>
+
+<h4 id="complete-linkage">complete linkage</h4>
+
+<p>grootste verschil zoeken<br />
+<img src="hierarchicalclustering-completelinkagedotpng.html" alt="400" /></p>
+
+<p>$$L(r,s)=max(D(x_{ri},x_{sj}))$$</p>
+
+<h4 id="average-linkage">average linkage</h4>
+
+<p>alle afstanden van alle punten en daar het gemiddelde van nemen &gt;&gt;&gt;  <strong>Rekenintensief !!</strong><br />
+Minder gevoelig voor uitschieters maar wel een voorkeur voor globale clusters<br />
+<img src="hierarchicalclustering-averagelinkagedotpng.html" alt="400" /></p>
+
+<p>$$L(r,s)=\dfrac{1}{n_r n_s}\sum^{n_r}_{i=1}\sum^{n_s}_{i=1}D(x_{ri},x_{sj}))$$</p>
+
+<h3 id="bruikbaarheid-hierarchische-clustering">Bruikbaarheid hierarchische clustering</h3>
+
+<p>Complexiteit van hierarchical clustering<br />
+Zeer rekenintensief:</p>
+
+<ul>
+<li>Het aantal berekeningen is minstens kwadratisch afhankelijk van het aantal datapunten.</li>
+<li><em>Niet bruikbaar voor grote datasets.</em></li>
+</ul>
+
+<p>Goed voor kleine datasets om inzicht te krijgen maar <strong>niet bruikbaar voor grotere datasets (big data).</strong></p>
 </div>
 
       <div class="backlinks">
 
 <ul>
-<li><a href="index.html">index</a></li>
+<li><a href="unsupervised-learning.html">Unsupervised Learning</a></li>
 </ul>
 
 </div>

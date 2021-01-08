@@ -31,103 +31,163 @@
 <a href="anki.html">anki</a></p>
 
 <p>Q: wat is een decision tree<br />
-A: a<br />
+A:  It divides the data into subsets according to features until an exact solution is given in each branch.<br />
+je splitst de data op obv feature values en blijft splitsen obv een vraag tot je zuivere groeperingen hebt. Nadeel is dat het model dreigt te overfitten omdat het te specifiek gaan splitsen obv de data van de traingset.<br />
 <!--ID: 1609070900140--></p>
 
 <p>Q: Wat is een random forest tree<br />
-A: <span class="tag">todo</span><br />
+A: <strong>Random forests</strong> or <strong>random decision forests</strong> are an ensemble learning method for classification, regression and other tasks that operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) or mean/average prediction (regression) of the individual trees. Random decision forests correct for decision trees' habit of overfittingto their training set. Random forests generally outperform decision trees, but their accuracy is lower than gradient boosted trees.<br />
 <!--ID: 1609071497842--></p>
 
 <p>Q: Is een random forest tree regressie of classificatie ?<br />
-A: <span class="tag">todo</span><br />
+A: beide : met de RandomForstRegressor() kan je regressie model maken en met RandomForestClassifier() kan je een classificatie model maken.<br />
 <!--ID: 1609071497850--></p>
 
 <p>Q: Wat vertelt entropy ons van een decision tree ?<br />
-A: <span class="tag">todo</span><br />
+A: Entropy = maat voor de wanorde (lager getal = minder choas, meer op orde)<br />
 <!--ID: 1609071497855--></p>
 
 <p>Q: Wat is information gain bij decision trees en hoe bepaal je die ?<br />
-A: <span class="tag">todo</span><br />
+A: <strong>Information gain = entropy voor de split - entropy na de split</strong><br />
 <!--ID: 1609071497860--></p>
 
 <p>Q: Wat is de formule voor entropy ?<br />
-A: <span class="tag">todo</span><br />
+A: Entropy = maat voor de wanorde (lager getal = minder choas, meer op orde)<br />
+Eenheid van entropy = bit<br />
+Entropy H = maat voor de wanorde (gemiddlede informatieinhoud)<br />
+$H = \sum_{i=1}^{N} p_i log_2( \dfrac{1}{p_i} )$<br />
+$H = - \sum_{i=1}^{N} p_i log_2(p_i)$<br />
+Als scheidingslijn trekt dan is de entropy te bepalen door die voor elke kant van de scheidingslijn te berekenen en dan de som te maken van bekomen entropys vermenigvuldigd met een gewicht. Dat gewicht bepaal je door het aantal datapunten van die kant van de scheidingslijn te delen door het totaal aantal datapunten (zowel links als rechts van de scheidingslijn)<br />
 <!--ID: 1609071497865--></p>
 
 <p>Q: Wat is de eenheid van entropy ?<br />
-A: <span class="tag">todo</span><br />
+A: bit<br />
 <!--ID: 1609071497870--></p>
 
-<p>Q: Wat is de beste opsplitsing bij een decision tree ? Een hoge (0.7) of een lage entropy (0.3) ?<br />
-A: <span class="tag">todo</span></p>
-
 <p>Q: Hoe bepaal je waar je moet splitsen bij een decision tree ?<br />
-A: <span class="tag">todo</span><br />
+A: Je kan hiervoor ofwel naar de information gain kijken ofwel naar Gini Impurity. Bij information gain moet je de splitsing nemen met de hoogste waarde bij Gini Impurity moet je het kleinste getal nemen (= zuiverdere scheiding). Default wordt Gini Impurity gebruikt (rekent veel sneller en geeft zelfde resultaat als entropy/information gain.)<br />
 <!--ID: 1609071497875--></p>
 
 <p>Q: Wat is een alternatief voor entropy bij bepaling splitsing decision tree ?<br />
-A: <span class="tag">todo</span><br />
+A: Gini Impurity<br />
 <!--ID: 1609071497880--></p>
 
 <p>Q: Wat is de Gini impurity, waar gebruik je het en hoe bereken je het ?<br />
-A: <span class="tag">todo</span><br />
+A: Alternatief voor gebruik van entropy dat gebruikt bij decision trees om te bepalen hoe en waar te splitsen.<br />
+Gini impurity = maat voor hoe vaak een willekeurig gekozen element van de set verkeerd gelabeld zou worden als het willekeurig gelabeld werd volgens de distributie van de labels in de subset (= mate van onzuiverheid)<br />
+$G = 1 - \sum_{i=1}^{N} p^2_i$<br />
+Voor elke klasse ga na hoe groot de kans is dat correct gelabeld is (= aantal voorkomens van die klasse / het totaal aantal voorkomens) en maak de som van de kwadraten. Dit kan je doen voor het geheel zonder/met op te splitsen.<br />
+Indien opgeplistst maak je gebruik van de gewogen Gini impurity. Voor elke zijde van de scheidingslijn bereken je de Gini impurity en vermenigvuldig je dit met een gewicht. Dat gewicht bepaal je door het aantal datapunten van die kant van de scheidingslijn te delen door het totaal aantal datapunten (zowel links als rechts van de scheidingslijn)<br />
 <!--ID: 1609071464023--></p>
 
-<p>Q: Waarom Gini kiezen boven Entropy bij Decision Trees ?<br />
-A: <span class="tag">todo</span></p>
-
 <p>Q: Wat is de beste opsplitsing bij een decision tree bij classificatie ? Een hoge (0.7) of een lage Gini impurity (0.3) ?<br />
-A: <span class="tag">todo</span><br />
+A: <em>Hoe kleiner het getal hoe zuiverder de scheiding is.</em><br />
+<em>Splits telkens bij de split di je de laagste Gini Impurity oplevert.</em><br />
 <!--ID: 1609604299374--></p>
 
-<p>Q: Wat is het nadeel van een decision tree ? Hoe kan je dit oplossen ?<br />
-A: <span class="tag">todo</span> </p>
+<p>Q: Hoe bouw een ensemble learner op via adaboosting ?<br />
+A: Dikwijls betere accuraatheid dan bagging methode. Gevoeliger voor overfitting en moeilijker te parallelliseren.<br />
+Principe: vergelijkbaar met bagging, maar verkeerd geclassificeerde samples bekomen een grotere kans om in de volgende bag te belanden.<br />
+werkwijze :  </p>
 
-<p>Q: Waarom noemt een random forest tree een random forest tree ?<br />
-A: <span class="tag">todo</span> </p>
+<ul>
+<li>60% van traininginset willekeurig kiezen (met teruglegging) en hiermee model trainen.  </li>
+<li>door dit model volledige trainingset doorsturen en predicties doen  </li>
+<li>alle predicties die verkeerd geclassificeerd zijn worden 'belangrijker' want bij  </li>
+<li>nieuwe bag maken obv willekeurige data waarbij _cases die slecht geclassificeerd waren meer kans maken om in de bag terecht_ te komen (ook hier met teruglegging)  </li>
+<li>dit doet je paar keer naagerlang het aantal modellen dat je wil hebben  </li>
+<li>alle cases van alle vorige modellen die slecht scoren hebben bij het samenstellen van een nieuwe bag van trainingsdata, voor het nieuwe model, meer kans om geselecteerd te worden dan de andere cases.<br />
+<!--ID: 1609959458694--></li>
+</ul>
 
-<p>Q: Wat zijn ensembles ?<br />
-A: <span class="tag">todo</span> </p>
+<p>Q: hoe werkt een gradient boosting ensemble learner ?<br />
+A: Gradient boosting is een ensemble learning method voor regressie en classificatie problemen. Het resultaat is een predictie model in de vorm van een ensemble van zwakke predicitie modellen (meestal decision trees).<br />
+Het basisprincipe is dat het volgende model de tekortkoming van het vorig model zal compenseren. Geijkaardig aan AdaBoost (Adaptive Boosting) maar manier waarop de modellen getraind worden is verschillend :<br />
+het eerste decision tree model wordt getraind op 60% van de trainingset. Men doet alle voorspellingen voor de volledige trainingsset met dat model en maakt een vector met het verschil tss het voorspelde en de gelabelde waarde (= afwijkingen).<br />
+Het volgende model gaat nu obv dezelfde trainingsset als targetwaarde de afwijkingen van dit eerste model krijgen.<br />
+Ook de daaropvolgende modellen krijgen de afwijkingen van het model ervoor.<br />
+De uiteindelijke predicties van een testset gebeuren dan door het eerste model een predictie te laten doen, het resultaat daarvan af te geven aan het volgende model. Dat model een predictie te laten doen enzovoort.<br />
+Het eindresultaat is dan de som van alle predicties. (6.5 in het vb)<br />
+deze manier van trainen is nog geoptimaliseerd met als resultaat XGBoost<br />
+<!--ID: 1609959458718--></p>
 
-<p>Q: Hoe een ensemble learner bouwen ? Som de methoden op.<br />
-A: <span class="tag">todo</span></p>
-
-<p>Q: Hoe bouw een ensemble learner op via stacking ?<br />
-A: <span class="tag">todo</span> </p>
-
-<p>Q: Hoe bouw een ensemble learner op via bagging ?<br />
-A: <span class="tag">todo</span> </p>
-
-<p>Q: Hoe bouw een ensemble learner op via boosting ?<br />
-A: <span class="tag">todo</span> </p>
-
-<p>Q: wat is teruglegging bij bagging van ensemble learner ?<br />
-A: <span class="tag">todo</span></p>
-
-<p>Q: wat is het voordeel van bagging bij ensemble learner ?<br />
-A: <span class="tag">todo</span> </p>
-
-<p>Q: hoe werkt een boosting ensemble learner ?<br />
-A: <span class="tag">todo</span> </p>
-
-<p>Q: bij decision tree. wat als de gewogen variantie kleiner is dan de total variantie, wat wil dit zeggen ?<br />
-A: <span class="tag">todo</span><br />
+<p>Q: bij randomforestregressor. wat als de gewogen variantie kleiner is dan de total variantie, wat wil dit zeggen ?<br />
+A: Als de gewogen variantie kleiner is dan de total variantie wil zeggen dat je meer gelijksoortige gegevens bij elkaar hebt gestopt.  Minder onzekerheid. Dat is wat je wil.<br />
 <!--ID: 1609180227642--></p>
 
 <p>Q: Wat is de totale variantie en hoe bereken je die ?<br />
-A: <span class="tag">todo</span><br />
+A:  In statistics, variance measures variability from the average or mean. It is calculated by taking the differences between each number in the data set and the mean, then squaring the differences to make them positive, and finally dividing the sum of the squares by the number of values in the data set.<br />
+Variance is calculated using the following formula:<br />
+ $\sigma^2 =\dfrac{ \sum_{i=1}^n(x_i - \bar{x})^2 }{n}$<br />
+ where:<br />
+ $x_i$ = the $i^{th}$ data point<br />
+ $\bar{x}$ = the mean of all data points<br />
+ n= the number of data points<br />
 <!--ID: 1609604299514--></p>
 
 <p>Q: Wat is gewogen variantie en hoe bereken je die ?<br />
-A: <span class="tag">todo</span><br />
+A: Dan kunnen we voor een feature de gewogen variantie berekenen door voor alle waarden van een featuregroep de variantie te berekenen en van die resultaten de gewogen variantie te berekenen. Dit laatste doe je door van variantie van de featuregroep te vermenigvuldigen met het aantal waarden, hiervan de som te maken en te delen door het totaal aantal waarden.<br />
 <!--ID: 1609604299521--></p>
 
 <p>Q: RandomForestRegressor : hoe bepaal je de split voor de tree ?<br />
-A: <span class="tag">todo</span><br />
+A: Bij regressie gebruiken we <strong>variantie</strong>  ipv <strong>entropy/gini index</strong>.<br />
+Je berekent de totale variantie en de gewogen variantie.<br />
+Als de gewogen variantie kleiner is dan de total variantie wil zeggen dat je meer gelijksoortige gegevens bij elkaar hebt gestopt.  Minder onzekerheid. Dat is wat je wil.<br />
+Je kan dit ook doen voor andere features en dan de gewogen varianties vergelijken en die met de kleinste gewogen variantie is het meest geschikt om te gebruiken voor een split.<br />
+Eenmaal een split gekozen kan je dan kijken voor een deelgroep wat de gewogen variantie is en hiermee bepalen wat de beste volgende split is.<br />
 <!--ID: 1609604299530--></p>
 
-<p>Q:<br />
-A: <span class="tag">todo</span> </p>
+<p>Q: Hoe bepaal je de eindpredictie bij RandomForestRegressor ?<br />
+A: Voor regressie ensemble ga je niet zoals bij classificatie Majority voting gebruiken maar de mean van alle resultaten.<br />
+<!--ID: 1609960348035--></p>
+
+<p>Q: Wat is de beste opsplitsing bij een decision tree ? Een hoge (0.7) of een lage entropy (0.3) ?<br />
+A: Splits telkens bij de split die je hoogste information gain oplevert.<br />
+<!--ID: 1610049905058--></p>
+
+<p>Q: Wat zijn ensembles ?<br />
+A: Een ensemble is een combinatie van verschillende modellen die samen een predictie doen. Werken meestal beter dan een enkel model.<br />
+De modellen moeten verschillende algoritmes hebben of hetzelfde algoritme maar getraind met andere trainingdata.<br />
+<!--ID: 1610050283786--></p>
+
+<p>Q: Hoe een ensemble learner bouwen ? Som de methoden op.<br />
+A: Bagging (bootstrap aggregating), boosting (oa adaboost, gradient boosting)<br />
+<!--ID: 1610050883114--></p>
+
+<p>Q: Hoe bouw een ensemble learner op via bagging ?<br />
+A:  maak verschillende subsets (bags) van traingingsdata om een model te trainen :  </p>
+
+<ul>
+<li>neem een bepaalde percentage (meestal 60%) aan willekeurige datapunten en in steek ze in de bag  </li>
+<li>het is met teruglegging dus zelfde datapunt kan verschillende keren voorkomen in de bag  </li>
+<li>train met de bag een model/classifier (verschillende soorten modellen mogelijk of allemaal dezelfde)<br />
+gebruik majority voting om eindresultaat te bepalen<br />
+<!--ID: 1610050894090--></li>
+</ul>
+
+<p>Q: Waarom noemt een random forest tree een random forest tree ?<br />
+A: omdat het model opgebouwd is uit verschillende desion tree modellen die getraind worden op random geselecteerde trainingsdata. het RFT model neemt de resultaten van die decision trees om een eindpredictie te maken.<br />
+<!--ID: 1610051924333--></p>
+
+<p>Q: Waarom Gini kiezen boven Entropy bij Decision Trees ?<br />
+A: Bij de bepaling van decision tree staat default op Gini. Gini geeft zelfde resultaat als Entropy en rekent veel sneller.<br />
+<!--ID: 1610051924399--></p>
+
+<p>Q: wat is teruglegging bij bagging van ensemble learner ?<br />
+A: het is met teruglegging dus zelfde datapunt kan verschillende keren voorkomen in de bag<br />
+<!--ID: 1610051924416--></p>
+
+<p>Q: wat is het voordeel van bagging bij ensemble learner ?<br />
+A: methode om de variantie te reduceren en overfitting te vermijden<br />
+<!--ID: 1610051924429--></p>
+
+<p>Q: Hoe bouw een ensemble learner op via stacking ?<br />
+A:  obv volledige trainingset ga je verschillende modellen trainen SVM, Naibe Bayes, .. Het resultaat ga je laten classificeren door een nieuwe classifier. De predicties van de modellen is input voor de classifier die de uiteindelijke predicties gaat doen.<br />
+<!--ID: 1610051924445--></p>
+
+<p>Q: Wat is het nadeel van een decision tree ? Hoe kan je dit oplossen ?<br />
+A: Een decision tree heeft snel overfitting en dat kan je oplossen door een random forst tree model te gebruiken.<br />
+<!--ID: 1610051924459--></p>
 </div>
 
       <div class="backlinks">

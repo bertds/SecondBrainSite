@@ -27,50 +27,10 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><p><a href="naive-bayes.html">Naive Bayes</a><br />
-<a href="anki.html">anki</a></p>
-
-<p>Q: Hoe verschilt Naive Bayes van andere modellen en waarvoor wordt het vaak gebruikt ?<br />
-A: <a href="naive-bayes#voordelen-en-gebruik.html">Voordelen en gebruik</a><br />
-Supersnel<br />
-iets minder data<br />
-veel features<br />
-<!--ID: 1609005699302--></p>
-
-<p>Q: Wat is het verschil tss Discriminative en Generative model ?<br />
-A: <a href="naive-bayes#discriminative-vs-generative.html">Discriminative vs Generative</a><br />
-Bij discriminative model leert de classifier de grenzen kennen tss twee klassen. Die bepaalt wat de kans is dat iets tot een bepaalde klasse behoort ? Terwijl een generative model leert de distributie van de verschillende klassen. Wat maakt dat die features tot die bepaalde klasse horen ? Wat is de kans dat een bepaalde klasse bepaalde features heeft ?<br />
-<!--ID: 1609005699311--></p>
-
-<p>Q: Wat is een bag of words ?<br />
-A: <a href="naive-bayes#bag-of-words.html">Bag of words</a><br />
-Bag of words : collectie van unieke woorden die voorkomen in de volledige trainingset (na opkuis, ...). De uiteindelijke feature vector heeft dezelfde dimensie als de bag of words, die kan je gebruiken om classifier te trainen.<br />
-<!--ID: 1609005699315--></p>
-
-<p>Q: Welke varianten zijn er op bag of words en hoe verschillen ze ?<br />
-A: <strong>Multi-variate Bernoulli Naive Bayes</strong><br />
-Er wordt enkel bijgehouden of een woord in de bag of words al dan niet voorkomt in een document (0 of 1) en dus NIET de frequentie van voorkomen. In de praktijk werkt het niet zo goed.<br />
-<strong>Multinomial Naive Bayes</strong> :<br />
-De frequentie (aantal keer) waarmee een woord uit de bag of words voorkomt in het document wordt bijgehouden. Scikit-learn : <span class="tag">CountVectorizer</span><br />
-fit = lijst opbouwen van woorden &gt; feature vector maken (1000den features)<br />
-transform = per bericht count van woorden in bericht en mappen met features van fit<br />
-<strong>tf-idf transformer</strong><br />
-aantal keren dat woord voorkomt in document delen door het aantal keer dat woord voorkomt in volledige trainingset<br />
-dit is om belang van het woord te bepalen. hoe uniek is het ? als het veel voorkomt brengt het weinig meerwaarde aan bericht om onderscheid te maken voor klasse bepaling<br />
-eerst counts doen<br />
-fit op bag of words<br />
-<a href="naive-bayes#bag-of-words-varianten.html">Bag of words varianten</a><br />
-<!--ID: 1609005699320--></p>
+      <div id="content"><p></p>
 </div>
 
-      <div class="backlinks">
-
-<ul>
-<li><a href="naive-bayes.html">Naive Bayes</a></li>
-</ul>
-
-</div>
-
+      
 
     </article>
   </div>

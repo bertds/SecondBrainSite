@@ -36,44 +36,57 @@ Een linaire regressie model bepaalt een rechte die zo dicht mogelijk bij de trai
 Bij meervoudige linaire regressie heb je meerdere features waarmee je je model wil trainen. </p>
 
 <p>Q: Hoe bepaal je bij linaire regressie welke parameters de beste zijn ?<br />
-A: mbv kostenfunctie kan je bepalen welke parameters de beste zijn</p>
+A: mbv kostenfunctie kan je bepalen welke parameters de beste zijn<br />
+<!--ID: 1609947287995--></p>
 
 <p>Q: Hoe zoek je uit wat de beste parameters zijn bij lineaire regressie ?<br />
-A: met gradient descent</p>
+A: met gradient descent<br />
+<!--ID: 1609947288080--></p>
 
 <p>Q: Wat is gradient descent ?<br />
-A: Gradient descent is an iterative optimization algorithm to find the minimum of a function.</p>
+A: Gradient descent is an iterative optimization algorithm to find the minimum of a function.<br />
+<!--ID: 1609947288088--></p>
 
 <p>Q: wat is de learning rate ?<br />
-A: <strong>Learning rate</strong> gives the <strong>rate</strong> of speed where the gradient moves during gradient descent. Setting it too high would make your path instable, too low would make convergence slow. Put it to zero means your model isn't <strong>learning</strong> anything from the gradients.</p>
+A: <strong>Learning rate</strong> gives the <strong>rate</strong> of speed where the gradient moves during gradient descent. Setting it too high would make your path instable, too low would make convergence slow. Put it to zero means your model isn't <strong>learning</strong> anything from the gradients.<br />
+<!--ID: 1609947288102--></p>
 
 <p>Q: Hoe kan je onderlinge correlaties zoeken tss features ?<br />
-A: heatmap, pairplot</p>
+A: heatmap, pairplot<br />
+<!--ID: 1609947288107--></p>
 
 <p>Q: Wat wil een correlatie van +1 zeggen in een heatmap ? Wat wil -1 zeggen ?<br />
 A: +1: linair verband tss features ene omhoog en andere omhoog<br />
- -1 : lineair verband tss features ene omhoog en andere omlaag</p>
+ -1 : lineair verband tss features ene omhoog en andere omlaag<br />
+<!--ID: 1609947288112--></p>
 
 <p>Q: Waarom/wanneer zou je je dataset niet random opsplitsen tss training en testset ?<br />
-A: als de volgorde van de data van belang is zoals in een tijdreeks</p>
+A: als de volgorde van de data van belang is zoals in een tijdreeks<br />
+<!--ID: 1609947288117--></p>
 
 <p>Q: hoe kunnen we lineaire regressie modellen vergelijken ?<br />
-A: MAE, MSE, R2</p>
+A: MAE, MSE, R2<br />
+<!--ID: 1609947288123--></p>
 
 <p>Q: Wat is MAE ?<br />
-A: mean absolute error</p>
+A: mean absolute error<br />
+<!--ID: 1609947288128--></p>
 
 <p>Q: Wat is MSE ? Wat is het voordeel tov MAE ?<br />
-A: mean squared error. hiermee gaan extreme cases slechter scoren</p>
+A: mean squared error. hiermee gaan extreme cases slechter scoren<br />
+<!--ID: 1609947288135--></p>
 
 <p>Q:  Wat is R2 ? Wat is een goede score ?<br />
-A: determinatiecëfficient. de score moet zo dicht mogelijk bij 1</p>
+A: determinatiecëfficient. de score moet zo dicht mogelijk bij 1<br />
+<!--ID: 1609947288144--></p>
 
 <p>Q: wat is normalisatie van de features en waarom is van belang ?<br />
-A: hiermee breng je alle features op dezelfde schaal, hierdoor gaat het trainen sneller gaan en kan je obv de coeffient van de features zien welke feature van meer/minder belang is aangezien alle features op eenzelfde schaal staan. </p>
+A: hiermee breng je alle features op dezelfde schaal, hierdoor gaat het trainen sneller gaan en kan je obv de coeffient van de features zien welke feature van meer/minder belang is aangezien alle features op eenzelfde schaal staan.<br />
+<!--ID: 1609947288152--></p>
 
 <p>Q: hoe normaliseer je features ?<br />
-A: je gebruikt hiervoor een scaler (min-max, standard, robust)</p>
+A: je gebruikt hiervoor een scaler (min-max, standard, robust)<br />
+<!--ID: 1609947288159--></p>
 
 <p>Q: Wanneer kan je best welke scaler gebruiken ?<br />
 A: </p>
@@ -88,34 +101,40 @@ A: </p>
 A: feature normaliseren mbv scaler<br />
 nieuwe features toevoegen door combinaties te maken van features of door kwadraten toe te voegen<br />
 hogere orde features maken tot de 2de, 3de, 4de, ... macht<br />
-omzetten van labels naar aparte features</p>
+omzetten van labels naar aparte features<br />
+<!--ID: 1609947288173--></p>
 
 <p>Q: wat is one hot encoding ? hoe doe je dat ? waarom doe je dat ?<br />
-A: het omzetten van een label in aparte features zodat je een model kan trainen op een label. je kan een model namelijk niet trainen op labels (volkswagen, groente, hond, ... )</p>
+A: het omzetten van een label in aparte features zodat je een model kan trainen op een label. je kan een model namelijk niet trainen op labels (volkswagen, groente, hond, ... )<br />
+<!--ID: 1609947288181--></p>
 
 <p>Q: wat is underfitting, wat zegt dit over het model, waarom wil je dit vermijden en kan je dit vaststellen ?<br />
 A:  - model kan de trainingsdata niet modelleren<br />
     - en ook niet generaliseren op nieuwe data<br />
     - model is te eenvoudig<br />
-    - als de R2 score op de trainingset (en testet) slecht is (= slechter scoort dan gewoon gemiddelde van targetwaarde nemen) dan is er sprake van underfitting</p>
+    - als de R2 score op de trainingset (en testet) slecht is (= slechter scoort dan gewoon gemiddelde van targetwaarde nemen) dan is er sprake van underfitting<br />
+<!--ID: 1609947288191--></p>
 
 <p>Q: wat is overfitting, wat zegt dit over het model, waarom wil je dit vermijden en kan je dit vaststellen ?<br />
 A: - model benadert de trainingsdata te goed - scoort heel goed<br />
     - maar scoort slechter op de testdata<br />
     - model is te complex<br />
     - als er veel features zijn dan is het moeilijker om overfitting te krijgen<br />
-    - als de R2 score op de trainingset veel beter scoort dan die op de testset  dan is er sprake van overfitting (trainingset score bijna 1 en testset veel lager of zelfs negatief)</p>
+    - als de R2 score op de trainingset veel beter scoort dan die op de testset  dan is er sprake van overfitting (trainingset score bijna 1 en testset veel lager of zelfs negatief)<br />
+<!--ID: 1609947288200--></p>
 
 <p>Q: welke regularisatie methoden heb je ?<br />
 A:  </p>
 
 <ul>
 <li>L1 regularisatie = absolute waarde $\theta$ </li>
-<li>L2 regularisatie = kwadraat van $\theta$ -> extreme waarden worden afgestraft</li>
+<li>L2 regularisatie = kwadraat van $\theta$ -> extreme waarden worden afgestraft<br />
+<!--ID: 1609947288206--></li>
 </ul>
 
 <p>Q: wat is regularisatie?<br />
-A: Om overfitting tegen te gaan kan je regularisatie gebruiken = term toevoegen aan de kosten functie $+\lambda_1\sum_{j=1}^{n} |\theta_j|$ (als $\theta$ stijgt wordt model afgestraft) Hierdoor zorg je ervoor dat je model zich niet vastrijdt in ruis.</p>
+A: Om overfitting tegen te gaan kan je regularisatie gebruiken = term toevoegen aan de kosten functie $+\lambda_1\sum_{j=1}^{n} |\theta_j|$ (als $\theta$ stijgt wordt model afgestraft) Hierdoor zorg je ervoor dat je model zich niet vastrijdt in ruis.<br />
+<!--ID: 1609947288213--></p>
 
 <p>Q: Hoe bepaal je welke de beste $\alpha$ waarde is bij regularisatie ? Wat is het effect als je die zeer hoog of zeer laag zou zetten ?<br />
 A: </p>
@@ -132,13 +151,16 @@ welke waarde voor $\alpha$ ?<br />
 </ul>
 
 <p>Q: wat zijn uitschieters in data ? hoe kunnen die ontstaan zijn ?<br />
-A: datapunten die ver buiten de gemiddelde waarden zitten kunnen het gevolg zijn van type fouten of fouten in sensors maar het kunnen ook terechte waarden zijn die je wil behouden. </p>
+A: datapunten die ver buiten de gemiddelde waarden zitten kunnen het gevolg zijn van type fouten of fouten in sensors maar het kunnen ook terechte waarden zijn die je wil behouden.<br />
+<!--ID: 1609947288221--></p>
 
 <p>Q:  waarom wil je uitschieters in data toch bewaren ?<br />
-A: ze kunnen edge cases bevatten of net die zeldzame data punten die je wil gebruiken voor je business case (fraud detectie, cybercrime, kanker detectie, ...)</p>
+A: ze kunnen edge cases bevatten of net die zeldzame data punten die je wil gebruiken voor je business case (fraud detectie, cybercrime, kanker detectie, ...)<br />
+<!--ID: 1609947288228--></p>
 
 <p>Q: hoe kan je uitschieters in je data opkuisen ?<br />
-A: data kuisen door alls selectreren binnen de 5 standaardafwijkingen rond het gemiddelde</p>
+A: data kuisen door alls selectreren binnen de 5 standaardafwijkingen rond het gemiddelde<br />
+<!--ID: 1609947288236--></p>
 
 <p>Q: wat is een correlatie matrix en wat kan je er uit leren ?<br />
 A:  data analysts measure _correlation_ of two numerical variables to find an insight about their relationships. On a dataset with many attributes, the set of correlation values between pairs of its attributes form a matrix which is called a _correlation matrix_.<br />
@@ -149,14 +171,17 @@ de correlatie waarde kan : </p>
 <li>negatief : negatieve correlatie<br />
 ! geeft enkel linaire samenhang !<br />
 onderlinge correlatie van features &gt; als de ene veranderd zal de andere op voorspelbare manier mee veranderen<br />
-als je features zou willen weglaten &gt; kijken naar features die weining invloed hebben op target en die sterke correlatie hebben met andere features</li>
+als je features zou willen weglaten &gt; kijken naar features die weining invloed hebben op target en die sterke correlatie hebben met andere features<br />
+<!--ID: 1609947288242--></li>
 </ul>
 
 <p>Q:  wat is een pairplot ?<br />
-A: een pairplot genereert een matrix aan grafieken/plots die de correlatie tss features weergeeft. op hoofddiagonaal staan histograms (scatterplot met zichzelf zou rechte lijn geven) die geeft aan hoe de waarden van dat feature verdeeld zijn over de volledige value range. De andere plots zijn scatterplots. </p>
+A: een pairplot genereert een matrix aan grafieken/plots die de correlatie tss features weergeeft. op hoofddiagonaal staan histograms (scatterplot met zichzelf zou rechte lijn geven) die geeft aan hoe de waarden van dat feature verdeeld zijn over de volledige value range. De andere plots zijn scatterplots.<br />
+<!--ID: 1609947288247--></p>
 
 <p>Q:<br />
-A: <span class="tag">todo</span> </p>
+A: <span class="tag">todo</span><br />
+<!--ID: 1609947288254--></p>
 </div>
 
       <div class="backlinks">

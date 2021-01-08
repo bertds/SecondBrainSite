@@ -33,14 +33,16 @@
 
 <p><img src="gradient_boosting.png" alt="gradient_boosting.png" /></p>
 
-<p>Het volgende model zal de tekortkoming van vorig model compenseren. Geijkaardig aan <a href="adaboost-adaptive-boosting-.html">AdaBoost (Adaptive Boosting)</a> maar manier waarop modellen getraind worden is verschillend :</p>
+<p>Gradient boosting is een ensemble learning method voor regressie en classificatie problemen. Het resultaat is een predictie model in de vorm van een ensemble van zwakke predicitie modellen (meestal decision trees).</p>
+
+<p>Het basisprincipe is dat het volgende model de tekortkoming van het vorig model zal compenseren. Geijkaardig aan <a href="adaboost-adaptive-boosting-.html">AdaBoost (Adaptive Boosting)</a> maar manier waarop de modellen getraind worden is verschillend :</p>
 
 <p><img src="gradient_boostingvb.png" alt="gradient_boostingvb.png" /><br />
 het eerste decision tree model wordt getraind op 60% van de trainingset. Men doet alle voorspellingen voor de volledige trainingsset met dat model en maakt een vector met het verschil tss het voorspelde en de gelabelde waarde (= afwijkingen).<br />
 Het volgende model gaat nu obv dezelfde trainingsset als targetwaarde de afwijkingen van dit eerste model krijgen.<br />
 Ook de daaropvolgende modellen krijgen de afwijkingen van het model ervoor. </p>
 
-<p>De uiteindelijke predicities van een testset gebeuren dan door ghet eerste model een predictie te laten doen, het resultaat daarvan af te geven aan het volgende model. Dat model een predictie te laten doen enzovoort.<br />
+<p>De uiteindelijke predicities van een testset gebeuren dan door het eerste model een predictie te laten doen, het resultaat daarvan af te geven aan het volgende model. Dat model een predictie te laten doen enzovoort.<br />
 Het eindresultaat is dan de som van alle predicties. (6.5 in het vb)</p>
 
 <p>deze manier van trainen is nog geoptimaliseerd met als resultaat <a href="xgboost.html">XGBoost</a></p>

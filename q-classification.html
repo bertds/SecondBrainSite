@@ -32,7 +32,7 @@
 <p><a href="anki.html">anki</a></p>
 
 <p>Q: Wat is het verschil tss classificatie en clustering<br />
-A: <span class="tag">todo</span><br />
+A: Although both techniques have certain similarities, the difference lies in the fact that classification uses <strong>predefined classes</strong> in which objects are assigned, while clustering <strong>identifies similarities between objects</strong>, which it <strong>groups</strong> according to those characteristics in common and which differentiate them from other groups of objects. These groups are known as "<strong>clusters</strong>".<br />
 <!--ID: 1608563147024--></p>
 
 <p>Q: Welke soort classificaties zijn er ?<br />
@@ -45,11 +45,25 @@ A: </p>
 <!--ID: 1608563227087--></li>
 </ul>
 
-<p>Q: Wat is het verschil tss linaire en non-lineaire algoritmes ?<br />
-A: <span class="tag">todo</span><br />
+<p>Q: Wat is het verschil tss lineaire en non-lineaire algoritmes ?<br />
+A: Linear regression requires a linear model. No surprise, right? But what does that really mean?<br />
+<!--ID: 1609948197183--></p>
+
+<p>A model is linear when each term is either a constant or the product of a paramete and a predictor variable. A linear equation is constructed by adding the results for each term. This constrains the equation to just one basic form:</p>
+
+<p>Response = constant + parameter * predictor + ... + parameter * predictor<br />
+$Y = b_o + b_1 X_1 + b_2 X_2 + ... + b_k X_k$</p>
+
+<p>In statistics, a regression equation (or function) is linear when it is linear in the parameters. While the equation must be linear in the parameters, you can transform the predictor variables in ways that produce curvature. For instance, you can include a squared variable to produce a U-shaped curve.<br />
+$Y = b_o + b_1 X_1  + b_2 X^2_1$</p>
+
+<p>This model is still linear in the parameters _even though the predictor variable is squared_. You can also use log and inverse functional forms that are linear in the parameters to produce different types of curves.</p>
+
+<p>Diiference lineair and non-lineair ?<br />
+The easiest way to determine whether an equation is nonlinear is to focus on the term “nonlinear” itself. Literally, it’s not linear. If the equation doesn’t meet the criteria above for a linear equation, it’s nonlinear.<br />
 <!--ID: 1608563227108--></p>
 
-<p>Q: Geef drie voorbeelden van linaire algoritmes.<br />
+<p>Q: Geef drie voorbeelden van lineaire algoritmes.<br />
 A:  </p>
 
 <ul>

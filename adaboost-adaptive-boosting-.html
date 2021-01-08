@@ -31,14 +31,15 @@
 
 <p><img src="adaboost.png" alt="adaboost.png" /></p>
 
-<p>Verschillende eenvoudige classifiers (week classifiers) gecombineerd worden tot 1 classifier die accurate predicites kan doen.<br />
+<p>Adaboost is een ensemble learning method initieel bedoelt om binary classifiers efficienter te maken.<br />
+Het ensemble wordt opgebouwd uit verschillende eenvoudige classifiers (weak classifiers) die gecombineerd worden tot 1 classifier die accurate predicties kan doen.<br />
 Hoe worden die getraind ? De ene na de andere.<br />
 De eerste op een subset van de dataset.<br />
 Samples die verkeerd werden geclassificeerd krijgen meer belang bij volgende weak classiifer die je traint.<br />
-Derde weak claissifier gaat opnieuw belang hechten aan de fouten van de vorige classifier.<br />
+Derde weak classifier gaat opnieuw meer belang hechten aan de fouten van de vorige classifier.<br />
 enzovoort</p>
 
-<p>Qua model kan je gelijk  model gebruiken maar in praktijk neemt men meestal een zeer eenvoudig model : <strong>stump</strong> = decision tree die maar 1 niveau diep gaat<br />
+<p>Qua model/estimator kan je gelijk welk model gebruiken maar in praktijk neemt men meestal een zeer eenvoudig model : <strong>stump</strong> = decision tree die maar 1 niveau diep gaat<br />
 <img src="adaboost_stump.png" alt="adaboost_stump.png" /></p>
 </div>
 

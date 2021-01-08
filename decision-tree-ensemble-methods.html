@@ -45,7 +45,7 @@ Questions : <a href="q-decision-tree-ensemble-methods.html">Q Decision Tree Ense
 <p><img src="decision_tree.png" alt="decision_tree.png" /><br />
 blad van de boom = label van de klasse zelf</p>
 
-<p>je splits de data op obv feature values en blijft splitsen obv een vraag tot je zuivere groeperingen hebt.<br />
+<p>je splitst de data op obv feature values en blijft splitsen obv een vraag tot je zuivere groeperingen hebt. Nadeel is dat het model dreigt te overfitten omdat het te specifiek gaan splitsen obv de data van de traingset.<br />
 <img src="example_split.png" alt="example_split.png" /></p>
 
 <p><strong>Maar hoe bepaal je hoe en waar te splitsen ?</strong><br />
@@ -73,7 +73,7 @@ Je gaat dan na hoeveel minder ordelijk/wanordelijk de scheiding nu is.<br />
 
 <p>Alternatief voor gebruik van entropy. </p>
 
-<p>Gini impurity = maat voor hoe vaak een willekeurig gekozen element van de set verkeerd gelabeld zou worden als het willekeurig gelabeld werd volgens de disitributie van de labels in de subset (= mate van onzuiverheid)</p>
+<p>Gini impurity = maat voor hoe vaak een willekeurig gekozen element van de set verkeerd gelabeld zou worden als het willekeurig gelabeld werd volgens de distributie van de labels in de subset (= mate van onzuiverheid)</p>
 
 <p>$G = 1 - \sum_{i=1}^{N} p^2_i$</p>
 
@@ -164,15 +164,15 @@ sklearn : bagging classifier <span class="tag">todo</span> voorbeeld uitwerken <
 <p>Principe: vergelijkbaar met bagging, maar verkeerd geclassificeerde samples bekomen een grotere kans om in de volgende bag te belanden.<br />
 werkwijze :<br />
     - 60% van traininginset willekeurig kiezen (met teruglegging) en hiermee model trainen.<br />
-    - door dit model volledige trainingset doorsturen en predicites doen<br />
+    - door dit model volledige trainingset doorsturen en predicties doen<br />
     - alle predicties die verkeerd geclassificeerd zijn worden 'belangrijker' want bij<br />
-    - nieuwe bag maken met willekeurige data met <em>cases die slecht geclassificeerd waren gaan meer kans maken om in de bag terecht</em> te komen (ook hier met teruglegging)<br />
+    - nieuwe bag maken obv willekeurige data waarbij <em>cases die slecht geclassificeerd waren meer kans maken om in de bag terecht</em> te komen (ook hier met teruglegging)<br />
     - dit doet je paar keer naagerlang het aantal modellen dat je wil hebben<br />
     - alle cases van alle vorige modellen die slecht scoren hebben bij het samenstellen van een nieuwe bag van trainingsdata, voor het nieuwe model, meer kans om geselecteerd te worden dan de andere cases. </p>
 
 <h6 id="gradient-boostinggradient-boostinghtml"><a href="gradient-boosting.html">Gradient Boosting</a></h6>
 
-<h3 id="regressies-met-dicision-trees-en-ensemble-learning">Regressies met dicision trees en ensemble learning</h3>
+<h3 id="regressies-met-decision-trees-en-ensemble-learning">Regressies met decision trees en ensemble learning</h3>
 
 <h4 id="randomforestregressor">RandomForestregressor</h4>
 
@@ -205,7 +205,7 @@ Criteria gebruiken om bepaalde split te doen obv een feature.<br />
   <img src="variance_code.png" alt="variance_code.png" /></p>
 </blockquote>
 
-<p>Dan kunnen we voor een feature de gewogen variantie berekenen door voor alle waarden van een featuregroep de variantie te berekenen en van die resultaten de gewogen variantie te berekenen. Dit laatste doe je door van variantie van de featuregroep te vermenigvuldigen met het aantal waarden, hiervan de soms te maken en te delen door het totaal aantal waarden. </p>
+<p>Dan kunnen we voor een feature de gewogen variantie berekenen door voor alle waarden van een featuregroep de variantie te berekenen en van die resultaten de gewogen variantie te berekenen. Dit laatste doe je door van variantie van de featuregroep te vermenigvuldigen met het aantal waarden, hiervan de som te maken en te delen door het totaal aantal waarden. </p>
 
 <p><em>Gewogen variantie vs totale variantie ?</em><br />
 Als de gewogen variantie kleiner is dan de total variantie wil zeggen dat je meer gelijksoortige gegevens bij elkaar hebt gestopt.  Minder onzekerheid. Dat is wat je wil. </p>
@@ -218,7 +218,7 @@ Het trainen van de modellen gebeurt op dezelfde manier via boosting, bagging, ..
 
 <p><img src="randomforestregressor_code.png" alt="randomforestregressor_code.png" /></p>
 
-<p>Voor ensemble ga je niet zoals bij classificatie Majority voting gebruiken maar de mean van alle resultaten.<br />
+<p>Voor regression ensemble ga je niet zoals bij classificatie <a href="decision-tree-ensemble-methods#random-forest-trees.html">Random forest trees</a> Majority voting gebruiken maar de mean van alle resultaten.<br />
 <img src="ensemble_regressie_mean.png" alt="ensemble_regressie_mean.png" /></p>
 </div>
 

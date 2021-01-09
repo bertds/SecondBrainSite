@@ -29,7 +29,29 @@
     <article>
       <div id="content"><h2 id="principle-component-analysis-pca">Principle Component Analysis (PCA)</h2>
 
+<p>Code : <a href="-c-principle-component-analysis-pca-.html"> C Principle Component Analysis (PCA)</a></p>
+
 <p>Principal component analysis (PCA) is een wiskundige techniek om het aantal (mogelijks) gecorreleerde features te transformeren naar een kleiner aantal niet-gecorreleerde features die de principle components worden genoemd.</p>
+
+<p><a href="https://setosa.io/ev/principal-component-analysis/">Principal Component Analysis Explained Visually</a> </p>
+
+<p>In dit voorbeeld zijn er twee features. Als we de f2 feature zouden laten vallen dan komen alle f1 features op de x-as te liggen en verliezen we teveel info.<br />
+Bij PCA trekken we een nieuwe as door het midden van de puntenwolk (PC1) en brengen de datapunten op die nieuwe as over.<br />
+Hierdoor hebben we PCA values (= nieuwe feature) waarbij we ook de PCA moeten bijhouden zodat we nadien de features ook ongeveer in de buurt van de oude waarde kunnen brengen. (meeste feature f2 details zijn we natuurlijk kwijt geraakt bij overdracht naar de nieuwe as)</p>
+
+<p><img src="dimreduction_PCA.png" alt="dimreduction_PCA.png" /></p>
+
+<p>jaren 80-90 werd PCA gebruikt voor gezichtsherkenning (10000 pixels naar 40 features)</p>
+
+<p><img src="dimreduction_PCA_MNIST.png" alt="dimreduction_PCA_MNIST.png" /><br />
+ Je krijgt de linkse 5 afbeelding door elke PCA (afbeelding) te vermenigvuldigen met de PCA-score en hiervan de sommatie te maken. </p>
+
+<h3 id="kiezen-van-het-aantal-principle-components-verklaarde-variantie">Kiezen van het aantal principle components - verklaarde variantie</h3>
+
+<p>PCA zoekt de componenten die maximaal de variantie in de dataset verklaren. We willen zoveel mogelijk informatie overhouden na dimensionality reduction.<br />
+De eerste PCA's bevatten de meeste informatie. </p>
+
+<p><img src="dimreduction_PCA_aantal.png" alt="dimreduction_PCA_aantal.png" /></p>
 </div>
 
       <div class="backlinks">

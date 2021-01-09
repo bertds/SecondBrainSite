@@ -27,21 +27,30 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><h3 id="wat-met-kwalitatieve-gevens">Wat met kwalitatieve gevens ?</h3>
+      <div id="content"><h2 id="c-principle-component-analysis-pca">C Principle Component Analysis (PCA)</h2>
 
-<p>bijv bij tweedehandswagen : merk, kilometerstand, type, brandstof, cylinderinhoud, ... </p>
+<h3 id="sklearn">sklearn</h3>
 
-<p>One hot encoding toepassen op brandstof, automerk, ... </p>
+<pre><code class="plaintext lang-plaintext language-plaintext"># PCA
+from sklearn . decomposition import PCA
+
+pca = PCA(n_components=10, svd_solver=’full’) 
+pca.fit(X_train)
+
+# Reduceren van de de training− en test set
+
+X_train_pca = pca.transform(X_train) 
+X_test_pca = pca.transform (X_test)
+
+<span class="tag">Elke</span> afbeelding in zowel training- als de test set is gereduceerd 10 <span class="tag">features</span>
+
+X_train_pca.shape 
+>> (30000 , 10)</code></pre>
+
+<p>Na PCA terug normalisatie doen aangezien de schaal aangepast is en je bijv ook negatieve waarden kan hebben.</p>
 </div>
 
-      <div class="backlinks">
-
-<ul>
-<li><a href="regression.html">Regression</a></li>
-</ul>
-
-</div>
-
+      
 
     </article>
   </div>

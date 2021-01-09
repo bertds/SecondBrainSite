@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://github.com/bertds">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><h2 id="neurale-netwerken">Neurale netwerken</h2>
+
+<h3 id="introductie">Introductie</h3>
+
+<h4 id="wat-is-een-neuraal-netwerk">Wat is een neuraal netwerk?</h4>
+
+<h5 id="definitie">Definitie</h5>
+
+<p>Volgens Simon Haykin, Neural Networks - a comprehensive Foundation, Prentice Hall, New Jersey, 2nd edition.</p>
+
+<p>A neural network (NN) is a massively parallel distributed processor that has a natural propensity for storing experimental knowledge and making it available for use. It resembles the brain in two aspects:</p>
+
+<ul>
+<li>Knowledge is acquired by the network through a learning process.</li>
+<li>Interneuron connection strenghts known as synaptic weights are used to store the knowledge.</li>
+</ul>
+
+<p>Geïnspireerd op de menselijke hersenen</p>
+
+<ul>
+<li>Het menselijk brein blinkt uit in taken zoals patroonherkenning, spraakherkenning, perceptie, enzoverder. </li>
+<li>Naarmate het brein meer weet leert het sneller bij.</li>
+<li>Het brein is zeer sterk in parallelle verwerking, een klassieke computer in seriële verwerking.</li>
+</ul>
+
+<h5 id="menselijk-brein-vs-computer">menselijk brein vs computer</h5>
+
+<p><img src="NN_breinvscomp.png" alt="NN_breinvscomp.png" /></p>
+
+<h3 id="het-articiele-neurale-netwerk">Het articiële neurale netwerk</h3>
+
+<h4 id="het-artificiele-neuron">Het artificiële neuron</h4>
+
+<p>Neuron = perceptron<br />
+er komt input binnen = features<br />
+die features worden gewogen = synaps van menselijk brein</p>
+
+<p><img src="NN_perceptron1.png" alt="NN_perceptron1.png" /><br />
+De activatie functie kan een binaire output geven (ja/neen), een getal/percentage (77% kans dat ...), of 1.2 (om die verder als input mee te geven). Keuze hangt af van de toepassing/case.</p>
+
+<p><img src="NN_perceptron2.png" alt="NN_perceptron2.png" /></p>
+
+<h4 id="kenmerken-neuraal-netwerk">Kenmerken Neuraal netwerk</h4>
+
+<ul>
+<li>netwerk architectuuur</li>
+<li>leeralgoritme</li>
+<li>activatiefuncties</li>
+</ul>
+
+<p><img src="nn-kenmerkendotpng.html" alt="300" /></p>
+
+<h5 id="netwerk-architectuur">Netwerk architectuur</h5>
+
+<p>Meer info : http://www.asimovinstitute.org/neural-network-zoo/<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-019dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-019.jpg" /><br />
+(dit architectuur voorbeeld = miltilayer feed forward netwerk)</p>
+
+<p>ander vb : LSTM : long short-term memory (= recurrent net)</p>
+
+<h5 id="leeralgoritmefeedforward-nn">Leeralgoritme/feedforward nn</h5>
+
+<p>unidirectioneel van input naar output (geen loops)<br />
+alle neuronen van een laag zijn verbonden met alle neuronen van de volgende laag<br />
+verbindingen = weights (= zwakke of sterke verbinding)<br />
+tijdens training worden de weights ingesteld<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-020dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-020.jpg" /></p>
+
+<p>je kan ook XOR poort maken<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-021dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-021.jpg" /></p>
+
+<p>hoeveel hidden layers heb je nodig ?<br />
+meestal iets overdimensioneren (eerst meer neuronen en hidden layers)<br />
+aantal input ligt meestal vast = aantal features<br />
+output = afhankelijk van target (bij regressie maar 1 output, bij classificatie 1 neuron per klasse)<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-022dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-022.jpg" /></p>
+
+<h5 id="one-hot-encodingone-hot-encodinghtml"><a href="one-hot-encoding.html">one hot encoding</a></h5>
+
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-025dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-025.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-026dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-026.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-027dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-027.jpg" /></p>
+
+<h5 id="backpropagation-learning">backpropagation learning</h5>
+
+<p>het leren gebeurt van output naar input.<br />
+gradient descent en kijken naar error op uitgang om te kijken welke weights waarschijnlijk het meest verantwoordelijk zijn voor de error.<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-028dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-028.jpg" /><br />
+in het begin ga je een grote fout maken<br />
+weights worden willekeurig geinitialiseerd<br />
+als de error functie net zakt is er iets mis, je NN leert niet bij/wordt niet beter<br />
+als errorfunctie oscilleert dan is het een teken dat de learning rate te groot is<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-029dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-029.jpg" /><br />
+<strong>learning rate</strong><br />
+ADAM gaat learning rate zelf bijstellen<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-030dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-030.jpg" /></p>
+
+<h5 id="activatie-functie">Activatie functie</h5>
+
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-031dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-031.jpg" /><br />
+<strong>step functie</strong> NIET GEBRUIKEN !!!<br />
+bij backpropagation kan je uit output 1 of 0 niet achterhalen wie/welke neuron verantwoordelijk is voor de fout omdat er geen gradaties in zitten. Het is enkel 0 of 1.<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-032dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-032.jpg" /><br />
+<strong>lineair functie</strong><br />
+Blijft lineair dus je kan er geen informatie uit complexe data mee halen.<br />
+Toch worden ze gebruikt bij de input layer omdat die onveranderd het netwerk ingestuurd worden.<br />
+Ook bij output layer bij regressie aangezien je het eindresultaat niet wil beperken tss 0 en 1.<br />
+<em>Bij classificatie gebruiken we GEEN lineair !!!</em><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-033dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-033.jpg" /><br />
+<strong>Sigmoid</strong><br />
+nu enkel nog voor output gebruikt, niet voor hidden layers<br />
+berekening zwaarder, en vanisching gradient problem : uitlopers veranderen praktisch niet waardoor gradient descent bijna niet meer kan bepalen in welke richting die moet evolueren.<br />
+<em>enkel nog gebruiken voor output layer omdat je hiermee kan zien met welke overtuiging het resultaat tot een bepaalde klasse behoort</em><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-034dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-034.jpg" /><br />
+<strong>Hyperbolic tangent</strong><br />
+Zelfde probleem als Sigmoid<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-035dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-035.jpg" /><br />
+<strong>Relu</strong><br />
+MEEST GEBRUIKTE FUNCTIE !!!<br />
+je kan verschillende relu met elkaar combineren om complexe scheidingslijnen tss klasses gaan zoeken. </p>
+
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-036dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-036.jpg" /><br />
+<strong>Leaky Relu</strong><br />
+aangepaste variant die ervoor zorgt dat neuron niet doodgaat<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-037dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-037.jpg" /></p>
+
+<h5 id="conclusies">conclusies !!!</h5>
+
+<p>meerdere klasses als output : Softmax<br />
+maar 1 klasse als output : Sigmoid<br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-038dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-038.jpg" /></p>
+
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-039dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-039.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-040dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-040.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-041dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-041.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-042dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-042.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-043dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-043.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-044dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-044.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-045dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-045.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-046dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-046.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-047dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-047.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-048dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-048.jpg" /></p>
+
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-049dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-049.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-050dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-050.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-051dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-051.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-052dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-052.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-053dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-053.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-054dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-054.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-055dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-055.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-056dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-056.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-057dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-057.jpg" /></p>
+
+<h3 id="aan-de-slag-met-keras-en-tensorflow">Aan de slag met Keras en Tensorflow</h3>
+</div>
+
+      <div class="backlinks">
+
+<ul>
+<li><a href="ai-home.html">AI@home</a></li>
+<li><a href="ai-home---sessie-07.html">AI@home - sessie 07</a></li>
+</ul>
+
+</div>
+
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

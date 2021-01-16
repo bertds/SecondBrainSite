@@ -104,55 +104,72 @@ tijdens training worden de weights ingesteld<br />
 meestal iets overdimensioneren (eerst meer neuronen en hidden layers)<br />
 aantal input ligt meestal vast = aantal features<br />
 output = afhankelijk van target (bij regressie maar 1 output, bij classificatie 1 neuron per klasse)<br />
+sigmoit functie :  $\dfrac{1}{1 + e^{-z}}$ = de kans op een bepaald label<br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_022.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_022.jpg" /></p>
 
 <h5 id="one-hot-encodingone-hot-encodinghtml"><a href="one-hot-encoding.html">one hot encoding</a></h5>
 
-<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_025.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_025.jpg" /><br />
+<p>Bij classificatie moet je de verwachte output/label omzetten in een vector (door one hot encoding). Je stelt hier per output neuron wat de waarde moet zijn. Als model aangeeft dat voor dat label de kans 0.2 is maar in target value staat er dan dat dit eigenlijk 0 moest zijn. Als model aangeeft dat het 0.8 is maar in target value staat dat het  1 moet zijn dan moet de gewichten in het model bijgesteld worden om dit meer te benaderen.<br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_025.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_025.jpg" /><br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_026.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_026.jpg" /><br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_027.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_027.jpg" /></p>
 
-<h5 id="backpropagation-learning">backpropagation learning</h5>
+<h5 id="backpropagation-learning-bij-feedforward-nn">backpropagation learning (bij feedforward NN)</h5>
 
 <p>het leren gebeurt van output naar input.<br />
 gradient descent en kijken naar error op uitgang om te kijken welke weights waarschijnlijk het meest verantwoordelijk zijn voor de error.<br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_028.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_028.jpg" /><br />
 in het begin ga je een grote fout maken<br />
-weights worden willekeurig geinitialiseerd<br />
-als de error functie net zakt is er iets mis, je NN leert niet bij/wordt niet beter<br />
-als errorfunctie oscilleert dan is het een teken dat de learning rate te groot is<br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_029.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_029.jpg" /><br />
+weights worden willekeurig geinitialiseerd. als je hier een patroon voor gebruikt dan krijg je symmetrie in jet NN en dan krijg je bijv twee delen in je NN die hetzelfde doen.<br />
+als de error functie niet zakt is er iets mis, je NN leert niet bij/wordt niet beter<br />
+als errorfunctie oscilleert dan is het een teken dat de learning rate te groot is, de weights worden te aggressief bijgesteld</p>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_029.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_029.jpg" /><br />
 <strong>learning rate</strong><br />
-ADAM gaat learning rate zelf bijstellen<br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_030.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_030.jpg" /></p>
+ADAM (optimiser) gaat learning rate zelf bijstellen, gaat adaptief leren.<br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_030.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_030.jpg" /><br />
+epoch = aantal keer dat je getraind hebt/aantal voorbeelden dat je getoond hebt</p>
 
 <h5 id="activatie-functie">Activatie functie</h5>
 
-<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_031.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_031.jpg" /><br />
-<strong>step functie</strong> NIET GEBRUIKEN !!!<br />
-bij backpropagation kan je uit output 1 of 0 niet achterhalen wie/welke neuron verantwoordelijk is voor de fout omdat er geen gradaties in zitten. Het is enkel 0 of 1.<br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_032.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_032.jpg" /><br />
-<strong>lineair functie</strong><br />
-Blijft lineair dus je kan er geen informatie uit complexe data mee halen.<br />
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_031.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_031.jpg" /></p>
+
+<h6 id="step-functie-niet-gebruiken"><strong>step functie</strong> NIET GEBRUIKEN !!!</h6>
+
+<p>bij backpropagation kan je uit output 1 of 0 niet achterhalen wie/welke neuron verantwoordelijk is voor de fout omdat er geen gradaties in zitten. Het is enkel 0 of 1.<br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_032.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_032.jpg" /></p>
+
+<h6 id="lineair-functie-adaline"><strong>lineair functie</strong> adaline</h6>
+
+<p>Blijft lineair dus je kan er geen informatie uit complexe data mee halen. Output blijft proportioneel aan de input.<br />
 Toch worden ze gebruikt bij de input layer omdat die onveranderd het netwerk ingestuurd worden.<br />
 Ook bij output layer bij regressie aangezien je het eindresultaat niet wil beperken tss 0 en 1.<br />
 <em>Bij classificatie gebruiken we GEEN lineair !!!</em><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_033.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_033.jpg" /><br />
-<strong>Sigmoid</strong><br />
-nu enkel nog voor output gebruikt, niet voor hidden layers<br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_033.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_033.jpg" /></p>
+
+<h6 id="sigmoid"><strong>Sigmoid</strong></h6>
+
+<p>nu enkel nog voor output gebruikt, niet voor hidden layers<br />
 berekening zwaarder, en vanishing gradient problem : uitlopers veranderen praktisch niet waardoor gradient descent bijna niet meer kan bepalen in welke richting die moet evolueren.<br />
 <em>enkel nog gebruiken voor output layer omdat je hiermee kan zien met welke overtuiging het resultaat tot een bepaalde klasse behoort</em><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_034.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_034.jpg" /><br />
-<strong>Hyperbolic tangent</strong><br />
-Zelfde probleem als Sigmoid<br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_035.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_035.jpg" /><br />
-<strong>Relu</strong><br />
-MEEST GEBRUIKTE FUNCTIE !!!<br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_034.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_034.jpg" /></p>
+
+<h6 id="hyperbolic-tangent"><strong>Hyperbolic tangent</strong></h6>
+
+<p>Zelfde probleem als Sigmoid<br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_035.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_035.jpg" /></p>
+
+<h6 id="relu-rectified-lineair-unit"><strong>Relu</strong> Rectified lineair unit</h6>
+
+<p>MEEST GEBRUIKTE FUNCTIE !!!<br />
 je kan verschillende relu met elkaar combineren om complexe scheidingslijnen tss klasses gaan zoeken. </p>
 
-<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_036.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_036.jpg" /><br />
-<strong>Leaky Relu</strong><br />
-aangepaste variant die ervoor zorgt dat neuron niet doodgaat<br />
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_036.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_036.jpg" /></p>
+
+<h6 id="leaky-relu"><strong>Leaky Relu</strong></h6>
+
+<p>aangepaste variant die ervoor zorgt dat neuron niet doodgaat<br />
+iets rekenintensiever dan gewone Relu.<br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_037.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_037.jpg" /></p>
 
 <h5 id="conclusies">conclusies !!!</h5>
@@ -161,30 +178,128 @@ aangepaste variant die ervoor zorgt dat neuron niet doodgaat<br />
 maar 1 klasse als output : Sigmoid<br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_038.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_038.jpg" /></p>
 
-<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_039.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_039.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_040.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_040.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_041.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_041.jpg" /><br />
+<h4 id="underfitting-en-overfitting">underfitting en overfitting</h4>
+
+<p>Deep learning NN heeft veel lagen en is gevoelig aan overfitting.<br />
+Met kleine dataset gaat NN alles van buiten leren.<br />
+Met te weinig lagen of neuronen zal het NN niet alle nuances capteren en dus leiden tot underfitting.<br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_039.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_039.jpg" /></p>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_040.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_040.jpg" /></p>
+
+<h5 id="dropout">dropout</h5>
+
+<p>Techniek om met behoudt van architectuur toch overfitting kunnen voorkomen.<br />
+dropout_rate = 0.2 : 20% van neuronen worden random tijdens training uitgeschakeld. hierdoor dwing je om goede classificatie te doen met minder neuronen en kan het minder van buiten leren. </p>
+
+<h3 id="keras-en-tensorflow">Keras en Tensorflow</h3>
+
+<p>model.add = voeg een laag toe aan NN</p>
+
+<p>compilen : optimizer meegeven (zoals adam) (hoe ga ik optimum vinden), loss functie (hoe bepaal ik mijn error)<br />
+trainen : epochs, batch_size, </p>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_041.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_041.jpg" /><br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_042.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_042.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_043.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_043.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_044.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_044.jpg" /><br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_043.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_043.jpg" /></p>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_044.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_044.jpg" /><br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_045.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_045.jpg" /><br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_046.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_046.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_047.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_047.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_048.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_048.jpg" /></p>
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_047.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_047.jpg" /></p>
 
-<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_049.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_049.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_050.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_050.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_051.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_051.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_052.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_052.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_053.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_053.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_054.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_054.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_055.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_055.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_056.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_056.jpg" /><br />
-<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_057.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_057.jpg" /></p>
+<h4 id="activatie-functie-2">activatie functie</h4>
 
-<h3 id="aan-de-slag-met-keras-en-tensorflow">Aan de slag met Keras en Tensorflow</h3>
+<p>https://keras.io/activations/</p>
 
-<p><span class="tag">todo</span> </p>
+<p>Beschikbare activatie functies: </p>
+
+<ul>
+<li>softmax &gt; output layer</li>
+<li>relu  &gt; hidden layer</li>
+<li>sigmoid &gt; output layer</li>
+<li>tanh  </li>
+<li>linear &gt; regression in output layer</li>
+</ul>
+
+<p>https://keras.io/layers/advanced-activations/</p>
+
+<h4 id="learning-rate-optimizer">learning rate optimizer</h4>
+
+<p>https://keras.io/optimizers/</p>
+
+<ul>
+<li><em>SGD</em> + Nesterov (Stochastic Gradient Descent) !</li>
+<li>RMSProp: meer geschikt bij recurrent networks </li>
+<li>Adagrad  </li>
+<li><em>Adam</em> !</li>
+<li>Adamax</li>
+</ul>
+
+<h4 id="epochs">epochs</h4>
+
+<p><strong>Epochs</strong>: het aantal keer dat het neuraal netwerk de volledige training set te zien krijgt. </p>
+
+<h4 id="iterations">iterations</h4>
+
+<p><strong>Iterations</strong>: Het aantal keer dat de weights worden bijgesteld. Is gelijk aan het aantal epochs maal het aantal batches.</p>
+
+<h4 id="batch-size">BATCH SIZE</h4>
+
+<p><strong>Batchsize</strong>: Het aantal samples dat het neuraal netwerk te zien krijgt vooraleer het de weights gaat updaten. Updaten van de weights gebeurt op basis van de gemiddelde fout van een batch.</p>
+
+<ul>
+<li>Batchmode: De batchgrootte is gelijk aan het aantal trainingsamples.  </li>
+<li><strong>Mini-batchmode</strong> : De batches zijn groter dan 1 en kleiner dan het aantal trainingsamples. (bijv batch_size = 32 dan ga je 32 trainingsdata tonen aan model, kijken hoe goed het presteert en op basis daarvan gewichten bij stellen)</li>
+<li>Stochasticmode : Debatch grootte = 1. Na elke trainingsample is er een update van de weights.</li>
+</ul>
+
+<p><em>Voor- en nadelen van een kleine batch grootte</em></p>
+
+<ul>
+<li>Kleine batches nemen minder geheugen in beslag.</li>
+<li>Meestal traint het netwerk sneller bij kleine batches.</li>
+<li>Kleinere batches geven sneller feedback.</li>
+<li>Nadeel van kleine batches : minder accurate schatting van de gradient. Netwerk stabiliseert zich op basis van de laatste training samples</li>
+</ul>
+
+<p>Wat als je overfitting hebt ?  </p>
+
+<ul>
+<li>meer data hebben is beter, meer variatie</li>
+<li>drop outs</li>
+<li>minder lagen (opletten voor underfitting !)</li>
+</ul>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_051.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_051.jpg" /></p>
+
+<h4 id="loss-function-error-losses">loss function - error losses</h4>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_052.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_052.jpg" /></p>
+
+<h4 id="loss-function-hinge-losses">loss function - hinge losses</h4>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_053.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_053.jpg" /></p>
+
+<h4 id="loss-function-class-losses">loss function - class losses</h4>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_054.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_054.jpg" /></p>
+
+<h4 id="metrics-regresssion">metrics - regresssion</h4>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_055.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_055.jpg" /></p>
+
+<h4 id="metrics-classification">metrics - classification</h4>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_056.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_056.jpg" /></p>
+
+<h4 id="overige-parameters">overige parameters</h4>
+
+<p><img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_057.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_057.jpg" /></p>
+
+<p>Gridsearch om optimale combinatie te zoeken. </p>
+
+<p><span class="tag">todo</span> vragen maken over de verschillende begrippen !!!!</p>
 </div>
 
       <div class="backlinks">

@@ -22,7 +22,7 @@
     <nav>
       <ul>
         <br>
-        <li><a href="https://bertds.github.io/SecondBrainSite/">GitHub</a></li>
+        <li><a href="https://bertds.github.io/SecondBrainSite/">Second Brain</a></li>
         <br>
       </ul>
     </nav>
@@ -84,7 +84,7 @@ De activatie functie kan een binaire output geven (ja/neen), een getal/percentag
 <h5 id="netwerk-architectuur">Netwerk architectuur</h5>
 
 <p>Meer info : http://www.asimovinstitute.org/neural-network-zoo/<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-019dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-019.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-019dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_019.jpg" /><br />
 (dit architectuur voorbeeld = multilayer feed forward netwerk)</p>
 
 <p>ander vb : LSTM : long short-term memory (= recurrent net)</p>
@@ -95,92 +95,92 @@ De activatie functie kan een binaire output geven (ja/neen), een getal/percentag
 alle neuronen van een laag zijn verbonden met alle neuronen van de volgende laag<br />
 verbindingen = weights (= zwakke of sterke verbinding)<br />
 tijdens training worden de weights ingesteld<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-020dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-020.jpg" /></p>
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-020dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_020.jpg" /></p>
 
 <p>je kan ook XOR poort maken<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-021dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-021.jpg" /></p>
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-021dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_021.jpg" /></p>
 
 <p>hoeveel hidden layers heb je nodig ?<br />
 meestal iets overdimensioneren (eerst meer neuronen en hidden layers)<br />
 aantal input ligt meestal vast = aantal features<br />
 output = afhankelijk van target (bij regressie maar 1 output, bij classificatie 1 neuron per klasse)<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-022dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-022.jpg" /></p>
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-022dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_022.jpg" /></p>
 
 <h5 id="one-hot-encodingone-hot-encodinghtml"><a href="one-hot-encoding.html">one hot encoding</a></h5>
 
-<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-025dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-025.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-026dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-026.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-027dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-027.jpg" /></p>
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-025dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_025.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-026dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_026.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-027dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_027.jpg" /></p>
 
 <h5 id="backpropagation-learning">backpropagation learning</h5>
 
 <p>het leren gebeurt van output naar input.<br />
 gradient descent en kijken naar error op uitgang om te kijken welke weights waarschijnlijk het meest verantwoordelijk zijn voor de error.<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-028dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-028.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-028dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_028.jpg" /><br />
 in het begin ga je een grote fout maken<br />
 weights worden willekeurig geinitialiseerd<br />
 als de error functie net zakt is er iets mis, je NN leert niet bij/wordt niet beter<br />
 als errorfunctie oscilleert dan is het een teken dat de learning rate te groot is<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-029dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-029.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-029dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_029.jpg" /><br />
 <strong>learning rate</strong><br />
 ADAM gaat learning rate zelf bijstellen<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-030dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-030.jpg" /></p>
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-030dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_030.jpg" /></p>
 
 <h5 id="activatie-functie">Activatie functie</h5>
 
-<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-031dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-031.jpg" /><br />
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-031dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_031.jpg" /><br />
 <strong>step functie</strong> NIET GEBRUIKEN !!!<br />
 bij backpropagation kan je uit output 1 of 0 niet achterhalen wie/welke neuron verantwoordelijk is voor de fout omdat er geen gradaties in zitten. Het is enkel 0 of 1.<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-032dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-032.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-032dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_032.jpg" /><br />
 <strong>lineair functie</strong><br />
 Blijft lineair dus je kan er geen informatie uit complexe data mee halen.<br />
 Toch worden ze gebruikt bij de input layer omdat die onveranderd het netwerk ingestuurd worden.<br />
 Ook bij output layer bij regressie aangezien je het eindresultaat niet wil beperken tss 0 en 1.<br />
 <em>Bij classificatie gebruiken we GEEN lineair !!!</em><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-033dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-033.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-033dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_033.jpg" /><br />
 <strong>Sigmoid</strong><br />
 nu enkel nog voor output gebruikt, niet voor hidden layers<br />
 berekening zwaarder, en vanishing gradient problem : uitlopers veranderen praktisch niet waardoor gradient descent bijna niet meer kan bepalen in welke richting die moet evolueren.<br />
 <em>enkel nog gebruiken voor output layer omdat je hiermee kan zien met welke overtuiging het resultaat tot een bepaalde klasse behoort</em><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-034dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-034.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-034dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_034.jpg" /><br />
 <strong>Hyperbolic tangent</strong><br />
 Zelfde probleem als Sigmoid<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-035dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-035.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-035dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_035.jpg" /><br />
 <strong>Relu</strong><br />
 MEEST GEBRUIKTE FUNCTIE !!!<br />
 je kan verschillende relu met elkaar combineren om complexe scheidingslijnen tss klasses gaan zoeken. </p>
 
-<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-036dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-036.jpg" /><br />
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-036dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_036.jpg" /><br />
 <strong>Leaky Relu</strong><br />
 aangepaste variant die ervoor zorgt dat neuron niet doodgaat<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-037dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-037.jpg" /></p>
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-037dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_037.jpg" /></p>
 
 <h5 id="conclusies">conclusies !!!</h5>
 
 <p>meerdere klasses als output : Softmax<br />
 maar 1 klasse als output : Sigmoid<br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-038dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-038.jpg" /></p>
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-038dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_038.jpg" /></p>
 
-<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-039dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-039.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-040dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-040.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-041dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-041.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-042dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-042.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-043dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-043.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-044dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-044.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-045dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-045.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-046dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-046.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-047dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-047.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-048dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-048.jpg" /></p>
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-039dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_039.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-040dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_040.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-041dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_041.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-042dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_042.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-043dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_043.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-044dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_044.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-045dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_045.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-046dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_046.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-047dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_047.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-048dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_048.jpg" /></p>
 
-<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-049dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-049.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-050dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-050.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-051dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-051.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-052dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-052.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-053dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-053.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-054dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-054.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-055dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-055.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-056dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-056.jpg" /><br />
-<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-057dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties-page-057.jpg" /></p>
+<p><img src="sessie-07-introductie-neurale-netwerken-annotaties-page-049dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_049.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-050dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_050.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-051dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_051.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-052dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_052.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-053dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_053.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-054dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_054.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-055dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_055.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-056dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_056.jpg" /><br />
+<img src="sessie-07-introductie-neurale-netwerken-annotaties-page-057dotjpg.html" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_057.jpg" /></p>
 
 <h3 id="aan-de-slag-met-keras-en-tensorflow">Aan de slag met Keras en Tensorflow</h3>
 </div>

@@ -159,18 +159,13 @@ sklearn : bagging classifier <span class="tag">todo</span> voorbeeld uitwerken <
 
 <p>Dikwijls betere accuraatheid dan bagging methode. Gevoeliger voor overfitting en moeilijker te parallelliseren. </p>
 
-<h6 id="meest-bekend-algoritme-adaboost-adaptive-boostingadaboost-adaptive-boosting-html">Meest bekend algoritme: <em><a href="adaboost-adaptive-boosting-.html">AdaBoost (Adaptive Boosting)</a>.</em></h6>
+<h6 id="adaboost-meest-gekend">ADABOOST - meest gekend</h6>
 
-<p>Principe: vergelijkbaar met bagging, maar verkeerd geclassificeerde samples bekomen een grotere kans om in de volgende bag te belanden.<br />
-werkwijze :<br />
-    - 60% van traininginset willekeurig kiezen (met teruglegging) en hiermee model trainen.<br />
-    - door dit model volledige trainingset doorsturen en predicties doen<br />
-    - alle predicties die verkeerd geclassificeerd zijn worden 'belangrijker' want bij<br />
-    - nieuwe bag maken obv willekeurige data waarbij <em>cases die slecht geclassificeerd waren meer kans maken om in de bag terecht</em> te komen (ook hier met teruglegging)<br />
-    - dit doet je paar keer naagerlang het aantal modellen dat je wil hebben<br />
-    - alle cases van alle vorige modellen die slecht scoren hebben bij het samenstellen van een nieuwe bag van trainingsdata, voor het nieuwe model, meer kans om geselecteerd te worden dan de andere cases. </p>
+<p><img src="adaboost-adaptive-boosting-.html" alt="AdaBoost (Adaptive Boosting)" /></p>
 
-<h6 id="gradient-boostinggradient-boostinghtml"><a href="gradient-boosting.html">Gradient Boosting</a></h6>
+<h6 id="gradient-boosting">Gradient Boosting</h6>
+
+<p><img src="gradient-boosting.html" alt="Gradient Boosting" /></p>
 
 <h3 id="regressies-met-decision-trees-en-ensemble-learning">Regressies met decision trees en ensemble learning</h3>
 

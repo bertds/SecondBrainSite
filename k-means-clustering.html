@@ -41,7 +41,7 @@
 <ul>
 <li>Hoe dicht liggen trainingsamples qua afstand van elkaar in de feature space?</li>
 <li>Veel gebruikte afstandsmaat is de Euclidische afstand<br />
-<img src="euclidische-afstanddotpng.html" alt="400" /></li>
+<img src="euclidische_afstand.png" alt="euclidische_afstand.png" /></li>
 </ul>
 
 <h5 id="andere-manier">andere manier</h5>
@@ -56,7 +56,7 @@ iteratief proces : </p>
 <li>voor elk datapunt welk centroide ligt het dichtst bij : wijs datapunt toe aan centroide</li>
 <li>verplaats centroïde naar het gemiddelde van de datapunten toegewezen aan cluster van de centroïde</li>
 <li>terug naar eerste stap tenzij centroïde niet meer van plaats verandert<br />
-<img src="k-means-centroidedotpng.html" alt="400" /></li>
+<img src="K-means_centroide.png" alt="K-means_centroide.png" /></li>
 </ul>
 
 <h3 id="eigenschappen-van-k-means-clustering">Eigenschappen van K-means clustering</h3>
@@ -71,7 +71,7 @@ iteratief proces : </p>
 </ul></li>
 <li>Zeer gevoelig aan uitschieters.</li>
 <li>Problemen bij clusters met hetzelfde gemiddelde of niet-sferisch clusters (Oplossing: kernel k-means of spectral clustering)<br />
-<img src="k-means-spectralclusteringdotpng.html" alt="400" /></li>
+<img src="K-means_spectralclustering.png" alt="K-means_spectralclustering.png" /></li>
 </ul>
 
 <h3 id="hoe-bepaal-je-hoeveel-clusters-je-nodig-hebt">Hoe bepaal je hoeveel clusters je nodig hebt ?</h3>
@@ -91,7 +91,7 @@ Bepaal voor een verschillend aantal clusters de ’sum of squared error (SSE)'. 
 $$SSE = \sum^K_{i=1}\sum_{x\epsilon c_i} dist(x, c_i)^2$$</p>
 
 <p>Elbow method voor het vinden van het aantal clusters:<br />
-<img src="k-means-elbowdotpng.html" alt="400" /><br />
+<img src="K-means_elbow.png" alt="K-means_elbow.png" /><br />
 <strong>Aantal clusters K is daar waar de fout niet noemenswaardig meer zakt</strong>. In het voorbeeld hieronder: K=6 (knik in de curve). De ongelijkheid binnen de cluster neemt niet veel meer af (vanaf 6). </p>
 </div>
 

@@ -27,7 +27,7 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><p><a href="regression.html">Regression</a><br />
+      <div id="content"><p><a href="lineaire-regressie.html">Lineaire Regressie</a><br />
 <a href="anki.html">anki</a></p>
 
 <p>Q: Wat is lineaire regressie en wat is het verschil tss enkelvoudige en meervoudige lineaire regressie ?<br />
@@ -35,8 +35,8 @@ A:<br />
 Een linaire regressie model bepaalt een rechte die zo dicht mogelijk bij de trainingspunten ligt om een target waarde te kunnen bepalen bij een predictie.<br />
 Bij meervoudige linaire regressie heb je meerdere features waarmee je je model wil trainen. </p>
 
-<p>Q: Hoe bepaal je bij linaire regressie welke parameters de beste zijn ?<br />
-A: mbv kostenfunctie kan je bepalen welke parameters de beste zijn<br />
+<p>Q: Hoe bepaal je bij lineaire regressie welke rechte de beste is ?<br />
+A: mbv kostenfunctie kan je bepalen welke parameters de beste zijn en dan ook welke rechte de beste is.<br />
 <!--ID: 1609947287995--></p>
 
 <p>Q: Hoe zoek je uit wat de beste parameters zijn bij lineaire regressie ?<br />
@@ -50,6 +50,15 @@ A: Gradient descent is an iterative optimization algorithm to find the minimum o
 <p>Q: wat is de learning rate ?<br />
 A: <strong>Learning rate</strong> gives the <strong>rate</strong> of speed where the gradient moves during gradient descent. Setting it too high would make your path instable, too low would make convergence slow. Put it to zero means your model isn't <strong>learning</strong> anything from the gradients.<br />
 <!--ID: 1609947288102--></p>
+
+<p>Q: Wat is het verschil tss lokaal en globaal optimum bij Gradient Descent (GDS) ?<br />
+A: Optimization is the process of finding the point that minimizes a function. More specifically:</p>
+
+<ul>
+<li>A _local_ minimum of a function is a point where the function value is smaller than or equal to the value at nearby points, but possibly greater than at a distant point.</li>
+<li>A _global_ minimum is a point where the function value is smaller than or equal to the value at all other feasible points.<br />
+<!--ID: 1610706763747--></li>
+</ul>
 
 <p>Q: Hoe kan je onderlinge correlaties zoeken tss features ?<br />
 A: heatmap, pairplot<br />
@@ -69,15 +78,24 @@ A: MAE, MSE, R2<br />
 <!--ID: 1609947288123--></p>
 
 <p>Q: Wat is MAE ?<br />
-A: mean absolute error<br />
+A: <a href="mae.html">MAE</a> mean absolute error<br />
+        $MAE = \dfrac{1}{n}\sum^n_{i=1}|y_i - \hat{y_i}|$<br />
+        is het gemiddelde van de absolute waarden van het verschil tss de werkelijke waarden $y_i$ en de voorspelde waarden $\hat{y_i}$<br />
 <!--ID: 1609947288128--></p>
 
 <p>Q: Wat is MSE ? Wat is het voordeel tov MAE ?<br />
-A: mean squared error. hiermee gaan extreme cases slechter scoren<br />
+A: <a href="mse.html">MSE</a> mean squared error<br />
+        $MSE = \dfrac{1}{n}\sum^n_{i=1}(y_i - \hat{y_i})^2$<br />
+        is het gemiddelde van de gekwadrateerde waarden van het verschil tss de werkelijke waarden $y_i$ en de voorspelde waarden $\hat{y_i}$<br />
+        -> hiermee gaan extreme cases slechter laten scoren<br />
 <!--ID: 1609947288135--></p>
 
 <p>Q:  Wat is R2 ? Wat is een goede score ?<br />
-A: determinatiecëfficient. de score moet zo dicht mogelijk bij 1<br />
+A: <a href="r2.html">R2</a> determinatiecoëfficient<br />
+        $R^2 = 1 - \dfrac{\sum^n_{i=1}(y_i - \hat{y_i})^2}{\sum^n_{i=1}(y_i - \bar{y})^2}$<br />
+        zegt hoeveel van de variabiliteit verklaard wordt door het model. Perfecte voorspelling is $R^2$ = 1<br />
+        Een negavtieve waarde voor $R^2$ betekent dat het model slechter scroot dan een horizontale lijn ($y_i = \bar{y}$)<br />
+        -> score zo dicht mogelijk bij 1<br />
 <!--ID: 1609947288144--></p>
 
 <p>Q: wat is normalisatie van de features en waarom is van belang ?<br />
@@ -87,6 +105,38 @@ A: hiermee breng je alle features op dezelfde schaal, hierdoor gaat het trainen 
 <p>Q: hoe normaliseer je features ?<br />
 A: je gebruikt hiervoor een scaler (min-max, standard, robust)<br />
 <!--ID: 1609947288159--></p>
+
+<p>Q: Wat zijn de kenmerken van min-max scaler ?<br />
+A: - schaalt alle features tss 0 en 1</p>
+
+<ul>
+<li>werkt goed bij niet Gaussiaanse distributires en bij kleine variantie</li>
+<li>de scheefheid (skew) blijft bewaard</li>
+<li>gevoelig voor uitschieters<br />
+<!--ID: 1610707557527--></li>
+</ul>
+
+<p>Q: Wat zijn de kenmerken van standardscaler ?<br />
+A: - Geschaalde features:gemiddelde = 0 en standaardafwijking = 1.</p>
+
+<ul>
+<li>Geschaalde features schommelen rond 0 (soms nodig bij deep learning).</li>
+<li>Vervormt geen relatieve afstanden tussen de feature waarden.</li>
+<li>Kan beter overweg met uitschieters.</li>
+<li>Garandeert geen genormaliseerde data op exact dezelfde schaal.<br />
+<!--ID: 1610707557549--></li>
+</ul>
+
+<p>Q: Wat zijn de kenmerken van robust scaler ?<br />
+A: - Lijkt op MIN-MAX scaler maar gebruikt de interkwartielafstand ipv range.</p>
+
+<ul>
+<li>Houdt geen rekening met uitschieters.</li>
+<li>Gebruikt minder data bij het bepalen van de schaal.</li>
+<li>Range van de genormaliseerde data is groter dan bij MIN-MAX scaling.</li>
+<li>Garandeert geen genormaliseerde data op exact dezelfde schaal.<br />
+<!--ID: 1610707557561--></li>
+</ul>
 
 <p>Q: Wanneer kan je best welke scaler gebruiken ?<br />
 A: </p>
@@ -98,30 +148,49 @@ A: </p>
 </ul>
 
 <p>Q: wat kan feature engineering inhouden ?<br />
-A: feature normaliseren mbv scaler<br />
-nieuwe features toevoegen door combinaties te maken van features of door kwadraten toe te voegen<br />
-hogere orde features maken tot de 2de, 3de, 4de, ... macht<br />
-omzetten van labels naar aparte features<br />
-<!--ID: 1609947288173--></p>
+A: - feature normaliseren mbv scaler</p>
+
+<ul>
+<li>nieuwe features toevoegen door combinaties te maken van features of door kwadraten toe te voegen</li>
+<li>hogere orde features maken tot de 2de, 3de, 4de, ... macht</li>
+<li>omzetten van labels naar aparte features<br />
+<!--ID: 1609947288173--></li>
+</ul>
+
+<p>Q: Wat is het nut van hogere orde feaures ?<br />
+A: het verband tss features is niet altijd lineair en met de hogere machten kan er een betere rechte getrokken worden die meer aansluit bij de trainingsdata.<br />
+<!--ID: 1610708058050--></p>
 
 <p>Q: wat is one hot encoding ? hoe doe je dat ? waarom doe je dat ?<br />
 A: het omzetten van een label in aparte features zodat je een model kan trainen op een label. je kan een model namelijk niet trainen op labels (volkswagen, groente, hond, ... )<br />
 <!--ID: 1609947288181--></p>
 
 <p>Q: wat is underfitting, wat zegt dit over het model, waarom wil je dit vermijden en kan je dit vaststellen ?<br />
-A:  - model kan de trainingsdata niet modelleren<br />
-    - en ook niet generaliseren op nieuwe data<br />
-    - model is te eenvoudig<br />
-    - als de R2 score op de trainingset (en testet) slecht is (= slechter scoort dan gewoon gemiddelde van targetwaarde nemen) dan is er sprake van underfitting<br />
-<!--ID: 1609947288191--></p>
+A:  </p>
+
+<ul>
+<li>model kan de trainingsdata niet modelleren</li>
+<li>en ook niet generaliseren op nieuwe data</li>
+<li>model is te eenvoudig</li>
+<li>model met een <strong>hoge bias</strong></li>
+<li>als de R2 score op de trainingset (en testet) slecht is (= slechter scoort dan gewoon gemiddelde van targetwaarde nemen) dan is er sprake van underfitting<br />
+<!--ID: 1609947288191--></li>
+</ul>
 
 <p>Q: wat is overfitting, wat zegt dit over het model, waarom wil je dit vermijden en kan je dit vaststellen ?<br />
-A: - model benadert de trainingsdata te goed - scoort heel goed<br />
-    - maar scoort slechter op de testdata<br />
-    - model is te complex<br />
-    - als er veel features zijn dan is het moeilijker om overfitting te krijgen<br />
-    - als de R2 score op de trainingset veel beter scoort dan die op de testset  dan is er sprake van overfitting (trainingset score bijna 1 en testset veel lager of zelfs negatief)<br />
-<!--ID: 1609947288200--></p>
+A: </p>
+
+<ul>
+<li>model benadert de trainingsdata te goed - scoort heel goed  </li>
+<li>het model kan niet meer generaliseren  </li>
+<li>de <strong>ruis</strong> van de willekeurige fluctuaties in de data wordt opgepikt door het model  </li>
+<li>model met een <strong>hoge variance</strong>  </li>
+<li>maar scoort slechter op de testdata  </li>
+<li>model is te complex  </li>
+<li>als er veel features zijn dan is het moeilijker om overfitting te krijgen bij complex model</li>
+<li>als de R2 score op de trainingset veel beter scoort dan die op de testset  dan is er sprake van overfitting (trainingset score bijna 1 en testset veel lager of zelfs negatief)<br />
+<!--ID: 1609947288200--></li>
+</ul>
 
 <p>Q: welke regularisatie methoden heb je ?<br />
 A:  </p>
@@ -133,7 +202,8 @@ A:  </p>
 </ul>
 
 <p>Q: wat is regularisatie?<br />
-A: Om overfitting tegen te gaan kan je regularisatie gebruiken = term toevoegen aan de kosten functie $+\lambda_1\sum_{j=1}^{n} |\theta_j|$ (als $\theta$ stijgt wordt model afgestraft) Hierdoor zorg je ervoor dat je model zich niet vastrijdt in ruis.<br />
+A: Methode om de mate van bias van een hypothese te regelen en een goed evenwicht te vinden tussen underfitting en overfitting. Je kan een extra kostenterm  toevoegen die het gebruik van hogere orde features afstraft tenzij ze de globale kostenfunctie doen dalen.  $+\lambda_1\sum_{j=1}^{n} |\theta_j|$ (als $\theta$ stijgt wordt model afgestraft)<br />
+Dit om te vermijden dat het model zich vastrijdt in ruis in de data<br />
 <!--ID: 1609947288213--></p>
 
 <p>Q: Hoe bepaal je welke de beste $\alpha$ waarde is bij regularisatie ? Wat is het effect als je die zeer hoog of zeer laag zou zetten ?<br />
@@ -158,9 +228,18 @@ A: datapunten die ver buiten de gemiddelde waarden zitten kunnen het gevolg zijn
 A: ze kunnen edge cases bevatten of net die zeldzame data punten die je wil gebruiken voor je business case (fraud detectie, cybercrime, kanker detectie, ...)<br />
 <!--ID: 1609947288228--></p>
 
-<p>Q: hoe kan je uitschieters in je data opkuisen ?<br />
-A: data kuisen door alls selectreren binnen de 5 standaardafwijkingen rond het gemiddelde<br />
-<!--ID: 1609947288236--></p>
+<p>Q: hoe kan je uitschieters detecteren en in je data opkuisen ?<br />
+A: uitschieters niet altijd te bepalen obv 1 feature op zich maar een combinatie van features (die soms zeer zeldzaam zijn !)</p>
+
+<ul>
+<li>naïeve manier:<br />
+<ul><br />
+<li>uitzonderlijke waarden van 1 feature  &gt; waardoor die ver verwijderd zijn van gemiddelde waarde</li><br />
+<li>data kuisen door alles te selecteren binnen de 5 standaardafwijkingen rond het gemiddelde</li><br />
+<li>MAAR extreme waarden erin laten indien ze geen gevolg zijn van fouten (sensoren die niet goed waren, type fouten, ...)<br /><br />
+<!--ID: 1609947288236--></li><br />
+</ul></li>
+</ul>
 
 <p>Q: wat is een correlatie matrix en wat kan je er uit leren ?<br />
 A:  data analysts measure _correlation_ of two numerical variables to find an insight about their relationships. On a dataset with many attributes, the set of correlation values between pairs of its attributes form a matrix which is called a _correlation matrix_.<br />
@@ -179,15 +258,32 @@ als je features zou willen weglaten &gt; kijken naar features die weining invloe
 A: een pairplot genereert een matrix aan grafieken/plots die de correlatie tss features weergeeft. op hoofddiagonaal staan histograms (scatterplot met zichzelf zou rechte lijn geven) die geeft aan hoe de waarden van dat feature verdeeld zijn over de volledige value range. De andere plots zijn scatterplots.<br />
 <!--ID: 1609947288247--></p>
 
-<p>Q:<br />
-A: <span class="tag">todo</span><br />
+<p>Q: Wat is de formule voor L1 - Lasso regression ?<br />
+A: - Lasso Regression : L1 regularisatie = absolute waarde $\theta$<br />
+$J_L1 = \sum^n_{i=1}(target^{(i)} - output^{(i)}) + \lambda_1 \sum^m_{j=1}|\theta_j|$<br />
+!Opgelet! $\theta_0$ = bias wordt NIET geregulariseerd.<br />
 <!--ID: 1609947288254--></p>
+
+<p>Q: Wat is de formule voor L2 - Ridge Regression ?<br />
+A: Ridge Regression : L2 regularisatie = kwadraat van $\theta$ -> extreme waarden worden afgestraft<br />
+$J_L2 = \sum^n_{i=1}(target^{(i)} - output^{(i)}) + \lambda_2 \sum^m_{j=1}\theta^2_j$<br />
+!Opgelet! $\theta_0$ = bias wordt NIET geregulariseerd.<br />
+<!--ID: 1610708889214--></p>
+
+<p>Q: Wat is hyperparametertuning en hoe bepaal je het beste resultaat ?<br />
+A: “hyperparameter tuning is choosing a set of optimal hyperparameters for a learning algorithm” om dit te bepalen gebruiken we een kosten functie waarin we alpha kunnen laten varieren.<br />
+$\alpha$ :<br />
+    - zeer hoog =&gt; alle $\theta$ worden zeer laag of = 0, hoge bias, lage variantie (underfitting)<br />
+    - kleine waarde =&gt;  lage bias, hoge variantie (overfitting)<br />
+welke waarde voor $\alpha$ ?<br />
+    - bepaling : $\alpha$ laten variëren en $R^2$ score daar tegen zetten =&gt; optimum van $\alpha$ waar $R^2$ voor testset de hoogste waarde heeft<br />
+<!--ID: 1610708889237--></p>
 </div>
 
       <div class="backlinks">
 
 <ul>
-<li><a href="regression.html">Regression</a></li>
+<li><a href="lineaire-regressie.html">Lineaire Regressie</a></li>
 </ul>
 
 </div>

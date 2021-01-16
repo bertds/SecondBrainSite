@@ -27,10 +27,58 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><p></p>
+      <div id="content"><h1 id="hyperparameter-tuning">Hyperparameter tuning</h1>
+
+<p>Log Reg :</p>
+
+<p>C van 0.001 (underfitting) tot 1000 (overfitting) en we zoeken ideale C</p>
+
+<p>SVM :<br />
+kernel : lineair/RBF/poly<br />
+C : 0.01 &gt; 1000<br />
+gamma : 0.001 &gt; 0.5</p>
+
+<p>Je hebt alle mogelijke combinaties maar er is maar één die het beste model geeft.</p>
+
+<p><img src="kfold-cross-validation.html" alt="Kfold Cross Validation" /></p>
+
+<h3 id="grid-search">Grid search</h3>
+
+<p>per parametervariatie en cross validatie : </p>
+
+<ul>
+<li>veel modellen moeten getraind worden en gevalideerd worden</li>
+<li>veel rekenkracht nodig</li>
+</ul>
+
+<h3 id="random-search">Random Search</h3>
+
+<p>willekeurig een aantal combinaties proberen<br />
+10 combinaties en cross validatie :</p>
+
+<ul>
+<li>minder modellen -> minder rekentijd nodig</li>
+<li>geen tijd verliezen aan nodeloos rekenwerk voor bepaalde hyperparameters waarden. </li>
+</ul>
+
+<h3 id="bayes-searchoptimization">Bayes Search/Optimization</h3>
+
+<p>obv bekomen resultaten inschatten waar optimaal punt zou liggen<br />
+Voordeel : rekentijd onder controle en je kan naar vrij goed optimum gaan</p>
+
+<h3 id="hoe-rekentijd-verbeteren-oa-bij-gridsearch">Hoe rekentijd verbeteren ? oa bij GridSearch</h3>
+
+<p>Hyperparameterwaarden niet lineair laten varieren maar exponentieel of logaritmisch</p>
 </div>
 
-      
+      <div class="backlinks">
+
+<ul>
+<li><a href="support-vector-machines.html">Support Vector Machines</a></li>
+</ul>
+
+</div>
+
 
     </article>
   </div>

@@ -27,10 +27,66 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><p></p>
+      <div id="content"><h1 id="classificatie">Classificatie</h1>
+
+<p><a href="classification.html">Classification</a><br />
+<a href="q-classification.html">Q Classification</a></p>
+
+<h2 id="wat-is-classificatie">Wat is classificatie ?</h2>
+
+<p>Classificatie is een supervised learning techniek waarbij een getraind model niet geziene inputs toewijst aan één of meerdere gelabelde categorieën (classes)</p>
+
+<h3 id="toepassingen">Toepassingen</h3>
+
+<ul>
+<li>Gezichtsherkenning</li>
+<li>Nummerplaatherkenning</li>
+<li>Spam detectie</li>
+<li>Medische diagnoses</li>
+<li>Voorspelling of een klant op een advertentie zal klikken</li>
+<li>Kwaliteitscontrole</li>
+<li>...</li>
+</ul>
+
+<h2 id="types-van-classifiers">Types van classifiers</h2>
+
+<h3 id="binairy-binomial-classifier">Binairy (binomial) classifier</h3>
+
+<p>Verdeel de samples in twee verschillende klasses<br />
+<img src="binaireclassifier.png" alt="binaireclassifier.png" /></p>
+
+<h3 id="multiclass-classifier">Multiclass classifier</h3>
+
+<p>Verdeel de samples in drie of meerdere verschillende klasses Voorbeelden: gezichtsherkenning, sentiment analyse</p>
+
+<p><img src="multiclassclassifier.png" alt="multiclassclassifier.png" /></p>
+
+<h3 id="multilabel-classifier">Multilabel classifier</h3>
+
+<p>Er kunnen meerdere labels aan een sample toegewezen worden. Een sample kan tot meerdere klasses behoren</p>
+
+<p><img src="multilabelclassifier.png" alt="multilabelclassifier.png" /></p>
+
+<h4 id="classificatie-2">Classificatie</h4>
+
+<p>Bij classificatie is de output/target een (discrete) variabele/klasse</p>
+
+<h4 id="waarom-linaire-regressie-geen-goede-optie-is">Waarom linaire regressie geen goede optie is</h4>
+
+<p>Een lineaire regressie is geen goede optie om te classificeren omdat het een zwart/wit opdeling is. Het is gevoelig voor uitschieters waardoor rechten platter/stijler gaan liggen wat impact heeft op de scoring van de lagere waarden.<br />
+Je kan zelfs negatieve waarden uitkomen. </p>
+
+<p><img src="regressie_geen_goede_classifier.png" alt="regressie_geen_goede_classifier.png" /></p>
 </div>
 
-      
+      <div class="backlinks">
+
+<ul>
+<li><a href="logistic-regression.html">Logistic Regression</a></li>
+</ul>
+
+</div>
+
 
     </article>
   </div>

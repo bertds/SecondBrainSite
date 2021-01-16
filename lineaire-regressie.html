@@ -34,7 +34,7 @@ Date: 2020-11-21<br />
 Type: <a href="cursus-topic.html">Cursus topic</a><br />
 Related: <!-- Links to pages not referenced in the content --><br />
 Source :<br />
-Questionds : <a href="q-regression.html">Q Regression</a></p>
+Questionds : <a href="q-lineair-regression.html">Q Lineair Regression</a></p>
 
 <h2 id="notities">Notities</h2>
 
@@ -166,14 +166,15 @@ Een negavtieve waarde voor $R^2$ betekent dat het model slechter scroot dan een 
 <h4 id="underfitting-overfitting">Underfitting, Overfitting</h4>
 
 <ul>
-<li>underfitting<br />
+<li><strong>underfitting</strong><br />
 <ul><br />
 <li>model kan de trainingsdata niet modelleren</li><br />
 <li>en ook niet generaliseren op nieuwe data</li><br />
 <li>model is te eenvoudig</li><br />
 <li>model met een <strong>hoge bias</strong></li><br />
+<li>als de R2 score op de trainingset (en testet) slecht is (= slechter scoort dan gewoon gemiddelde van targetwaarde nemen) dan is er sprake van underfitting</li><br />
 </ul></li>
-<li>overfitting<br />
+<li><strong>overfitting</strong><br />
 <ul><br />
 <li>model benadert de trainingsdata te goed - scoort heel goed</li><br />
 <li>het model kan niet meer generaliseren</li><br />
@@ -181,8 +182,9 @@ Een negavtieve waarde voor $R^2$ betekent dat het model slechter scroot dan een 
 <li>model met een <strong>hoge variance</strong></li><br />
 <li>maar scoort slechter op de testdata</li><br />
 <li>model is te complex</li><br />
-<li>als er veel features zijn dan is het moeilijker om overfitting te krijgen bij complex model<br /><br />
-(zie ook <a href="regression#regularisatie.html">Regularisatie</a> )</li><br />
+<li>als er veel features zijn dan is het moeilijker om overfitting te krijgen bij complex model</li><br />
+<li>als de R2 score op de trainingset veel beter scoort dan die op de testset  dan is er sprake van overfitting (trainingset score bijna 1 en testset veel lager of zelfs negatief)<br /><br />
+(zie ook <a href="lineaire-regressie#regularisatie.html">Regularisatie</a> )</li><br />
 </ul></li>
 </ul>
 
@@ -194,7 +196,7 @@ Een negavtieve waarde voor $R^2$ betekent dat het model slechter scroot dan een 
 <li>naïeve manier:<br />
 <ul><br />
 <li>uitzonderlijke waarden van 1 feature  &gt; waardoor die ver verwijderd zijn van gemiddelde waarde</li><br />
-<li>data kuisen door alls selectreren binnen de 5 standaardafwijkingen rond het gemiddelde</li><br />
+<li>data kuisen door alles te selecteren binnen de 5 standaardafwijkingen rond het gemiddelde</li><br />
 <li>MAAR extreme waarden erin laten indien ze geen gevolg zijn van fouten (sensoren die niet goed waren, type fouten, ...)</li><br />
 </ul></li>
 </ul>
@@ -245,7 +247,7 @@ Dit om te vermijden dat het model zich vastrijdt in ruis in de data:</p>
 <ul>
 <li>Lasso Regression : L1 regularisatie = absolute waarde $\theta$<br />
 $J_L1 = \sum^n_{i=1}(target^{(i)} - output^{(i)}) + \lambda_1 \sum^m_{j=1}|\theta_j|$</li>
-<li>Rige Regression : L2 regularisatie = kwadraat van $\theta$ -> extreme waarden worden afgestraft<br />
+<li>Ridge Regression : L2 regularisatie = kwadraat van $\theta$ -> extreme waarden worden afgestraft<br />
 $J_L2 = \sum^n_{i=1}(target^{(i)} - output^{(i)}) + \lambda_2 \sum^m_{j=1}\theta^2_j$</li>
 </ul>
 
@@ -270,7 +272,7 @@ Met $\lambda$ bepaal je hoe hard regularisatie meespeelt ($\lambda$ in scikit le
 
 <ul>
 <li>waarden voor alpha 10000 wijst op underfitting. vooral het feit dat trainingsset slecht scoort wijst hierop.  </li>
-<li><p>waarden voor ahpha 0.01 wijst op overfitting en L2 score voor test set wijst erop dat het slechter scoort dan de gemiddelde prijs</p>
+<li><p>waarden voor alpha 0.01 wijst op overfitting en L2 score voor test set wijst erop dat het slechter scoort dan de gemiddelde prijs</p>
 
 <table>
 <thead>
@@ -304,7 +306,7 @@ Met $\lambda$ bepaal je hoe hard regularisatie meespeelt ($\lambda$ in scikit le
 
 <ul>
 <li><a href="ai-home.html">AI@home</a></li>
-<li><a href="q-regression.html">Q Regression</a></li>
+<li><a href="q-lineair-regression.html">Q Lineair Regression</a></li>
 </ul>
 
 </div>

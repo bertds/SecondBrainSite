@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://github.com/bertds">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><p><a href="svm.html">SVM</a><br />
+<a href="anki.html">anki</a></p>
+
+<p>Q: Wat is een SVM ?<br />
+A: Een SVM is een supervised ML algoritme dat zowel voor classificatie als regressie gebruikt kan worden. Classificatie gebeurt door het vinden van een hyper-plane die een optimale scheiding maakt tussen twee verschillende klasses. Het is een large margin classifier die de marche tss twee klasses zo groot mogelijk maakt bij bepalen van de scheidingslijn tss de klasses.<br />
+We kijken naar punten die dichtst bij elkaar liggen en daar proberen een scheidingslijn te kiezen die zover mogelijk van beide verwijderd is.<br />
+<!--ID: 1610788995176--></p>
+
+<p>Q: Hoe classicifeert een SVM ?<br />
+A: Gebruik volgende stappen : </p>
+
+<ul>
+<li>Zoek scheidingslijnen die de trainingset zo goed mogelijk scheiden</li>
+<li>Kies de scheidingslijn die de grootste afstand (margin) heeft tot de punten die er het dichtst bij gelegen zijn.</li>
+<li>De dichtstbij gelegen punten noemen we de support vectors</li>
+<li>SVM = Large margin classifier<br />
+<!--ID: 1610788995230--></li>
+</ul>
+
+<p>Q: Wat als de perfecte lineaire scheiding niet mogelijk is bij een SVM ?<br />
+A: Antwoord: Werken met een regularisatie parameter C<br />
+Afweging tussen correcte classificatie op training set en een grote marge tussen de klasses (large margin).<br />
+    - Grote C-waarde: constraints zijn moeilijk te negeren ⇒ smalle marge ⇒ zo min mogelijk classifier fouten<br />
+    - Kleine C-waarde: constraints kunnen makkelijker genegeerd worden ⇒ brede marge<br />
+<!--ID: 1610788995247--></p>
+
+<p>Q: Wat bij niet-lineair scheidbare gegevens bij een SVM ?<br />
+A: Oplossing: transformeer de data naar een hogere dimensie gevolgd door lineaire scheiding of  Projecteer de data in een hogere dimenensie en probeer lineair te scheiden (met een kernel)<br />
+<!--ID: 1610788995258--></p>
+
+<p>Q: Welke kernels kan je gebruiken bij een SVM ?<br />
+A: Meest gebruikte kernels:</p>
+
+<ul>
+<li><strong>RBF - Radial Basis Function (Gaussiaanse kernel)</strong></li>
+<li>Polynomial kernel  </li>
+<li>Histogram kernel  </li>
+<li><strong>Lineaire kernel = SVM zonder kernel</strong><br />
+<!--ID: 1610788995267--></li>
+</ul>
+
+<p>Q: Wat doet de parameter gamma bij een SVM en hoe zie je het effect ervan ?<br />
+A: Parameter gamma regelt de breedte van de RBF kernels</p>
+
+<ul>
+<li>Kleine gamma ⇒ brede RBF kernels. Te kleine gamma leidt ertoe dat het model de complexiteit van het model niet kan capteren (underfitting) (eenvoudiger model)</li>
+<li>Grote gamma ⇒ smalle RBF kernels. Te grote gamma leidt tot overfitting Bij gebruik van een RBF kernel: feature scaling (= normalisatie) toepassen (complexer model)<br />
+<!--ID: 1610788995274--></li>
+</ul>
+
+<p>Q: Wat mag je zeker niet vergeten bij SVM als je RBF-kernels gebruikt ?<br />
+A: feature scaling is toepassen ! de RBF-kernels zijn rond en als de features op verschillende schalen staan heb je elipsvormige kernels nodig.<br />
+<!--ID: 1610788995279--></p>
+
+<p>Q: Waarom zou je een SVM verkiezen ? Wat zijn de mogelijke nadelen ?<br />
+A: - Kan zowel gebruikt worden voor regressie als classificatie (en zelfs clustering)<br />
+    Bij classificatie kan je wel niet opvragen hoe zeker het model is van keuze classificatie !</p>
+
+<ul>
+<li>Werkt goed op kleine datasets (in tegenstelling tot neurale netwerken en deeplearning)</li>
+<li>Is nog altijd effectief wanneer het aantal features groter is dan het aantal training samples</li>
+<li>Het werkt goed bij een groot aantal features (high dimensional space)</li>
+<li>Gebruikt niet alle training examples tijdens training ⇒ geheugenefficiënt</li>
+<li>Geen lokale minima/optima, maar globaal optimum</li>
+<li>Gevoelig voor uitschieters zeker als ze in de buurt komen van de scheidingslijn want dan wordt uitschieter deel van supportvector en wordt scheidingslijn aangepast. Als je de marge echter groter neemt dan heeft uitschieter mindern een invloed op de scheidingslijn.<br />
+Nadeel : als je veel kernels hebt, heb je veel rekenkracht nodig.<br />
+<!--ID: 1610788995296--></li>
+</ul>
+
+<p>Q: Wanneer zou je SVM gebruiken en wanneer Logistic Regression ?<br />
+A: Wanneer welke classifier kiezen?</p>
+
+<ul>
+<li>Wanneer het aantal features groot is ten opzichte van het aantal training samples: gebruik logistic regression of SVM zonder kernel (= lineaire kernel)</li>
+<li>Wanneer het aantal features klein is en het aantal training samples behoorlijk: gebruik SVM met RBF kernel</li>
+<li>Bij een klein aantal features met een groot aantal training samples: creëer meer features en gebruik logistic regression of SVM zonder kernel (= lineaire kernel)<br />
+<!--ID: 1610788995304--></li>
+</ul>
+
+<p>Q: Als je valdatie wil gebruiken om je model te trainen, hoe splits je je data dan op ? Wat zijn de voor/nadelen als je je data in andere verhoudingen opsplitst ?<br />
+A: Je splitst je data op in :</p>
+
+<ul>
+<li>Training data: om model mee te trainen</li>
+<li>Validation data: tuning van hyper parameters en model selection</li>
+<li>Test data: uiteindelijke test van het best gevalideerde model op nog nooit geziene data<br />
+Bij het trainen splits je je data op in validatiedata en trainingsdata. Als je veel trainingsdata kiest (en dus minder validatiedata) dan is het beter getraind maar is de validatie minder betrouwbaar. Omgekeerd is het model minder goed getraind/slechtere accuracy maar wel beter gevalideert.<br />
+<!--ID: 1610788995317--></li>
+</ul>
+
+<p>Q: Welke classifier zou je verkiezen ? Bespreek<br />
+ <img src="svmwelkedotpng.html" alt="500" /><br />
+A: Bespreking : </p>
+
+<ul>
+<li>Beide scheiden de training data perfect  </li>
+<li>Het gaat er niet om welke er best presteert op de training data, maar wel op de test data</li>
+<li>De rechtse classifier is meer robuust<br />
+<!--ID: 1610789949167--></li>
+</ul>
+
+<p>Q: Een support vector machine werd 3 keer getraind met een RBF kernel, telkens met verschillende gamma waarden. De C-waarde was telkens hetzelfde. Rangschik de onderstaande plots (A, B, C) van kleine gamma waarde naar grote gamma waarde.<br />
+<img src="gammeRBFquestion.png" alt="gammeRBFquestion.png" /><br />
+A: A &lt; C &lt; B<br />
+<!--ID: 1610790423085--></p>
+</div>
+
+      <div class="backlinks">
+
+<ul>
+<li><a href="support-vector-machines.html">Support Vector Machines</a></li>
+</ul>
+
+</div>
+
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

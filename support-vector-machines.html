@@ -35,23 +35,149 @@ Type: <a href="cursus-topic.html">Cursus topic</a><br />
 Related: <!-- Links to pages not referenced in the content --><br />
 Source :  https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html</p>
 
-<h2 id="notities">Notities</h2>
+<p><a href="q-svm.html">Q SVM</a></p>
+
+<h2 id="wat-is-een-svm">Wat is een SVM ?</h2>
+
+<p>Een SVM is een supervised ML algoritme dat zowel voor classificatie als regressie gebruikt kan worden. Classificatie gebeurt door het vinden van een hyper-plane die een optimale scheiding maakt tussen twee verschillende klasses. Het is een large margin classifier die de marche tss twee klasses zo groot mogelijk maakt bij bepalen van de scheidingslijn tss de klasses.<br />
+We kijken naar punten die dichtst bij elkaar liggen en daar proberen een scheidingslijn te kiezen die zover mogelijk van beide verwijderd is. </p>
+
+<p><img src="svmdefdotpng.html" alt="400" /></p>
+
+<h3 id="welke-classifier-zou-je-verkiezen">Welke classifier zou je verkiezen ?</h3>
+
+<p><img src="svmwelkedotpng.html" alt="500" /></p>
+
+<ul>
+<li>Beide scheiden de training data perfect  </li>
+<li>Het gaat er niet om welke er best presteert op de training data, maar wel op de test data</li>
+<li>De rechtse classifier is meer robuust</li>
+</ul>
+
+<h3 id="hoe-een-svm-classificeert">Hoe een SVM classificeert</h3>
+
+<ul>
+<li>Zoek scheidingslijnen die de trainingset zo goed mogelijk scheiden</li>
+<li>Kies de scheidingslijn die de grootste afstand (margin) heeft tot de punten die er het dichtst bij gelegen zijn.</li>
+<li>De dichtstbij gelegen punten noemen we de support vectors</li>
+<li>SVM = Large margin classifier</li>
+</ul>
+
+<p><img src="svm-vectorsdotpng.html" alt="400" /></p>
+
+<h3 id="wat-als-de-perfecte-lineaire-scheiding-niet-mogelijk-is">Wat als de perfecte lineaire scheiding niet mogelijk is?</h3>
+
+<p>Antwoord: Werken met een regularisatie parameter C</p>
+
+<ul>
+<li>Afweging tussen correcte classificatie op training set en een grote marge tussen de klasses (large margin).<br />
+<ul><br />
+<li>Grote C-waarde: constraints zijn moeilijk te negeren ⇒ smalle marge ⇒ zo min mogelijk classifier fouten</li><br />
+<li>Kleine C-waarde: constraints kunnen makkelijker genegeerd worden ⇒ brede marge<br /><br />
+<img src="svmnietlineairdotpng.html" alt="400" /><br /><br />
+<img src="svmnietlineair2dotpng.html" alt="400" /></li><br />
+</ul></li>
+</ul>
+
+<h3 id="wat-bij-niet-lineair-scheidbare-gegevens">Wat bij niet-lineair scheidbare gegevens?</h3>
+
+<p>Oplossing: transformeer de data naar een hogere dimensie gevolgd door lineaire scheiding of  Projecteer de data in een hogere dimenensie en probeer lineair te scheiden (met een kernel)<br />
+<img src="svmnietlineair3dotpng.html" alt="600" /></p>
+
+<p>Meest gebruikte kernels:</p>
+
+<ul>
+<li><strong>RBF - Radial Basis Function (Gaussiaanse kernel)</strong></li>
+<li>Polynomial kernel  </li>
+<li>Histogram kernel  </li>
+<li><strong>Lineaire kernel = SVM zonder kernel</strong></li>
+</ul>
+
+<h5 id="voorbeeld">Voorbeeld</h5>
+
+<p>https://www.youtube.com/watch?v=3liCbRZPrZA<br />
+<img src="SVMkernel1.png" alt="SVMkernel1.png" /><br />
+<img src="SVMkernel2.png" alt="SVMkernel2.png" /></p>
+
+<p>Parameter gamma regelt de breedte van de RBF kernels</p>
+
+<ul>
+<li>Kleine gamma ⇒ brede RBF kernels. Te kleine gamma leidt ertoe dat het model de complexiteit van het model niet kan capteren (underfitting) (eenvoudiger model)</li>
+<li>Grote gamma ⇒ smalle RBF kernels. Te grote gamma leidt tot overfitting Bij gebruik van een RBF kernel: feature scaling (= normalisatie) toepassen (complexer model)</li>
+</ul>
+
+<p>feature scaling is toepassen ! de RBF-kernels zijn rond en als de features op verschillende schalen staan heb je elipsvormige kernels nodig. </p>
+
+<p><img src="SVMkernel3.png" alt="SVMkernel3.png" /><a href="ankivraag.html">ankivraag</a></p>
+
+<h3 id="hyperparameters">Hyperparameters</h3>
+
+<p>Implementeren van een SVM:  </p>
+
+<ul>
+<li>Test lineaire kernel (geen kernel) en RBF kernel  </li>
+<li>Tune de parameter C  </li>
+<li>Bij gebruik van RBF kernel: tune zowel de parameters C als gamma</li>
+</ul>
+
+<h3 id="motivatie-voor-het-gebruik-van-svm">Motivatie voor het gebruik van SVM</h3>
+
+<ul>
+<li>Kan zowel gebruikt worden voor regressie als classificatie (en zelfs clustering)<br />
+Bij classificatie kan je wel niet opvragen hoe zeker het model is van keuze classificatie !</li>
+<li>Werkt goed op kleine datasets (in tegenstelling tot neurale netwerken en deeplearning)</li>
+<li>Is nog altijd effectief wanneer het aantal features groter is dan het aantal training samples</li>
+<li>Het werkt goed bij een groot aantal features (high dimensional space)</li>
+<li>Gebruikt niet alle training examples tijdens training ⇒ geheugenefficiënt</li>
+<li>Geen lokale minima/optima, maar globaal optimum</li>
+<li>Gevoelig voor uitschieters zeker als ze in de buurt komen van de scheidingslijn want dan wordt uitschieter deel van supportvector en wordt scheidingslijn aangepast. Als je de marge echter groter neemt dan heeft uitschieter mindern een invloed op de scheidingslijn. </li>
+</ul>
+
+<p>Nadeel : als je veel kernels hebt, heb je veel rekenkracht nodig. </p>
+
+<h3 id="logistic-regression-vs-svm">Logistic regression vs SVM</h3>
+
+<p>Wanneer welke classifier kiezen?</p>
+
+<ul>
+<li>Wanneer het aantal features groot is ten opzichte van het aantal training samples: gebruik logistic regression of SVM zonder kernel (= lineaire kernel)</li>
+<li>Wanneer het aantal features klein is en het aantal training samples behoorlijk: gebruik SVM met RBF kernel</li>
+<li>Bij een klein aantal features met een groot aantal training samples: creëer meer features en gebruik logistic regression of SVM zonder kernel (= lineaire kernel)</li>
+</ul>
+
+<h3 id="validatie">Validatie</h3>
+
+<p><img src="crossvalidatie.png" alt="crossvalidatie.png" /></p>
+
+<ul>
+<li>Training data: om model mee te trainen</li>
+<li>Validation data: tuning van hyper parameters en model selection</li>
+<li>Test data: uiteindelijke test van het best gevalideerde model op nog nooit geziene data</li>
+</ul>
+
+<p>Bij het trainen splits je je data op in validatiedata en trainingsdata. Als je veel trainingsdata kiest (en dus minder validatiedata) dan is het beter getraind maar is de validatie minder betrouwbaar. Omgekeerd is het model minder goed getraind/slechtere accuracy maar wel beter gevalideert.</p>
+
+<h4 id="k-fold-cross-validation">K-fold cross validation</h4>
+
+<p><img src="kfold-cross-validation.html" alt="Kfold Cross Validation" /></p>
+
+<h4 id="gridsearch">Gridsearch</h4>
+
+<p>Gaat verschillende modellen / C waarde / gamma waarde maken en via validatie bepalen welke de beste is. </p>
+
+<p><img src="hyperparamtet-tuning.html" alt="Hyperparamtet tuning" /></p>
+
+<h2 id="python">Python</h2>
 
 <h3 id="import">Import</h3>
 
 <pre><code>from sklearn.svm import SVC
 </code></pre>
 
-<h3 id="wanneer-te-gebruiken">Wanneer te gebruiken</h3>
-
-<h3 id="hoe-gebruiken">Hoe gebruiken</h3>
-
 <h3 id="parameters">Parameters</h3>
 
 <p>ovo (one versus one) vs ovr/ova (one versus all/rest)<br />
     ovo is beter omdat die per 2 classes een classifier maakt en voor 10 claases dus 45 classifiers maakt terwijl ovr er maar 10 maakt (zie ook :   https://www.researchgate.net/post/Is-there-any-advantage-in-multiclass-classification-compared-to-binary-classification-if-both-are-possible)</p>
-
-<h2 id="vragen">Vragen</h2>
 </div>
 
       <div class="backlinks">

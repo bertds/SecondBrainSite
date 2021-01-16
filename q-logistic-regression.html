@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://github.com/bertds">GitHub</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><p><a href="logistic-regression.html">Logistic Regression</a><br />
+<a href="anki.html">anki</a></p>
+
+<p>Q: Wat is de formule voor probabiliteit bij Logistic Regression ?<br />
+A: $h_\theta(X) = \dfrac{1}{1 + e^{-z}}$<br />
+en z is de som van het product van de parameters en de variabelen<br />
+<!--ID: 1610721257135--></p>
+
+<p>Q: Welke processing steps neem je bij Logistic Regression ?<br />
+A: volgende stappen</p>
+
+<ul>
+<li>Data inlezen  </li>
+<li>Check op inconsistenties  </li>
+<li>Check uitschieters</li>
+<li>Plot de data  </li>
+<li>Splits op in features en targets  </li>
+<li>Verdeel in een training en test set</li>
+<li>trainen van logistic regression model</li>
+<li>classificeren van nieuwe sample</li>
+<li>visualiseer de decision boundary<br />
+<!--ID: 1610721300055--></li>
+</ul>
+
+<p>Q: Hoe vind je een goed evenwicht tss underfitting en overfitting bij LogisticRegression ?<br />
+A: via regularisatie<br />
+C = inverse regularisatie sterkte</p>
+
+<ul>
+<li>kleine waarden voor C zorgen voor een sterke regularisatie (underfitting)</li>
+<li>grote waarden voor C zorgen voor een zwakke regularisatie (overfitting)<br />
+<!--ID: 1610721257270--></li>
+</ul>
+
+<p>Q: Welke multi class classification heb je ? Leg uit wat de verschillen zijn.<br />
+A: er zijn er twee :</p>
+
+<ul>
+<li>one-vs-all<br />
+<ul><br />
+<li>classificatie per category</li><br />
+<li>gevoeliger voor niet gebalanceerde data</li><br />
+</ul></li>
+<li>one-vs-one<br />
+<ul><br />
+<li>$\frac{N (N-1)}{2}$ classifiers (N klasses)</li><br />
+<li>rekenintensief</li><br />
+<li>minder gevoelig voor niet gebalanceerde data<br /><br />
+<!--ID: 1610721310357--></li><br />
+</ul></li>
+</ul>
+
+<p>Q:  Wat is een confusion matrix en hoe is die opgebouwd ?<br />
+A: Well, it is a performance measurement for machine learning classification problem where output can be two or more classes. It is a table with 4 different combinations of predicted and actual values.<br />
+It is extremely useful for measuring Recall, Precision, Specificity, Accuracy and most importantly AUC-ROC Curve.<br />
+| CM | P' (predicted)|n' (predicted)|<br />
+| ---   | ---   | ---   |<br />
+| P (actual) | True positive | False negative |<br />
+| n (actual)| False positive | True negavtive|<br />
+<!--ID: 1610721827349--></p>
+
+<p>Q: Wat kan je afleiden uit een confusion matrix ? Wat zijn de formules hiervoor ?<br />
+A: Accuracy, Recall, Precision, F1 score :<br />
+Accuracy = $\dfrac{TP + TN}{TP + FP + FN + TN}$<br />
+Recall = $\dfrac{TP}{TP + FN}$<br />
+Precision = $\dfrac{TP}{TP + FP}$<br />
+F1 score = $\dfrac{2 * (Recall * Precision)}{Recall + Precision}$<br />
+<!--ID: 1610722467981--></p>
+
+<p>Q: Wat is niet gebalanceerde data ? Wat kan het effect zijn op een classifier ?<br />
+A: Het model gaat voorkeur geven aan category die vaak voorkomt<br />
+<!--ID: 1610723504973--></p>
+
+<p>Q: Hoe kan je voorkomen dat een classifier voorkeur gaat geven aan een klasse die minder voorkomt in de data ?<br />
+A: De mogelijkheden zijn :</p>
+
+<ul>
+<li>verzamel meer data van de minderheidsklasse</li>
+<li>undersampling : klasses uitbalanceren (data uit meerderheidsklasse verwijderen)<br />
+Nadeel : dat eigenschappen die in geschrapte data zaten gaan verloren</li>
+<li>oversampling : minderheidsklasse vermeerderen/copieren<br />
+Nadeel : geen nieuwe informatie toegevoegd</li>
+<li>andere scoring parameters/metric kiezen : model kiezen met beste F1 score, of recall ipv accuracy</li>
+<li>class weight balancing : misclassificatie van sample uit minderheidsklasse leiden in training tot hoger loss (meer afgestraft)</li>
+<li>data augmentation - SMOTE : from imblearn_over_samplng import Borderline.SMOTE<br />
+<!--ID: 1610723504989--></li>
+</ul>
+
+<p>Q: Wat is ROC ? en waarvoor gebruiken we het ?<br />
+A: ROC (Receiver Operating Characteristic) gebruiken we voor het evalueren van binaire classifiers. A graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied.<br />
+<!--ID: 1610723504998--></p>
+
+<p>Q: Wat is auROC ?<br />
+A: auROC (Area under ROC)<br />
+<!--ID: 1610723505015--></p>
+
+<p>Q: Wat is TPF en FPR ikv ROC ?<br />
+A: TPR (True Positive Rate) (= recall) en FPR (False Positive Rate). Op basis TPR en FPT wordt de ROC-curve bepaald.<br />
+<!--ID: 1610723505022--></p>
+
+<p>Q: Wat is ROC hell en ROC heaven ?<br />
+A: ROC hell is waar TPR = 0 en FPR = 1. ROC heaven is waar TPR = 1 en FPR = 0.<br />
+<!--ID: 1610723505030--></p>
+</div>
+
+      <div class="backlinks">
+
+<ul>
+<li><a href="logistic-regression.html">Logistic Regression</a></li>
+</ul>
+
+</div>
+
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

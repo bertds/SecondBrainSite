@@ -27,7 +27,165 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><p></p>
+      <div id="content"><h1 id="logistic-regression">Logistic Regression</h1>
+
+<p><a href="ai-journey-/classification.html">AI journey 🧠/Classification</a><br />
+<a href="classificatie.html">Classificatie</a></p>
+
+<p><a href="q-logistic-regression.html">Q Logistic Regression</a></p>
+
+<h2 id="het-model">Het model</h2>
+
+<p>$h_\theta(X)$ moet voldoen aan : $$0 \le h_\theta(X) \le 1$$</p>
+
+<ul>
+<li>$h_\theta(X)$ = de geschatte kans dat y=1 bij input x</li>
+<li>voorbeeld : $h_\theta(x)$ = 0.80<br />
+het model is voor 80% zeker dat het om een appel gaat</li>
+</ul>
+
+<p><img src="logreg_appel.png" alt="logreg_appel.png" /><br />
+<img src="logregappel2.png" alt="logregappel2.png" /><br />
+<img src="logregappel3.png" alt="logregappel3.png" /><br />
+<img src="logregappel4.png" alt="logregappel4.png" /><br />
+<img src="logregappel5.png" alt="logregappel5.png" /><br />
+<img src="logregappel6.png" alt="logregappel6.png" /><br />
+<img src="logregappel7.png" alt="logregappel7.png" /></p>
+
+<h3 id="processing">Processing</h3>
+
+<ul>
+<li>Data inlezen  </li>
+<li>Check op inconsistenties  </li>
+<li>Check uitschieters</li>
+<li>Plot de data  </li>
+<li>Splits op in features en targets  </li>
+<li>Verdeel in een training en test set</li>
+<li>trainen van logistic regression model</li>
+<li>classificeren van nieuwe sample</li>
+<li>visualiseer de decision boundary</li>
+</ul>
+
+<h3 id="feature-engineering">Feature engineering</h3>
+
+<p>niet lineair scheidbare dataset &gt; hogere orde features toevoegen met PolynomialFeatures()<br />
+ <img src="logreg_featureng3.png" alt="logreg_featureng3.png" /></p>
+
+<p><img src="logreg_featureng2.png" alt="logreg_featureng2.png" /></p>
+
+<h3 id="underfitting-en-overfitting">Underfitting en overfitting</h3>
+
+<p>Via regularisatie een goed evenwicht zoeken tussen underfitting en overfitting<br />
+In Scikit Learn linear_model.LogisticRegression</p>
+
+<p>C = inverse regularisatie sterkte</p>
+
+<ul>
+<li>kleine waarden voor C zorgen voor een sterke regularisatie (underfitting)</li>
+<li>grote waarden voor C zorgen voor een zwakke regularisatie (overfitting)</li>
+</ul>
+
+<p><img src="logreg_featureng1.png" alt="logreg_featureng1.png" /></p>
+
+<h3 id="multi-class-classification">Multi-class classification</h3>
+
+<h4 id="one-vs-all">One-vs-All</h4>
+
+<p>classificatie per category :</p>
+
+<ul>
+<li>gevoeliger voor niet gebalanceerde data</li>
+</ul>
+
+<p><img src="logreg_multiclass1.png" alt="logreg_multiclass1.png" /></p>
+
+<h4 id="one-vs-one">one-vs-one</h4>
+
+<p>$\frac{N (N-1)}{2}$ classifiers (N klasses) :</p>
+
+<ul>
+<li>rekenintensief</li>
+<li>minder gevoelig voor niet gebalanceerde data</li>
+</ul>
+
+<p><img src="logreg_multiclass2.png" alt="logreg_multiclass2.png" /></p>
+
+<h3 id="evaluatie-classifier">Evaluatie classifier</h3>
+
+<h4 id="confusion-matrix"><strong>confusion matrix</strong></h4>
+
+<table>
+<thead>
+<tr>
+  <th>CM</th>
+  <th>P' (predicted)</th>
+  <th>n' (predicted)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>P (actual)</td>
+  <td>True positive</td>
+  <td>False negative</td>
+</tr>
+<tr>
+  <td>n (actual)</td>
+  <td>False positive</td>
+  <td>True negavtive</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="evalclassifier1.png" alt="evalclassifier1.png" /></p>
+
+<p>Accuracy = $\dfrac{TP + TN}{TP + FP + FN + TN}$</p>
+
+<p>Recall = $\dfrac{TP}{TP + FN}$</p>
+
+<p>Precision = $\dfrac{TP}{TP + FP}$</p>
+
+<p>F1 score = $\dfrac{2 * (Recall * Precision)}{Recall + Precision}$</p>
+
+<p><img src="evalclassifier2.png" alt="evalclassifier2.png" /></p>
+
+<h3 id="niet-gebalanceerde-data">Niet gebalanceerde data</h3>
+
+<p>Het model gaat voorkeur geven aan category die vaak voorkomt</p>
+
+<h4 id="hoe-voorkomen">Hoe voorkomen ?</h4>
+
+<ul>
+<li>verzamel meer data van de minderheidsklasse</li>
+<li>undersampling : klasses uitbalanceren (data uit meerderheidsklasse verwijderen)<br />
+Nadeel : dat eigenschappen die in geschrapte data zaten gaan verloren</li>
+<li>oversampling : minderheidsklasse vermeerderen/copieren<br />
+Nadeel : geen nieuwe informatie toegevoegd</li>
+<li>andere scoring parameters/metric kiezen : model kiezen met beste F1 score, of recall ipv accuracy</li>
+<li>class weight balancing : misclassificatie van sample uit minderheidsklasse leiden in training tot hoger loss (meer afgestraft)</li>
+<li>data augmentation - SMOTE : from imblearn_over_samplng import Borderline.SMOTE</li>
+</ul>
+
+<h3 id="roc">ROC</h3>
+
+<p>recall = sensitivity<br />
+ROC (Receiver Operating Characteristic) -> evalueren binaire classifier<br />
+<img src="ROC1.png" alt="ROC1.png" /><br />
+<img src="ROC2.png" alt="ROC2.png" /><br />
+TPR (True Positive Rate) stijgt<br />
+FPR (False Positive Rate) daalt</p>
+
+<p>Als we de treshold aanpassen dan zien we voor 0.5 :<br />
+<img src="ROC3.png" alt="ROC3.png" /></p>
+
+<p>en voor 0.6 zien we dat de accuracy beter wordt (TPR gelijk, FPR daalt) :<br />
+<img src="ROC4.png" alt="ROC4.png" /></p>
+
+<p>dit doen we voor verschillende treshold waarden en krijgen zo de ROC-curve.<br />
+En hieruit ook de auROC (Area under ROC)<br />
+<img src="ROC5.png" alt="ROC5.png" /></p>
+
+<p>Hoe hoger auROC hoe beter het model is. (lagere FPR, hogere TPR)<br />
+Om ROC curve te kunnen gebruiken moet je wel met probabiliteiten kunnen werken (ook bij logreg) met je classificatie. </p>
 </div>
 
       <div class="backlinks">
@@ -36,6 +194,7 @@
 <li><a href="ai-home.html">AI@home</a></li>
 <li><a href="classification.html">Classification</a></li>
 <li><a href="q-classification.html">Q Classification</a></li>
+<li><a href="q-logistic-regression.html">Q Logistic Regression</a></li>
 </ul>
 
 </div>

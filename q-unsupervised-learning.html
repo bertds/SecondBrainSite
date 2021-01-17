@@ -40,17 +40,146 @@ A: - <em>Clustering</em> : Gelijksoortige gegevens zoeken</p>
 <!--ID: 1610223328101--></li>
 </ul>
 
-<p>Q:<br />
-A: </p>
+<p>Q: Welke algoritmes heb je voor clustering ?<br />
+A: De algoritmes zijn : </p>
 
-<p>Q:<br />
-A: </p>
+<ul>
+<li><a href="k-means-clustering.html">K-means clustering</a></li>
+<li><a href="hierarchische-clustering.html">Hierarchische clustering</a></li>
+<li><a href="som.html">SOM</a><br />
+<!--ID: 1610882854173--></li>
+</ul>
 
-<p>Q:<br />
-A:</p>
+<p>Q: Wat zijn de meest gebruikte algoritmes voor dimensionality reduction ?<br />
+A: De algoritmes zijn :</p>
 
-<p>Q:<br />
-A:</p>
+<ul>
+<li><a href="principle-component-analysis-pca-.html">Principle Component Analysis (PCA)</a> en Kernel PCA</li>
+<li>Linear Discriminant Analysis (LDA) </li>
+<li>Autoencoders  &gt;&gt;&gt; Deep learning</li>
+<li>Missing Values Ratio  </li>
+<li>Low variance filter<br />
+<!--ID: 1610882854289--></li>
+</ul>
+
+<p>Q: Waarom dimensionality reduction ?<br />
+A: Redenen zijn :</p>
+
+<ul>
+<li>The curse of dimensionality<br />
+Wanneer het aantal features zeer groot is, dan wordt het moeilijk om bepaalde algoritmes effectief te trainen. Bijvoorbeeeld clustering algoritmes.</li>
+<li>Visualisaties in 2D of 3D (features tot 2 of 3 beperken/samenvoegen zodat je het visueel terug kan voorstellen)</li>
+<li>Verwijderen van ruis</li>
+<li>Datacompressie<br />
+<!--ID: 1610882854306--></li>
+</ul>
+
+<p>Q: Wat zijn de eigenschappen van K-means clustering<br />
+A: eigenschappen :</p>
+
+<ul>
+<li>Eenvoudig en resultaten gemakkelijk interpreteerbaar.</li>
+<li>K-means vindt niet altijd het globale optimum (= beste oplossing).</li>
+<li>Uiteindelijke resultaat hangt af van initialisatie van de centroïden.<br />
+<ul><br />
+<li>Probeer verschillende intialisaties.</li><br />
+<li>Initaliseer eerste centroïdeop een willekeurig datapunt. Leg de tweede centroïde op een het datapunt dat zover mogelijk van het eerste is verwijderd, de derde centroïde zo ver mogelijke van de twee eerste, enzoverder</li><br />
+</ul></li>
+<li>Zeer gevoelig aan uitschieters.</li>
+<li>Problemen bij clusters met hetzelfde gemiddelde of niet-sferisch clusters (Oplossing: kernel k-means of spectral clustering)<br />
+<!--ID: 1610882854330--></li>
+</ul>
+
+<p>Q: Hoe bepaal je hoeveel clusters je nodig hebt bij K-means clustering ?<br />
+A: Strategie om het aantal clusters te bepalen</p>
+
+<ul>
+<li>Visuele inspectie van de datapunten (indien mogelijk). (business case kan aantal clusters ook al bepalen door voorafgaande analyse)</li>
+<li>Silhouette clustering.</li>
+<li><strong>Elbow method</strong><br />
+<!--ID: 1610882854352--></li>
+</ul>
+
+<p>Q: Wat is de Elbow method en waar gebruik je het ?<br />
+A: Wordt gebruikt voor het vinden van het aantal clusters:<br />
+Bepaal voor een verschillend aantal clusters de ’sum of squared error (SSE)'. De SSE de som van de gekwadrateerde afstanden tussen elk datapunt in een cluster en de centroïde van die cluster. (SSE is voor alle clusters samen !)<br />
+$$SSE = \sum^K_{i=1}\sum_{x\epsilon c_i} dist(x, c_i)^2$$<br />
+Elbow method voor het vinden van het aantal clusters:<br />
+<img src="K-means_elbow.png" alt="K-means_elbow.png" /><br />
+<strong>Aantal clusters K is daar waar de fout niet noemenswaardig meer zakt</strong>. In het voorbeeld hieronder: K=6 (knik in de curve). De ongelijkheid binnen de cluster neemt niet veel meer af (vanaf 6).<br />
+<!--ID: 1610882854375--></p>
+
+<p>Q: Hoe weet je dat punten bij elkaar horen bij K-means clustering ? Hoe bepaal je dat die gelijkenis hebben ?<br />
+A: Gelijkenis uitdrukken via een afstandsfunctie:</p>
+
+<ul>
+<li>Hoe dicht liggen trainingsamples qua afstand van elkaar in de feature space?</li>
+<li>Veel gebruikte afstandsmaat is de Euclidische afstand<br />
+<img src="euclidische_afstand.png" alt="euclidische_afstand.png" /><br />
+<!--ID: 1610883463442--></li>
+</ul>
+
+<p>Q: K-means clustering : Hoe ga je te werk voor punten van de clusters te bepalen als het aantal clusters vast ligt?<br />
+A: Je kan het aantal clusters bijv op voorhand vastleggen<br />
+initialiseer (al dan niet willekeurig) 4 centroïden (centrum van cluster)<br />
+iteratief proces : </p>
+
+<ul>
+<li>voor elk datapunt welk centroide ligt het dichtst bij : wijs datapunt toe aan centroide</li>
+<li>verplaats centroïde naar het gemiddelde van de datapunten toegewezen aan cluster van de centroïde</li>
+<li>terug naar eerste stap tenzij centroïde niet meer van plaats verandert<br />
+<img src="K-means_centroide.png" alt="K-means_centroide.png" /><br />
+<!--ID: 1610883463456--></li>
+</ul>
+
+<p>Q: Hoe bepaal je de clusters bij hierarchical clustering ?<br />
+A: voor het vinden van de clusters :<br />
+neem de 2 punten die het dichtst bij elkaar liggen tot een cluster (deze cluster is opnieuw een datapunt), neem dan de volgende twee datapunten en ga zo door tot je 1 cluster overhoud op hierarchisch het hoogste niveau.<br />
+<img src="hierarchicalclustering1.png" alt="hierarchicalclustering1.png" /><br />
+<img src="hierarchicalclustering2.png" alt="hierarchicalclustering2.png" /><br />
+<img src="hierarchicalclustering3.png" alt="hierarchicalclustering3.png" /><br />
+<!--ID: 1610883463467--></p>
+
+<p>Q: Wat zijn de sterkstes van hierarchical clustering ?<br />
+A: Die zijn :</p>
+
+<ul>
+<li>Geen vooropgesteld aantal clusters nodig. Elk gewenst aantal clusters kan bekomen worden door het dendrogram op de juiste plaats af te snijden.</li>
+<li>De structuur van het dendrogram kan nuttig zijn. Bijvoorbeeld in biologie, productcategorieën.<br />
+<!--ID: 1610883463481--></li>
+</ul>
+
+<p>Q: Hoe kan je de afstand tss twee clusters bepalen bij hierarchical clustering ?<br />
+A: Dat kan op volgende manier : </p>
+
+<ul>
+<li>single linkage - kleinste verschil zoeken<br />
+<img src="hierarchicalclustering_singlelinkage.png" alt="hierarchicalclustering_singlelinkage.png" /><br />
+$$L(r,s)=min(D(x_{ri},x_{sj}))$$</li>
+<li>complete linkage - grootste verschil zoeken<br />
+<img src="hierarchicalclustering_completelinkage.png" alt="hierarchicalclustering_completelinkage.png" /><br />
+$$L(r,s)=max(D(x_{ri},x_{sj}))$$</li>
+<li>average linkage<br />
+alle afstanden van alle punten en daar het gemiddelde van nemen &gt;&gt;&gt;  <strong>Rekenintensief !!</strong><br />
+Minder gevoelig voor uitschieters maar wel een voorkeur voor globale clusters<br />
+<img src="hierarchicalclustering_averagelinkage.png" alt="hierarchicalclustering_averagelinkage.png" /><br />
+$$L(r,s)=\dfrac{1}{n_r n_s}\sum^{n_r}_{i=1}\sum^{n_s}_{i=1}D(x_{ri},x_{sj}))$$<br />
+<!--ID: 1610883463491--></li>
+</ul>
+
+<p>Q: Is hierarchische clustering bruikbaar ? Wanneer wel/niet ?<br />
+A: Complexiteit van hierarchical clustering<br />
+Zeer rekenintensief:</p>
+
+<ul>
+<li>Het aantal berekeningen is minstens kwadratisch afhankelijk van het aantal datapunten.</li>
+<li><em>Niet bruikbaar voor grote datasets.</em> Goed voor kleine datasets om inzicht te krijgen maar <strong>niet bruikbaar voor grotere datasets (big data).</strong><br />
+<!--ID: 1610883613707--></li>
+</ul>
+
+<p>Q: Wat zijn SOM ?<br />
+A: SOM (Self organizing maps) of ook ’Kohonen Maps’ genoemd.  Wordt niet zoveel meer gebruikt. Competitie gebaseerde clustering. (= de 'neuronen' in het net gaan in competitie met elkaar als ze zich verplaatsen in de richting van het datapunt dat het dichtst bij hun ligt)<br />
+<!--ID: 1610883613821--></p>
 </div>
 
       <div class="backlinks">

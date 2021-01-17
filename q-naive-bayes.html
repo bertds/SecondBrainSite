@@ -60,6 +60,42 @@ eerst counts doen<br />
 fit op bag of words<br />
 <a href="naive-bayes#bag-of-words-varianten.html">Bag of words varianten</a><br />
 <!--ID: 1609005699320--></p>
+
+<p>Q: Wat is de Bayes regel ? Geef de formule en verklaar de delen.<br />
+A: $P(H|e) = \dfrac{P(e|H) P(H)}{P(e)}$<br />
+<em>Likelihood</em>: $P(e|H)$ How probable is the evidence given that our hypothesis is true ? (hypothese = de stelling die je maakt, evidence = features)<br />
+<em>Prior</em> : $P(H)$ How probable was our hypothesis before observing the evidence<br />
+<em>Posterior</em>: $P(H|e)$ How probable is our hypothesis given the observed evidence ? (Not directly computable)<br />
+<em>Marginal</em>: $P(e)$ How probable is the new evidence under all possible hypotheses ?<br />
+<!--ID: 1610879528995--></p>
+
+<p>Q: kans dat iemand kanker heeft bedraagt 1% =&gt; P(kanker) = 0.01<br />
+van een test is geweten :</p>
+
+<ul>
+<li>in 90% van de gevallen is de test positief als je effectief kanker hebt (sensitiviteit)</li>
+<li>in 90% van de gevallen is de test negatief als je geen kanker hebt (specifiteit)<br />
+VRAAG :<br />
+Als de test positief blijkt, wat is de kans dat je kanker hebt ?<br />
+A: $$P(kanker|positief) = \dfrac{P(positief|kanker) * P(kanker)}  {P(positief)}$$<br />
+$$P(kanker|positief) = \dfrac{0.9 * 0.01}{0.01 * 0.90 + 0.1 * 0.99} = 0.0833$$<br />
+<em>Prior</em> : $P(kanker)$: zonder de testresultaten te kennen, hoe waarschijnlijk is het dat iemand kanker heeft ?<br />
+<em>Likelihood</em>: $P(positief|kanker)$ hoe waarschijnlijk is het dat de test positief is wanneer de persoon effectief kanker heeft ?<br />
+<em>Marginal</em>: $P(positief)$ Hoe waarschijnlijk is het dat de test positief is ?<br />
+<em>Posterior</em>: $P(kanker|positief)$: Wat is de kans dat iemand effectief kanker heeft als de test positief blijkt ?<br />
+<!--ID: 1610879529286--></li>
+</ul>
+
+<p>Q: Wat is laplacian smoothing ? Waar gebruik je het ?<br />
+A: Laplacian smoothing (= add-one smoothing) : kent niet geziene woorden toch een zeker kans van voorkomen toe. Anders gaan je kans berekening bijv bij spam/ham beide op 0 komen door het onbekende woord.<br />
+$P(Ws) = \dfrac{C(Ws) + \alpha}{N + \alpha V}$<br />
+<!--ID: 1610880918169--></p>
+
+<p>Q: Wat is log likelihood ? Waar gebruik je het ?<br />
+A: Het vermenigvuldigen van veel kansen kan leiden tot floaing-point underlow. Dat kan je vermijden door het logaritme te bereken van het product, wat je kan vertalen in de som van de logaritmes :<br />
+$log(xy) = log(x) + log(y)$<br />
+log likelihood van Ham  en van Spam berekenen en grootste getal heeft meeste waarschijnlijkheid (dit is <em>geen</em> percentage)<br />
+<!--ID: 1610882854398--></p>
 </div>
 
       <div class="backlinks">

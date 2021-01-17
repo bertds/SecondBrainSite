@@ -29,10 +29,15 @@
     <article>
       <div id="content"><h1 id="logistic-regression">Logistic Regression</h1>
 
+<p>Tags: <span class="tag">AI</span><br />
+Date: 2020-12-30<br />
+Type: <a href="cursus-topic.html">Cursus topic</a><br />
+Related: <!-- Links to pages not referenced in the content --><br />
+Source :<br />
+Questions : <a href="q-logistic-regression.html">Q Logistic Regression</a></p>
+
 <p><a href="ai-journey-/classification.html">AI journey 🧠/Classification</a><br />
 <a href="classificatie.html">Classificatie</a></p>
-
-<p><a href="q-logistic-regression.html">Q Logistic Regression</a></p>
 
 <h2 id="het-model">Het model</h2>
 
@@ -150,20 +155,7 @@ In Scikit Learn linear_model.LogisticRegression</p>
 
 <h3 id="niet-gebalanceerde-data">Niet gebalanceerde data</h3>
 
-<p>Het model gaat voorkeur geven aan category die vaak voorkomt</p>
-
-<h4 id="hoe-voorkomen">Hoe voorkomen ?</h4>
-
-<ul>
-<li>verzamel meer data van de minderheidsklasse</li>
-<li>undersampling : klasses uitbalanceren (data uit meerderheidsklasse verwijderen)<br />
-Nadeel : dat eigenschappen die in geschrapte data zaten gaan verloren</li>
-<li>oversampling : minderheidsklasse vermeerderen/copieren<br />
-Nadeel : geen nieuwe informatie toegevoegd</li>
-<li>andere scoring parameters/metric kiezen : model kiezen met beste F1 score, of recall ipv accuracy</li>
-<li>class weight balancing : misclassificatie van sample uit minderheidsklasse leiden in training tot hoger loss (meer afgestraft)</li>
-<li>data augmentation - SMOTE : from imblearn_over_samplng import Borderline.SMOTE</li>
-</ul>
+<p><img src="niet-gebalanceerde-data.html" alt="Niet gebalanceerde data" /></p>
 
 <h3 id="roc">ROC</h3>
 

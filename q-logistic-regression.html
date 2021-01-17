@@ -111,7 +111,8 @@ Nadeel : dat eigenschappen die in geschrapte data zaten gaan verloren</li>
 Nadeel : geen nieuwe informatie toegevoegd</li>
 <li>andere scoring parameters/metric kiezen : model kiezen met beste F1 score, of recall ipv accuracy</li>
 <li>class weight balancing : misclassificatie van sample uit minderheidsklasse leiden in training tot hoger loss (meer afgestraft)</li>
-<li>data augmentation - SMOTE : from imblearn_over_samplng import Borderline.SMOTE<br />
+<li>data augmentation - SMOTE : from imblearn_over_samplng import Borderline.SMOTE</li>
+<li>drempelwaarde zelf kiezen : probability opvragen en zelf de grens trekken vanaf wanneer de minderheidsklasse gekozen wordt.<br />
 <!--ID: 1610723504989--></li>
 </ul>
 
@@ -123,8 +124,8 @@ A: ROC (Receiver Operating Characteristic) gebruiken we voor het evalueren van b
 A: auROC (Area under ROC)<br />
 <!--ID: 1610723505015--></p>
 
-<p>Q: Wat is TPF en FPR ikv ROC ?<br />
-A: TPR (True Positive Rate) (= recall) en FPR (False Positive Rate). Op basis TPR en FPT wordt de ROC-curve bepaald.<br />
+<p>Q: Wat is TPR en FPR ikv ROC ?<br />
+A: TPR (True Positive Rate) (= recall) en FPR (False Positive Rate). Op basis TPR en FPR wordt de ROC-curve bepaald.<br />
 <!--ID: 1610723505022--></p>
 
 <p>Q: Wat is ROC hell en ROC heaven ?<br />

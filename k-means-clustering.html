@@ -32,7 +32,7 @@
 <h3 id="wat-is-het">Wat is het ?</h3>
 
 <p>K-means clustering is een zeer populaire clustering techniek door zijn eenvoud.<br />
-(K = aantal clusters) (zowel op veel/weinig data en veel/weinig features) Voorbeeld: zoek gelijksoortige clusters in onderstaande data.</p>
+(K = aantal clusters) (zowel op veel/weinig data en veel/weinig features) </p>
 
 <h3 id="hoe-weet-je-dat-punten-bij-elkaar-horen-hoe-bepaal-je-dat-die-gelijkenis-hebben">Hoe weet je dat punten bij elkaar horen ? Hoe bepaal je dat die gelijkenis hebben ?</h3>
 
@@ -44,11 +44,9 @@
 <img src="euclidische_afstand.png" alt="euclidische_afstand.png" /></li>
 </ul>
 
-<h5 id="andere-manier">andere manier</h5>
+<h3 id="hoe-ga-je-te-werk-voor-punten-van-de-clusters-te-bepalen">Hoe ga je te werk voor punten van de clusters te bepalen ?</h3>
 
-<p>Hoe uitrekenen tussen de verschillende punten en dan weet je of bepaalde punten dichter bij elkaar liggen of niet. (zeker bij NLP, speech recognition)</p>
-
-<p>aantal clusters op voor hand vastleggen<br />
+<p>Je kan het aantal clusters bijv op voorhand vastleggen<br />
 initialiseer (al dan niet willekeurig) 4 centroïden (centrum van cluster)<br />
 iteratief proces : </p>
 
@@ -86,7 +84,7 @@ iteratief proces : </p>
 
 <h4 id="elbow-method">Elbow method</h4>
 
-<p>voor het vinden van het aantal clusters:<br />
+<p>Wordt gebruikt voor het vinden van het aantal clusters:<br />
 Bepaal voor een verschillend aantal clusters de ’sum of squared error (SSE)'. De SSE de som van de gekwadrateerde afstanden tussen elk datapunt in een cluster en de centroïde van die cluster. (SSE is voor alle clusters samen !)<br />
 $$SSE = \sum^K_{i=1}\sum_{x\epsilon c_i} dist(x, c_i)^2$$</p>
 
@@ -98,6 +96,7 @@ $$SSE = \sum^K_{i=1}\sum_{x\epsilon c_i} dist(x, c_i)^2$$</p>
       <div class="backlinks">
 
 <ul>
+<li><a href="q-unsupervised-learning.html">Q Unsupervised learning</a></li>
 <li><a href="unsupervised-learning.html">Unsupervised Learning</a></li>
 </ul>
 

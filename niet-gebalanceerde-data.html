@@ -38,43 +38,42 @@
 <h3 id="mogelijke-oplossingen">Mogelijke oplossingen</h3>
 
 <ul>
-<li><p>meer data van de minderheidsklasse bekomen. </p></li>
-<li><p>Over of Undersampling :</p>
-
-<ul>
-<li>Undersampling : deel van meerderheidsklasse wegsmijten. Nadeel is slechter getraind want model ziet minder trainingsdata</li>
-<li>Oversampling : Minderheidsklasse dupliceren. Nadeel is dat model niet slimmer wordt aangezien het dezelfde data is dat het te zien krijgt. </li>
-</ul></li>
-<li><p>Andere score kiezen :</p>
-
-<ul>
-<li>Ipv accuracy  bij Grid/RandomSearchCV gebruik je balanced accuracy. Hyperparameters gaan gekozen worden zodat model het beste scoort  op het gemiddelde van de recall.</li>
-</ul></li>
-<li><p>Class weight (model parameter) =&gt; Hierdoor gaat overall accuracy wel naar beneden. </p>
-
-<ul>
-<li>balanced - tijdens de training weegt slecht scoren op de minderheidsklasse zwaarder door dan slecht scoren op de meerderheidsklasse</li>
-<li>zelf classweights meegeven : {0:1 , 1:20}. </li>
-</ul></li>
-<li><p>Data augmentation </p>
-
-<ul>
-<li>SMOTE (Synthetic Minority Over-sampling Technique) :<br />
+<li><strong>meer data</strong> van de minderheidsklasse bekomen.</li>
+<li><strong>Undersampling</strong> : deel van meerderheidsklasse wegsmijten. Nadeel is slechter getraind want model ziet minder trainingsdata,  eigenschappen die in geschrapte data zaten gaan verloren</li>
+<li><strong>Oversampling</strong> : Minderheidsklasse dupliceren. Nadeel is dat model niet slimmer wordt aangezien het dezelfde data is dat het te zien krijgt, geen nieuwe informatie toegevoegd</li>
+<li><strong>Andere scoring parameters/metric</strong> kiezen :<br />
 <ul><br />
-<li>hij kijkt naar minderheidsklasse en gaat tussen de waarden van die klassen waarden toevoegen totdat er evenveel samples zijn in alle klasses. </li><br />
-<li>niet gebruiken bij NLP (tussenliggende woorden toevoegen gaat niet) wel bij typische excel data. </li><br />
+<li>Ipv accuracy  bij Grid/RandomSearchCV gebruik je balanced accuracy (F1-score of Recall). Hyperparameters gaan gekozen worden zodat model het beste scoort  op het gemiddelde van de recall.</li><br />
 </ul></li>
-<li>Image augmentation<br />
+<li><strong>Class weight</strong> (model parameter) =&gt; Hierdoor gaat overall accuracy wel naar beneden.<br />
 <ul><br />
-<li>obv bestaande images nieuwse maken door deze te draaien, spiegelen, ...</li><br />
+<li>balanced - tijdens de training weegt slecht scoren op de minderheidsklasse zwaarder door dan slecht scoren op de meerderheidsklasse of misclassificatie van sample uit minderheidsklasse leiden in training tot hoger loss </li><br />
+<li>zelf classweights meegeven : {0:1 , 1:20}. </li><br />
 </ul></li>
+<li><strong>Data augmentation</strong><br />
+<ul><br />
+<li><a href="smote.html">SMOTE</a> (Synthetic Minority Over-sampling Technique) :<br /><br />
+<ul><br /><br />
+<li>hij kijkt naar minderheidsklasse en gaat tussen de waarden van die klassen waarden toevoegen totdat er evenveel samples zijn in alle klasses. </li><br /><br />
+<li>niet gebruiken bij NLP (tussenliggende woorden toevoegen gaat niet) wel bij typische excel data. </li><br /><br />
+</ul></li><br />
+<li>Image augmentation<br /><br />
+<ul><br /><br />
+<li>obv bestaande images nieuwse maken door deze te draaien, spiegelen, ...</li><br /><br />
+</ul></li><br />
 </ul></li>
-<li><p>drempelwaarde zelf kiezen<br />
-probability opvragen van predictie model en zelf de grens trekken vanaf wanneer de minderheidsklasse gekozen wordt. bijv : predict_proba(), p(x=0) : 0.95, p(x=1) : 0.05 van zodra de drempel van 0.05 bereikt is toch laten kiezen voor 1 en niet voor 0.</p></li>
+<li><strong>drempelwaarde</strong> zelf kiezen : probability opvragen van predictie model en zelf de grens trekken vanaf wanneer de minderheidsklasse gekozen wordt. bijv : predict_proba(), p(x=0) : 0.95, p(x=1) : 0.05 van zodra de drempel van 0.05 bereikt is toch laten kiezen voor 1 en niet voor 0.</li>
 </ul>
 </div>
 
-      
+      <div class="backlinks">
+
+<ul>
+<li><a href="logistic-regression.html">Logistic Regression</a></li>
+</ul>
+
+</div>
+
 
     </article>
   </div>

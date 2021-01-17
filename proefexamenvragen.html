@@ -29,14 +29,38 @@
     <article>
       <div id="content"><p><a href="anki.html">anki</a></p>
 
+<p>Q: Bespreek twee manieren om overfitting tegen te gaan.<br />
+A: - meer trainingsdata gebruiken bijv bij NN</p>
+
 <ul>
-<li>Bespreek twee manieren om overfitting tegen te gaan.</li>
-<li>Bespreek het verschil tussen bagging en boosting</li>
-<li>Bespreek het verschil tussen regressie en classificatie. Geef van elk een voorbeeld.</li>
-<li>Bespreek een manier om overfitting op te sporen.</li>
-<li>Bespreek het nut van het gebruik van dropout bij neurale netwerken.</li>
-<li>Wat is er ‘naive’ aan naive Bayes?</li>
+<li>model complexer maken hogere orde features toevoegen</li>
+<li>dropouts bij NN</li>
+<li>C bijstellen bij Logistic Regression/SVM</li>
+<li>bij decision trees overschakelen op RFT</li>
+<li>learning rate verlagen (0.8 ipv 0.9) bij Gradient Boosting bij ensemble learning waardoor de invloed van de volgende modellen kleiner wordt en je overfitting voorkomt. </li>
+<li>kleinere gamma kiezen bij SVM<br />
+<!--ID: 1610897709966--></li>
 </ul>
+
+<p>Q: Bespreek het verschil tussen bagging en boosting<br />
+A: Bij boosting krijgen de datapunten die slecht scoren een hogere kans om bij het samenstellen van de volgende bag gekozen te worden. Bij bagging kunnen alle modellen parallel trainen, terwijl bij boosting dit sequentieel is omdat de predicties van de vorige modellen impact hebben op de keuze van de datapunten om op te trainen.<br />
+<!--ID: 1610897710123--></p>
+
+<p>Q: Bespreek het verschil tussen regressie en classificatie. Geef van elk een voorbeeld.<br />
+A: Bij regressie gaat het model een getal predicten (prijs van een huis) terwijl bij classificatie (hond of kat) het model gaat aangeven hoe waarschijnlijk het is dat de predictie een bepaald label/klasse is. Voor regressie zou je een SVM kunnen gebruiken en bij classificatie een RFT.<br />
+<!--ID: 1610897710142--></p>
+
+<p>Q: Bespreek een manier om overfitting op te sporen.<br />
+A: bij SVM bereken je de accuracy van je model zowel op trainingset als testset en als die op testset veel lager is dan op de trainingset heb je overfitting.<br />
+<!--ID: 1610897710158--></p>
+
+<p>Q: Bespreek het nut van het gebruik van dropout bij neurale netwerken.<br />
+A: Om te voorkomen dat een NN gaat overfitten kan je aangeven hoeveel procent dropout er is tijdens de training. Hiermee geef je aan hoeveel procent van de neuronen op non-actief moeten gezet worden tijdens de training. Hierdoor moeten de andere neuronen dit compenseren en gaan ze generieker ingesteld worden en voorkom je overfitting.<br />
+<!--ID: 1610897710176--></p>
+
+<p>Q: Wat is er ‘naive’ aan naive Bayes?<br />
+A: Bij Naive Bayes hou je geen rekening met de correlatie tss de features/woorden.<br />
+<!--ID: 1610897710193--></p>
 
 <p>Q: Welke bewering(en) zijn correct ivm het bag-of-words model bij natural language processing<br />
     1.  Het bag-of-words model houdt rekening met de volgorde van de woorden<br />

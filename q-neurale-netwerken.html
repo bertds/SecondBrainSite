@@ -51,24 +51,42 @@ A: De activatie functie bepaalt de output van de perceptron. Deze kan binair zij
 A: Feedforward Neuraal netwerk, LSTM (long short-term memory)<br />
 <!--ID: 1610223327942--></p>
 
+<p>Q: hoeveel input/hidden/ouput layers heb je nodig bij NN ?<br />
+A: Die worden meestal iets overgedimensioneerd (eerst meer neuronen en hidden layers)<br />
+bij  input ligt het aantal meestal vast = aantal features<br />
+bij output = afhankelijk van target (bij regressie maar 1 output, bij classificatie 1 neuron per klasse)<br />
+<!--ID: 1610895408552--></p>
+
+<p>Q: Wanneer heb je one hot encoding nodig in de output laag van NN ?<br />
+A: Bij classificatie moet je het verwachte label omzetten in een vector via one hot encoding.<br />
+<!--ID: 1610895408693--></p>
+
 <p>Q: Hoe is een feedforward neuraal netwerk opgebouwd ?<br />
-A: <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_020.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_020.jpg" /><br />
+A: unidirectioneel van input naar output (geen loops)<br />
+alle neuronen van een laag zijn verbonden met alle neuronen van de volgende laag<br />
+verbindingen = weights (= zwakke of sterke verbinding)<br />
+tijdens training worden de weights ingesteld<br />
+<img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_020.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_020.jpg" /><br />
 <!--ID: 1610223327951--></p>
 
 <p>Q: Wat is backpropagation learning bij neurale netwerken ?<br />
 A: een NN leert van achter naar voor, van output naar input. Obv de output van de neuronen wordt bepaald van welke neuronen het gewicht moeten bijgesteld om de beoogde output te hebben en dit wordt gedaan voor alle lagen van de NN.<br />
 <!--ID: 1610223327960--></p>
 
+<p>Q: Waarom mag je geen patroon gebruiken bij het initieel invullen van de weights van een NN ? En wat is dan de juiste manier ?<br />
+A: omdat dit er toe kan leiden dat je een symmetrie krijgt in je NN en dan heb je twee delen in je NN dat hetzelfde doet wat je natuurlijk wil vermijden. Je moet de weights daarom random invullen.<br />
+<!--ID: 1610895408707--></p>
+
 <p>Q: Hoe worden de gewichten bepaalt bij een NN ?<br />
 A: Initieel worden de gewichten random ingevuld en is de error functie zeer groot. Obv training (gradien descent met learning rate) worden de gewichten bijgesteld.<br />
 <!--ID: 1610223327969--></p>
 
 <p>Q: Wat is er mis bij een NN als de error functie niet zakt ?<br />
-A: je NN leert niet bij waarschijnlijk te wijten aan een te grote learning rate.<br />
+A: je NN leert niet bij waarschijnlijk te wijten aan een te grote learning rate. De weights worden te aggressief bijgesteld.<br />
 <!--ID: 1610223327978--></p>
 
 <p>Q: Waarom is de step functie niet goed als activatie functie bij een NN ?<br />
-A: Omdat die functie enkel 0 of 1 als output heeft waardoor de gradient descent niet weet welke kant die op moet en welke neuron verantwoordelijk is voor de error in de predictie.<br />
+A: Omdat die functie enkel 0 of 1 als output heeft waardoor de gradient descent bij backpropagation niet weet welke kant die op moet en welke neuron verantwoordelijk is voor de error in de predictie.<br />
 <!--ID: 1610223327986--></p>
 
 <p>Q: Waarom is de lineair function (Adaline) niet goed bij NN als activatiefunctie in hidden layer ? Waarom wel in de input layer ? In welke gevallen wel in de output layer ?<br />
@@ -95,6 +113,77 @@ A: Voor de hidden layer probeer je eerst ReLu, dan Leaky ReLu. Sigmoid en Tanh n
 <p>Q: Voor output layer bij een NN welke activatie functie moet je gebruiken voor regressie, classificatie ?<br />
 A: Voor de output layer lineair bij regressie. Softmax (meerdere klassen) / Sigmoid (1 klasse) bij classificatie.<br />
 <!--ID: 1610223328074--></p>
+
+<p>Q: Hoe krijg je underfitting/overfitting bij NN ?<br />
+A: Als de dataset te klein is gaat het NN alles van buiten leren en krijg je overfitting. Als het aantal hidden layers te klein is of er te weinig neuronen zijn gaat het model underfitten.<br />
+<!--ID: 1610895408723--></p>
+
+<p>Q: Wat kan je doen als je overfitting krijgt bij NN ?<br />
+A: </p>
+
+<ul>
+<li>meer data hebben is beter, meer variatie</li>
+<li>drop outs</li>
+<li>minder lagen definieren (opletten voor underfitting !)</li>
+</ul>
+
+<p>Q: Welke activatiefuncties kan je gebruiken bij NN en waar gebruik je die het beste voor ?<br />
+A: Beschikbare activatie functies:</p>
+
+<ul>
+<li>softmax &gt; output layer</li>
+<li>relu &gt; hidden layer</li>
+<li>sigmoid &gt; output layer</li>
+<li>tanh</li>
+<li>linear &gt; regression in output layer<br />
+<!--ID: 1610895408745--></li>
+</ul>
+
+<p>Q: Welke learning rate optimizer kan je bij NN gebruiken ?<br />
+A: Optimizers : </p>
+
+<ul>
+<li>_SGD_ + Nesterov (Stochastic Gradient Descent) !</li>
+<li>RMSProp: meer geschikt bij recurrent networks</li>
+<li>Adagrad</li>
+<li>_Adam_ !</li>
+<li>Adamax<br />
+<!--ID: 1610895408765--></li>
+</ul>
+
+<p>Q: Wat is een epoch bij NN ?<br />
+A: het aantal keer dat het neuraal netwerk de volledige training set te zien krijgt.<br />
+<!--ID: 1610895408783--></p>
+
+<p>Q: Wat zijn iterations bij NN ?<br />
+A: Het aantal keer dat de weights worden bijgesteld. Is gelijk aan het aantal epochs maal het aantal batches.<br />
+<!--ID: 1610895408804--></p>
+
+<p>Q: Wat vertelt batchsize ons bij NN ?<br />
+A: Het aantal samples dat het neuraal netwerk te zien krijgt vooraleer het de weights gaat updaten. Updaten van de weights gebeurt op basis van de gemiddelde fout van een batch.<br />
+<!--ID: 1610895408826--></p>
+
+<p>Q: In welke modus kan NN de trainingset verwerken ?<br />
+A: Modussen : </p>
+
+<ul>
+<li>Batchmode: De batchgrootte is gelijk aan het aantal trainingsamples.  </li>
+<li><strong>Mini-batchmode</strong> : De batches zijn groter dan 1 en kleiner dan het aantal trainingsamples. (bijv batch_size = 32 dan ga je 32 trainingsdata tonen aan model, kijken hoe goed het presteert en op basis daarvan gewichten bij stellen)</li>
+<li>Stochasticmode : de batch grootte = 1. Na elke trainingsample is er een update van de weights.<br />
+<!--ID: 1610895408840--></li>
+</ul>
+
+<p>Q: Wat zijn de voor- en nadelen van een kleine batch grootte(Mini-batchmode) ?<br />
+A: Voordeel : </p>
+
+<ul>
+<li>Kleine batches nemen minder geheugen in beslag.</li>
+<li>Meestal traint het netwerk sneller bij kleine batches.</li>
+<li>Kleinere batches geven sneller feedback.<br />
+Nadeel  : </li>
+<li>minder accurate schatting van de gradient. Netwerk stabiliseert zich op basis van de laatste training samples<br />
+<!--ID: 1610895408859--></li>
+</ul>
 </div>
 
       <div class="backlinks">

@@ -251,7 +251,9 @@ trainen : epochs, batch_size, </p>
 
 <h4 id="batch-size">BATCH SIZE</h4>
 
-<p><strong>Batchsize</strong>: Het aantal samples dat het neuraal netwerk te zien krijgt vooraleer het de weights gaat updaten. Updaten van de weights gebeurt op basis van de gemiddelde fout van een batch.</p>
+<p><strong>Batchsize</strong>: Het aantal samples dat het neuraal netwerk te zien krijgt vooraleer het de weights gaat updaten. Updaten van de weights gebeurt op basis van de gemiddelde fout van een batch. </p>
+
+<p>We kunnen de trainingset opsplitsen in 1 of meerdere batchen en naargelang de grote ervan noemen we die modus : </p>
 
 <ul>
 <li>Batchmode: De batchgrootte is gelijk aan het aantal trainingsamples.  </li>
@@ -259,7 +261,7 @@ trainen : epochs, batch_size, </p>
 <li>Stochasticmode : Debatch grootte = 1. Na elke trainingsample is er een update van de weights.</li>
 </ul>
 
-<p><em>Voor- en nadelen van een kleine batch grootte</em></p>
+<p>*Voor- en nadelen van een kleine batch grootte(Mini-batchmode) *</p>
 
 <ul>
 <li>Kleine batches nemen minder geheugen in beslag.</li>

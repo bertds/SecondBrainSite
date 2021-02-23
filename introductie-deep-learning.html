@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://bertds.github.io/SecondBrainSite/">Second Brain</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><h1 id="introductie-deep-learning">Introductie Deep Learning</h1>
+
+<p>Tags: <span class="tag">AI</span> <span class="tag">deeplearning</span><br />
+Date: 2021-02-19<br />
+Type: <a href="cursus-topic.html">Cursus topic</a><br />
+Related:<br />
+Source : </p>
+
+<h2 id="notities">Notities</h2>
+
+<p>Deep learning deel van Machine learning en maakt gebruik van Neurale Netwerken. (selfdriving cars, object detectie, detectie tumoren, google translate, ... )</p>
+
+<h3 id="waarom-deep-learning">Waarom Deep Learning ?</h3>
+
+<ol>
+<li><p>Bij deep learning wordt je model beter en beter als je meer data hebt om te trainen maar bij ouder machine learn algoritmes treed er op een gegeven moment saturatie op en worden die modellen niet beter met meer trainingsdata.  </p>
+
+<p>Waarom dan niet altijd deep learning toepassen ?<br />
+Als je weinig data hebt dan gaan klassieke methodes betere predicties doen dan een NN. Dit komt omdat een NN veel parameters heeft en die moeten allemaal ingesteld worden.<br />
+Klassieke methodes gaan meer inzicht geven hoe predicties tot stand zijn gekomen. Bij NN is dit veel moeilijker of onmogelijk. Bij veel sectoren willen ze reden kennen waarom predictie niet goed is. (bijv banken, medische wereld)</p></li>
+<li><p>De NN zijn zelf in staat tot feature extraction, volledige pipeline van ruwe data tot predicties doet model zelf. Bij de oude modellen moest je bijv zelf feature extraction programmeren en daar kruipt 90% van je tijd in. END-TO-END machine learning. De fundamenten zijn al langer gelegd (jaren 40-60) maar nu veel rekenkracht en data. </p></li>
+</ol>
+
+<h3 id="verschillende-architecturen">Verschillende architecturen</h3>
+
+<ul>
+<li>Convolutional Neural Networks (CNN) &gt; image recognition</li>
+<li>Capsule Network (CapsNet) </li>
+<li>Restricted Boltzmann Machine (RBM) - verouderd</li>
+<li>Autoencoder (AE) &gt; input reconstrueren (bijv compressie/decompressie, ruis uit afbeeldingen, recommendation system)</li>
+<li>Deep Belief Nets (DBN) </li>
+<li>Recurrent Neural (Tensor) Network (RNTN)</li>
+<li>Long Short Term Memory (LSTM)             </li>
+<li>Gated Recurrent Unit nets (GRU)<br />
+RNTN + LSTM + GRU &gt; NN met geheugen, predicties doen op time-series (= data waarbij volgorde van belang is)</li>
+<li>Generatative Adversarial Nets (GAN) &gt; realistische data genereren</li>
+</ul>
+
+<p><a href="neurale-netwerken.html">Neurale Netwerken</a></p>
+
+<p>Kracht van NN is dat het laag na laag features gaat bij creeëren. De output van de ene neuron is een nieuwe feature die input is voor de volgende neuron. Hogere orde features worden door NN zelf aangemaakt.<br />
+Meer neuronen, meer lagen &gt; complexere scheidingslijnen. </p>
+
+<p>Wanneer spreken we van deep learning ?<br />
+Als er meerdere hidden layers zijn in een NN. Vanaf 2, 3, ... hidden layers spreek je van deep learning. </p>
+
+<p>Klassieke NN zijn feedforward. Informatie stroomt van input naar output in 1 richting. </p>
+
+<h4 id="mnist">MNIST</h4>
+
+<p>input layer met 784 (28x28 pixels) neuronen<br />
+nomalisatie door pixel waarde te delen door 255.0<br />
+deze is nodig voor de activatie functie (waarde tss -1 en +1)<br />
+output layer : 10 verschillende klasses met zekerheidspercentage per klasse</p>
+
+<p>NN niet veel voor regressie gebruikt maar eerder voor classificatie. </p>
+
+<p>Als je meer dan 2 klasses hebt moet je meerdere ouput neuronen hebben. </p>
+
+<h2 id="vragen">Vragen</h2>
+
+<p><!-- Welke vragen staan open ? --><br />
+- </p>
+</div>
+
+      <div class="backlinks">
+
+<ul>
+<li><a href="ai-home.html">AI@home</a></li>
+</ul>
+
+</div>
+
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

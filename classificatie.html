@@ -77,6 +77,12 @@
 Je kan zelfs negatieve waarden uitkomen. </p>
 
 <p><img src="regressie_geen_goede_classifier.png" alt="regressie_geen_goede_classifier.png" /></p>
+
+<h4 id="hoe-kan-je-treshold-zelf-bepalen">Hoe kan je treshold zelf bepalen ?</h4>
+
+<p><img src="predict_proba_ex.png" alt="predict_proba_ex.png" /></p>
+
+<p>Je traint LogReg en mbv predict_proba() kan je de probability opvragen dat het model geeft bij elk label. Indien het label voor de minderheidsklasse bijv 0.13 geeft dan kan je je treshold op 0.10 zetten zodat het model toch de kwaadaardige label verkiest. </p>
 </div>
 
       <div class="backlinks">

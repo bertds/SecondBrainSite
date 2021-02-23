@@ -30,9 +30,10 @@
       <div id="content"><p><a href="anki.html">anki</a></p>
 
 <p>Q: Bespreek twee manieren om overfitting tegen te gaan.<br />
-A: - meer trainingsdata gebruiken bijv bij NN</p>
+A: de mogelijkheden zijn :</p>
 
 <ul>
+<li>meer trainingsdata gebruiken bijv bij NN, model gaat meer gevraieerde data zien, gaat niet zo makkelijk de data vanbuiten kunnen leren</li>
 <li>model complexer maken hogere orde features toevoegen</li>
 <li>dropouts bij NN</li>
 <li>C bijstellen bij Logistic Regression/SVM</li>
@@ -43,7 +44,12 @@ A: - meer trainingsdata gebruiken bijv bij NN</p>
 </ul>
 
 <p>Q: Bespreek het verschil tussen bagging en boosting<br />
-A: Bij boosting krijgen de datapunten die slecht scoren een hogere kans om bij het samenstellen van de volgende bag gekozen te worden. Bij bagging kunnen alle modellen parallel trainen, terwijl bij boosting dit sequentieel is omdat de predicties van de vorige modellen impact hebben op de keuze van de datapunten om op te trainen.<br />
+A: Bagging en boosting zijn beide ensemble methodes. Beide nemen slechts een random deel van de trainingset (met teruglegging) om een nieuw model te trainen.  Aangezien de modellen bij bagging onafhankelijk van elkaar zijn kunnen de modellen in parallel getraind worden. Indien de modellen voor een bepaalde klasse slecht score gaat bagging hier niets aan veranderen.<br />
+Bij boosting echter wordt dit laatste wel opgelost door die data elementen die verkeerd gescoord werden een groter gewicht toe te kennen om geselecteerd te worden voor de bag van het volgende model. Hierop wordt er op die datapunten meer getraind. Het gevolg is dat de accuraatheid van boosting beter is dan bij bagging.<br />
+Mogelijk nadeel hierbij kan zijn dat er overfitting optreed omdat het ensemble elk datapunt probeert goed te krijgen en dus ook de ruis van die datapunten meeneemt in de modellen.<br />
+Aangezien de kans op selectie na elke training moet bijgesteld worden  kunnen de modellen dus enkel sequentieel getraind worden bij boosting in tegenstelling tot bagging waar dit parallel kon gebeuren.<br />
+RFT vb van bagging<br />
+Adaboost, XGBoost, GradientBoost als boosting vb<br />
 <!--ID: 1610897710123--></p>
 
 <p>Q: Bespreek het verschil tussen regressie en classificatie. Geef van elk een voorbeeld.<br />
@@ -87,7 +93,7 @@ A: 2<br />
 
 <p>Q: Een model voorspelt of een tumor al dan niet kwaadaardig is. Na testen van het model bekom je onderstaande confusion matrix.<br />
 <img src="confusionmatrixquestion.png" alt="confusionmatrixquestion.png" /><br />
-Welke bewering(en) kloppen niet met betrekking tot deze confusion matrix?</p>
+Welke bewering(en) kloppen NIET met betrekking tot deze confusion matrix?</p>
 
 <ol>
 <li>De accuraatheid is hoger dan 90%</li>

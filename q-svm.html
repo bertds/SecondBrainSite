@@ -132,6 +132,64 @@ A: Bespreking : </p>
 <img src="gammeRBFquestion.png" alt="gammeRBFquestion.png" /><br />
 A: A &lt; C &lt; B<br />
 <!--ID: 1610790423085--></p>
+
+<p>Q: Wat is K-fold cross validation ? Wanneer gebruik je het ? Wat is een nadeel ?<br />
+A: Cross-validation is a resampling procedure used to evaluate machine learning models on a limited data sample.<br />
+The procedure has a single parameter called k that refers to the number of groups that a given data sample is to be split into.<br />
+_Voor verschillende K-waarden kan je andere resultaten krijgen dus interessant om dat ook te laten wisselen._<br />
+Zeker gebruiken als je weining trainingsdata hebt tov het aantal features<br />
+Zoeken naar optimale hyperparameters<br />
+Nadeel : testdata voor model (hier is dat de validatiedata) lekt door in model omdat je traint op alle data.<br />
+<!--ID: 1611169920510--></p>
+
+<p>Q: K-folds vs RandomSplit wat is het verschil  ?<br />
+A: K folds comprises in creating K subsamples. Because you now have a more significant number of samples (instead of 2), you can separate one of the subsamples for testing and the remaining subsamples for training, do this for every possible combination of testing/training folds and average the results. This is known as <strong>cross-validation</strong>. Doing K-fold cross-validation is like doing a (not random) split k times, and then averaging. _A small sample might not benefit from k-fold cross-validation, while a large sample usually always do benefit from cross-validation._ A <strong>random split is a more efficient (faster)</strong> way of estimating, but _might be more prone to sampling bias than k-fold cross-validation._ Combining stratification and random split is an attempt to have an effective and efficient sampling strategy that preserves label distribution.<br />
+<!--ID: 1611169972229--></p>
+
+<p>Q: Wat is ShuffleSplit ?<br />
+A: In ShuffleSplit, <strong>the data is shuffled every time</strong>, and then split. This means <strong>the test sets may overlap</strong> between the splits.<br />
+<!--ID: 1611169921199--></p>
+
+<p>Q: Wat is StratifiedKFold ?<br />
+A: StratifiedKFold is a variation of KFold. First, <strong>StratifiedKFold shuffles your data, after that splits the data into n_splits parts and Done.</strong> Now, it will use each part as a test set. Note that it only and always shuffles data one time before splitting.<br />
+With shuffle = True, the data is shuffled by your random_state. Otherwise, the data is shuffled by np.random (as default). For example, with n_splits = 4, and your data has 3 classes (label) for y (dependent variable). 4 test sets cover all the data without any overlap.<br />
+<!--ID: 1611169921220--></p>
+
+<p>Q: Wat is StratifiedShuffleSplit ?<br />
+A: On the other hand, StratifiedShuffleSplit is a variation of ShuffleSplit. First, StratifiedShuffleSplit shuffles your data, and then it also splits the data into n_splits parts. However, it's not done yet. After this step, StratifiedShuffleSplit picks one part to use as a test set. Then it repeats the same process n_splits - 1 other times, to get n_splits - 1 other test sets. Look at the picture below, with the same data, but this time, the 4 test sets do not cover all the data, i.e there are overlaps among test sets.<br />
+<!--ID: 1611169921238--></p>
+
+<p>Q: Verschil StratifiedKFold en StratifiedShuffleSplit ? Wat betekent Stratified ?<br />
+A: So, the difference here is that StratifiedKFold just shuffles and splits once, therefore the test sets do not overlap, while StratifiedShuffleSplit shuffles each time before splitting, and it splits n_splits times, the test sets can overlap.<br />
+Note: the two methods uses "stratified fold" (that why "stratified" appears in both names). It means each part preserves the same percentage of samples of each class (label) as the original data.<br />
+<!--ID: 1611169921253--></p>
+
+<p>Q: Wat is Grid search ? Voor/nadelen ?<br />
+A: per parametervariatie en cross validatie :</p>
+
+<ul>
+<li>veel modellen moeten getraind worden en gevalideerd worden</li>
+<li>veel rekenkracht nodig<br />
+<!--ID: 1611169921276--></li>
+</ul>
+
+<p>Q: Wat is Random Search ? Voor/nadelen ?<br />
+A: willekeurig een aantal combinaties proberen<br />
+10 combinaties en cross validatie :</p>
+
+<ul>
+<li>minder modellen -> minder rekentijd nodig</li>
+<li>geen tijd verliezen aan nodeloos rekenwerk voor bepaalde hyperparameters waarden.<br />
+<!--ID: 1611169921299--></li>
+</ul>
+
+<p>Q: Hoe rekentijd verbeteren ? oa bij GridSearch<br />
+A: Hyperparameterwaarden niet lineair laten varieren maar exponentieel of logaritmisch<br />
+<!--ID: 1611169921319--></p>
+
+<p>Q: Split (Holdout) vs RandomSplit : wat is het en wat zijn de verschillen?<br />
+A: Split vs Random Split. <strong>A split is just a split</strong>, usually for the purpose of having separate training and testing subsamples. But taking the first X% for a subsample and the remaining for another subsample _might not be a good idea because it can introduce very high bias._ There is where <strong>random split</strong> comes into play, by <strong>introducing randomness for the subsampling</strong>.<br />
+<!--ID: 1611169921336--></p>
 </div>
 
       <div class="backlinks">

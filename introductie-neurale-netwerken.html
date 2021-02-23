@@ -76,11 +76,13 @@ De activatie functie kan een binaire output geven (ja/neen), een getal/percentag
 
 <p><img src="NN_perceptron2.png" alt="NN_perceptron2.png" /></p>
 
+<p>Activatie functie Sigmoid geeft een waarschijnlijkspercentage terug. </p>
+
 <h4 id="kenmerken-neuraal-netwerk">Kenmerken Neuraal netwerk</h4>
 
 <ul>
 <li>netwerk architectuuur</li>
-<li>leeralgoritme</li>
+<li>leeralgoritme (meestal Back Propagation)</li>
 <li>activatiefuncties</li>
 </ul>
 
@@ -107,14 +109,19 @@ tijdens training worden de weights ingesteld<br />
 
 <p>hoeveel hidden layers heb je nodig ?<br />
 meestal iets overdimensioneren (eerst meer neuronen en hidden layers)<br />
+hierbij heb je wel de kans dat er overfitting is en dit wordt nadien bijgesteld door technieken zoals dropout toe te passen.<br />
 aantal input ligt meestal vast = aantal features<br />
 output = afhankelijk van target (bij regressie maar 1 output, bij classificatie 1 neuron per klasse)<br />
 sigmoit functie :  $\dfrac{1}{1 + e^{-z}}$ = de kans op een bepaald label<br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_022.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_022.jpg" /></p>
 
+<p>Hoeveel weights moet je instellen voor dit NN ?<br />
+<img src="neuraal_netwerk.png" alt="neuraal_netwerk.png" /><br />
+Antwoord : 41 (ook de Bias weights/parameters die binnen komen in elk neuron van de hidden en output layer meetellen ! )</p>
+
 <h5 id="one-hot-encodingone-hot-encodinghtml"><a href="one-hot-encoding.html">one hot encoding</a></h5>
 
-<p>Bij classificatie moet je de verwachte output/label omzetten in een vector (door one hot encoding). Je stelt hier per output neuron wat de waarde moet zijn. Als model aangeeft dat voor dat label de kans 0.2 is maar in target value staat er dan dat dit eigenlijk 0 moest zijn. Als model aangeeft dat het 0.8 is maar in target value staat dat het  1 moet zijn dan moet de gewichten in het model bijgesteld worden om dit meer te benaderen.<br />
+<p>Bij classificatie moet je de verwachte output/label omzetten in een vector (door one hot encoding). Bij LogReg of SVM kon je nog de waarde van het label zelf meegeven maar bij NN gaat dit niet. Je stelt hier per output neuron wat de waarde moet zijn. Als model aangeeft dat voor dat label de kans 0.2 is maar in target value staat er dan dat dit eigenlijk 0 moest zijn. Als model aangeeft dat het 0.8 is maar in target value staat dat het  1 moet zijn dan moet de gewichten in het model bijgesteld worden om dit meer te benaderen.<br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_025.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_025.jpg" /><br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_026.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_026.jpg" /><br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_027.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_027.jpg" /></p>
@@ -154,7 +161,8 @@ Ook bij output layer bij regressie aangezien je het eindresultaat niet wil beper
 
 <h6 id="sigmoid"><strong>Sigmoid</strong></h6>
 
-<p>nu enkel nog voor output gebruikt, niet voor hidden layers<br />
+<p>= logistische functie<br />
+nu enkel nog voor output gebruikt, niet voor hidden layers<br />
 berekening zwaarder, en vanishing gradient problem : uitlopers veranderen praktisch niet waardoor gradient descent bijna niet meer kan bepalen in welke richting die moet evolueren.<br />
 <em>enkel nog gebruiken voor output layer omdat je hiermee kan zien met welke overtuiging het resultaat tot een bepaalde klasse behoort</em><br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_034.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_034.jpg" /></p>
@@ -179,8 +187,12 @@ iets rekenintensiever dan gewone Relu.<br />
 
 <h5 id="conclusies">conclusies !!!</h5>
 
-<p>meerdere klasses als output : Softmax<br />
-maar 1 klasse als output : Sigmoid<br />
+<p>In het geval dat je input maar tot één klasse behoort -> softmax<br />
+In het geval je input tot meerdere klasses kan behoren -> Sigmoid<br />
+Echter in het geval dat je binaire classificatie doet maakt het niet uit. Daar kan je werken met 1 output neuron met sigmoid activatiefunctie of met 2 output neuronen met softmax.</p>
+
+<p>Sigmoid geeft per klasse hoeveel overeenkomst er is tss de input en een specifiek output label. zonder rekening te houden met de andere labels.<br />
+Softmax gaat aangeven hoe waarschijnlijker het is dat de input van klasse X dan wel klasse Y is. Softmax houdt rekening met alle input die binnen komt in het neuron. Als je de output van alle neuronen in die laag optelt dan kom je 1 uit of 100%.<br />
 <img src="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_038.jpg" alt="Sessie_07_Introductie_Neurale_Netwerken_Annotaties_page_038.jpg" /></p>
 
 <h4 id="underfitting-en-overfitting">underfitting en overfitting</h4>

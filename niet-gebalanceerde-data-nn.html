@@ -27,7 +27,7 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><h1 id="titel">Titel</h1>
+      <div id="content"><h1 id="niet-gebalanceerde-data-nn">Niet gebalanceerde data NN</h1>
 
 <p>Tags: <span class="tag">AI</span> <span class="tag">andere</span><br />
 Date: 2021-02-23<br />
@@ -37,26 +37,86 @@ Source : </p>
 
 <h2 id="notities">Notities</h2>
 
-<p><img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_1.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_1.jpg" /><br />
-<img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_2.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_2.jpg" /><br />
+<h3 id="imbalanced-data">Imbalanced Data</h3>
+
+<blockquote>
+  <p>Niet gebalanceerde data is data waarbij één klasse veel dominanter aanwezig is dan de andere klasses. </p>
+</blockquote>
+
+<p><img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_96.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_96.jpg" /><br />
+<img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_2.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_2.jpg" /></p>
+
+<h4 id="probleem">Probleem</h4>
+
+<p>Het <strong>probleem</strong> hiermee is dat als je hier een model op traint dat het model wordt getraind om de beste accuraatheid te hebben maar dan blijkt dat het model een voorkeur heeft gekregen voor de meerderheidsklasse.<br />
 <img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_3.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_3.jpg" /><br />
-<img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_4.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_4.jpg" /><br />
+Dit kan je zien aan de resultaten voor de recall. De recall voor de meerderheidsklasse is hoog en de voorspellingen zijn goed  maar dat van de minderheidsklasse is slecht. Het model geeft een voorkeur voor de meerheidsklasse omdat het zonder moeite een hoge accuraatheid haalt hiervoor.<br />
+Dit is meestal niet wenselijk en men wil een een meer gebalanceerd resultaat hebben. </p>
+
+<h4 id="technieken">Technieken</h4>
+
+<p>Technieken om dit proberen op te lossen : </p>
+
+<ul>
+<li>verzamel <strong>meer data</strong> (van de minderheidsklasse) zodat de klasses meer in evenwicht komen. In de praktijk is dat niet altijd mogelijk.</li>
+<li><strong>undersampling / oversampling</strong> :<br />
 <img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_5.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_5.jpg" /><br />
+undersampling : door gans deel van meerderheidsklasse weg te doen en hierdoor een meer gebalanceerde data te krijgen. Het nadeel is dat je hierdoor feature waarden verliest die nodig misschien waren om een goed model te hebben.<br />
+het omgekeerde, oversampling, is de minderheidsklasse vermeerderen door copies te nemen. Dit is beter dazn undersampling maar het probleem is wel dat je geen echt nieuwe informatie toevoegt. Je model leert niet echt iets nieuw bij. </li>
+<li><strong>andere scoring parameter/metric</strong> kiezen :<br />
 <img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_6.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_6.jpg" /><br />
+niet accuracy gebruiken maar f1 score of beste recall voor hyperparametertuning</li>
+<li><strong>class weight balancing</strong> :<br />
 <img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_7.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_7.jpg" /><br />
+ervoor zorgen dat tijdens training bij foute predicties de loss op de minderheidsklasse  zwaarder wordt afgestraft. Dit doe je door bij model.fit class_weights mee te geven zodat loss proportioneel meer gaat doorwegen voor minderheidsklasse.<br />
+Je kan ook met een andere loss functie werken. </li>
+<li><strong>data augmentation</strong> : SMOTE<br />
 <img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_8.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_8.jpg" /><br />
-<img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_9.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_9.jpg" /></p>
+obv bestaande samples worden er nieuwe samples aangemaakt die dicht liggen bij de minderheidsklasse. </li>
+<li><strong>image augmentation</strong> :<br />
+<img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_9.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_9.jpg" /><br />
+obv bestaande afbeelding nieuwe versies van afbeeldingen maken (geroteerde, ingezoomd, kleur veranderen, ruis toevoegen, ... ). Ook te gebruiken als je bijv gewoon weining samples hebt. </li>
+</ul>
 
-<h2 id="vragen">Vragen</h2>
+<h2 id="anki">Anki</h2>
 
-<p><!-- Welke vragen staan open ? --><br />
-- </p>
+<p><a href="anki.html">anki</a></p>
+
+<p>Q: Wat is niet gebalanceerde data ? Wat kan het effect zijn op een classifier ?<br />
+A: Niet gebalanceerde data is data waarbij één klasse veel dominanter aanwezig is dan de andere klasses.  Het model gaat hierdoor de voorkeur geven aan de meerderheidsklasse.<br />
+<!--ID: 1610723504973--></p>
+
+<p>Q: Hoe kan je voorkomen dat een classifier voorkeur gaat geven aan een klasse die minder voorkomt in de data ?<br />
+A: De mogelijkheden zijn :</p>
+
+<ul>
+<li>verzamel meer data van de minderheidsklasse</li>
+<li>undersampling : klasses uitbalanceren (data uit meerderheidsklasse verwijderen)<br />
+Nadeel : dat eigenschappen die in geschrapte data zaten gaan verloren</li>
+<li>oversampling : minderheidsklasse vermeerderen/copieren<br />
+Nadeel : geen nieuwe informatie toegevoegd</li>
+<li>andere scoring parameters/metric kiezen : model kiezen met beste F1 score, of recall ipv accuracy</li>
+<li>class weight balancing : misclassificatie van sample uit minderheidsklasse leiden in training tot hoger loss (meer afgestraft). Dit doe je door bij model.fit class_weights mee te geven zodat loss proportioneel meer gaat doorwegen voor minderheidsklasse. </li>
+<li>data augmentation - SMOTE : obv bestaande samples worden er nieuwe samples aangemaakt die dicht liggen bij de minderheidsklasse.  (from imblearn_over_samplng import Borderline.SMOTE)</li>
+<li>image augmentation : obv bestaande afbeelding nieuwe versies van afbeeldingen maken (geroteerde, ingezoomd, kleur veranderen, ruis toevoegen, ... ). Ook te gebruiken als je bijv gewoon weining samples hebt. </li>
+<li>drempelwaarde zelf kiezen : probability opvragen en zelf de grens trekken vanaf wanneer de minderheidsklasse gekozen wordt.<br />
+<!--ID: 1610723504989--></li>
+</ul>
+
+<p>Q: Hoe kan je zien dat het model een voorkeur heeft voor de meerderheidsklasse bij niet gebalanceerde data ?<br />
+A: Dit kan je zien aan de resultaten voor de recall. De recall voor de meerderheidsklasse is hoog en de voorspellingen zijn goed  maar dat van de minderheidsklasse is slecht. Het model geeft een voorkeur voor de meerheidsklasse omdat het zonder moeite een hoge accuraatheid haalt hiervoor.<br />
+Dit is meestal niet wenselijk en men wil een een meer gebalanceerd resultaat hebben.<br />
+<!--ID: 1615027118292--></p>
+
+<p>Q:<br />
+A:</p>
 </div>
 
       <div class="backlinks">
 
 <ul>
 <li><a href="ai-home.html">AI@home</a></li>
+<li><a href="niet-gebalanceerde-data.html">Niet gebalanceerde data</a></li>
 </ul>
 
 </div>

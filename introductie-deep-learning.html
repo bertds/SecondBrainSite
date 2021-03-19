@@ -37,54 +37,61 @@ Source : </p>
 
 <h2 id="notities">Notities</h2>
 
-<p>Deep learning deel van Machine learning en maakt gebruik van Neurale Netwerken. (selfdriving cars, object detectie, detectie tumoren, google translate, ... )</p>
+<p><img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_4.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_4.jpg" /><br />
+Deep learning deel van Machine learning en maakt gebruik van Neurale Netwerken. (selfdriving cars, object detectie, detectie tumoren, google translate, ... )</p>
 
 <h3 id="waarom-deep-learning">Waarom Deep Learning ?</h3>
 
-<ol>
-<li><p>Bij deep learning wordt je model beter en beter als je meer data hebt om te trainen maar bij ouder machine learn algoritmes treed er op een gegeven moment saturatie op en worden die modellen niet beter met meer trainingsdata.  </p>
+<p><img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_5.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_5.jpg" /></p>
 
-<p>Waarom dan niet altijd deep learning toepassen ?<br />
-Als je weinig data hebt dan gaan klassieke methodes betere predicties doen dan een NN. Dit komt omdat een NN veel parameters heeft en die moeten allemaal ingesteld worden.<br />
-Klassieke methodes gaan meer inzicht geven hoe predicties tot stand zijn gekomen. Bij NN is dit veel moeilijker of onmogelijk. Bij veel sectoren willen ze reden kennen waarom predictie niet goed is. (bijv banken, medische wereld)</p></li>
-<li><p>De NN zijn zelf in staat tot feature extraction, volledige pipeline van ruwe data tot predicties doet model zelf. Bij de oude modellen moest je bijv zelf feature extraction programmeren en daar kruipt 90% van je tijd in. END-TO-END machine learning. De fundamenten zijn al langer gelegd (jaren 40-60) maar nu veel rekenkracht en data. </p></li>
+<ol>
+<li>Bij deep learning wordt je model beter en beter als je meer data hebt om te trainen maar bij ouder machine learn algoritmes treed er op een gegeven moment saturatie op en worden die modellen niet beter met meer trainingsdata.  </li>
 </ol>
+
+<pre><code>Waarom dan niet altijd deep learning toepassen ?
+Als je weinig data hebt dan gaan klassieke methodes betere predicties doen dan een NN. Dit komt omdat een NN veel parameters heeft en die moeten allemaal ingesteld worden. 
+Deep learning is zeer gevoelig voor overfitting dus als je kleine hoeveelheden data hebt dan zijn oude modellen beter omdat die de data niet van buiten gaat leren. 
+Klassieke methodes gaan meer inzicht geven hoe predicties tot stand zijn gekomen. Bij NN is dit veel moeilijker of onmogelijk. Bij veel sectoren willen ze reden kennen waarom predictie niet goed is. (bijv banken, medische wereld)
+
+Deep learning kan beter overweg met niet gestructureerde data :
+- afbeeldingen, video
+- geluid, spraak
+- tektst
+Klassieke methodes kunnen onderliggende relaties tss bijv pixels niet vatten. Deep learning modellen gaan zelf op zoek naar relaties tss features, naar nieuwe features die die verbanden bevatten.
+</code></pre>
+
+<p><img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_6.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_6.jpg" /></p>
+
+<ol>
+<li>De NN zijn zelf in staat tot feature extraction, volledige pipeline van ruwe data tot predicties doet model zelf. Bij de oude modellen moest je bijv zelf feature extraction programmeren en daar kruipt 90% van je tijd in. END-TO-END machine learning. De fundamenten zijn al langer gelegd (jaren 40-60) maar nu veel rekenkracht en data. </li>
+</ol>
+
+<p><img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_7.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_7.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_8.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_8.jpg" /></p>
 
 <h3 id="verschillende-architecturen">Verschillende architecturen</h3>
 
+<p><img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_9.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_9.jpg" /></p>
+
 <ul>
-<li>Convolutional Neural Networks (CNN) &gt; image recognition</li>
-<li>Capsule Network (CapsNet) </li>
+<li>Convolutional Neural Networks (CNN) &gt; image recognition, analyse van tijdsreeksen, NNP</li>
+<li>Capsule Network (CapsNet) &gt; veel rekenkracht nodig, houd rekening met de positionering van objecten tov in een afbeelding</li>
 <li>Restricted Boltzmann Machine (RBM) - verouderd</li>
-<li>Autoencoder (AE) &gt; input reconstrueren (bijv compressie/decompressie, ruis uit afbeeldingen, recommendation system)</li>
-<li>Deep Belief Nets (DBN) </li>
-<li>Recurrent Neural (Tensor) Network (RNTN)</li>
+<li>Autoencoder (AE) &gt; input reconstrueren (bijv compressie/decompressie, ruis uit afbeeldingen, recommendation system, anomaly detection, resolutie verhogen van een beeld)</li>
+<li>Deep Belief Nets (DBN) &gt; niet</li>
+<li>Recurrent Neural (Tensor) Network (RNTN)  </li>
 <li>Long Short Term Memory (LSTM)             </li>
 <li>Gated Recurrent Unit nets (GRU)<br />
-RNTN + LSTM + GRU &gt; NN met geheugen, predicties doen op time-series (= data waarbij volgorde van belang is)</li>
-<li>Generatative Adversarial Nets (GAN) &gt; realistische data genereren</li>
+RNTN + LSTM + GRU &gt; RNN (recurrent neural networks) met geheugen, predicties doen op time-series (= data waarbij volgorde van belang is) (spraak, tekst, videosequenties, )</li>
+<li>Generatative Adversarial Nets (GAN) &gt; realistische data genereren, resolutie beeld verhogen</li>
 </ul>
 
-<p><a href="neurale-netwerken-intro2.html">Neurale Netwerken intro2</a></p>
-
-<p>Kracht van NN is dat het laag na laag features gaat bij creeëren. De output van de ene neuron is een nieuwe feature die input is voor de volgende neuron. Hogere orde features worden door NN zelf aangemaakt.<br />
-Meer neuronen, meer lagen &gt; complexere scheidingslijnen. </p>
+<p>NN niet veel voor regressie gebruikt maar eerder voor classificatie. </p>
 
 <p>Wanneer spreken we van deep learning ?<br />
 Als er meerdere hidden layers zijn in een NN. Vanaf 2, 3, ... hidden layers spreek je van deep learning. </p>
 
-<p>Klassieke NN zijn feedforward. Informatie stroomt van input naar output in 1 richting. </p>
-
-<h4 id="mnist">MNIST</h4>
-
-<p>input layer met 784 (28x28 pixels) neuronen<br />
-nomalisatie door pixel waarde te delen door 255.0<br />
-deze is nodig voor de activatie functie (waarde tss -1 en +1)<br />
-output layer : 10 verschillende klasses met zekerheidspercentage per klasse</p>
-
-<p>NN niet veel voor regressie gebruikt maar eerder voor classificatie. </p>
-
-<p>Als je meer dan 2 klasses hebt moet je meerdere ouput neuronen hebben. </p>
+<p><a href="neurale-netwerken-intro2.html">Neurale Netwerken intro2</a></p>
 
 <h2 id="vragen">Vragen</h2>
 

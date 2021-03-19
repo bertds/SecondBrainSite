@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://bertds.github.io/SecondBrainSite/">Second Brain</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><h1 id="handson-keras-en-tensorflow">Handson Keras en Tensorflow</h1>
+
+<p>Tags: <span class="tag">AI</span> <span class="tag">andere</span><br />
+Date: 2021-03-06<br />
+Type: <a href="cursus-topic.html">Cursus topic</a><br />
+Related: <!-- Links to pages not referenced in the content --><br />
+Source : </p>
+
+<h2 id="notities">Notities</h2>
+
+<p>Bij NN moet je one hot encoding toepassen op de labels !!! python : to_categorical()<br />
+bij classificatie met softmax maak je best gebruik van losses.categorical_crossentropy : drukt uit hoe groot de fout is van het model<br />
+metrics = ter info gegevens (bijv accuracy) heeft geen invloed op traning zelf, enkel als feedback naar gebruiker toe.<br />
+als je geheugen foutmeldingen krijgt met gpu werking moet je je batchsize verkleinen.<br />
+validation_split = hoeveel % samples te gebruiken om validatie te doen<br />
+validation data wordt niet gebruikt om NN te trainen maar je gebruikt het wel om het beste NN te kiezen.<br />
+wat doen om beter percentage voor NN te krijgen ? Dropout aanpassen, meer neuronen in hiddenlayers, ... </p>
+
+<h4 id="loss-curve">loss curve</h4>
+
+<p><img src="Screenshot 2021-03-05 at 22.08.45.png" alt="Screenshot 2021-03-05 at 22.08.45.png" /></p>
+
+<p>Je gebruikt loss curve om te zien wat optimaal moment is voor early stopping (als loss voor validatieset terug stijgt, wil zeggen dat het model traningsdata van buiten heeft geleerd &gt; overfitting)</p>
+
+<h4 id="early-stopping">Early stopping</h4>
+
+<p>zie ook <a href="early-stopping.html">Early stopping</a><br />
+Early stopping zorgt ervoor dat training afgebroken wordt als loss op test (validatie) terug stijgt.<br />
+Gevaar kan je in een tijdelijk optimum zitten/plateau en is het best dan je even wacht. Dat je patience toevoegt en dat er nog een paar epochs getraind wordt vooraleer af te breken.<br />
+<img src="Screenshot 2021-03-05 at 22.13.35.png" alt="Screenshot 2021-03-05 at 22.13.35.png" /><br />
+Nadeel is dat je dan een model hebt dat net terug wat hoger scoort. (optimaal punt zat op 90 maar model is nog even verder getraind geweest door patience parameter tot 110 maar hierdoor ook hoger geeindigd qua loss)</p>
+
+<h4 id="modelcheckpoint">modelcheckpoint</h4>
+
+<p>Oplossing hiervoor is om <strong>modelcheckpint</strong> te gebruik en het model te saven op dat optimaal punt en dat nadien terug opvragen. </p>
+
+<h4 id="model-summary">model summary</h4>
+
+<p><img src="Screenshot 2021-03-05 at 22.17.58.png" alt="Screenshot 2021-03-05 at 22.17.58.png" /><br />
+python : model.summary()<br />
+Hieruit kan je bijv afleiden dat eerste layer uit 3100 neuronen bestaat = 30 input parameters x 100 weights (verbindingen naar hidden layer van 100 neuronen) + 100 biases. </p>
+
+<h4 id="hyperparameter-search">hyperparameter search</h4>
+
+<p>Je kan ook Gridsearch doen op NN voor al de parameters in te stellen.<br />
+GridSearchCV zal dan bijv wel 1000 NN trainen om optimale hyperparameters te kiezen.  Dit kan wel enkel uren of dagen duren !!!</p>
+
+<p>Advies : start met iets te groot NN. Kijk naar Loss grafiek. Als loss niet zakt voor training dan staat dropout misschien te hoog of NN heeft te weining neuronen of learningrate staat te hoog (loss grafiek is heel grillig)</p>
+
+<p><img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_79.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_79.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_80.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_80.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_81.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_81.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_82.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_82.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_83.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_83.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_84.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_84.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_85.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_85.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_86.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_86.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_87.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_87.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_88.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_88.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_89.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_89.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_90.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_90.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_91.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_91.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_92.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_92.jpg" /><br />
+<img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_93.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_93.jpg" /></p>
+
+<p><img src="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_94.jpg" alt="Session_01_Introduction_to_Neural_Networks_Annotations_20201024_94.jpg" /></p>
+
+<h2 id="vragen">Vragen</h2>
+
+<p><a href="anki.html">anki</a></p>
+
+<p>Q: Wat moet je doen als je foutmeldingen krijgt over je geheugen bij het trainen van een NN ?<br />
+A:  Je moet de batchsize verkleinen waardoor je minder geheugen nodig zult hebben om de verschillende bijstellingen van de weights bij te houden vooraleer nieuwe weights te berekenen.<br />
+<!--ID: 1615027118229--></p>
+
+<p>Q: Wat moet je doen als je een slecht (= hoog) loss blijft hebben bij het trainen van NN model ?<br />
+A: Als loss niet zakt dan staat dropout misschien te hoog, of heeft NN te weinig  neuronen in hidden layers, of de learning rate staat te hoog (als grafiek heel grillig is)<br />
+<!--ID: 1615027118241--></p>
+
+<p>Q: Wat leert deze model summary ons ? <img src="Screenshot 2021-03-05 at 22.17.58.png" alt="Screenshot 2021-03-05 at 22.17.58.png" /><br />
+A: Hieruit kan je bijv afleiden dat eerste layer uit 3100 neuronen bestaat = 30 input parameters x 100 weights (verbindingen naar hidden layer van 100 neuronen) + 100 biases.<br />
+<!--ID: 1615027118279--></p>
+</div>
+
+      <div class="backlinks">
+
+<ul>
+<li><a href="ai-home.html">AI@home</a></li>
+</ul>
+
+</div>
+
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

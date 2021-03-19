@@ -96,26 +96,6 @@ Precision = $\dfrac{TP}{TP + FP}$<br />
 F1 score = $\dfrac{2 * (Recall * Precision)}{Recall + Precision}$<br />
 <!--ID: 1610722467981--></p>
 
-<p>Q: Wat is niet gebalanceerde data ? Wat kan het effect zijn op een classifier ?<br />
-A: Het model gaat voorkeur geven aan category die vaak voorkomt<br />
-<!--ID: 1610723504973--></p>
-
-<p>Q: Hoe kan je voorkomen dat een classifier voorkeur gaat geven aan een klasse die minder voorkomt in de data ?<br />
-A: De mogelijkheden zijn :</p>
-
-<ul>
-<li>verzamel meer data van de minderheidsklasse</li>
-<li>undersampling : klasses uitbalanceren (data uit meerderheidsklasse verwijderen)<br />
-Nadeel : dat eigenschappen die in geschrapte data zaten gaan verloren</li>
-<li>oversampling : minderheidsklasse vermeerderen/copieren<br />
-Nadeel : geen nieuwe informatie toegevoegd</li>
-<li>andere scoring parameters/metric kiezen : model kiezen met beste F1 score, of recall ipv accuracy</li>
-<li>class weight balancing : misclassificatie van sample uit minderheidsklasse leiden in training tot hoger loss (meer afgestraft)</li>
-<li>data augmentation - SMOTE : from imblearn_over_samplng import Borderline.SMOTE</li>
-<li>drempelwaarde zelf kiezen : probability opvragen en zelf de grens trekken vanaf wanneer de minderheidsklasse gekozen wordt.<br />
-<!--ID: 1610723504989--></li>
-</ul>
-
 <p>Q: Wat is ROC ? en waarvoor gebruiken we het ?<br />
 A: ROC (Receiver Operating Characteristic) gebruiken we voor het evalueren van binaire classifiers. A graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied.<br />
 <!--ID: 1610723504998--></p>

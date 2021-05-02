@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://bertds.github.io/SecondBrainSite/">Second Brain</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><h1 id="neurale-netwerken-trainen-tips">Neurale netwerken trainen tips</h1>
+
+<p>Tags: <span class="tag">AI</span> <span class="tag">NN</span><br />
+Date: 2021-03-29<br />
+Source :<br />
+https://huggingface.co/blog/simple-considerations<br />
+https://karpathy.github.io/2019/04/25/recipe/<br />
+https://medium.com/@keeper6928/how-to-unit-test-machine-learning-code-57cf6fd81765<br />
+https://towardsdatascience.com/checklist-for-debugging-neural-networks-d8b2a9434f21<br />
+https://docs.google.com/presentation/d/1yHLPvPhUs2KGI5ZWo0sU-PKU3GimAk3iTsI38Z-B5Gw/edit#slide=id.p<br />
+https://towardsdatascience.com/checklist-for-debugging-neural-networks-d8b2a9434f21<br />
+https://karpathy.github.io/2019/04/25/recipe/</p>
+
+<h2 id="notities">Notities</h2>
+
+<h3 id="simple-considerations-for-simple-people-building-fancy-neural-networks">Simple considerations for simple people building fancy neural networks</h3>
+
+<h4 id="start-by-putting-machine-learning-aside">Start by putting machine learning aside</h4>
+
+<ul>
+<li><strong>put aside machine learning and simply focus on your data</strong></li>
+<li>A few standard questions you can ask yourself:<br />
+<ul><br />
+<li>Are the labels balanced?</li><br />
+<li>Are there gold-labels that you do not agree with?</li><br />
+<li>How were the data obtained? What are the possible sources of noise in this process?</li><br />
+<li>Are there any preprocessing steps that seem natural (tokenization, URL or hashtag removing, etc.)?</li><br />
+<li>How diverse are the examples?</li><br />
+<li>What rule-based algorithm would perform decently on this problem?</li><br />
+</ul></li>
+<li><p>get a <strong>high-level feeling (qualitative) of your dataset along with a fine-grained analysis (quantitative)</strong>.</p>
+
+<h4 id="continue-as-if-you-just-started-machine-learning">Continue as if you just started machine learning</h4></li>
+<li><p><strong>Start as simple as possible to get a sense of the difficulty of your task and how well standard baselines would perform.</strong></p></li>
+<li>How would a random predictor perform (especially in classification problems)? Dataset can be unbalanced…</li>
+<li>What would the loss look like for a random predictor?</li>
+<li>What is (are) the best metric(s) to measure progress on my task?</li>
+<li>What are the limits of this metric? If it’s perfect, what can I conclude? What can’t I conclude?</li>
+<li>What is missing in “simple approaches” to reach a perfect score?</li>
+<li><p>Are there architectures in my neural network toolbox that would be good to model the inductive bias of the data?</p>
+
+<h4 id="dont-be-afraid-to-look-under-the-hood-of-these-5-liners-templates">Don’t be afraid to look under the hood of these 5-liners templates</h4></li>
+<li><p><strong>The challenge lies in the fact that you can make these mistakes, train a model without it ever crashing, and still get a decent performance…</strong></p></li>
+<li>it is a good habit when you think you have finished implementing to <strong>overfit a small batch of examples</strong> (16 for instance). &gt;  If this is not  possible , it is highly possible that you did something wrong in your implementation.</li>
+<li>Some common errors include:<br />
+<ul><br />
+<li>Wrong indexing… (these are really the worst 😅). Make sure you are gathering tensors along the correct dimensions for instance…</li><br />
+<li>You forgot to call <code>model.eval()</code> in evaluation mode (in PyTorch) or <code>model.zero\_grad()</code> to clean the gradients</li><br />
+<li>Something went wrong in the pre-processing of the inputs</li><br />
+<li>The loss got wrong arguments (for instance passing probabilities when it expects logits)</li><br />
+<li>Initialization doesn’t break the symmetry (usually happens when you initialize a whole matrix with a single constant value)</li><br />
+<li>Some parameters are never called during the forward pass (and thus receive no gradients)</li><br />
+<li>The learning rate is taking funky values like 0 all the time</li><br />
+<li>Your inputs are being truncated in a suboptimal way</li><br />
+</ul></li>
+<li>Pro-tip: when you work with language, have a serious <strong>look at the outputs of the tokenizers</strong>. I can’t count the number of lost hours I spent trying to reproduce results (and sometimes my own old results) because something went wrong with the tokenization.</li>
+<li>Another useful tool is <strong>deep-diving into the training dynamic</strong> and plot (in Tensorboard for instance) the evolution of multiple scalars through training.(look at the dynamic of your loss(es), the parameters, and their gradients)</li>
+<li><p>As the loss decreases, you also want to look at the model’s predictions</p>
+
+<h4 id="tune-but-dont-tune-blindly">Tune but don’t tune blindly</h4></li>
+<li><p>Once you have everything up and running, you might want to tune your hyperparameters to find the best configuration for your setup.</p>
+
+<blockquote>
+  <p>I generally stick with a random grid search as it turns out to be fairly effective in practice.</p>
+</blockquote></li>
+<li><strong>compare a couple of runs with different hyperparameters to get an idea of which hyperparameters have the highest impact</strong><br />
+&gt; it is delusional to expect to get your biggest jumps of performance by simply tuning a few values.<br />
+&gt; On average, experts use fewer resources to find better solutions.</li>
+<li><strong>favor (as most as possible) a deep understanding of each component of your neural network instead of blindly (not to say magically) tweak the architecture</strong>.</li>
+</ul>
+
+<h3 id="a-recipe-for-training-neural-networks">A Recipe for Training Neural Networks</h3>
+
+<ul>
+<li><strong>a “fast and furious” approach to training neural networks does not work</strong></li>
+<li>it builds from simple to complex and at every step of the way we make concrete hypotheses about what will happen and then either validate them with an experiment or investigate until we find some issue.</li>
+<li><p>What we try to prevent very hard is the introduction of a lot of “unverified” complexity at once, which is bound to introduce bugs/misconfigurations that will take forever to find (if ever).</p>
+
+<h4 id="become-one-with-the-data">Become one with the data</h4>
+
+<ul>
+<li>look for data imbalances and biases</li>
+<li>write code to search/filter/sort by whatever you can think of (e.g. type of label, size of annotations, number of annotations, etc.) and visualize their distributions and the outliers along any axis. <strong>The outliers especially almost always uncover some bugs in data quality or preprocessing.</strong><br />
+&gt; since the neural net is effectively a compressed/compiled version of your dataset, you’ll be able to look at your network (mis)predictions and understand where they might be coming from. And if your network is giving you some prediction that doesn’t seem consistent with what you’ve seen in the data, something is off.<br />
+&gt; </li>
+</ul></li>
+</ul>
+
+<h4 id="set-up-the-end-to-end-trainingevaluation-skeleton-get-dumb-baselines">Set up the end-to-end training/evaluation skeleton + get dumb baselines</h4>
+
+<p>At this stage it is best to<em>* pick some simple model that you couldn’t possibly have screwed up</em>* somehow : a linear classifier, or a very tiny ConvNet.</p>
+
+<h4 id="overfit">Overfit</h4>
+
+<h4 id="regularize">Regularize</h4>
+
+<h4 id="tune">Tune</h4>
+
+<h4 id="squeeze-out-the-juice">Squeeze out the juice</h4>
+
+<h3 id="checklist-for-debugging-neural-networks">Checklist for debugging neural networks</h3>
+
+<ol>
+<li><strong>Start simple —</strong> build a simpler model first and test by training on a few data points<br />
+<ol><br />
+<li><strong>Confirm your loss —</strong> check to see if you’re using the correct loss and review your initial loss</li><br />
+<li><strong>Check intermediate outputs and connections —</strong> use gradient checking and visualization to check if your layers are properly connected and that your gradients are updating as expected</li><br />
+<li><strong>Diagnose parameters</strong> — from SGD to learning rates, identifying the right combination (or figuring out the wrong ones) 😅</li><br />
+<li><strong>Tracking your work</strong>— as a baseline, tracking your experimentation process and key modeling artifacts</li><br />
+</ol></li>
+</ol>
+
+<h2 id="vragen">Vragen</h2>
+
+<ul>
+<li>eigen CNN kijken hoe groot kunnen we de images maken zodat we niet moeten upscalen ? </li>
+<li>CNN lagen visueel voorstellen :https://hackernoon.com/visualizing-parts-of-convolutional-neural-networks-using-keras-and-cats-5cc01b214e59</li>
+- 
+</ul>
+</div>
+
+      
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

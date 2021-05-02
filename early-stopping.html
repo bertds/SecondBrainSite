@@ -54,7 +54,7 @@ Vanaf 200 epochs zien we dat loss op test set terug naar boven gaat terwijl die 
 <p><img src="Screenshot 2021-03-06 at 11.57.17.png" alt="Screenshot 2021-03-06 at 11.57.17.png" /><br />
 Oplossing is early stopping.  Nadeel is dat training te vroeg afgebroken kan zijn doordat NN op een plateau terecht is gekomen. </p>
 
-<h4 id="patience">patIEnce</h4>
+<h4 id="patience">patience</h4>
 
 <p><img src="Screenshot 2021-03-06 at 11.59.01.png" alt="Screenshot 2021-03-06 at 11.59.01.png" /><br />
 Met patience toch nog een beetje verder trainen om zeker te zijn dat we niet op een plateau zitten. Nadeel is dat we de modelwaarden van het minimum niet hebben. </p>
@@ -67,7 +67,7 @@ Oplossing hiervoor is model checkpoints dat je nadien terug kan opvragen.<br />
 
 <h2 id="vragen">Vragen</h2>
 
-<p>Q: Waarom moet je niet stoppen met trainen als tijdens het trainen de loss na een paar epochs niet meer zakt ?<br />
+<p>Q: Waarom moet je niet stoppen met trainen bij een NN als tijdens het trainen de loss na een paar epochs niet meer zakt ?<br />
 A: Omdat je model op een plateau kan zitten en dat je nog niet op het optimaal minimum zit van de loss.<br />
 <!--ID: 1615027118250--></p>
 

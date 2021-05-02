@@ -29,7 +29,7 @@
     <article>
       <div id="content"><h1 id="titel">Titel</h1>
 
-<p>Tags: <span class="tag">AI</span> <span class="tag">andere</span><br />
+<p>Tags: <span class="tag">AI</span> <span class="tag">autoencoders</span><br />
 Date: 2021-02-23<br />
 Type: <img src="cursus-topic.html" alt="Cursus topic" /><br />
 Related: <!-- Links to pages not referenced in the content --><br />
@@ -37,48 +37,188 @@ Source : </p>
 
 <h2 id="notities">Notities</h2>
 
-<p><img src="sessie-03-autoencoders-extra.html" alt="Sessie_03_Autoencoders_Extra" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_2.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_2.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_3.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_3.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_4.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_4.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_5.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_5.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_6.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_6.jpg" /><br />
+<h3 id="autoencoders-extra">Autoencoders extra</h3>
+
+<p><a href="sessie-03-autoencoders-extra.html">Sessie_03_Autoencoders_Extra</a></p>
+
+<h3 id="introductie">Introductie</h3>
+
+<p>Specifieke architectuur van NN. Autoencoder (AE) is type NN getraind om zijn input te reconstrueren. AE gaat een betere versie van de input genereren.<br />
+<img src="Sessie_03_Autoencoders_Annotaties1024_4.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_4.jpg" /></p>
+
+<p>Q: Waarvoor kan je AE gebruiken ?<br />
+A: </p>
+
+<ul>
+<li>compressie toepassen</li>
+<li>waardevolle features uit data te leren en die features gebruiken om recommendaties te doen of om data te reconstrueren</li>
+<li>ruis uit afbeeldingen verwijderen<br />
+<!--ID: 1618066840374--></li>
+</ul>
+
+<h4 id="kostenfunctie">Kostenfunctie :</h4>
+
+<p>Q: Welke kostenfunctie gebruik je bij een AE ?<br />
+A: <img src="Sessie_03_Autoencoders_Annotaties1024_5.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_5.jpg" /></p>
+
+<ul>
+<li>voor binaire input wordt bepaald met cross-entropy</li>
+<li>voor reeele waarden wordt MSE bepaald<br />
+<!--ID: 1618066987882--></li>
+</ul>
+
+<h4 id="structuur-autoencoder">Structuur Autoencoder</h4>
+
+<p>Autoencoder slaat op zichzelf.<br />
+<img src="Sessie_03_Autoencoders_Annotaties1024_6.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_6.jpg" /></p>
+
+<h4 id="deep-autoencoder">Deep autoencoder</h4>
+
+<p>Q: Wat is een Deep AE ?<br />
+A: Een AE met meerdere hidden layers<br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_7.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_7.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_8.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_8.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_9.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_9.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_10.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_10.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_11.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_11.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_12.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_12.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_13.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_13.jpg" /><br />
+<!--ID: 1618066987894--></p>
+
+<h3 id="types-autoencoders">Types autoencoders</h3>
+
+<p>Q: Welke types van Auto Encoders ken je en voor welke toepassingen kan je die gebruiken ?<br />
+A: <img src="Sessie_03_Autoencoders_Annotaties1024_9.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_9.jpg" /><br />
+<!--ID: 1618066840399--></p>
+
+<h4 id="undercomplete-autoencoder">Undercomplete autoencoder</h4>
+
+<p>Q: Wat is een undercomplete autoencoder ?<br />
+A: <img src="Sessie_03_Autoencoders_Annotaties1024_10.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_10.jpg" /><br />
+<!--ID: 1618066840408--></p>
+
+<ul>
+<li>hiddenlayer lagere dimensie dan inout layer</li>
+<li>bottleneck</li>
+<li>toepassing : compressie</li>
+</ul>
+
+<p><img src="Sessie_03_Autoencoders_Annotaties1024_11.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_11.jpg" /><br />
+Q: Wat is een Deep undercomplete autoencoder ?<br />
+A: Dat is een undercomplete autoencoder met meerdere hidden layers. </p>
+
+<ul>
+<li>je kan met meerdere lagen werken : middelste hidden layer = code layer</li>
+<li>code (compactste vorm) = latent representation<br />
+<!--ID: 1618066840418--></li>
+</ul>
+
+<p>Q: Hoe groot is de code layer in deze AE ? <img src="Screenshot 2021-04-10 at 14.53.53.png" alt="Screenshot 2021-04-10 at 14.53.53.png" /><br />
+A:  32 Het is de bottleneck van de AE. Dit is een deep undercomplete AE.<br />
+<!--ID: 1618066840428--></p>
+
+<p>Q: Voor welke toepassingen kan je een AE gebruiken waarbij de output layer &gt; input layer ?<br />
+A: Dit kan gebruikt worden als je van lage resolutie foto's hogere resolutie foto's wil afleiden.<br />
+<!--ID: 1618066840439--></p>
+
+<p>Python code :</p>
+
+<ul>
+<li>features and labels zijn hetzelfde want wat binnenkomt moet gereconstrueerd worden aan de output kant. </li>
+</ul>
+
+<p>Q: Kan je een AE gebruiken om algemene foto's, videos te comprimeren ?<br />
+A: Je kan een AE training om bepaalde types van foto's te comprimeren (bloemen, auto's, ... ) maar als je een ander type foto (bijv hond) geeft om te comprimeren/decomprimeren dan gaat die dat heel slecht doen.  Voorlopig nog niet aan de orde.<br />
+<!--ID: 1618066840451--></p>
+
+<h4 id="convolutional-autoencoder">Convolutional autoencoder</h4>
+
+<p>Q: Hoe kan je een convolutional autoencoder maken ?<br />
+A: <img src="Sessie_03_Autoencoders_Annotaties1024_12.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_12.jpg" /><br />
+Convolutie gebruiken met evenveel in als output. Maxpooling doen om dimensie reductie te doen.  Na de code layer, upscaling/unpooling  doen om van minder naar meer output te gaan.<br />
+<!--ID: 1618066840463--></p>
+
+<p><img src="Sessie_03_Autoencoders_Annotaties1024_13.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_13.jpg" /><br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_14.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_14.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_15.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_15.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_16.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_16.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_17.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_17.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_18.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_18.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_19.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_19.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_20.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_20.jpg" /><br />
+Bijhouden waar maximum zat zodat je bij terugkeer naar meer dimensies weet waar je het maximum moet plaatsen. </p>
+
+<h4 id="overcomplete-autoencoder">Overcomplete autoencoder</h4>
+
+<p>Q: Wat is een overcomplete autoencoder ?<br />
+A: <img src="Sessie_03_Autoencoders_Annotaties1024_15.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_15.jpg" /><br />
+Dimensie van hidden layer groter dan input ! Er is geen compressie in de tussenlaag.<br />
+DE AE mag niet zomaar de input layer copieren naar de hidden layer. Om dit te voorkomen worden er voorwaarden aan de AE gesteld. : Sparse AE. Probeer een zo goed mogelijke reconstructie te doen maar probeer dit met zo min mogelijk aantal hidden units. Dit door je door regularisatie = kostfunctie toe te passen.<br />
+<em>*Afweging nodig tss goede reoonstructie en sparsity. *</em><br />
+<!--ID: 1618066840475--></p>
+
+<p><img src="Sessie_03_Autoencoders_Annotaties1024_16.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_16.jpg" /></p>
+
+<p>Q: Wat doet de regularisatie parameter Lambda bij AE ?<br />
+A: Hiermee kan je de regularisatie sturen. Kleine Lambda : reconstructie is belangrijker, grote Lambda : sparsity is belangrijker, gaat vooral proberen neuronen uit te schakelen. <img src="Sessie_03_Autoencoders_Annotaties1024_17.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_17.jpg" /><br />
+<!--ID: 1618066840487--></p>
+
+<p><img src="Sessie_03_Autoencoders_Annotaties1024_18.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_18.jpg" /></p>
+
+<p>Q: Waarom noemt een sparse AE, sparse ?<br />
+A: Sparse wil zeggen dat er veel nullen in je data zit. Hidden layer is sparse omdat het overgtote deel van die activaties op nul staan.  Sparsity dwingt de AE om bruikbare features te leren.<br />
+<!--ID: 1618066840498--></p>
+
+<p>Q: Welke evolutie zien we bij de geleerde features van een AE als we meer en meer ruis toevoegen aan de input zijde ?<br />
+A: Hoe meer ruis er toegevoegd wordt hoe meer dat de AE gedwongen wordt om meer patronen te zoeken om de informatie te reconstrueren en de ruis uit het signaal te kunnen verwijderen. <img src="Sessie_03_Autoencoders_Annotaties1024_19.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_19.jpg" /><br />
+<!--ID: 1618068342170--></p>
+
+<p><img src="Sessie_03_Autoencoders_Annotaties1024_20.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_20.jpg" /></p>
+
+<p>Q: Wat is het nut van een overcomplete AE ?<br />
+A: Denoising. Ruis uit je signaal halen. Model wordt getraind om verschil te maken tss image met ruis en de ruis. Hierdoor kan het nadien een image als output geven zonder ruis.<br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_21.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_21.jpg" /><br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_22.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_22.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_23.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_23.jpg" /><br />
+<!--ID: 1618066840511--></p>
+
+<p><img src="Sessie_03_Autoencoders_Annotaties1024_23.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_23.jpg" /><br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_24.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_24.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_25.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_25.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_26.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_26.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_27.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_27.jpg" /><br />
+<img src="Sessie_03_Autoencoders_Annotaties1024_25.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_25.jpg" /></p>
+
+<p>Q: Wat is het verschil tss een undercomplete en overcomplete AE ?<br />
+A:  Een undercomplete AE zijn hidden layer gaat een kleinere dimensie hebben dan de input. Bij een overcomplete AE heeft de hidden layer een hogere dimensie dan de input layer.<br />
+<!--ID: 1618066840523--></p>
+
+<p>Q: Hoe zou je een AE als classifier kunnen gebruiken ? Wat zijn de beperkingen ?<br />
+A: Je kan AE ook als classifier gebruiken. Als je een AE traint om bloemen te reconstrueren en je geeft aan zo'n getrainde AE een bloem foto dan zie je dat die aan de ouput zijde die bloem goed kan reconstrueren wat wil zeggen dat het een bloem is. Obv de reconstructie error kan je nagaan of dat een foto is van een klasse die de AE al gezien heeft of niet. De beperking is wel dat je enkel een binaire classificatie kan doen.<br />
+<!--ID: 1618066987905--></p>
+
+<h3 id="unsupervised-pre-training-met-stacked-autoencoders">Unsupervised pre-training met stacked autoencoders</h3>
+
+<p><img src="Sessie_03_Autoencoders_Annotaties1024_27.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_27.jpg" /></p>
+
+<p>Q: Waarom wordt Unsupervised pre-training met stacked autoencoders voor NN niet meer gebruikt tegenwoordig ?<br />
+A: Je komt dit tegenwoordig minder tegen omdat dit een manier was om de training van je NN te versnellen. Maar nu zit je met betere batchoptimization, beter hardware, betere optimizers, ... waardoor deze stap overbodig geworden is.<br />
+Het is een manier om een NN een vooranalyse te laten doen. De weights worden zo ingesteld zodat die dichter bij het optimum jkomen, sub-optimum. Hierdoor zullen bij training van het NN de weights minder ver van het optimum liggen en moet er ook minder lang getraind worden, minder epochs en/of minder data nodig. Als je weinig gelabelde data hebt dan kan je de volledige dataset gebruiken in de pretraining en de samples gebruik om het NN zelf te fine tunen.<br />
+<!--ID: 1618066840534--></p>
+
+<p>Q: Wat is de filosofie van unsupervised pre-training met stacked AE ?<br />
+A: de eerste AE leert je structuur van je data kennen zonder te weten tot welk category dat die behoort. Het is unsupervised dus de AE krijgt geen labels te zien. De AE moet enkel de input kunnen reconstrueren. Aangezien die AE dit doet met minder neuronen moet die de onderliggende informatie van de data leren/de patronen eruit halen. De tweede AE leert de structuur van de voorgaande AE kennen.  Hierdoor worden de weights in de uiteindelijke NN beter geinitialiseerd aangezien de structuur van de data reeds in de weights inzitten en dichter bij het optimum zullen liggen. Het NN zelf moet dan enkel nog getraind worden om te weten welke combinatie van features tot welke klasse behoren.<br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_28.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_28.jpg" /><br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_29.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_29.jpg" /><br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_30.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_30.jpg" /><br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_31.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_31.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_32.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_32.jpg" /><br />
+<!--ID: 1618066840542--></p>
+
+<h3 id="restricted-boltzmann-machines-rbm-en-deep-belief-networks-dbn">Restricted Boltzmann machines (RBM) en Deep Belief Networks  (DBN)</h3>
+
+<p>Voor de volledigheid. Tegenwoordig minder en minder populair. </p>
+
+<p>Q: Wat is een Restricted Boltzmann machines (RBM)) ?<br />
+A: Een kleiner NN met een input en hidden layer. De input is ook de output. Restricted Boltzman werkt in twee fazen : van input naar hidden layer en tweede faze van hidden layer input reconstrueren.<br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_33.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_33.jpg" /><br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_34.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_34.jpg" /><br />
+<!--ID: 1618066840552--></p>
+
+<p>Q: Waarvoor kan je RBM (Restricted Bolzman Machine) gebruiken ?<br />
+A: Toepassing : recommendation system<br />
+Kan niet getraind worden met gradient descent.<br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_35.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_35.jpg" /><br />
 <img src="Sessie_03_Autoencoders_Annotaties1024_36.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_36.jpg" /><br />
-<img src="Sessie_03_Autoencoders_Annotaties1024_37.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_37.jpg" /></p>
+<!--ID: 1618066840560--></p>
 
-<h2 id="vragen">Vragen</h2>
-
-<p><!-- Welke vragen staan open ? --><br />
-- </p>
+<p>Q: Wat is een DBN (Deep Belief Network) ?<br />
+A: dat zijn stacked RBM (Restricted Bolzman Machine)<br />
+<img src="Sessie_03_Autoencoders_Annotaties1024_37.jpg" alt="Sessie_03_Autoencoders_Annotaties1024_37.jpg" /><br />
+<!--ID: 1618066840568--></p>
 </div>
 
       <div class="backlinks">

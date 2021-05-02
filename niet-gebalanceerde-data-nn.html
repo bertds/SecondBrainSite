@@ -69,6 +69,7 @@ niet accuracy gebruiken maar f1 score of beste recall voor hyperparametertuning<
 <li><strong>class weight balancing</strong> :<br />
 <img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_7.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_7.jpg" /><br />
 ervoor zorgen dat tijdens training bij foute predicties de loss op de minderheidsklasse  zwaarder wordt afgestraft. Dit doe je door bij model.fit class_weights mee te geven zodat loss proportioneel meer gaat doorwegen voor minderheidsklasse.<br />
+Je kan die class_weights laten berekenen mbv <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.class_weight.compute_class_weight.html">sklearn.utils.class_weight.compute_class_weight(class_weight, *, classes, y) </a><br />
 Je kan ook met een andere loss functie werken. </li>
 <li><strong>data augmentation</strong> : SMOTE<br />
 <img src="Sessie_01_Niet-gebalanceerde_Data_Extra1024_8.jpg" alt="Sessie_01_Niet-gebalanceerde_Data_Extra1024_8.jpg" /><br />
@@ -78,7 +79,7 @@ obv bestaande samples worden er nieuwe samples aangemaakt die dicht liggen bij d
 obv bestaande afbeelding nieuwe versies van afbeeldingen maken (geroteerde, ingezoomd, kleur veranderen, ruis toevoegen, ... ). Ook te gebruiken als je bijv gewoon weining samples hebt. </li>
 </ul>
 
-<h2 id="anki">Anki</h2>
+<h2 id="vragen">Vragen</h2>
 
 <p><a href="anki.html">anki</a></p>
 

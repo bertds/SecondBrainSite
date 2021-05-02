@@ -29,118 +29,363 @@
     <article>
       <div id="content"><h1 id="convolutional-neural-networks">Convolutional Neural Networks</h1>
 
-<p>Tags: <span class="tag">AI</span> <span class="tag">andere</span><br />
-Date: 2021-02-23<br />
-Type: <a href="cursus-topic.html">Cursus topic</a><br />
-Related: <!-- Links to pages not referenced in the content --><br />
-Source : </p>
+<p>Tags: <span class="tag">AI</span> <span class="tag">CNN</span><br />
+Date: 2021-03-19<br />
+Type: <a href="cursus-topic.html">Cursus topic</a> </p>
 
-<h2 id="notities">Notities</h2>
+<h2 id="toepassingen-van-cnn">Toepassingen  van CNN</h2>
 
-<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_9.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_9.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_1.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_1.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_2.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_2.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_3.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_3.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_4.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_4.jpg" /><br />
+<p>Waarvoor gebruik je een CNN ? </p>
+
+<ul>
+<li>object detectie : box rond object in het beeld tekenen (bijv YOLO)</li>
+<li>segmentatie : gebieden waar objecten zijn in kleuren</li>
+<li>pose estimation : bewegingstracking</li>
+<li>style transfer : stijl van ene afbeelding toepassen op andere afbeelding</li>
+<li>image caption : beschrijven wat er te zien is op een afbeelding</li>
+</ul>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_4.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_4.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_5.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_5.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_6.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_6.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_7.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_7.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_8.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_8.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_10.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_10.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_11.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_11.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_12.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_12.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_13.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_13.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_9.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_9.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_10.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_10.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_11.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_11.jpg" /></p>
+
+<h2 id="motivatie-voor-het-gebruik-van-cnns">Motivatie voor het gebruik van CNN's</h2>
+
+<h3 id="feature-extraction">Feature extraction</h3>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_13.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_13.jpg" /><br />
+Bij ML moet je feature extraction doen = de relaties tss de punten die het beeld vormen identificeren. Bijv alle verticale, horizontale, diagonale lijnen.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_14.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_14.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_15.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_15.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_16.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_16.jpg" /><br />
+Bij gezichtsherkenning moet je de keypoints vinden (wenkbrauwen, neus, mond, kin) en dat zijn features die je classifier kan identificeren. Mbv die 60 features kan je dan proberen unieke gezichten te herkennen (als belichting, ... geen roet in het eten gooien)<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_15.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_15.jpg" /></p>
+
+<h3 id="lbp">LBP</h3>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_16.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_16.jpg" /><br />
+LBP (Local Binary Patterns) gebruikt om relaties tss onderlinge pixels te gaan zoeken. (blokje pixels nemen en omringende pixels van centrale pixel vertalen : groter = 1/ kleiner = 0)<br />
+Het resultat hiervan wordt nogmaals opgedeeld in regions en van elk deel wordt een histogram genomen. Het histogram geeft dan een bepaald patroon weer dat uniek is voor een gezicht. Dit histogram is input voor de classifier. Nadeel hieraan is deze techniek gevoelig is voor translaties : de belichting is anders of de positie van het gezicht is wat schuiner, meer naar boven of beneden dan klopt het histogram van die region niet meer.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_17.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_17.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_18.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_18.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_19.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_19.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_20.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_20.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_21.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_21.jpg" /><br />
+Verschuivingen bij CNN ? Zitten mechanismen in om kleine verschuivingen op te vangen. </p>
+
+<h2 id="architectuur-van-een-cnn">Architectuur van een CNN</h2>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_19.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_19.jpg" /><br />
+CNN : Feature extractor + classifier<br />
+CNN gaat zelf patronen herkennen in feature extractor = opvolging van CONV (convolution) (Relu) en Pooling laag.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_20.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_20.jpg" /></p>
+
+<h3 id="convolutie">Convolutie</h3>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_21.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_21.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_22.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_22.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_23.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_23.jpg" /><br />
+Convolution wordt soms  Kernel of soms Support genoemt<br />
+om bluring te doen bijv kan je een Kernel nemen van 3 op 3 en waar overal 1/9 als waarde neemt. </p>
+
+<h4 id="valid-mode">Valid Mode</h4>
+
+<p>Kernel gaat niet buiten buiten de input waardoor de output kleiner is dan de input.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_24.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_24.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_25.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_25.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_26.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_26.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_27.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_27.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_28.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_28.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_25.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_25.jpg" /></p>
+
+<h4 id="same-mode">Same Mode</h4>
+
+<p>Je voegt zero padding toe zodat de input en output lengte gelijk is.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_26.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_26.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_27.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_27.jpg" /></p>
+
+<h4 id="full-mode">Full Mode</h4>
+
+<p>Je voegt zero padding toe zodat de filterkernel buiten de input kan met minstens 1 overlap.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_28.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_28.jpg" /></p>
+
+<h4 id="stride">Stride</h4>
+
+<p>Als je altijd 1 cel opschuift horizontaal en vertikaal<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_29.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_29.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_30.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_30.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_31.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_31.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_32.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_32.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_33.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_33.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_34.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_34.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_35.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_35.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_36.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_36.jpg" /><br />
+Als je 2 cellen opschuift hor en vert.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_37.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_37.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_38.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_38.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_39.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_39.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_40.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_40.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_41.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_41.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_42.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_42.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_43.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_43.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_44.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_44.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_45.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_45.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_44.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_44.jpg" /></p>
+
+<h4 id="berekening-output-grote">Berekening output grote</h4>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_45.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_45.jpg" /></p>
+
+<h4 id="dilation">Dilation</h4>
+
+<p>Bij dilatie (verdunning) gaat de mapping met de kernel steeds een cel overslaan.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_46.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_46.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_47.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_47.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_48.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_48.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_49.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_49.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_50.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_50.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_51.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_51.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_52.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_52.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_53.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_53.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_54.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_54.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_47.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_47.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_48.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_48.jpg" /></p>
+
+<h4 id="waarom-is-convolutie-bruikbaar">Waarom is convolutie bruikbaar ?</h4>
+
+<p>convolutie is gerelateerd aan correlatie, inwelke mate patronen in je data gelijklopend zijn (ene stijgt andere stijgt, ene daalt andere daalt)<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_55.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_55.jpg" /><br />
+Output resultaat geeft weer hoe sterk kernel patroon terug te vinden is in de input. (1 = 100% terug te vinden)<br />
+Convolution gaat pixels vertalen naar feature maps die vertellen welke structuren waar aanwezig zijn in de foto.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_56.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_56.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_57.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_57.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_58.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_58.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_59.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_59.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_60.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_60.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_61.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_61.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_62.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_62.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_63.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_63.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_64.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_64.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_65.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_65.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_66.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_66.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_67.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_67.jpg" /><br />
+Bij kleuren afbeelding worden de kernel berekeningen van de drie lagen opgeteld waardoor je een 2D output krijgt. De kleurenkanalen worden plat gedrukt.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_57.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_57.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_63.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_63.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_64.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_64.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_65.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_65.jpg" /></p>
+
+<h4 id="hoe-past-dit-in-een-nn">Hoe past dit in een NN ?</h4>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_66.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_66.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_67.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_67.jpg" /><br />
+1 feature map = 1 neuron<br />
+Elke feature map zal op zoek gaan naar een bepaald patroon. Hoe meer feature maps hoe meer patronen je kan zoeken. Belangrijk hierbij is dat de weights random worden ingesteld zodat je op zoek gaat naar andere patronen per feature map. Maar ook hoe meer weights, hoe meer berekeningen je moet doen. Hierdoor kan je model ook meer kennen/leren en kan je meer last hebben met overfitting.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_68.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_68.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_69.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_69.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_70.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_70.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_71.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_71.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_72.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_72.jpg" /><br />
+Waar kijkt een bepaald patroon dan naar ?<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_70.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_70.jpg" /></p>
+
+<h4 id="activatiefunctie">Activatiefunctie</h4>
+
+<p>Met de activatiefunctie ga je dan alle negatieve waarden op  nul zetten.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_71.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_71.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_72.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_72.jpg" /></p>
+
+<h3 id="pooling">Pooling</h3>
+
+<h4 id="max-pooling">Max Pooling</h4>
+
+<p>Hierdoor gaat CNN minder gevoelig zijn door lichte verschuivingen in de afbeelding op te vangen.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_73.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_73.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_74.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_74.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_75.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_75.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_76.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_76.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_77.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_77.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_78.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_78.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_79.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_79.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_76.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_76.jpg" /></p>
+
+<h4 id="flattening">Flattening</h4>
+
+<p>Je kan na de Pooling nog Dropout en Batchnormalisation toevoegen.<br />
+Overfitting zal iets minder snel gebeuren omdat niet alle neuronen met de volgende laag verbonden zijn en je maar een deel van de neuronen van de ene laag naar de volgende laag in één neuron overbrengt.<br />
+Laag per laag gaat het NN van eenvoudige patronen (lijnen vert, hor, diagonaal) naar meer specifieke structuren.<br />
+Vooraleer over te gaan naar de classificatielaag mag je niet vergeten om met een Flatten laag van 2D naar 1D.<br />
+Met afbeeldingen ga je normaliseren door de pixelwaarden te delen door 255 zodat we zeker zijn dat die tussen 0 en 1 ligt. Wel opletten dat de waarden die je inleest dat die al niet genormaliseerd zijn want dan moet je niet meer delen door 255. Als je dit doet blijft er niet veel meer over en gaat je model ook niet getraind geraken.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_77.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_77.jpg" /></p>
+
+<h4 id="dropout">Dropout</h4>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_78.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_78.jpg" /></p>
+
+<h4 id="wat-een-cnn-geleerd-heeft">Wat een CNN geleerd heeft</h4>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_79.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_79.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_80.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_80.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_81.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_81.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_82.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_82.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_82.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_82.jpg" /></p>
+
+<h4 id="image-augmentation">Image Augmentation</h4>
+
+<p>keras : ImageGenerator. Die generator maakt afbeeldingen aan en voedt die aan het model. Het model ziet geen trainingsdata meer en weet ook niet hoeveel trainingsdata er is.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_83.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_83.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_84.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_84.jpg" /><br />
+Door ImageGenerator te gebruiken kan je ook overfitting vermijden.<br />
+Zonder ImageGenerator (ongekende data = test scoort slechter en slechter en gekende data =traiinginsdata scroort bter en beter wat wijst op overrfitting):<br />
+<img src="Screenshot 2021-03-20 at 17.54.13.png" alt="Screenshot 2021-03-20 at 17.54.13.png" /><br />
+Met ImageGenerator (geen overfitting aangezien er meer data is en meer gevarieerde data = moeilijker om van buiten te leren):<br />
+<img src="Screenshot 2021-03-20 at 17.56.06.png" alt="Screenshot 2021-03-20 at 17.56.06.png" /><br />
+Ook de accuracy wordt hierdoor meestal beter :<br />
+<img src="Screenshot 2021-03-20 at 18.01.23.png" alt="Screenshot 2021-03-20 at 18.01.23.png" /></p>
+
+<h2 id="geavanceerde-cnn-architectuur">Geavanceerde CNN architectuur</h2>
+
+<p>Sinds 1998 worden de modellen beter, meer weights en meer rekenkracht nodig. Nu zijn ze zelfs beter dan de mens in herkennen van objecten (human error 5%)<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_85.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_85.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_86.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_86.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_87.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_87.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_88.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_88.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_89.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_89.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_90.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_90.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_91.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_91.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_88.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_88.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_89.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_89.jpg" /><br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_90.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_90.jpg" /></p>
+
+<p><img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_91.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_91.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_92.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_92.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_93.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_93.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_94.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_94.jpg" /><br />
-<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_95.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_95.jpg" /><br />
+Je kan de weights zelf downloaden en in je eigen NN gebruiken. Je kan dit model dan hertrainen met eigen data. Feature extractors zijn gelijkaardig dus die moeten niet hertraind worden. Je zet die weights vast. De classifier die moet hertraind worden, train je met je eigen data. </p>
+
+<h2 id="object-dectectie">Object dectectie</h2>
+
+<p>Is het detecteren van objecten in een afbeelding en ook hun positie in die afbeelding bepalen.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_96.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_96.jpg" /><br />
+Sliding window over afbeelding en window wordt na elka ronde kleiner.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_97.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_97.jpg" /><br />
+YOLO doet : type objecten, regressie, en object detectie, verschillende classes detecteren. YOLO heeft hiervoor verschillende uitgangen die dit afdekken.<br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_98.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_98.jpg" /><br />
 <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_99.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_99.jpg" /></p>
 
+<h3 id="tensorboard">Tensorboard</h3>
+
+<p>import Tensorboard<br />
+bij model.fit toevoegen : callbacks = [tensortboard]<br />
+naam log file duidelijke naam geven<br />
+cmd : tensorboard --logdir logs<br />
+logs = dir van log files en je voert commando uit in de folder van je notebook</p>
+
 <h2 id="vragen">Vragen</h2>
 
-<p><!-- Welke vragen staan open ? --><br />
-- </p>
+<p><a href="anki.html">anki</a></p>
+
+<p>Q: Wanneer gebruik je een CNN ?<br />
+A: Van zodra je wil werken met afbeeldingen :</p>
+
+<ul>
+<li>object detectie : box rond object in het beeld tekenen (bijv YOLO)</li>
+<li>segmentatie : gebieden waar objecten zijn in kleuren</li>
+<li>pose estimation : bewegingstracking</li>
+<li>style transfer : stijl van ene afbeelding toepassen op andere afbeelding</li>
+<li>image caption : beschrijven wat er te zien is op een afbeelding<br />
+<!--ID: 1616235183664--></li>
+</ul>
+
+<p>Q: Uit welke twee delen bestaat de architectuur van een CNN ? Wat kan je van elk deel vertellen ?<br />
+A: CNN is opgebouwd uit een feature extractie deel en een classificatie deel. Het feature extractie deel bestaat uit opeenvolgende convolutie en pooling lagen. Het classificatie deel begint bij een flatten laag als input, enkele hidden layers en een output laag (softmax, sigmoid, ..)<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_21.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_21.jpg" /><br />
+<!--ID: 1616235183868--></p>
+
+<p>Q: Waarvoor gebruik je een convolutie ?<br />
+A: Je kan een convolutie terug vinden bij :</p>
+
+<ul>
+<li>filteren van signalen (geluid, afbeelding, video, ...)</li>
+<li>bij NN voor feature extraction (dat getraind wordt via backpropagation)<br />
+<!--ID: 1616235183917--></li>
+</ul>
+
+<p>Q: Wat wil valid mode zeggen bij Convoluties ?<br />
+A: Als je valid mode gebruikt dan ga je enkel waarden berekenen waar de kernel en input elkaar overlappen. De kernel van 3 op 3 bijv gaat altijd overlappen met de input matrix. Hierdoor gaat de output kleiner zijn dan de input.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_25.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_25.jpg" /><br />
+<!--ID: 1616235183951--></p>
+
+<p>Q: Wat is het effect als je convoluties met valid mode gebruikt ?<br />
+A: Het resultaat gaat kleiner zijn dan de input.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_25.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_25.jpg" /><br />
+<!--ID: 1616235183957--></p>
+
+<p>Q: Wat is het voordeel en nadeel als je same mode gebruikt bij convoluties ?<br />
+A: Op voorhand aan input extra rijen en kolommen met nullen toevoegen zodanig dat na filtering je output even groot is als de input. Het nadeel is dat je data toevoegt die corrupt is.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_27.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_27.jpg" /><br />
+<!--ID: 1616235183965--></p>
+
+<p>Q: Wat is het effect van full mode bij convoluties ?<br />
+A: De input wordt uitgebreid met extra rijen en kolommen opgevuld met nul. Hierdoor kan de kernel met minimum met 1 cel overlappen. Het eindresultaat is dat je extra rijen/kolommen in je output krijgt.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_28.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_28.jpg" /><br />
+<!--ID: 1616235183971--></p>
+
+<p>Q: Wat is de stride bij een convolutie ?<br />
+A: De sprong waarmee je kernel gaat opschuiven (hoizontaal of vertikaal). Als je sprong &gt; 1 gaat de output wel kleiner worden omdat je minder convoluties gaat berekenen.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_44.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_44.jpg" /><br />
+<!--ID: 1616235184006--></p>
+
+<p>Q: Hoe bereken je de grote van de output na convolutie ?<br />
+A: <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_45.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_45.jpg" /><br />
+<!--ID: 1616243512521--></p>
+
+<p>Q: Wat is dilated convolution ?<br />
+A: Het gebied dat geselecteerd wordt om door de kernel te gaan, wordt beperkt door elke tweede kolom en rij niet over te zetten. Vooral gebruikt als je een groter gebied wil bekijken bijv bij segmentatie.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_46.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_46.jpg" /><br />
+<!--ID: 1616347116597--></p>
+
+<p>Q: Waarom kan je met convolutie object detectie, ... doen ?<br />
+A: Convolutie is gerelateerd aan correlatie. Het zoekt verbanden tss pixels, patronen. De output geeft weer hoe sterk de kernel, een bepaald patroon, terug te vinden is in de input. Convolotie gaat pixels vertalen in feature maps = patroon.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_55.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_55.jpg" /><br />
+<!--ID: 1616243512548--></p>
+
+<p>Q: Hoe gaat convolutie om met kleuren ?<br />
+A: De drie lagen, RGB, hebben elke hun kernel en de berekeningen ervan van dezelfde posities worden samengeteld waardoor je van 3D naar 2D gaat.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_57.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_57.jpg" /><br />
+<!--ID: 1616243512555--></p>
+
+<p>Q: Worden alle neuronen van de input layer verbonden met de first hidden layer in een CNN mbv een convolutie ? Hoe zit dit met de weights ?<br />
+A: Niet alle neuronen van de input layer worden verbonden met de first hidden layer (local receptive fileds). Enkel de neuronen van de input layer die nodig zijn voor de kernel berekening zijn verbonden met het output neuron. De gewichten die hierbij gebruikt worden zijn gedeeld (weight sharing).<br />
+<!--ID: 1616243512561--></p>
+
+<p>Q: Waarvoor wordt Pooling gebruikt in een CNN ? Waarom is dit nodig ? Welke varianten ken je ?<br />
+A: Met pooling kan je je feature maps verkleinen. Hierdoor blijft je NN berekenbaar, heb je minder geheugen nodig, beperk je het aantal parameters (waardoor je overfitting gaat beperken). Varianten : Max Pooling, Average Pooling,<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_74.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_74.jpg" /><br />
+<!--ID: 1616243512565--></p>
+
+<p>Q: Hoe zorg je er bij een CNN voor dat kleine verschuivingen van het object in een afbeelding geen invloed heeft op de herkebaarheid ?<br />
+A: Door pooling te gebruiken in een CNN ga je het beeld subsamplen (krimpen). Je doet dit door  een aantal pixels samen te nemen tot 1 via aggregatiefunctie : maximum, average, ... Door verschillende pixels samen te nemen speelt de exacte locatie van die pixel minder een rol.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_74.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_74.jpg" /><br />
+<!--ID: 1616347116604--></p>
+
+<p>Q: Waarom heeft dropout toepassen in een CNN minder zin ?<br />
+A: Dropout zijn bij CNN overbodig omdat ze minder parameters (weights) hebben en werkt dus minder goed.<br />
+<!--ID: 1616348926795--></p>
+
+<p>Q: Wat doet een flatten laag in een NN ?<br />
+A: Die zorgt ervoor dat je van een 2D naar een 1D laag gaat zodat je classificatie kan doen.<br />
+<!--ID: 1616243512571--></p>
+
+<p>Q: Wat wil de 32 zeggen in model.add(Conv2D(32, kernel_size=(3, 3), acxtivation='relu', input_shape=input_shape)) ?<br />
+A: Dit wil zeggen dat er een convolutional layer toegevoegd met 32 feature 2D maps of naar 32 patronen wil zoeken.<br />
+<!--ID: 1616243512577--></p>
+
+<p>Q: Wat is image augmentation ?<br />
+A: Extra afbeeldingen maken om op te trainen door bestaande afbeeldingen aan te passen :</p>
+
+<ul>
+<li>translatie</li>
+<li>rotatie</li>
+<li>grote</li>
+<li>kleur</li>
+<li>achtergrond</li>
+<li>ruis</li>
+<li>inzoomen<br />
+<!--ID: 1616261056758--></li>
+</ul>
+
+<p>Q: Wat zegt deze grafiek over de training van het NN ?<br />
+<img src="Screenshot 2021-03-20 at 17.54.13.png" alt="Screenshot 2021-03-20 at 17.54.13.png" /><br />
+A: Vanaf 10 epochs zien we dat het model de trainingsset uit het hoofd begint te leren en dat het model slechter en slechter wordt op nieuwe data (testset)<br />
+<!--ID: 1616261056945--></p>
+
+<p>Q: Wat zegt deze grafiek over de training van het NN ?<br />
+<img src="Screenshot 2021-03-20 at 17.56.06.png" alt="Screenshot 2021-03-20 at 17.56.06.png" /><br />
+A: Het model wordt beter en beter. Er is geen sprake van overfitting omdat de loss op de trainingsset blijft zakken in dezelfde mate als de loss voor de testset blijft zakken.<br />
+<!--ID: 1616261056956--></p>
+
+<p>Q: Hoe kan je bij een CNN ervoor zorgen dat er geen overfitting is?<br />
+A: Je kan extra data toevoegen in je trainingsset mbv een Image Genrator waardoor het model meer data en meer gevarieerde data ziet zodat het deze minder van buiten kan leren en overfitting moeilijker is.<br />
+<!--ID: 1616261056967--></p>
+
+<p>Q: Wat kan je doen om een CNN te trainen als je weinig data en/of rekenkracht hebt ?<br />
+A: Gebruik maken van Transfer learning<br />
+<!--ID: 1616261056978--></p>
+
+<p>Q: Wat zijn skip connections in een NN ?<br />
+A: Bij het uitbouwen van het NN gaat de data niet enkel door alle lagen maar wordt diezelfde data aan volgende lagen ook nog eens ongefilterd aangeboden worden zodat het NN zelf kan bepalen in welke mate die filtering die gebeurt door die tussenlagen nuttig is.<br />
+<img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_91.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_91.jpg" /><br />
+<!--ID: 1616261056988--></p>
+
+<p>Q: Wat is het verschil tussen object detectie, object classificatie en object segmentatie ?<br />
+A: <img src="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_96.jpg" alt="Sessie_02_Convolutional_Neural_Networks_Annotaties1024_96.jpg" /><br />
+<!--ID: 1616261057005--></p>
+
+<p>Q: Wat is er typisch aan YOLO ? Waarvoor staat YOLO ?<br />
+A: YOLO = you only look once is een object detectie CNN. Special aan YOLO is dat het realtime zowel de types objecten, object detectie/locatie en classificatie als output geeft. Hiervoor gebruikt het geen sliding window.<br />
+<!--ID: 1616261766522--></p>
+
+<p>Q: Wat is Transfer Learning ? Wat is het voordeel ?<br />
+A: Transfer Learning is een reeds getraind model als basis nemen om je eigen classificaties op te trainen. Het voordeel is dat je sterke modellen die veel parameters, veel data en veel rekenkracht vroegen om te trainen als basis kan gebruiken voor je eigen  model. Dit doe je door de weights van dit model te downloaden en in je eigen NN te zetten. Je zou bijv YOLO kunnen downloaden, de feature extraction weights bevriezen, je eigen classifier toevoegen aan het NN en dan het model trainen op je eigen afbeeldingen. Bij je eigen training moet je dan enkel de weights van de classifiers herberekenen en niet de 100000de parameters van de feature extraction.<br />
+<!--ID: 1616261766531--></p>
 </div>
 
       <div class="backlinks">

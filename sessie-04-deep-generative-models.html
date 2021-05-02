@@ -27,63 +27,195 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><h1 id="titel">Titel</h1>
+      <div id="content"><h1 id="deep-generative-models">Deep generative models</h1>
 
-<p>Tags: <span class="tag">AI</span> <span class="tag">andere</span><br />
-Date: 2021-02-23<br />
-Type: <a href="cursus-topic.html">Cursus topic</a><br />
-Related: <!-- Links to pages not referenced in the content --><br />
-Source : </p>
+<p>Tags: <span class="tag">AI</span> <span class="tag">GAN</span> <span class="tag">VAE</span><br />
+Date: 2021-05-02<br />
+Type: <a href="cursus-topic.html">Cursus topic</a> </p>
 
 <h2 id="notities">Notities</h2>
 
-<p><img src="Sessie_04_Deep_Generative_Models_Annotaties1024_8.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_8.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_1.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_1.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_2.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_2.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_3.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_3.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_4.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_4.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_5.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_5.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_6.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_6.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_7.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_7.jpg" /><br />
+<p>snappen wat er gebeurt<br />
+applicaities<br />
+weten hoe je het kan implementeren</p>
+
+<h2 id="generative-models">Generative models</h2>
+
+<p>Q: Wat is er typisch aan een generative model ?<br />
+A: Een generative model Is in staat om nieuwe data te genereren die niet in trainingset zit. Bijv gezichten te genereren die niet in trainingset zaten maar er wel sterk op lijken.<br />
+<!--ID: 1619978592575--></p>
+
+<h4 id="types">Types</h4>
+
+<p>Q: Welke typisch van generative models ken je ?<br />
+A: Enkele typisch van generative models zijn :</p>
+
+<ul>
+<li>Variational autoencoder</li>
+<li>Generative Adversial Networks (GAN)<br />
+<!--ID: 1619978592592--></li>
+</ul>
+
+<h3 id="discriminative-vs-generative-models">Discriminative vs generative models</h3>
+
+<p><img src="Sessie_04_Deep_Generative_Models_Annotaties1024_4.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_4.jpg" /><br />
+Discriminative zoekt scheidingslijn tss klasses<br />
+Generative  wat maakt dat de features tot een bepaalde klasse (bijv auto) behoren. Probeert te bepalen hoe een auto eruit ziet. </p>
+
+<p><img src="Sessie_04_Deep_Generative_Models_Annotaties1024_5.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_5.jpg" /><br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_6.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_6.jpg" /></p>
+
+<h3 id="vae-variational-autoencoder">VAE - variational autoencoder</h3>
+
+<p>Q: Waarvoor zou je een variational autoencoder kunnen gebruiken ?<br />
+A: Toepassingen :</p>
+
+<ul>
+<li>nieuwe lettertypes genereren</li>
+<li>nieuwe gezichten genereren<br />
+<!--ID: 1619978203834--></li>
+</ul>
+
+<p>Q: Wat is het verschil tussen een Autoencoder en een Variational Autoencoder ?<br />
+A: De VAE leert geen waarden maar distributies. En dat die in staat is om data te genereren die niet in de trainingset zit maar er wel sterk op lijkt.<br />
+<!--ID: 1619978203851--></p>
+
+<p>Autoencoder is NN die de input zo goed mogelijk probeert te reconstrueren<br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_8.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_8.jpg" /><br />
+Latent variable ?<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_9.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_9.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_10.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_10.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_11.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_11.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_12.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_12.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_13.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_13.jpg" /><br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_11.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_11.jpg" /></p>
+
+<p><img src="Sessie_04_Deep_Generative_Models_Annotaties1024_12.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_12.jpg" /><br />
+Per neuron krijg je een distributie en zelf al is de inschatting wat verkeerd toch is output in de buurt van de input. Wat is doel van VAE ?<br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_13.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_13.jpg" /></p>
+
+<h4 id="architectuur-vae">Architectuur VAE</h4>
+
+<p>Q: Waarom moet de code layer bij een VAE ontdubbelen ?<br />
+A: De code layer moet ontdubbelen omdat er twee waarden : het gemiddelde en de standaardafwijking/variantie moet bijgehouden worden.<br />
+<!--ID: 1619978407590--></p>
+
+<p>Op de code layer niet enkel getallen uit maar ook distributies. Deze zijn gekenmerkt door en gemiddelde en een standaardafwijking/variantie. Code layer gaat moeten verdubbelen om die waarden (distributie en variantie) te kunnen bijhouden.<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_14.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_14.jpg" /><br />
+Code layer 2x30<br />
+sampler = laag in NN gaat uit gaussiaanse curve samples nemen<br />
+Reconstructie gebeurt op samples<br />
+Mbv al die verschillende samples gaan er verschillende variantiees van gezichten gegenereerd worden.<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_15.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_15.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_16.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_16.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_17.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_17.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_18.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_18.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_19.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_19.jpg" /><br />
+De weights moeten zodanig ingesteld worden dat gelijk welke sample je neemt de output goed moet bliven lijken op de input.<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_20.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_20.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_21.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_21.jpg" /><br />
+Autoencoder getraind uit een groot deel van de MNIST afbeeldingen getraind<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_22.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_22.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_23.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_23.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_24.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_24.jpg" /><br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_24.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_24.jpg" /></p>
+
+<h4 id="trainen-van-een-vae">Trainen van een VAE</h4>
+
+<p>Latente var = gemiddelde en de spreiding<br />
+basis principe blijft : loss minimaliseren = verschil tss output en input<br />
+KL divergence = maat die aangeeft hoe sterk de twee distributies op elkaar lijken<br />
+Forceert zodat er in code layer distributies ontstaan<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_25.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_25.jpg" /><br />
+Je kan geen backpropagation doen doorheen een sampling node. Dit wordt opgelost door de reparameterization trick. Men gaat de sampling zelf buiten het NN trekken en de parameters signma en mu worden door het NN getraind.<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_26.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_26.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_27.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_27.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_28.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_28.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_29.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_29.jpg" /><br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_27.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_27.jpg" /></p>
+
+<h3 id="disentangled-variational-autoencoder">Disentangled variational autoencoder</h3>
+
+<p>disentangled = latente variabelen leren/ontdekken die niet gekoppeld zijn aan elkaar.<br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_28.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_28.jpg" /></p>
+
+<h4 id="goal-of-disentangled-features">Goal of disentangled features</h4>
+
+<p>Q: What is the goal of dientangled features ?<br />
+A: The goal of disentangled features can be most easily understood as wanting to use each dimension of your latent _z_ code to encode one and only one of these underlying independent factors of variation.<br />
+From a more information theoretic perspective, a disentangled representation is useful because when you capture the most meaningful or salient ways that observations differ from one another, those axes of difference will often be valuable for a variety of supervised task. When this is true, it allows you to use less data and a less complex model to perform a given supervised task, when you use this disentangled representation as input.</p>
+
+<h5 id="example">example</h5>
+
+<p>The goal of disentanglement has a few different motivations. In a practical sense, imagine you were learning a generative model to create pictures of people, with the ultimate goal of generative a bunch of fake people to be in the background of a video game scene. You might want to be able to tell the model, “I want to generate someone who looks like this person, but is taller”. If you’ve learned a _z_ dimension that independently encodes a person’s height, then you can modify that, keeping everything else the same. If you instead encoded height and gender in a shared dimension, changing the height while keeping all other aspects of the person constant wouldn’t be possible, since modifying the internal dimension for height would also modify gender.<br />
+<!--ID: 1619978683537--></p>
+
+<h4 id="code">Code</h4>
+
+<p>Autoencoder met Code layer die opgesplitst is in 2 stukken.<br />
+Sampler definieren voor decoder. Bij training KL divergions gebruiken. </p>
+
+<h3 id="gan-generative-adversarial-networks">GAN - generative adversarial networks</h3>
+
+<h4 id="wat-is-een-gan">Wat is een GAN ?</h4>
+
+<p>2014 : Ian Goodfellow</p>
+
+<p>Q: Geef een toepassing voor een GAN<br />
+A: Mogelijke toepasingen voor een GAN :</p>
+
+<ul>
+<li>Obv een robotfoto een foto genereren</li>
+<li>Obv een schets een foto van het object genereren bijv een handtas<br />
+<!--ID: 1619978203866--></li>
+</ul>
+
+<p>Q: Uit welke twee deelnetwerken bestaat een GAN en wat doen ze ?<br />
+A: Een GAN bestaat uit een generator en een discriminator. Die twee deelnetwerken gaan constant met elkaar in competitie. De generator probeert zo realistisch mogelijke data te genereren om de discriminator te bedriegen en de discriminator probeert die genearator te ontmaskeren.<br />
+<!--ID: 1619978203876--></p>
+
+<p>De generator krijgt de echte trainingset nooit te zien.  De discriminator is ziet die wel wanneer die moet getraind worden om het verschil te kunnen maken tss de trainingset en de salmples van de generator.. De discriminator geeft ook hoe de generator zijn sample moet bijsturen om beter te zijn.<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_30.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_30.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_31.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_31.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_32.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_32.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_33.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_33.jpg" /><br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_31.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_31.jpg" /></p>
+
+<h4 id="architectuur-gan">Architectuur GAN</h4>
+
+<p><img src="Sessie_04_Deep_Generative_Models_Annotaties1024_32.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_32.jpg" /></p>
+
+<h4 id="training-van-een-gan">Training van een GAN</h4>
+
+<p>Q: Hoe verloopt de ttaining van een GAN ?<br />
+A: Tijdens het trainen van een GAN wordt er gebruik gemaakt van minimax-game. Ttz de discriminator probeert zijn reward te maximaliseren (= loss minimaliseren) en de generator probeert de reward van de discriminator te minimaliseren (= loss te maximaliseren).<br />
+De eerste epoch genereert de generator samples met random inhoud (= ruis) en geeft die aan de discriminator. De weights van de generator wordt bevroren en de discriminator wordt getraind om het verschil te maken tss de trainingsamples en het resultaat van de generator. Hierbij proberen de loss zo klein mogelijk te maken. Daarna wordt de weights van de discriminator bevroren en wordt de generator getraind via backpropagation om de weights van de generator bij te stellen zodat de loss zo maximaal mogelijk is. De weights worden terug bevroren en de discriminator krijgt nieuwe samples van de generator om zijn weights bij te stellen om het onderschied tss die nieuwe samples en de trainingsamples te kunnen blijven maken.<br />
+<!--ID: 1619978203886--></p>
+
+<p><img src="Sessie_04_Deep_Generative_Models_Annotaties1024_33.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_33.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_34.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_34.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_35.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_35.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_36.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_36.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_37.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_37.jpg" /><br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_38.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_38.jpg" /><br />
+Obv een robotfoto een foto van een gezicht genereren<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_39.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_39.jpg" /><br />
+Een lach overnemen van de ene foto op de andere door het verschil tss een lachende en niet lachende vrouw te nemen en dat toe te passen op een andere foto<br />
 <img src="Sessie_04_Deep_Generative_Models_Annotaties1024_40.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_40.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_41.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_41.jpg" /><br />
-<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_42.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_42.jpg" /></p>
+d<br />
+<img src="Sessie_04_Deep_Generative_Models_Annotaties1024_41.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_41.jpg" /></p>
 
-<h2 id="vragen">Vragen</h2>
+<p><img src="Sessie_04_Deep_Generative_Models_Annotaties1024_42.jpg" alt="Sessie_04_Deep_Generative_Models_Annotaties1024_42.jpg" /><br />
+Q: Welke problemen/moeilijkheden zijn er met een GAN ?<br />
+A: De problemen met een GAN zijn : </p>
 
-<p><!-- Welke vragen staan open ? --><br />
-- </p>
+<ul>
+<li>non-convergence : het oscilleert en is instabiel waardoor het niet convergeert naar een optimum</li>
+<li>Diminished gradient : het is moeilijk om het zodanig in te stellen dzat zowel discriminator als generator beter worden, dat beide convergeren. Als één van de twee te snel bijleert dan kan die niets meer leren van de resultaten van de andere. </li>
+<li>Mode collaps : de generator doet maar één type generatie, zeer eng, geen verscheidenheid in generatir</li>
+<li>Zeer gevoelig aan hyperparameter selection<br />
+<!--ID: 1619978203898--></li>
+</ul>
+
+<p>Q: What is the difference between VAE and a GAN ?<br />
+A: The differences between GAN and VAE are : </p>
+
+<ul>
+<li>A GAN's generator samples from a relatively low dimensional random variable and produces an image. Then the discriminator takes that image and predicts whether the image belongs to a target distribution or not. Once trained, I can generate a variety of images just by sampling the initial random variable and forwarding through the generator.</li>
+<li>A VAE's encoder takes an image from a target distribution and compresses it into a low dimensional latent space. Then the decoder's job is to take that latent space representation and reproduce the original image. Once the network is trained, I can generate latent space representations of various images, and interpolate between these before forwarding through the decoder which produces new images.</li>
+<li><br />
+<!--ID: 1619978938731--></li>
+</ul>
 </div>
 
       <div class="backlinks">

@@ -27,61 +27,258 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><h1 id="titel">Titel</h1>
+      <div id="content"><h1 id="word-embedding">Word embedding</h1>
 
-<p>Tags: <span class="tag">AI</span> <span class="tag">andere</span><br />
-Date: 2021-02-23<br />
-Type: <a href="cursus-topic.html">Cursus topic</a><br />
-Related: <!-- Links to pages not referenced in the content --><br />
-Source : </p>
+<p>Tags: <span class="tag">AI</span> <span class="tag">NLP</span> <span class="tag">wordembedding</span> <span class="tag">word</span>2vec <span class="tag">skipgram</span> <span class="tag">cbow</span> <span class="tag">SGNS</span> <span class="tag">glove</span> <span class="tag">embedding</span><br />
+Date: 2021-05-23<br />
+Type: <a href="cursus-topic.html">Cursus topic</a> </p>
 
-<h2 id="notities">Notities</h2>
+<h2 id="introductie">Introductie</h2>
 
-<p><img src="Sessie_06_Text_Embedding_Annotaties1024_9.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_9.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_1.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_1.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_2.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_2.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_3.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_3.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_4.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_4.jpg" /><br />
+<h3 id="nlp">NLP</h3>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_4.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_4.jpg" /><br />
+Q: Wat is NLP ? Waarvoor kan het gebruikt worden ?<br />
+A: De doelstelling van NLP is om computers natuurlijke taal te laten begrijpen om er vervolgens zinvolle taken mee te doen of op uit te voeren. </p>
+
+<ul>
+<li>Machine translation</li>
+<li>Sentiment analysis</li>
+<li>Beantwoorden van (complexe) vragen</li>
+<li>Test to speech / speech to text</li>
+<li>Classificatie van tekst</li>
+<li>Spellingscheck<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_5.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_5.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_6.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_6.jpg" /><br />
+<!--ID: 1621759834060--></li>
+</ul>
+
+<p>Q: Wat is NLU ?<br />
+A: Natural language understanding<br />
+<!--ID: 1621759834398--></p>
+
+<p>Q: Waarom is NLP complex ?<br />
+A: NLP is complex omdat :</p>
+
+<ul>
+<li>Verschillende manieren op hetzelfde te schrijven</li>
+<li>Taal is ambigu</li>
+<li>Betekenis hangt vaf van de context</li>
+<li>NLP algoritmes verstaan niet echt taal. Maar eerder patronen waarop ze reageren.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_7.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_7.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_8.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_8.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_10.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_10.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_11.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_11.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_12.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_12.jpg" /><br />
+<!--ID: 1621759933104--></li>
+</ul>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_8.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_8.jpg" /></p>
+
+<h2 id="representatie-van-woorden">Representatie van woorden</h2>
+
+<h4 id="one-hot-vector">One-hot vector</h4>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_10.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_10.jpg" /></p>
+
+<p>Q: Wat is one-hot vector ?<br />
+A: One hot-vector wordt oa gebruikt bij NLP om een woord van de vocabulair (die 10000 woorden bevat) voor te stellen als vector van 10000 getallen. Waarbij er voor elk woord een 0 staat behalve voor het woord dat voorgesteld moeten worden met die vector die krijgt de waarde 1<br />
+<!--ID: 1621759834461--></p>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_11.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_11.jpg" /><br />
+<img src="Sessie_06_Text_Embedding_Annotaties1024_12.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_12.jpg" /></p>
+
+<p>Q: Wat is het probleem met one-hot representatie<br />
+A: Het probleem is : </p>
+
+<ul>
+<li>de one-hot evectors zijn orthogonaal</li>
+<li>er is geen aanduiding van overeenkomst tss de woorden<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_13.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_13.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_14.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_14.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_15.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_15.jpg" /><br />
+<!--ID: 1621763171603--></li>
+</ul>
+
+<h4 id="word-embedding-2">Word embedding</h4>
+
+<p>Q:  Wat is word embedding ? Wat is het voordeel waarvoor gebruik je het ?<br />
+A: Word embedding wordt gebruikt bij NLP om de woorden van een tekst voor te stellen als alternatief van one-hot vectors. Het voordeel van de word embedding is dat het aangeeft wat de gelijkenis is tss verschillende woorden. De word embedding bestaat typisch uit een 300-tal features (ipv one-hot vedctor die voor elk woord een feature heeft). De features die word embedding gebruikt zijn moeilijk te achterhalen en te interpreteren, dit bepaalt het NN zelf.<br />
+<!--ID: 1621763171787--></p>
+
+<p>Je kan bestaande word embeddings downloaden en gebruiken voor je model. global vectors for global representation. https://nlp.stanford.edu/projects/glove/</p>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_14.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_14.jpg" /><br />
+<img src="Sessie_06_Text_Embedding_Annotaties1024_15.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_15.jpg" /></p>
+
+<h4 id="eigenschappen-word-embedding">Eigenschappen word embedding</h4>
+
+<p>Q: Wat is een eigenschap van word embedding ?<br />
+A: Je kan de word embedding vectoren van woorden met elkaar vergelijken en als je dan het verschil van de vectoren maakt kan je zien hoeveel gelijkenis er is tss woorden. Bijv bestuurder en bestuurster. Twee woorden zijn sterk aan elkaar gerelateerd, bijna dezelfde betekenis met enkel de geslacht feature die verschilt.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_16.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_16.jpg" /><br />
+<!--ID: 1621763171821--></p>
+
+<p>Q:  Wat zegt deze visualisatie van een word embedding over de woorden auto en bus ?<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_17.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_17.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_18.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_18.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_19.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_19.jpg" /><br />
+A: Dit is een visualisatie van een deel van de word embedding, hier werden 2 features uitgenomen. De afstand van de woorden in 2D zegt echter niets over de relatie tss de woorden. De vectoren moeten namelijk bekeken worden in de volledige dimensionele ruimte van de embedding om met elkaar te kunnen vergelijken.<br />
+<!--ID: 1621763171864--></p>
+
+<p>Q: Hoe kan je multidimenionele matrix zoals een word embedding voorstellen in een 2D plot ?<br />
+A: t-SNE (t-distributed Stochastic Neighbor Embedding)<br />
+t-SNE is something called <strong>nonlinear dimensionality reduction</strong>. What that means is this algorithm allows us to separate data that cannot be separated by any straight line.<br />
+t-SNE is mostly used to understand high-dimensional data and project it into low-dimensional space (like 2D or 3D). That makes it extremely useful when dealing with CNN networks.<br />
+<!--ID: 1621763171905--></p>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_18.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_18.jpg" /><br />
+voorbeeld : http://bionlp-www.utu.fi/wv_demo/</p>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_19.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_19.jpg" /></p>
+
+<h4 id="gelijkenis-tss-woorden">Gelijkenis tss woorden</h4>
+
+<p>Q: Hoe kan je gelijkenis tss woorden vinden in word embeddings ?<br />
+A: Je kan die vinden via cosine similarity of via euclidische afstand. Bij cosine similarity hoe groter het getal, hoe dichter bij 1, hoe groter de gelijkenis. Bij Euclidische afstand, hoe groter de afstand hoe kleiner de gelijkenis tss de woorden.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_20.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_20.jpg" /><br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_21.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_21.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_22.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_22.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_23.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_23.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_24.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_24.jpg" /><br />
+<!--ID: 1621763171935--></p>
+
+<h3 id="gebruik-van-word-embeddings">Gebruik van word embeddings</h3>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_23.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_23.jpg" /><br />
+<img src="Sessie_06_Text_Embedding_Annotaties1024_24.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_24.jpg" /></p>
+
+<h3 id="genereren-van-word-embeddings">Genereren van word embeddings</h3>
+
+<h4 id="basis-idee">Basis idee</h4>
+
+<p>Q: Hoe kan je een word embedding maken ?<br />
+A: Word embedding kan gemaakt worden met word2vec mbv een NN of mbv co-occurence matrix. Met dit laatste wordt gekeken hoe vaak die woordcombinatie voorkomt in de teksten.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_25.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_25.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_26.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_26.jpg" /><br />
+<!--ID: 1621763171966--></p>
+
+<h4 id="word2vec">Word2Vec</h4>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_26.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_26.jpg" /></p>
+
+<p>Q: Wat is word2vec ? Welke varianten bestaan ervan ?<br />
+A: Word2Vec is een manier om woorden om te zetten in word embeddings. De twee varianten zijn : Skip-Gram model en Continuous Bag-of-Words Model (CBOW)<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_27.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_27.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_28.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_28.jpg" /><br />
+<!--ID: 1621763171999--></p>
+
+<p>Q: Wat is de bedoelng van word embedding ?<br />
+A: De bedoeling is om gerelateerdheid van woorden te weten.<br />
+<!--ID: 1621787415691--></p>
+
+<p>Q: Bij NLP wat zijn sterk gerelateerde woorden ? Wat is gelijkenis tss woorden ?<br />
+A: Als ze in elkaars buurt voorkomen in teksten, in dezelfde zin gebruikt worden.<br />
+<!--ID: 1621787415734--></p>
+
+<h5 id="skip-gram">Skip-Gram</h5>
+
+<p>Skip-Gram gebruikt centrum woorden waarvoor je de context = nabijheid = window rond het centrumwoord nemen (x aantal woorden in de zin voor en na het centrumwoord)</p>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_28.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_28.jpg" /><br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_29.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_29.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_30.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_30.jpg" /><br />
+<img src="Sessie_06_Text_Embedding_Annotaties1024_30.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_30.jpg" /></p>
+
+<p>Q: Hoe worden de weights van de Skip-Gram embedding bepaald ?<br />
+A:  Je neemt als input voor een Vanilla NN het kernwoord en bijhorende woorden in de window als one hot vector per woord. De bijhorende output is dan het kernwoord voorgesteld als one hot vector. De hidden layer = de embedding layer. Je bepaalt dan de weights voor het NN. De vector van de weights de gebruikt zijn tss de input layer en de hidden layer voor een bepaald woord is de word embedding van dat woord.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_31.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_31.jpg" /><br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_32.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_32.jpg" /><br />
+<!--ID: 1621765396849--></p>
+
+<p>Q: Wordt bij Skip-Gram rekening gehouden met de volgorde van de woorden ? Zo ja hoe ?<br />
+A: Niet enkel de relatie tss de woorden moet bekeken worden maar ook of de woorden voor of na het kernwoord staan. Daarom worden er ook direct voorspellingen gedaan voor het vorige/volgende/... woord.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_33.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_33.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_34.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_34.jpg" /><br />
+<!--ID: 1621788279858--></p>
+
+<p>Q: Wat is het probleem met Skip-Gram ? Wat is de oplossing ?<br />
+A: Het probleem met Skip-Gram :</p>
+
+<ul>
+<li>Zeer inefficieten om uit te rekenen</li>
+<li>De softmax (van de output layer)  moet een som uitrekenen over alle outputs. De dimensie van de output (= grootte van de vocabulair) kan in de praktijk zeer groot zijn (100000 en meer)<br />
+De oplossing is negative sampling<br />
+<!--ID: 1621765396962--></li>
+</ul>
+
+<p><img src="Sessie_06_Text_Embedding_Annotaties1024_34.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_34.jpg" /></p>
+
+<h4 id="negative-sampling">Negative sampling</h4>
+
+<p>Q: Wat is negative sampling ? Waar wordt het gebruikt in NLP en voor wat is het een oplossing ? Wat is het voordeel ?<br />
+A: Negative sampling wordt gebruikt bij Skip-Gram word embeddings omdat die te rekenintensief is (= Skip Gram Negative Sampling (SGNS)). De oplossing bestaat erin om enkel nog te berekenen of bepaalde woorden samen voorkomen of niet. Het NN moet dan enkel nog een binaire classificatie doen. De oplossing noemt negative sampling omdat het enerzijds een koppel van woorden neemt uit de zin die samen voorkomen en anderzijds koppels maakt van het centrumwoord met woorden die daar niet samen voorkomen. Met al die koppels wordt dan de trainingset opgebouwd.<br />
+Het voordeel is dat de berekening en het NN heel eenvoudig is. Je hebt wel nog steeds veel trainingsets.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_35.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_35.jpg" /><br />
+<!--ID: 1621765397002--></p>
+
+<h5 id="cbow">CBOW</h5>
+
+<p>Q: Wat is CBOW ?<br />
+A: CBOW = continuous bag of words en is een Word2Vec methode voor word embeddings.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_36.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_36.jpg" /><br />
+<!--ID: 1621766123481--></p>
+
+<p>Q: Wat is het verschil tss CBOW en Skip-Gram ?<br />
+A: CBOW gaat proberen te voorspellen wat het centrum woord is obv de woorden in het window terwijl Skip-Gram vertrekt vanuit het centrum woord en op basis daarvan de context woorden wil voorspellen.<br />
+CBOW :</p>
+
+<ul>
+<li>is sneller</li>
+<li>iets beter bij het embedden van frequent voorkomende woorden.<br />
+Skip-Gram:</li>
+<li>goed bij kleine hoeveelheden trainingsdata</li>
+<li>beter bij embedden van minder frequent voorkomende woorden<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_37.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_37.jpg" /><br />
+<!--ID: 1621766123623--></li>
+</ul>
+
+<h4 id="extra-glove">Extra - Glove</h4>
+
+<p>Q: Wat is Glove ?<br />
+A: Glove staat voor Global Vectors for Word Representation dat kan gebruikt worden bij NLP. Glove is een matrix berekening om wordembedding te doen en geen NN. </p>
+
+<ul>
+<li>telt het aantal keer dat woorden in elkaars buurt (window) voorkomen = count-based model</li>
+<li>maakt gebruik van co-occurance matrix</li>
+<li>werkt bijzonder snel op grote corpussen tekst<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_38.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_38.jpg" /><br />
+<!--ID: 1621786976546--></li>
+</ul>
+
+<h4 id="toepassing-sentiment-analysis">Toepassing - Sentiment analysis</h4>
+
+<p>Q: Geef 2 (niet - naive)  manieren om sentiment analyse te doen<br />
+A: Je kan het gemiddelde nemen van de embeddingsvectoren van alle woorden in een tekst en die als classifier gebruiken om te  bepalen of een bericht al dan niet positief of negatief is. Hier wordt geen rekening gehouden met woord volgorde<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_39.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_39.jpg" /><br />
-<img src="Sessie_06_Text_Embedding_Annotaties1024_40.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_40.jpg" /></p>
+Als je rekening wil houden met de volgorde van de woorden dan moet je gebruik maken van LSTM netwerk.<br />
+<img src="Sessie_06_Text_Embedding_Annotaties1024_40.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_40.jpg" /><br />
+<!--ID: 1621786976831--></p>
 
-<h2 id="vragen">Vragen</h2>
+<h3 id="word-embeddings-in-de-praktijk">Word embeddings in de praktijk</h3>
 
-<p><!-- Welke vragen staan open ? --><br />
-- </p>
+<p>https://keras.io/api/layers/core_layers/embedding/<br />
+Sentiment analyse stappen :</p>
+
+<ul>
+<li>output/labels/target one hot encoding omzetten to_categorical()</li>
+<li>corpus maken met alle reviews en daaruit vocabulair afleiden (lijst van unieke woorden) en dan van elke review elk woord (token) via one hote encoding omzetten.<br />
+Dit kan met de functie Tokenizer() en je moet enkel aangeven hoe groot de vocabulair is. </li>
+<li>Voor LSTM moeten we zien dat de tijdreeksen even lang zijn dus voegen we zero padding toe aan de bekomen vectoren mbv pad_sequences() waarbij je met maxlen aangeeft hoelang de vector per bericht moet zijn</li>
+<li>als we zelf embeddings willen maken :<br />
+<ul><br />
+<li>In het NN gaan we eerst een embedding layer toevoegen Embedding(). De parameters zijn :<br /><br />
+<ul><br /><br />
+<li>input_dim = grote van de vocabulair,</li><br /><br />
+<li>output_dim = de grote van de embedding per woord</li><br /><br />
+<li>Input_length = lengte van de review. Geef je ook mee zodat de volgende laag (LSTM) zijn state kan resetten na elke review. </li><br /><br />
+</ul></li><br />
+<li>je kan de embeddings opvragen na training door model.layers[0].get_weights(). De embeddings zijn input_dim x output_dim groot !</li><br />
+</ul></li>
+<li>je kan ook met bestaande embeddings werken :<br />
+<img src="Screenshot 2021-05-23 at 17.15.02.png" alt="Screenshot 2021-05-23 at 17.15.02.png" /><br />
+<ul><br />
+<li>word embeddings downloaden</li><br />
+<li>dan waarden inladen</li><br />
+<li>je kan dan similariteit van woorden berekenen : <img src="Screenshot 2021-05-23 at 17.17.26.png" alt="Screenshot 2021-05-23 at 17.17.26.png" /></li><br />
+<li>je kan dan embedding layer toevoegen in je NN :<br /><br />
+en je geeft je weights van je embedding matrix mee mbv weights=[embedding_dict] en je geeft ook de parameter trainable=false mee zodat de weights niet meer aangepast worden.<br /><br />
+<img src="Screenshot 2021-05-23 at 17.19.36.png" alt="Screenshot 2021-05-23 at 17.19.36.png" /></li><br />
+</ul></li>
+</ul>
 </div>
 
       <div class="backlinks">

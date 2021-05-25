@@ -27,65 +27,139 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><h1 id="titel">Titel</h1>
+      <div id="content"><h1 id="introductie-reinforcement-learning">Introductie Reinforcement learning</h1>
 
-<p>Tags: <span class="tag">AI</span> <span class="tag">andere</span><br />
-Date: 2021-02-23<br />
-Type: <a href="cursus-topic.html">Cursus topic</a><br />
-Related: <!-- Links to pages not referenced in the content --><br />
-Source : </p>
+<p>Tags: <span class="tag">AI</span> <span class="tag">MDP</span> <span class="tag">Qlearning</span> <span class="tag">reinforcementlearning</span><br />
+Date: 2021-05-24<br />
+Type: <a href="cursus-topic.html">Cursus topic</a> </p>
 
-<h2 id="notities">Notities</h2>
+<h2 id="situering">Situering</h2>
 
-<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_1.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_1.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_2.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_2.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_3.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_3.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_4.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_4.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_5.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_5.jpg" /><br />
+<p>Q: Welke leeralgoritmes heb je bij ML ?<br />
+A: Leeralgoritmes bij ML :</p>
+
+<ul>
+<li>supervised :<br />
+<ul><br />
+<li>input pmet gewneste output zijn gegeven</li><br />
+<li>task driven</li><br />
+</ul></li>
+<li>unsupervised<br />
+<ul><br />
+<li>de gewenste output is niet gegeven</li><br />
+<li>data driven (clustering)</li><br />
+</ul></li>
+<li>reinforcement<br />
+<ul><br />
+<li>leren van de beste strategie om bepaalde acties uit te voeren in omgeving</li><br />
+<li>het leren gebeurt via beloning (rewards)<br /><br />
+<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_4.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_4.jpg" /><br /><br />
+<!--ID: 1621850900632--></li><br />
+</ul></li>
+</ul>
+
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_5.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_5.jpg" /></p>
+
+<p>Q: Welke termen heb je bij reinforcement learning ?<br />
+A: je hebt :</p>
+
+<ul>
+<li>Agent</li>
+<li>Environment</li>
+<li>Actions</li>
+<li>State &amp; Reward<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_6.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_6.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_7.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_7.jpg" /><br />
+<!--ID: 1621851056043--></li>
+</ul>
+
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_7.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_7.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_8.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_8.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_9.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_9.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_10.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_10.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_11.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_11.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_12.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_12.jpg" /><br />
+<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_11.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_11.jpg" /></p>
+
+<h2 id="markov-decision-process-mdp">Markov Decision Process (MDP)</h2>
+
+<p>Q: Wat is een MDP ?<br />
+A: EEn Marko Decision Process is een model dazt ons moet helpen om beslissingen te maken binnen een stochastische omgeving. Het doel is om een strategy (policy) te vinden die ons voor elke toestand van de omgeving de beste actie oplevert.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_13.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_13.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_14.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_14.jpg" /><br />
+<!--ID: 1621862635083--></p>
+
+<p>Q:Wat is de reward bij MDP ?<br />
+A: De reward is een functie van de toestand en de actie die je neemt op een bepâald tijdstip.<br />
+<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_14.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_14.jpg" /></p>
+
+<p>Q: Wat zijn transitiekansen bij MDP ?<br />
+A: Afhankelijk van de voorafgaande state worden met een zekere kans waarden toegekend aan reward en kom je in een state terecht.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_15.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_15.jpg" /><br />
+<!--ID: 1621862635145--></p>
+
+<p>Q: Wat is de discount factor bij reinforcement learning ?<br />
+A: De discount factor gamma is een waarde tss 0 en 1 die aangeeft hoe veel belang de agent moet geven aan de mogelijk toekomstige reward.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_16.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_16.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_17.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_17.jpg" /><br />
+<!--ID: 1621852566366--></p>
+
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_17.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_17.jpg" /></p>
+
+<p>Q: Wat is een MDP policy bij reinforcement learning ?<br />
+A: De policy beschrijft met welke kans een bepaalde actie moet genomen worden in een bepaalde state. Het is de bedoelking dat de agent deze policy volgt.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_18.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_18.jpg" /><br />
+<!--ID: 1621852566424--></p>
+
+<p>Q: Wat is state value function bij MDP ?<br />
+A: De stat-value function voor een policy zegt hoe goed die bepaalde state is voor een agent die de policy volgt.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_19.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_19.jpg" /><br />
+<!--ID: 1621862635179--></p>
+
+<p>Q: Wat is action-value function bij MDP ?<br />
+A: De action-value function voor een bepaalde policy zegt hoe goed het is voor een agent om bij een bepaalde policy vanit een bepaalde state een bepaalde actie te nemen. De action-value van een  bepaalde actie in een bepaalde state bij een bepaalde policy zegt hoe groot de reward is om vanuit die state op een bepaalde tijdstip een bepaalde actie te nemen en daarna een bepaalde policy verder te volgen.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_20.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_20.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_21.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_21.jpg" /><br />
+<!--ID: 1621862635218--></p>
+
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_21.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_21.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_22.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_22.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_23.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_23.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_24.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_24.jpg" /><br />
+<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_23.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_23.jpg" /></p>
+
+<h2 id="q-learning">Q-learning</h2>
+
+<p>Q: Wat is Q-learning en waar wordt het gebruikt bij reinforcement learning ?<br />
+A: Het doel van Q-learning is om een policy te leren die de agent bij elke state zegt wat hij moet doen om zijn totale reward te maximaliseren. Op een iterative manier gaan we op zoek naar de action-value functie door state &gt; action &gt; reward &gt; next state te doorlopen. Q-learning convergeert naar optimale Q-values als alle states regelmatig bezocht/doorlopen worden.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_25.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_25.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_26.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_26.jpg" /><br />
+<!--ID: 1621862635251--></p>
+
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_26.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_26.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_27.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_27.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_28.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_28.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_29.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_29.jpg" /><br />
+<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_28.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_28.jpg" /></p>
+
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_29.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_29.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_30.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_30.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_31.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_31.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_32.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_32.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_33.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_33.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_34.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_34.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_35.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_35.jpg" /><br />
+<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_34.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_34.jpg" /></p>
+
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_35.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_35.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_36.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_36.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_37.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_37.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_38.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_38.jpg" /><br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_39.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_39.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_40.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_40.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_41.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_41.jpg" /><br />
+<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_40.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_40.jpg" /></p>
+
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_41.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_41.jpg" /></p>
+
+<p>Q: Wat is het beste pad dat de agent kan bewandelen volgens deze Q-table ? en waarom ?<br />
+<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_42b.png" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_42b.png" />]<br />
+A: Het beste pad is van de start naar rechts te gaan en dan van lege cel 5 terug naar rechts. Dit is het beste pad omdat de totale (toekomstige) reward van de stap rechts (52.4) en (89.1) de grootste zijn van alle mogelijk acties vanuit de current state (= cel waar robot staat) naar de nieuwe state.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_42.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_42.jpg" /><br />
+<!--ID: 1621862635286--></p>
+
+<p>Q: Wat is exploratie vs exploitatie bij reinforcement learning ? Hoe wordt dit gebruikt bij training ?<br />
+A: exploratie laat de agent willekeurig acties nemen zodat deze de verschillende states kan verkennen. exploitatie laat de agent vooral de states bezoeken die de hoogste (toekomstige) reward opleveren.<br />
+Start met een hoge mate van exploratie en ga tijdens training meer en meer over naar exploitatie.<br />
 <img src="Sessie_07_Reinforcement_Learning_Annotaties1024_43.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_43.jpg" /><br />
-<img src="Sessie_07_Reinforcement_Learning_Annotaties1024_44.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_44.jpg" /></p>
+<!--ID: 1621862635321--></p>
 
-<h2 id="vragen">Vragen</h2>
-
-<p><!-- Welke vragen staan open ? --><br />
-- </p>
+<p><img src="Sessie_07_Reinforcement_Learning_Annotaties1024_44.jpg" alt="Sessie_07_Reinforcement_Learning_Annotaties1024_44.jpg" /></p>
 </div>
 
       <div class="backlinks">

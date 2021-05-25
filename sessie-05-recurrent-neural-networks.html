@@ -27,55 +27,255 @@
       </ul>
     </nav>
     <article>
-      <div id="content"><h1 id="titel">Titel</h1>
+      <div id="content"><h1 id="recurrent-neural-networks">Recurrent Neural Networks</h1>
 
-<p>Tags: <span class="tag">AI</span> <span class="tag">andere</span><br />
-Date: 2021-02-23<br />
-Type: <a href="cursus-topic.html">Cursus topic</a><br />
-Related: <!-- Links to pages not referenced in the content --><br />
-Source : </p>
+<p>Tags: <span class="tag">AI</span> <span class="tag">RNN</span> <span class="tag">LSTM</span> <span class="tag">GRU</span> #<br />
+Date: 2021-05-07<br />
+Type: <a href="cursus-topic.html">Cursus topic</a> </p>
 
-<h2 id="notities">Notities</h2>
+<h2 id="recurrent-neural-networks-2">Recurrent Neural Networks</h2>
 
-<p><img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_1.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_1.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_2.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_2.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_3.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_3.jpg" /><br />
+<p>Q: Waarvoor wordt een CNN vooral voor ingezet ?<br />
+A: CNN wordt vooral gebruikt voor  beeldherkenning<br />
+<!--ID: 1620398400709--></p>
+
+<p>Q: Waarvoor wordt een RNN vooral voor ingezet ? Geef enkele toepassingen.<br />
+A: RNN wordt vooral gebruikt voor NLP<br />
+(chatbots, digital assistent, tekst predictie)<br />
+<!--ID: 1620398400803--></p>
+
+<p>Q: Wat is er specific aan een RNN die ervoor zorgt dat die goed is in NLP ?<br />
+A: een RNN heeft een soort geheugen waardoor het bij pedicties niet enkel op het heden maar ook op het verleden.<br />
+<!--ID: 1620398400820--></p>
+
+<h3 id="modes-van-een-rnn">Modes van een RNN</h3>
+
+<p>Q: Welke modes kan een RNN hebben ?<br />
+A: Een RNN kan volgende modes hebben :  One to many, Many to one (variant 1 en 2)<br />
+<!--ID: 1620398400827--></p>
+
+<h4 id="vanilla-neural-network">Vanilla Neural Network</h4>
+
+<p>Q: Hoe is een typisch Vanilla Neural Network opgebouwd ? Wat heeft het niet tov een RNN ?<br />
+A: Een Vanilla Neural Network heeft vaste input en meestal vaste output. Zo'n NN heeft een soort algemeen geheugen waarmee het patronen kan onthouden en herkennen maar het kan geen rekening houden met achtereenvolgende patronen die getoond worden.<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_4.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_4.jpg" /><br />
+<!--ID: 1620398400833--></p>
+
+<h4 id="one-to-many">One to many</h4>
+
+<p>Q: Wat is er typisch aan een RNN one to many ?<br />
+A: Een RNN one to many heeft variabele output en vaste input (zoals in dit vb het aantal woorden nodig voor de beschrijving van de foto)<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_5.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_5.jpg" /><br />
+<!--ID: 1620398400842--></p>
+
+<h4 id="many-to-one">Many to one</h4>
+
+<p>Q: Wat is het verschil in het doen van sentiment analyses mbv een RNN many to one of een bag of words met Naive Bayes.<br />
+A: Bij sentilment analyses zal een RNN rekening houden met de woorden die vooraf gingen en nog volgen om het sentiment te bepalen. In tegenstelling tot bijv bag of words waarbij enkel het voorkomen van het woord in een tekst de reden was waarom een tekst positief dan wel negatief gelabeld wordt. Hier wordt geen rekening gehouden met de context waarin dit woord gebruikt werd.<br />
+<!--ID: 1620398400851--></p>
+
+<p>Q: Wat is er typisch aan een RNN many to one ?<br />
+A: Een RNN many to one heeft variabele input en één vaste ouput<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_6.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_6.jpg" /><br />
+<!--ID: 1620398400865--></p>
+
+<h4 id="many-to-many">Many to many</h4>
+
+<h5 id="variant-1">variant 1</h5>
+
+<p>Q: Wat is een typische toepassing aan een RNN many to many ?<br />
+A: Een typische toepassing voor many to many is vertalingen doen. Zowel de input als output kunnen varieren aangezien zowel de vertalen zin of tekst als de vertaalde zin of tekst andere grotes hebben.<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_7.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_7.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_8.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_8.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_9.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_9.jpg" /><br />
+<!--ID: 1620398400876--></p>
+
+<h5 id="variant-2">variant 2</h5>
+
+<p>Q: Welke twee varianten van een RNN many to many bestaan er ? Geef een toepassingsvoorbeeld.<br />
+A: variant 1 : zowel input als output zijn variabel in lengte (bijv : een sequentie van woorden naar een andere sequentie van woorden)<br />
+variant 2 : zowel de input als output zijn variabel in lengte. maak een voorspelling voor elk element in de sequentie (bijv video classificatie op het niveau van frames)<br />
+De roze, groene en blauwe blok is een NN die doorheen de tijd een frame aangeboden krijgt.<br />
+<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_8.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_8.jpg" /></p>
+
+<h3 id="toepassingen-en-voorbeelden">Toepassingen en voorbeelden</h3>
+
+<p>Q: Geef enkele toepassingen voor een RNN en wat hebben die gemeenschappelijk ?<br />
+A: Mogelijke toepassingen zijn</p>
+
+<ul>
+<li>teksten genereren : predictie van tekst (obv getrainde teksten : shakespear, linux kernel code, ... )</li>
+<li>muziek generatie</li>
+<li>aandelenkoersen voorspellen<br />
+Het zijn allemaal tijdreeksen. Bij de training/predictie moet rekening gehouden met de opeenvolging van de samples.  Dit kunnen zowel frames van een video zijn als woorden/letters van een zin/tekst als koersen van een aandeel.<br />
+<!--ID: 1620400594302--></li>
+</ul>
+
+<h4 id="predictie-van-tekst">Predictie van tekst</h4>
+
+<p><img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_9.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_9.jpg" /><br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_10.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_10.jpg" /><br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_11.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_11.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_12.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_12.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_13.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_13.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_14.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_14.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_15.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_15.jpg" /><br />
+<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_12.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_12.jpg" /></p>
+
+<h4 id="muziekgeneratie">Muziekgeneratie</h4>
+
+<p><img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_13.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_13.jpg" /></p>
+
+<h4 id="tijdreeksvoorspellingen-aandelenkoersen">Tijdreeksvoorspellingen - Aandelenkoersen</h4>
+
+<p><img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_14.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_14.jpg" /></p>
+
+<h3 id="architectuur-van-een-rnn">Architectuur van een RNN</h3>
+
+<p><img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_15.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_15.jpg" /></p>
+
+<p>Q: Wat is er typisch aan de architectuur van een RNN ?<br />
+A: Typisch aan een RNN is de terug koppeling van de predicties tss alle neuronen van de hidden layer (in de tijd). Die hidden state is input voor het model om te trainen op data  van tijdstip +1.<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_16.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_16.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_17.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_17.jpg" /><br />
+<!--ID: 1620400594318--></p>
+
+<p><img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_17.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_17.jpg" /><br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_18.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_18.jpg" /><br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_19.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_19.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_20.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_20.jpg" /><br />
+Bij predictie wordt de letter met grootste waarschijnlijkheid geselecteerd om als input te dienen voor het volgende tijdstip.<br />
+<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_20.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_20.jpg" /></p>
+
+<h3 id="problemen-met-rnn">Problemen met RNN</h3>
+
+<h4 id="vanishing-exploding-gradients">Vanishing &amp; exploding gradients</h4>
+
+<p>Q: Wat zijn de problemen met de klassieke RNN ? Wat is de oplossing ?<br />
+A: Het probleem met de klassieke RNN is de Vanishing gradient of exploding gradient : dat het model niet echt over een langer termijn geheugen beschikt. De hidden state wordt constant overschreven. Dit bevat wel een spoor van vorige predicties maar dit vervaagt snel.<br />
+LSTM is de oplossing.<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_21.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_21.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_22.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_22.jpg" /><br />
+<!--ID: 1620401701274--></p>
+
+<h2 id="long-short-term-memory-networks-lstm">Long Short Term Memory networks (LSTM)</h2>
+
+<h3 id="lstm-structure">LSTM structure</h3>
+
+<p>Cell LSTM veel complexer dan die van klassieke RNN.<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_23.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_23.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_24.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_24.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_25.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_25.jpg" /><br />
+<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_24.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_24.jpg" /></p>
+
+<h4 id="cell-state">Cell state</h4>
+
+<p>Lange termijn geheugen = cell state<br />
+<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_25.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_25.jpg" /></p>
+
+<h4 id="forget-gate">Forget gate</h4>
+
+<p>Q: Wat is de functie van de forget gate in een LSTM ?<br />
+A: Een forget gate in een LSTM zorgt ervoor dat het ook zaken kan vergeten/schrappen uit zijn lange termijn geheugen indien iets niet meer relevant is.<br />
+Dit gebeurt door elk neuron van de Cell state te vermenigvuldigen met een getal tss 0 en 1. Hoe dichter bij 0 voor een neuron hoe meer er van vergeten wordt. Een sub NN bepaalt dat getal voor elk neuron.<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_26.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_26.jpg" /><br />
+<!--ID: 1620402621291--></p>
+
+<h4 id="input-gate">Input gate</h4>
+
+<p>Q: Wat is de functie van de input gate in een LSTM ?<br />
+A: Een input gate bepaalt of de vorige voorspellingen toegevoegd moeten worden aan het lange termijn geheugen.<br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_27.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_27.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_28.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_28.jpg" /><br />
+<!--ID: 1620402621310--></p>
+
+<h4 id="cell-state-update">Cell state update</h4>
+
+<p>Q: Wat is de Cell State bij een LSTM ?<br />
+A: De Cell state bevat het lange terlmijn geheugen van de LSTM<br />
+<!--ID: 1620405756639--></p>
+
+<p>Q: Wat is de Cell state update bij een LSTM ?<br />
+A: De Cell state update bepaalt/voorspelt de output (en nieuwe hidden state)<br />
+<!--ID: 1620405756660--></p>
+
+<p><img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_28.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_28.jpg" /><br />
 <img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_29.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_29.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_30.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_30.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_31.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_31.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_32.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_32.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_33.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_33.jpg" /><br />
-<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_34.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_34.jpg" /></p>
+<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_30.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_30.jpg" /></p>
 
-<h2 id="vragen">Vragen</h2>
+<p>Q: Waarom mag je bij een RNN, LSTM, GRU je data niet randomizeren om te trainen ?<br />
+A: Dit mag niet omdat een RNN getraind wordt op een sequentie van trainingsvoorbeelden. Als dit gerandomizeerd wordt dan kan het model niet leren uit de sequentie.<br />
+<!--ID: 1620405756680--></p>
 
-<p><!-- Welke vragen staan open ? --><br />
-- </p>
+<p>Q: Hoe kan je het geheugen van een LSTM vergroten ?<br />
+A: Je kan het gehuegen vergroten door de hidden layer van de LSTM te vergroten omdat hierbij ook het aantal hidden state units en Cell state grote wordt bepaalt.<br />
+<!--ID: 1620405756692--></p>
+
+<p>Q: Waarom zou je na je LSTM nog een Dense layer plaatsen ? Waarom zou je in die Dense layer lineair gebruiken ipv sigmoid ?<br />
+A: Uit LSTM komen meerdere outputs en je wil bijv maar 1 waarde als output en de Dense layer zorgt hiervoor. Door lineair te gebruiken wordt de predictie van het model gewoon doorgegeven. Sigmoid geeft een waarde tss 0 en 1 wat goed is voor classificatie maar niet als je een continu getal als output wil (bijv de prijs van een aandeel of het aantal passagiers voor de komende maand)<br />
+<!--ID: 1620405756702--></p>
+
+<p>Q: Als de RMSE (Root Mean Square Error) op de trainingset goed is maar niet op de testset bij een LSTM hoger ligt wat wil dit waarschijnlijk zeggen over het NN ?<br />
+A: Dat de LSTM overfit is. De LSTM kan perfect het patroon van de trainingset reproduceren maar kan dit niet voor de testset.<br />
+<!--ID: 1620405756712--></p>
+
+<p>Bij LSTM ga je niet boven de vier layers mpeestal zijn 2, 3 voldoende. </p>
+
+<p>GPU LSTM is de <a href="http://man.hubwiz.com/docset/TensorFlow.docset/Contents/Resources/Documents/api_docs/python/tf/keras/layers/CuDNNLSTM.html">tf.keras.layers.CuDNNLSTM</a></p>
+
+<h2 id="gated-recurrent-unit-gru">Gated Recurrent Unit (GRU)</h2>
+
+<p><img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_32.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_32.jpg" /><br />
+<img src="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_33.jpg" alt="Sessie_05_Recurrent_Neural_Networks_Annotaties1024_33.jpg" /></p>
+
+<p>Q: Wat is het verschil tss een GRU en LSTM ?<br />
+A: Het verschil tss een GRU en LSTM is : </p>
+
+<ul>
+<li>een GRU beschikt niet over een long-term memory unit</li>
+<li>GRU traint sneller dan LSTM</li>
+<li>LSTM kunnen (in theorie) langere sequenties onthouden</li>
+<li>Performantie is gelijkaardig aan LSTM. vooral bij kleinere datasets<br />
+<!--ID: 1620398400886--></li>
+</ul>
+
+<p>GPU GRU is de <a href="https://www.tensorflow.org/api_docs/python/tf/compat/v1/keras/layers/CuDNNGRU">tf.compat.v1.keras.layers.CuDNNGRU</a></p>
+
+<h2 id="lstm-hyperparameter">LSTM hyperparameter</h2>
+
+<h4 id="hyperparameters">Hyperparameters</h4>
+
+<p>https://keras.io/api/layers/recurrent_layers/lstm/</p>
+
+<ul>
+<li>Units : aantal neuronen</li>
+<li>dropout : aantal activaties die uitgezet worden , werkt op de inputs</li>
+<li>recurrent dropout : werkt op de state</li>
+<li>return sequences : als je verschillende LSTMs na elkaar gaat plaatsen. Dan worden er sequenties doorgegeven aan de volgende laag (= LSTM). Als je bijv een classificatie wil van de eerste LSTM dan moet deze indicator niet opstaan want de volgende laag (= dense) moet geen sequenties krijgen maar enkel de classificaties als input. </li>
+<li>stateful : standaard false = stateless. Na elke batch bij het trainen wordt het geheugen gewist. </li>
+</ul>
+
+<p>Q: Wat gebeurt er bij het trainen van een LSTM als die stateless is ?<br />
+A: Als het model stateless is wil dit zeggen dat de hyperparameter stateful op false staat en dat na elke batch tijdens de training niet enkel de weights worden bijgesteld maar dat het geheugen van de LSTM wordt gewist.<br />
+<!--ID: 1620476216895--></p>
+
+<p>Q: Wanneer kan het nuttig zijn om het LSTM model stateless te trainen en waarom ?<br />
+A: Door het model stateless te maken wordt het geheugen van de LSTM na elke batch tijdens de training gewist. Dit kan nuttig zijn bijv bij het bepalen van sentiment van berichten. Het ene bericht (= sequence) heeft niets te zien met het andere bericht (= de volgende sequence) en hoeft de LSTM dit niet in geheugen te houden.<br />
+<!--ID: 1620476216913--></p>
+
+<p>Q: Wanneer heeft het toegevoegde waarde om het LSTM model stateful te trainen ?<br />
+A: Het is nuttig om het LSTM model stateful te trainen als de laatste sample in de laatste sequentie van batch 1 invloed heeft op de eerste sample van de eerste sequentie van de volgende batch 2.<br />
+<!--ID: 1620476216920--></p>
+
+<p>Q: Wat zou je als alternatief van stateful te trainen bij een LSTM kunnen doen ? Wat is het nadeel ?<br />
+A: Als alternatief van stateful te trainen is om de seqeunties langer te maken en alle samples die bij elkaar horen in één sequentie te steken. Het nadeel is dat als dit bijv sequenties zijn van videobeelden dat die veel geheugen in beslag nemen. Dan ben je verplicht om de sequentie op te delen en toch stateful te trainen.<br />
+<!--ID: 1620476216930--></p>
+
+<p>Q: Wat is het nadeel van een stateful LSTM over epochs heen ? Wat kan je hieraan doen ?<br />
+A: Als je stateful traint dan wordt het geheugen ook over epochs heen bijgehouden. Dit wil zeggen dat je dus manueel het geheugen moet wissen op het einde van de epoch. Anders zal de sequentie van de laatste batch van de epoch gekoppeld worden aan de eerste batch van de volgende epoch. Hierdoor verbind je het eind van de volledige tijdserie met het begin van de volledige tijdserie.<br />
+<!--ID: 1620476974917--></p>
+
+<p>Q: Wat is een bidrectional LSTM ?<br />
+A: Bidirectional LSTM zijn twee gecombineerde LSTMs.<br />
+De ene LSTM ziet de samples in chronologische volgorde en de andere in de andere richting. De state van de twee wordt dan gecombineerd : sommeren, vermenigvuldigen, concateneren, gemiddelde bepalen.<br />
+De rekentijden gaan hierbij wel verdubbelen.<br />
+<!--ID: 1620476974935--></p>
+
+<p>Q: Wat is het verschil tss dropout en spatial dropout ? Wat is spatial dropout 1D en 2D ? Wat gebeurt er als je dit toepast op een NN ? Wat als je dit toepast op een CNN ?<br />
+A: Bij spatial dropout 1D ga je volledige domentie/slice van je array uitzetten. Je gaat dit vooral toepassen als je vectoren hebt die sterk gecorreleerd zijn aan elkaar. Je wil namelijk dat die niet hetzelfde vertellen maar elk op zoek gaan naar unieke eigenschappen in je data en dat doe je door afwisselend een aantal vectoren uit te schakelen.<br />
+Bij gewone dropout ga je willekeurig een aantal cellen in je array uitschakelen.<br />
+<img src="Screenshot 2021-05-08 at 15.07.51.png" alt="Screenshot 2021-05-08 at 15.07.51.png" /><br />
+Bij spatial dropout 2D ga bij een CNN hiermee een volledige representatie uitschakelen (= 1 patroon).<br />
+<img src="Screenshot 2021-05-08 at 15.13.36.png" alt="Screenshot 2021-05-08 at 15.13.36.png" /><br />
+<!--ID: 1620479690538--></p>
 </div>
 
       <div class="backlinks">

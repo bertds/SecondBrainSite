@@ -175,7 +175,7 @@ A: Als ze in elkaars buurt voorkomen in teksten, in dezelfde zin gebruikt worden
 <img src="Sessie_06_Text_Embedding_Annotaties1024_30.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_30.jpg" /></p>
 
 <p>Q: Hoe worden de weights van de Skip-Gram embedding bepaald ?<br />
-A:  Je neemt als input voor een Vanilla NN het kernwoord en bijhorende woorden in de window als one hot vector per woord. De bijhorende output is dan het kernwoord voorgesteld als one hot vector. De hidden layer = de embedding layer. Je bepaalt dan de weights voor het NN. De vector van de weights de gebruikt zijn tss de input layer en de hidden layer voor een bepaald woord is de word embedding van dat woord.<br />
+A:  Je neemt als input voor een Vanilla NN de one hot vector van een kernwoord. Als output neem je de bijhorende woorden in de window (= aantal woorden voor en na het kernwoord) ook als one hot vector (of windows als het kernwoord verschillende keren voorkomt in de gescande teksten). Je traint het model zodat het bij aanwezigheid van het kernwoord de window woorden kan voorspellen. De weights die hiervoor nodig zijn in de hidden layer is de embedding van het kernwoord.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_31.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_31.jpg" /><br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_32.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_32.jpg" /><br />
 <!--ID: 1621765396849--></p>
@@ -200,7 +200,7 @@ De oplossing is negative sampling<br />
 <h4 id="negative-sampling">Negative sampling</h4>
 
 <p>Q: Wat is negative sampling ? Waar wordt het gebruikt in NLP en voor wat is het een oplossing ? Wat is het voordeel ?<br />
-A: Negative sampling wordt gebruikt bij Skip-Gram word embeddings omdat die te rekenintensief is (= Skip Gram Negative Sampling (SGNS)). De oplossing bestaat erin om enkel nog te berekenen of bepaalde woorden samen voorkomen of niet. Het NN moet dan enkel nog een binaire classificatie doen. De oplossing noemt negative sampling omdat het enerzijds een koppel van woorden neemt uit de zin die samen voorkomen en anderzijds koppels maakt van het centrumwoord met woorden die daar niet samen voorkomen. Met al die koppels wordt dan de trainingset opgebouwd.<br />
+A: Negative sampling wordt gebruikt bij Skip-Gram word embeddings omdat die te rekenintensief is (= Skip Gram Negative Sampling (SGNS)). De oplossing bestaat erin om enkel nog te berekenen of bepaalde woorden samen voorkomen of niet. Het NN moet dan enkel nog een binaire classificatie doen (en geen softmax van de output). De oplossing noemt negative sampling omdat het enerzijds een koppel van woorden neemt uit de zin die samen voorkomen en anderzijds koppels maakt van het centrumwoord met woorden die daar niet samen voorkomen. Met al die koppels wordt dan de trainingset opgebouwd.<br />
 Het voordeel is dat de berekening en het NN heel eenvoudig is. Je hebt wel nog steeds veel trainingsets.<br />
 <img src="Sessie_06_Text_Embedding_Annotaties1024_35.jpg" alt="Sessie_06_Text_Embedding_Annotaties1024_35.jpg" /><br />
 <!--ID: 1621765397002--></p>
@@ -213,7 +213,7 @@ A: CBOW = continuous bag of words en is een Word2Vec methode voor word embedding
 <!--ID: 1621766123481--></p>
 
 <p>Q: Wat is het verschil tss CBOW en Skip-Gram ?<br />
-A: CBOW gaat proberen te voorspellen wat het centrum woord is obv de woorden in het window terwijl Skip-Gram vertrekt vanuit het centrum woord en op basis daarvan de context woorden wil voorspellen.<br />
+A: CBOW gaat proberen te voorspellen wat het centrum woord is obv de woorden in het window terwijl Skip-Gram vertrekt vanuit het centrum woord en op basis daarvan de context woorden wil voorspellen. Bij CBOW maak je 1 one hot vector voor alle window woorden samen en dat is de inoout en maak je een one hot vector voor voor het kernwoord als output.<br />
 CBOW :</p>
 
 <ul>
@@ -279,6 +279,10 @@ en je geeft je weights van je embedding matrix mee mbv weights=[embedding_dict] 
 <img src="Screenshot 2021-05-23 at 17.19.36.png" alt="Screenshot 2021-05-23 at 17.19.36.png" /></li><br />
 </ul></li>
 </ul>
+
+<p>Q: Waarom zou je de parameter trainable op false zetten bij embedding layer in een NN en wat is het effect hiervan ?<br />
+A: Als je als embedding een bestaande embedding wil gebruiken zoals Glove dan geef je de weights (vectors) mee aan een embedding layer in je NN. Hierbij geef je echter ook de parameter trainable = false mee zodat de embedding vectors niet meer aangepast worden.<br />
+<!--ID: 1622657110869--></p>
 </div>
 
       <div class="backlinks">

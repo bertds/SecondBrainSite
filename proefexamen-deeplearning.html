@@ -87,8 +87,8 @@ A: 1 en 3<br />
 <li>Variational autoencoder </li>
 <li>CNN </li>
 <li>LSTM </li>
-<li>GRU<br />
--GAN<br />
+<li>GRU </li>
+<li>GAN<br />
 A: VAE<br />
 <!--ID: 1621865794558--></li>
 </ul>
@@ -114,21 +114,42 @@ A: CNN<br />
 <!--ID: 1621865794620--></li>
 </ul>
 
-<p>Q: Leg uit waarom een convolutional neural network typisch minder weights (parameters) heeft dan een fully connected neural network om dezelfde image classification taak uit te voeren.</p>
+<p>Q: Leg uit waarom een convolutional neural network typisch minder weights (parameters) heeft dan een fully connected neural network om dezelfde image classification taak uit te voeren.<br />
+A: Een CNN heeft minder weights omdat die niet full connected is. Enkel de neurons nodig voor kernel worden gebuikt tijdens training obv een trainingsample. De weights zijn wel shared zodat die bij elk gebruik van een bepaald neuron upgedate worden tijdens de training met de verschillende trainingsamples.<br />
+<!--ID: 1622754710699--></p>
 
-<p>Q: Bespreek de verschillende stappen die je doorloopt bij het toepassen van transfer learning bij een image classification problem.</p>
+<p>Q: Bespreek de verschillende stappen die je doorloopt bij het toepassen van transfer learning bij een image classification problem.<br />
+A: De stappen zijn :</p>
 
-<p>Q: Hoe komt een Skip-Gram word embedding tot stand?</p>
+<ul>
+<li>bereid je data voor zoals je anders doet (analyse, one-hot encoding labels, resolutie images aanpassen, splits de data in training, validatie en testset, gebruik image augmentation)</li>
+<li>download het model en weights</li>
+<li>bevries alle weights van het model</li>
+<li>voeg classificatie lagen toe aan het model die de laatste lagen van het model vevangen (weights staan standaard trainable)</li>
+<li>train het model obv eigen data</li>
+<li>hyperparameter tuning<br />
+<!--ID: 1622754710778--></li>
+</ul>
 
-<p>Q:  Wat is een Leaky Relu? Vergelijk deze met de gewone Relu en bespreek de voor-en nadelen.</p>
+<p>Q: Hoe komt een Skip-Gram word embedding tot stand?<br />
+A: Maak voor elke woord uit het window (= x aantal woorden rond het centraal woord ) een one-hot vector. Maak voor het centraal woord ook een one-hot vector. Gebruik de one-hot vectors van de window woorden als output voor een Vanilla NN en de one-hot vector van het kernwoord als input. Train het model zodat het obv de input vector van het kernwoord de output vecvtor kan voorspellen van elk windowwoord. De weights van de input naar de hidden layer is de word embedding voor dat kernwoord.<br />
+<!--ID: 1622799262349--></p>
 
-<p>Q: Bespreek de verschillende stappen die je doorloopt bij het toepassen van transfer learning bij een image classification problem.</p>
+<p>Q: Wat is een Leaky Relu? Vergelijk deze met de gewone Relu en bespreek de voor-en nadelen.<br />
+A: De gewone Relu is rekenefficient, de Leaky relu iets minder. Beide zijn niet-lineaire functies en door die achter elkaar te zetten kan je hiermee andere functies nabootsen. Het nadeel van de gewone Relu is, is dat het neuron inactief kan komen (= 0). Dit probleem heeft de Leaky Relu niet.<br />
+<!--ID: 1622799262368--></p>
 
-<p>Q: Wat is een Markov Decision Process en wat is het belang ervan binnen de context van reinforcement learning?</p>
+<p>Q: Stel dat je merkt dat de training error grillig op en neer gaat? Wat zou je kunnen doen om dit te verhelpen?<br />
+A: Je kan de learning rate aanpassen door een optimizer te gebruiken zodat de learning rate kleinere stappen neemt, je zou een learning rate scheduler callback kunnen toevoegen waarmee je de learning rate voor elke epoch kan sturen (en kleiner maken bij elke epch bijv),  je kan je dropout verlagen zodat er meer neuronen actief blijven tijdens de training.<br />
+<!--ID: 1622799262376--></p>
 
-<p>Q: Stel dat je merkt dat de training error grillig op en neer gaat? Wat zou je kunnen doen om dit te verhelpen?</p>
+<p>Q: Wat is het voordeel van het gebruik van word embeddings ten opzicht van one-hot encoded representaties van woorden? Bespreek.<br />
+A: One-hot encoded neemt veel ruimte in omdat elk woord als one-hot encoded vector moet voorgesteld worden en als je een grote vocabulair hebt dan heb je een matrix waar 90% nullen inzitten. Bijkomend kan hezt model hiermee ook geen relaties tss de woorden die in de zinnen voorkomen gebruiken want elke one-hot vector/woord staat los van elkaar. Dit in tegenstelling tot word embeddings waar de voorstelling per woord compacter is omdat de elk woord een vector heeft die max 300 groot is. Hierbij komt nog dat deze vector de relatie tss woorden weergeeft. De nabijheid van de woorden door die vectoren kan dus door het model gebruikt worden om betere predicties te maken.<br />
+<!--ID: 1622799346326--></p>
 
-<p>Q:  Wat is het voordeel van het gebruik van word embeddings ten opzicht van one-hot encoded representaties van woorden? Bespreek.</p>
+<p>Q: Wat is een Markov Decision Process en wat is het belang ervan binnen de context van reinforcement learning?<br />
+A: nog in te vullen<br />
+<!--ID: 1622754710786--></p>
 </div>
 
       <div class="backlinks">

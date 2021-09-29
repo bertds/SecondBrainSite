@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://bertds.github.io/SecondBrainSite/">Second Brain</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><h1 id="geospatial-analysis">Geospatial analysis</h1>
+
+<p>Kaggle course : https://www.kaggle.com/learn/geospatial-analysis</p>
+
+<h2 id="definition-and-data">Definition and data</h2>
+
+<h3 id="what-is-geospatial-analysis">What is geospatial analysis ?</h3>
+
+<p>Geospatial analytics uses data from all kinds of technology — GPS, location sensors, social media, mobile devices, satellite imagery — to build <a href="https://www.omnisci.com/learn/data-visualization">data visualizations</a> for understanding phenomena and finding trends in complex relationships between people and places. This geo-referenced data can be applied to nearly any happening on earth. The visualizations can include maps, graphs, statistics and cartograms that show historical changes and current shifts. This can make predictions easier and more accurate.</p>
+
+<p>Geospatial analytics adds timing and location to traditional types of data and this additional context allows for a more complete picture of events. Insights that might have been lost in a massive spreadsheet are revealed in easy-to-recognize visual patterns and images.</p>
+
+<p>Geospatial analytics companies are able to instantly process huge amounts of geographic and geometric data. This gives users the ability to interact with billions of mapped points while looking at real-time geospatial visualizations. Users can explore data across time and space to instantly see how something has changed from days to years.</p>
+
+<h3 id="what-are-geospatial-files">What are geospatial files ?</h3>
+
+<p>Geospatial files are files with a geospatial component in it. They can have different geospatial file formats, such as <a href="https://en.wikipedia.org/wiki/Shapefile">shapefile</a>, <a href="https://en.wikipedia.org/wiki/GeoJSON">GeoJSON</a>, <a href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language">KML</a>, and <a href="https://en.wikipedia.org/wiki/GeoPackage">GPKG</a>.</p>
+
+<h3 id="what-kind-of-objects-are-there-in-geospatial-files">What kind of objects are there in geospatial files ?</h3>
+
+<p>There are columns with geospatial coordinates of the datatype geometry : While this column can contain a variety of different datatypes, each entry will typically be a <strong>Point</strong>, <strong>LineString</strong>, or <strong>Polygon</strong>.<br />
+<img src="Screenshot 2021-07-31 at 17.43.39.png" alt="Screenshot 2021-07-31 at 17.43.39.png" /></p>
+
+<h3 id="what-attributes-do-geometric-objects-have">What attributes do geometric objects have ?</h3>
+
+<p>All three types of geometric objects have built-in attributes that you can use to quickly analyze the dataset. </p>
+
+<ul>
+<li>the x- and y-coordinates of a Point from the <code>x</code> and <code>y</code> attributes, respectively.</li>
+<li>the length of a LineString from the <code>length</code> attribute</li>
+<li>the area of a Polygon from the <code>area</code> attribute<br />
+<code># Calculate the area (in square meters) of each polygon in the GeoDataFrame  regions.loc[:, "AREA"] \= regions.geometry.area / 10**6</code></li>
+</ul>
+
+<h3 id="how-to-read-geospatial-files">How to read geospatial files ?</h3>
+
+<p>We can use geopandas : <code><br />
+    import geopandas as gpddf = gpd.read_file("filepath")</code></p>
+
+<h3 id="how-to-display-geospatial-files">How to display geospatial files ?</h3>
+
+<p>You can display one geospatial file or combine them with plot  :</p>
+
+<pre><code class="plaintext lang-plaintext language-plaintext"># Define a base map with county boundaries
+ax = counties.plot(figsize=(10,10), color='none', edgecolor='gainsboro', zorder=3)
+# Add wild lands, campsites, and foot trails to the base map
+wild_lands.plot(color='lightgreen', ax=ax)
+    campsites.plot(color='maroon', markersize=2, ax=ax)
+trails.plot(color='black', markersize=1, ax=ax)</code></pre>
+
+<p><img src="Screenshot 2021-07-31 at 17.43.50.png" alt="Screenshot 2021-07-31 at 17.43.50.png" /></p>
+
+<h2 id="the-earth-is-round">The earth is round</h2>
+
+<h3 id="what-is-map-projection">What is map projection ?</h3>
+
+<p>The world is a three-dimensional globe and we want to show the surface of the earth in two dimensions.   So we have to use a method called a <strong>map projection</strong> to render it as a flat surface.</p>
+
+<h3 id="what-is-the-problerm-with-map-projections">What is the problerm with map projections ?</h3>
+
+<p>Map projections can't be 100% accurate. Each projection distorts the surface of the Earth in some way, while retaining some useful property. For instance,</p>
+
+<ul>
+<li>the _equal-area_ projections (like "Lambert Cylindrical Equal Area", or "Africa Albers Equal Area Conic") preserve area. <strong>This is a good choice, if you'd like to calculate the area of a country or city, for example.</strong></li>
+<li>the _equidistant_ projections (like "Azimuthal Equidistant projection") preserve distance. <strong>This would be a good choice for calculating flight distance.</strong></li>
+</ul>
+
+<p>We use a <strong>coordinate reference system (CRS)</strong> to show how the projected points correspond to real locations on Earth.</p>
+
+<p>https://www.reddit.com/r/MapPorn/comments/b5yaf5/an_incomplete_list_of_map_projections/</p>
+
+<h2 id="crs">CRS</h2>
+
+<h3 id="what-is-a-crs">What is a CRS ?</h3>
+
+<p>CRS is a coordinate reference system.</p>
+
+<h3 id="how-and-when-to-set-the-crs">How and when to set the CRS ?</h3>
+
+<ul>
+<li>When we create a GeoDataFrame from a shapefile, the CRS is already imported for us. </li>
+</ul>
+
+<pre><code class="plaintext lang-plaintext language-plaintext">regions = gpd.read_file("../input/geospatial-learn-course-data/ghana/ghana/Regions/Map\_of\_Regions\_in\_Ghana.shp")
+print(regions.crs)
+    epsg:32630</code></pre>
+
+<ul>
+<li>when creating a GeoDataFrame from a CSV file, we have to set the CRS. <a href="https://epsg.io/4326">EPSG 4326</a> corresponds to coordinates in latitude and longitude :<br />
+<ul><br />
+<li>We begin by creating a DataFrame containing columns with latitude and longitude coordinates.</li><br />
+<li>To convert it to a GeoDataFrame, we use <code>gpd.GeoDataFrame()</code>.</li><br />
+<li>The <code>gpd.points_from_xy()</code> function creates <code>Point</code> objects from the latitude and longitude columns.</li><br />
+</ul></li>
+</ul>
+
+<pre><code class="plaintext lang-plaintext language-plaintext"># Create a DataFrame with health facilities in Ghana
+facilities\_df = pd.read\_csv("../input/geospatial-learn-course-data/ghana/ghana/health\_facilities.csv")
+# Convert the DataFrame to a GeoDataFrame
+facilities = gpd.GeoDataFrame(facilities\_df, geometry\=gpd.points\_from\_xy(facilities\_df.Longitude, facilities\_df.Latitude))
+# Set the coordinate reference system (CRS) to EPSG 4326
+            facilities.crs = {'init': 'epsg:4326'}</code></pre>
+
+<h3 id="how-do-you-intepret-a-crs-coordinate">How do you intepret a CRS coordinate ?</h3>
+
+<p>Coordinate reference systems are referenced by <a href="http://www.epsg.org/">European Petroleum Survey Group (EPSG)</a> codes.</p>
+
+<p>In case the GeoDataFrame uses <a href="https://epsg.io/32630">EPSG 32630</a>, this is more commonly called the "Mercator" projection. This projection preserves angles (making it useful for sea navigation) and slightly distorts area.</p>
+
+<h3 id="what-is-reprojecting-and-how-to-do-it">What is reprojecting and how to do it ?</h3>
+
+<p>In case the EPSG code is not available in GeoPandas, we can change the CRS with what's known as the "proj4 string" of the CRS. For instance, the proj4 string to convert to latitude/longitude coordinates is as follows:</p>
+
+<pre><code class="plaintext lang-plaintext language-plaintext">+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</code></pre>
+
+<p><code># Change the CRS to EPSG 4326<br />
+    regions.to_crs("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs").head()</code></p>
+
+<h2 id="interactive-maps">Interactive maps</h2>
+
+<p>To make interative maps you can use folium package :<br />
+<code>import folium<br />
+from folium import Choropleth, Circle, Marker<br />
+from folium.plugins import HeatMap, MarkerCluster</code></p>
+
+<h3 id="how-to-display-a-folium-map">How to display a folium map ?</h3>
+
+<pre><code class="plaintext lang-plaintext language-plaintext"># Create a map
+m_1 = folium.Map(location=[42.32,-71.0589], tiles='openstreetmap', zoom_start=10) 
+# Display the map
+m_1</code></pre>
+
+<p>Several arguments customize the appearance of the map:</p>
+
+<ul>
+<li><code>location</code> sets the initial center of the map. We use the latitude (42.32° N) and longitude (-71.0589° E) of the city of Boston.</li>
+<li><code>tiles</code> changes the styling of the map; in this case, we choose the <a href="https://www.openstreetmap.org/#map=10/42.32/-71.0589">OpenStreetMap</a> style. If you're curious, you can find the other options listed <a href="https://github.com/python-visualization/folium/tree/master/folium/templates/tiles">here</a>.</li>
+<li><code>zoom_start</code> sets the initial level of zoom of the map, where higher values zoom in closer to the map.</li>
+</ul>
+
+<h3 id="what-kind-of-markers-can-you-add-to-a-folium-map">What kind of markers can you add to a folium map ?</h3>
+
+<h4 id="markers">Markers</h4>
+
+<p><img src="Screenshot 2021-08-01 at 11.04.22.png" alt="Screenshot 2021-08-01 at 11.04.22.png" /><br />
+<code># Add points to the map<br />
+for idx, row in daytime_robberies.iterrows():<br />
+        Marker([row['Lat'], row['Long']]).add_to(m_2)</code></p>
+
+<p>you can add a tooltip to show information when clicking on the marker on the map :<br />
+<code>Marker(location=[row['lat'], row['long']],<br />
+                            tooltip=str(round(row['percent_vaccinated']*100, 2))+"%")</code></p>
+
+<h4 id="markercluster">MarkerCluster</h4>
+
+<p><img src="Screenshot 2021-08-01 at 11.04.02.png" alt="Screenshot 2021-08-01 at 11.04.02.png" /><br />
+If we have a lot of markers to add, <code>folium.plugins.MarkerCluster()</code> can help to declutter the map. Each marker is added to a <code>MarkerCluster</code> object.<br />
+<code># Add points to the map<br />
+mc = MarkerCluster()<br />
+for idx, row in daytime_robberies.iterrows():<br />
+    if not math.isnan(row['Long']) and not math.isnan(row['Lat']):<br />
+        mc.add_child(Marker([row['Lat'], row['Long']]))<br />
+m_3.add_child(mc)</code></p>
+
+<h4 id="bubble-map">Bubble map</h4>
+
+<p><img src="Screenshot 2021-08-01 at 11.03.52.png" alt="Screenshot 2021-08-01 at 11.03.52.png" /><br />
+A <strong>bubble map</strong> uses circles instead of markers. By varying the size and color of each circle, we can also show the relationship between location and two other variables.</p>
+
+<pre><code class="plaintext lang-plaintext language-plaintext">def color_producer(val):
+    if val <= 12:
+        return 'forestgreen'
+    else:
+        return 'darkred'
+                # Add a bubble map to the base map
+for i in range(0,len(daytime_robberies)):
+    Circle(
+        location=[daytime_robberies.iloc[i]['Lat'], daytime_robberies.iloc[i]['Long']],
+        radius=20,
+                color=color_producer(daytime_robberies.iloc[i]['HOUR'])).add_to(m_4)</code></pre>
+
+<p><code>folium.Circle()</code> takes several arguments:</p>
+
+<ul>
+<li><code>location</code> is a list containing the center of the circle, in latitude and longitude.</li>
+<li><code>radius</code> sets the radius of the circle.<br />
+<ul><br />
+<li>Note that in a traditional bubble map, the radius of each circle is allowed to vary. We can implement this by defining a function similar to the <code>color_producer()</code> function that is used to vary the color of each circle.</li><br />
+</ul></li>
+<li><code>color</code> sets the color of each circle.<br />
+<ul><br />
+<li>The <code>color_producer()</code> function is used to visualize the effect of the hour on robbery location.</li><br />
+</ul></li>
+</ul>
+
+<h4 id="heatmap">Heatmap</h4>
+
+<p><img src="Screenshot 2021-08-01 at 11.03.33.png" alt="Screenshot 2021-08-01 at 11.03.33.png" /><br />
+To create a heatmap, we use <a href="https://python-visualization.github.io/folium/plugins.html#folium.plugins.HeatMap"><code>folium.plugins.HeatMap()</code></a>. This shows the density of the data on the map, where red areas have relatively higher density.</p>
+
+<pre><code class="plaintext lang-plaintext language-plaintext"># Add a heatmap to the base map
+HeatMap(data=crimes['Lat', 'Long'](-lat-long-.html), radius=10).add_to(m_5)</code></pre>
+
+<p><code>folium.plugins.HeatMap()</code> takes a couple of arguments:</p>
+
+<ul>
+<li><code>data</code> is a DataFrame containing the locations that we'd like to plot.</li>
+<li><code>radius</code> controls the smoothness of the heatmap. Higher values make the heatmap look smoother (i.e., with fewer gaps).</li>
+</ul>
+
+<h3 id="choropleth-maps">Choropleth maps</h3>
+
+<p><img src="Screenshot 2021-08-01 at 11.01.59.png" alt="Screenshot 2021-08-01 at 11.01.59.png" /><br />
+<code>folium.Choropleth()</code> class, we can create a choropleth map</p>
+
+<p>we create a GeoDataFrame where each district is assigned a different row, and the "geometry" column contains the geographical boundaries<br />
+ <code>districts = districts_full<a href="-district-geometry-.html">"DISTRICT", "geometry"</a>.set_index("DISTRICT")</code><br />
+ We also create a Pandas Series called <code>plot_dict</code> that shows the number of crimes in each district.<br />
+ <code>plot_dict = crimes.DISTRICT.value_counts()</code><br />
+ It's very important that <code>plot_dict</code> has the same index as <code>districts</code> - this is how the code knows how to match the geographical boundaries with appropriate colors.<br />
+ <pre><code class="plaintext lang-plaintext language-plaintext"> # Add a choropleth map to the base map<br />
+Choropleth(geo_data=districts.__geo_interface__,<br />
+           data=plot_dict,<br />
+           key_on="feature.id",<br />
+           fill_color='YlGnBu',<br />
+           legend_name='Major criminal incidents (Jan-Aug 2018)'<br />
+          ).add_to(m_6)</code></pre></p>
+
+<p><code>folium.Choropleth()</code> takes several arguments:</p>
+
+<ul>
+<li><code>geo_data</code> is a GeoJSON FeatureCollection containing the boundaries of each geographical area.<br />
+<ul><br />
+<li>In the code above, we convert the <code>districts</code> GeoDataFrame to a <a href="https://en.wikipedia.org/wiki/GeoJSON">GeoJSON FeatureCollection</a> with the <code>__geo_interface__</code> attribute.</li><br />
+</ul></li>
+<li><code>data</code> is a Pandas Series containing the values that will be used to color-code each geographical area.</li>
+<li><code>key_on</code> will always be set to <code>feature.id</code>.<br />
+<ul><br />
+<li>This refers to the fact that the GeoDataFrame used for <code>geo_data</code> and the Pandas Series provided in <code>data</code> have the same index. To understand the details, we'd have to look more closely at the structure of a GeoJSON Feature Collection (where the value corresponding to the "features" key is a list, wherein each entry is a dictionary containing an "id" key).</li><br />
+</ul></li>
+<li><code>fill_color</code> sets the color scale.</li>
+<li><code>legend_name</code> labels the legend in the top right corner of the map.</li>
+</ul>
+
+<h2 id="performance">Performance</h2>
+
+<h3 id="fast-point-in-polygon-tests-with-python-and-geopandas">Fast Point-in-Polygon Tests with Python and Geopandas</h3>
+
+<p>https://www.matecdev.com/posts/point-in-polygon.html</p>
+
+<h2 id="geocoding">Geocoding</h2>
+
+<p><strong>Geocoding</strong> is the process of converting the name of a place or an address to a location on a map. If you have ever looked up a geographic location based on a landmark description with <a href="https://www.google.com/maps">Google Maps</a>, <a href="https://www.bing.com/maps">Bing Maps</a>, or <a href="https://map.baidu.com/">Baidu Maps</a>, for instance, then you have used a geocoder!</p>
+
+<p>We'll use geopandas to do all of our geocoding.<br />
+<code>from geopandas.tools import geocode</code><br />
+Input :<br />
+    -   the name or address as a Python string, and<br />
+    -   the name of the provider; to avoid having to provide an API key, we'll use the <a href="https://nominatim.openstreetmap.org/">OpenStreetMap Nominatim geocoder</a>.</p>
+
+<p>If the geocoding is successful, it returns a GeoDataFrame with two columns:<br />
+    -   the "geometry" column contains the (latitude, longitude = x and y attribute) location, and<br />
+    -   the "address" column contains the full address.<br />
+<code>result = geocode("The Great Pyramid of Giza", provider="nominatim")</code></p>
+
+<p>For example adding missing coordinates (for tows 153 - 158) :<br />
+<code>def my_geocoder(row):<br />
+    try:<br />
+        print(row)<br />
+        point = geocode(row, provider='nominatim').geometry.iloc[0]<br />
+        return pd.Series({'Latitude': point.y, 'Longitude': point.x})<br />
+    except:<br />
+        return None<br />
+starbucks.iloc[153:158]['Latitude', 'Longitude'](-latitude-longitude-.html) = rows_with_missing.apply(lambda x: my_geocoder(x['Address']), axis=1)<br />
+</code></p>
+
+<h3 id="how-to-use-geocoding-on-a-whole-dataframe">How to use geocoding on a whole dataframe ?</h3>
+
+<p>`def my_geocoder(row):<br />
+    try:<br />
+        point = geocode(row, provider='nominatim').geometry.iloc[0]<br />
+        return pd.Series({'Latitude': point.y, 'Longitude': point.x, 'geometry': point})<br />
+    except:<br />
+        return None</p>
+
+<p>universities<a href="-latitude-longitude-geometry-.html">'Latitude', 'Longitude', 'geometry'</a> = universities.apply(lambda x: my_geocoder(x['Name']), axis=1)`</p>
+
+<h3 id="table-joins">Table joins</h3>
+
+<h4 id="attributemerge-join">Attribute/Merge join</h4>
+
+<p>We can use <code>pd.DataFrame.join()</code> to combine information from multiple DataFrames with a shared index. We refer to this way of joining data (by simpling matching values in the index) as an <strong>attribute join</strong>.</p>
+
+<p>When performing an attribute join with a GeoDataFrame, it's best to use the <code>gpd.GeoDataFrame.merge()</code><br />
+<code>europe = europe_boundaries.merge(europe_stats, on="name")</code></p>
+
+<h4 id="spatial-join">Spatial join</h4>
+
+<p>Another type of join is a <strong>spatial join</strong>. With a spatial join, we combine GeoDataFrames based on the spatial relationship between the objects in the "geometry" columns. For instance, we  have a GeoDataFrame (universities) containing geocoded addresses. Then we can use a spatial join to match these to its corresponding country (europe). We do this with <code>gpd.sjoin()</code>.<br />
+<code>european_universities = gpd.sjoin(universities, europe)</code></p>
+
+<h2 id="proximity-analysis">Proximity analysis</h2>
+
+<h3 id="how-to-measure-distances">How to measure distances ?</h3>
+
+<p>To measure distances between points from two different GeoDataFrames, we first have to make sure that they use the same coordinate reference system (CRS).<br />
+We also check the CRS to see which units it uses (meters, feet, or something else). In this case, EPSG 2272 has units of feet. (_If you like, you can check this <a href="https://epsg.io/2272">here</a>._)</p>
+
+<p>It's relatively straightforward to compute distances in GeoPandas. The distance (in feet - because the CRS is in feet) between a relatively recent release incident in <code>recent_release</code> and every station :<br />
+    <code># Select one release incident in particular
+    recent_release = releases.iloc[360]</code><br />
+    Measure distance from release to each station<br />
+    <code>distances = stations.geometry.distance(recent_release.geometry)</code></p>
+
+<p>With those distances you can calcaulate :</p>
+
+<ul>
+<li>mean : distances.mean()</li>
+<li>min : distances.min()<br />
+and find the closest station for this case :<br />
+<code>stations.iloc[distances.idxmin()]["ADDRESS", "LATITUDE", "LONGITUDE"](-address-latitude-longitude-.html)</code></li>
+</ul>
+
+<h3 id="multipolygon-and-buffer">Multipolygon and buffer</h3>
+
+<h4 id="when-to-use-a-buffer">When to use a buffer ?</h4>
+
+<p>If we want to understand all points on a map that are some radius away from a point, the simplest way is to create a buffer.</p>
+
+<p>This code  a GeoSeries <code>two_mile_buffer</code> containing 12 different Polygon objects. Each polygon is a buffer of 2 miles (or, 2 * 5280 feet) around a different air monitoring station :<br />
+<code>two_mile_buffer = stations.geometry.buffer(2*5280)</code></p>
+
+<h4 id="how-to-plot-polygons-on-a-map">How to plot polygons on a map ?</h4>
+
+<p>We use <code>folium.GeoJson()</code> to plot each polygon on a map. Note that since folium requires coordinates in latitude and longitude,<em>* we have to convert the CRS to EPSG 4326 before plotting</em><em>.<br />
+*Plot each polygon on the map</em><br />
+<code>GeoJson(two_mile_buffer.to_crs(epsg=4326)).add_to(m)</code><br />
+<img src="Screenshot 2021-08-08 at 20.08.30.png" alt="Screenshot 2021-08-08 at 20.08.30.png" /></p>
+
+<h4 id="how-to-group-polygons-together-into-a-single-multipolyn">How to group polygons together into a single multipolyn ?</h4>
+
+<p>Turn group of polygons into single multipolygon<br />
+<code>my_union = two_mile_buffer.geometry.unary_union</code></p>
+
+<h4 id="how-to-check-if-a-point-is-in-a-multipolyn">How to check if a point is in a multipolyn ?</h4>
+
+<p>You can do this for example to check if one specific location is in a specfic area/multipolyn :<br />
+<code>my_union.contains(releases.iloc[360].geometry)</code><br />
+or for a whole dataframe <code>collisions</code> check which locations or <strong>not</strong> in the multipolygon <code>tenk_union</code> :<br />
+<code>outside_range = collisions.loc[~collisions["geometry"].apply(lambda x: tenk_union.contains(x))]</code></p>
+</div>
+
+      
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

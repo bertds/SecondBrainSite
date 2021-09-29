@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://bertds.github.io/SecondBrainSite/">Second Brain</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><h1 id="a-philosophy-of-software-design">A Philosophy of Software Design</h1>
+
+<p>Video : https://youtu.be/bmSAYlu0NcY<br />
+speaker/author : [John Ousterhout]</p>
+
+<h2 id="software-design-tips">Software design tips :</h2>
+
+<p><img src="Screenshot 2021-09-06 at 16.20.43.png" alt="Screenshot 2021-09-06 at 16.20.43.png" /></p>
+
+<h3 id="classesmethodsinterfaces">Classes/methods/interfaces</h3>
+
+<ul>
+<li>Classes should be deep<br />
+<img src="Screenshot 2021-09-06 at 16.22.37.png" alt="Screenshot 2021-09-06 at 16.22.37.png" /></li>
+<li>it is not the amount of code lines that's the limit per method/interface<br />
+<img src="Screenshot 2021-09-06 at 16.23.59.png" alt="Screenshot 2021-09-06 at 16.23.59.png" /></li>
+<li>don't have shallow classes/methods, just adds complexity<br />
+<img src="Screenshot 2021-09-06 at 16.23.23.png" alt="Screenshot 2021-09-06 at 16.23.23.png" /></li>
+<li>don't use skinny layers</li>
+<li>example of deep interfaces<br />
+<img src="Screenshot 2021-09-06 at 16.24.48.png" alt="Screenshot 2021-09-06 at 16.24.48.png" /><br />
+<ul><br />
+<li>part of the interface is also the exceptions and the amount of times you can call this interface (batch vs online)</li><br />
+<li>interface should be simple. you don't have to know to underlying code to know how to call the method. </li><br />
+<li>code in method should be one same level/layer of abstraction. so don't do create_customer (high level) and after that change attribute of customer in db (low level). </li><br />
+<li>Use information hiding to get deeper modules. This way there is no information leaked about the internal processes of a module or the modules it calls to the outside world. Ensure hower that only unimportant details are omitted from the interface. </li><br />
+<li><br /><br />
+<h3 id="define-errors-out-of-existence">Define errors out of existence</h3></li><br />
+</ul></li>
+</ul>
+
+<p><img src="Screenshot 2021-09-06 at 16.25.18.png" alt="Screenshot 2021-09-06 at 16.25.18.png" /></p>
+
+<ul>
+<li>don't throw exceptions whenever possible</li>
+<li>minimize the amount of places you habe to handle exceptions</li>
+<li>think about the caller and redefine method semantics to eliminate exceptions (for exampel : delete var if it doesn't exist don't throw exception when not found but redefine as method to make var not exist )</li>
+</ul>
+
+<h3 id="tactical-vs-strategic-programming">Tactical vs Strategic Programming</h3>
+
+<p><img src="Screenshot 2021-09-06 at 16.30.29.png" alt="Screenshot 2021-09-06 at 16.30.29.png" /><br />
+Tactical - goal = make it work &gt; system turns spaghetti over time &gt; hard to fix because it is not one problem it is many thousand comulated over time</p>
+
+<p>Strategic - goal = great design &gt; pays back in the future, drive complexity out of system<br />
+Design it twice to see if there is a better design possible. </p>
+
+<h3 id="documentation">Documentation</h3>
+
+<ul>
+<li>Put documentation where you will find it &gt; in the code (KBC : docstring in sphynx)</li>
+<li>Write comments of method first before writing code. </li>
+<li>Use different words to write the comments than in the code. So don't just repeat what is in the code !</li>
+<li>Focus on what and why of the code and not how (that's the code)</li>
+- 
+</ul>
+
+<h3 id="performance">Performance</h3>
+
+<p>First make it work then look at performance.<br />
+Meaasure to proof that the performance is better.</p>
+
+<h3 id="how-much-to-invest">How much to invest ?</h3>
+
+<p><img src="Screenshot 2021-09-06 at 16.30.53.png" alt="Screenshot 2021-09-06 at 16.30.53.png" /></p>
+
+<ul>
+<li>most startups are totally tactical</li>
+<li>rewriting almost never happens</li>
+<li>good design culture &gt; hire better developers</li>
+<li>10-20% overhead : as investment</li>
+<li>small steps : write documentation as you're going, write uniitests, </li>
+<li>when making changes you won't get it right from the first time. always look for something to make better.</li>
+<li>try to find clean ways of doing things</li>
+</ul>
+
+<h3 id="is-the-course-working">Is the course working ?</h3>
+
+<ul>
+<li>make classes a bit more general purpose even if you only use them once to make them simpler and deeper. </li>
+</ul>
+
+<h3 id="-1"> </h3>
+
+<ul>
+<li>Provide good defaults in interface/method so users don't have to fill in the most common used combination of parameters.</li>
+- 
+</ul>
+</div>
+
+      
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

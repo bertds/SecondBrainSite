@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/brain/main.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid">
+    <nav>
+      <ul>
+        <br>
+        <li><a href="https://bertds.github.io/SecondBrainSite/">Second Brain</a></li>
+        <br>
+      </ul>
+    </nav>
+    <article>
+      <div id="content"><h1 id="kubernetes">Kubernetes</h1>
+
+<h2 id="what-is-kubernetes">What is Kubernetes ?</h2>
+
+<ul>
+<li>Open Source container<em>* orchestration tool</em>*</li>
+<li>Helps manage containerized applications in <strong>different deployment environments</strong> (VM, cloud, ... )</li>
+<li>Service discovery and load balancing</li>
+<li>Automated rollouts and rollbacks</li>
+<li>Self-healing</li>
+<li>Auto scaling</li>
+<li>Storage orchestration</li>
+</ul>
+
+<h3 id="why-do-we-need-container-orchestration-tools">Why do we need container orchestration tools ?</h3>
+
+<ul>
+<li>Trend from <strong>Monolith</strong> to <strong>Microservices</strong></li>
+<li>Increased usage of containers</li>
+<li>Demand for a proper way of managing those hunderds of containers</li>
+</ul>
+
+<h3 id="what-features-do-orchestration-tools-offer">What features do orchestration tools offer ?</h3>
+
+<ul>
+<li>High <strong>availability</strong> or no downtime</li>
+<li><strong>Scalability</strong> (up and down depanding on the demand) or high performance</li>
+<li><em>* Disaster recovery</em>* - backup and restore (application can restart from restored data)<br />
+<h2 id="architecture">Architecture</h2></li>
+</ul>
+
+<p><img src="Pasted image 20211114130216.png" alt="Pasted image 20211114130216.png" /><br />
+Master Node &gt; Worker nodes (different  containers from application deployed/running)<br />
+Worker Nodes have most resources, high workload<br />
+Master node is more important than worker node because if you lose worker node you can start up a new one but if master node goes down, you can't access the cluster anymore. That's why in production environment you have at least two masters in Kuberneter cluster. </p>
+
+<h3 id="worker-node">Worker node :</h3>
+
+<ul>
+<li>Kubelet proces runs on (worker) node :<br />
+<ul><br />
+<li>needed for communication within the cluster</li><br />
+<li>scheduler on worker node itself : starting/stopping/maintaining application container with instructions from the controle plane</li><br />
+<li>collects performance and health information of node, pods and containers</li><br />
+</ul></li>
+<li>Kube-proxy<br />
+<ul><br />
+<li>Network proxy</li><br />
+<li>Manages virtual IP addresses of pods/services</li><br />
+<li>works as load balancer for services running on a node</li><br />
+</ul></li>
+<li>Pod<br />
+= running application container </li>
+</ul>
+
+<p>*#todo is control plane multiple master nodes or are there multiple control planes ? *</p>
+
+<h3 id="master-node-control-plane">Master node = Control Plane</h3>
+
+<p>(different kubernetes processes : )</p>
+
+<ul>
+<li>API server : entrypoint to K8s cluster, all nodes (worker and master) are linked to this API and use it to communicate </li>
+<li>Controller Manager : keeps track of whats happening in the cluster : cluster needs repair, cluster restart needed, ... and registers nodes. </li>
+<li>Scheduler :<br />
+<ul><br />
+<li>ensure Pods placement based on the desired amount</li><br />
+<li>decides on which node the next container should be scheduled on based on available resources in the node and the needed resources for that container</li><br />
+</ul></li>
+<li>ectd :<br />
+<ul><br />
+<li>persistant and distributed key-value data store</li><br />
+<li>Kubernetes backing store</li><br />
+<li>current state and config of the entire cluster (node/...)</li><br />
+<li>backup restore is done using etcd snapshots</li><br />
+</ul></li>
+<li>Virtual Network : turns all the nodes in one unified machine</li>
+</ul>
+
+<h3 id="kubernetes-objects">Kubernetes Objects</h3>
+
+<p>= persistent entities in K8s system.<br />
+These entities represent state of your cluster :</p>
+
+<ul>
+<li>what containerized applications are running (and on which node)</li>
+<li>resources available to those applications</li>
+<li>policies around how those applications behave, such as restart policies, upgrades, fault-tolerance<br />
+Kube</li>
+</ul>
+
+<h2 id="what-are-the-main-kubernetes-components">What are the main Kubernetes Components ?</h2>
+
+<p><img src="Kubernetes_Components.png" alt="Kubernetes_Components.png" /></p>
+
+<h3 id="pod">Pod :</h3>
+
+<ul>
+<li><strong>smallest</strong> unit in Kubernetes</li>
+<li>creates a layer around the container, you only communicate with the Kubernetes layer</li>
+<li>Usually <em>*1 application *</em>per pod</li>
+<li>each Pod get its own IP address (private IP)</li>
+<li><strong>Pods are ephemeral !</strong> </li>
+<li><p><strong>New IP-address on re-creation</strong> (if you communicate using IP addresses you have to change it everytime Pod crashes/restarts)</p>
+
+<h3 id="service-and-ingress">Service and Ingress :</h3></li>
+<li><p><strong>Permanent</strong> IP address attached to Pod</p></li>
+<li>Lifecycle of Pod and Service are not connected (IP Address Pod stayrs when crashes/restarts)</li>
+<li>Service is also a loadbalancer and checks which pod (if is duplicated) has less load and can process the new request</li>
+<li>Type of service :<br />
+<ul><br />
+<li><strong>External</strong> Service : connect to outside sources without opening own application to it</li><br />
+<li><strong>Internal</strong> Service : default type</li><br />
+</ul></li>
+<li>External Service gives unsecure IP address &gt; you need <strong>Ingress</strong> to make it <strong>secure</strong> and use a <strong>webaddress</strong> instead of a IP address<br />
+<h3 id="configmap-and-secret">ConfigMap and Secret :</h3></li>
+</ul>
+
+<p><img src="Pasted image 20211114122815.png" alt="Pasted image 20211114122815.png" /><br />
+ External Configuration of your application with</p>
+
+<ul>
+<li>ConfigMap :<br />
+<ul><br />
+<li>Is for <strong>non-confidential</strong> data only ! (not secure for passwords)</li><br />
+</ul></li>
+<li>Secret :<br />
+<ul><br />
+<li>used to store secret data</li><br />
+<li>stored in base64</li><br />
+<li>encryption should be done by third party tools in Kubernetes</li><br />
+</ul></li>
+<li>You can use ConfigMap/Secret info as environment variables/properties file</li>
+</ul>
+
+<h3 id="volume">Volume</h3>
+
+<p>Data storage<br />
+If db data is stored on pod than data is lost when pod crashes<br />
+Connects physical storage (local or external remote/cloud  storage - outside kubernetes cluster) to your pod<br />
+<strong>Kubernetes doesn't manage data persistance!</strong></p>
+
+<h3 id="deployment-statefulset">Deployment &amp; StatefulSet</h3>
+
+<p><img src="Pasted image 20211114123921.png" alt="Pasted image 20211114123921.png" /><br />
+To have no downtime (if application pod crashes/unavailable) node are duplicated but are linked to same service. Pod are duplicated using blueprints and you specify how many replicas you want to run. </p>
+
+<ul>
+<li>In practice you don't work with pods but with Deployments. </li>
+<li>Deployments are abstraction of Pods</li>
+<li>with Deployments you can define how many duplicates you want running based on blueprint of my-apps Pod. </li>
+<li><strong>DB can't be replicated via Deployments !</strong> &gt; because DB has state (=data)<br />
+StatefulSet is for replication of DB/StateFUL applications (Mongodb, MySQL, ...)<br />
+In practice DB are often hosted outside of Kubernetes Cluster becuase it isn't easy. </li>
+</ul>
+
+<p>Setting up Kubernetes Cluster<br />
+<img src="Pasted image 20211114125527.png" alt="Pasted image 20211114125527.png" /><br />
+In the configuration you tell what you want and Kubernetes tries to meet those requirements.<br />
+<img src="Pasted image 20211114125606.png" alt="Pasted image 20211114125606.png" /><br />
+Deployment and Service Configuration file :</p>
+
+<ul>
+<li>metadata</li>
+<li>specification<br />
+<ul><br />
+<li>attributes of spec are specific to the kind of component</li><br />
+</ul></li>
+<li>status &gt; <strong>automatically generated and added by Kubernetes</strong><br />
+K8s  compares status constantly &gt; if difference takes action<br />
+Where does K8S get status data ?<br />
+<img src="Pasted image 20211114125940.png" alt="Pasted image 20211114125940.png" /><br />
+K8s gets it from etcd which holds current status of any K8s component.<br />
+Format of the configuration file = yaml &gt; store the config files with your code (or own git repo for config files)</li>
+</ul>
+
+<h2 id="minikube-and-kubectl">Minikube and Kubectl</h2>
+
+<p>How to test on local machine ? With Minikube where master and worker processes work on one node with docker container preinstalled.<br />
+Kubectl = command line tool for K8s which communicates through API server of the K8s cluster</p>
+
+<p>How to get own application in Kubernetes<br />
+<img src="Pasted image 20211114131909.png" alt="Pasted image 20211114131909.png" /><br />
+<img src="Pasted image 20211114132617.png" alt="Pasted image 20211114132617.png" /></p>
+</div>
+
+      
+
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+   mermaid.initialize();
+  </script>
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+    integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+    integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+    crossorigin="anonymous"></script>
+
+  <!-- Parsing single dollar signs -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+          {left: "\\[", right: "\\]", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\(", right: "\\)", display: false}
+        ]
+    });
+    });
+  </script>
+
+  <!-- Syntax highlighting through highlight.js -->
+  <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.4.0/highlight.min.js"></script>
+
+  <script>
+    // Ignore highlighting of mermaid
+    hljs.configure({noHighlightRe: /^mermaid$/});
+    hljs.initHighlightingOnLoad();
+  </script>
+
+</body>
+
+</html>

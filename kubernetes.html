@@ -82,7 +82,7 @@ Master node is more important than worker node because if you lose worker node y
 = running application container </li>
 </ul>
 
-<p>*#todo is control plane multiple master nodes or are there multiple control planes ? *</p>
+<p>*<span class="tag">todo</span> is control plane multiple master nodes or are there multiple control planes ? *</p>
 
 <h3 id="master-node-control-plane">Master node = Control Plane</h3>
 
@@ -115,7 +115,7 @@ These entities represent state of your cluster :</p>
 <li>what containerized applications are running (and on which node)</li>
 <li>resources available to those applications</li>
 <li>policies around how those applications behave, such as restart policies, upgrades, fault-tolerance<br />
-Kube</li>
+<strong>Kubernetes Object</strong> = record of intent - once created the Kubernetes system will constantly work to ensure that object exists. You're telling the K8s system what you want the cluster's workload to look like; this is your cluster's <strong>desired state</strong>.</li>
 </ul>
 
 <h2 id="what-are-the-main-kubernetes-components">What are the main Kubernetes Components ?</h2>
@@ -133,17 +133,22 @@ Kube</li>
 <li><p><strong>New IP-address on re-creation</strong> (if you communicate using IP addresses you have to change it everytime Pod crashes/restarts)</p>
 
 <h3 id="service-and-ingress">Service and Ingress :</h3></li>
-<li><p><strong>Permanent</strong> IP address attached to Pod</p></li>
-<li>Lifecycle of Pod and Service are not connected (IP Address Pod stayrs when crashes/restarts)</li>
+<li><p>When program element needs to make use of the functions abstracted by the Service, it makes a request to the service, rather than an individual pod. The Service acts as a dispatcher, assigning a pod to handle the request. </p></li>
 <li>Service is also a loadbalancer and checks which pod (if is duplicated) has less load and can process the new request</li>
+<li><strong>Permanent</strong> IP address attached to Pod</li>
+<li>Lifecycle of Pod and Service are not connected (IP Address Pod stays when crashes/restarts)</li>
+<li>set of Pods targeted by a Service is (usually) determined by <strong>Label Selector</strong></li>
 <li>Type of service :<br />
 <ul><br />
 <li><strong>External</strong> Service : connect to outside sources without opening own application to it</li><br />
 <li><strong>Internal</strong> Service : default type</li><br />
 </ul></li>
-<li>External Service gives unsecure IP address &gt; you need <strong>Ingress</strong> to make it <strong>secure</strong> and use a <strong>webaddress</strong> instead of a IP address<br />
-<h3 id="configmap-and-secret">ConfigMap and Secret :</h3></li>
+<li>External Service gives unsecure IP address &gt; you need <strong>Ingress</strong> to make it <strong>secure</strong> and use a <strong>webaddress</strong> instead of a IP address</li>
 </ul>
+
+<p><strong>A client never connects to a container, but to a Pod, through a Service.</strong></p>
+
+<h3 id="configmap-and-secret">ConfigMap and Secret :</h3>
 
 <p><img src="Pasted image 20211114122815.png" alt="Pasted image 20211114122815.png" /><br />
  External Configuration of your application with</p>
@@ -159,7 +164,13 @@ Kube</li>
 <li>stored in base64</li><br />
 <li>encryption should be done by third party tools in Kubernetes</li><br />
 </ul></li>
+<li>Decouple config from hard-coded environment variables </li>
 <li>You can use ConfigMap/Secret info as environment variables/properties file</li>
+<li>example:<br />
+<ul><br />
+<li>different config for dev, staging, prod environment</li><br />
+<li>storing passwords and using it in your applications</li><br />
+</ul></li>
 </ul>
 
 <h3 id="volume">Volume</h3>
@@ -169,6 +180,20 @@ If db data is stored on pod than data is lost when pod crashes<br />
 Connects physical storage (local or external remote/cloud  storage - outside kubernetes cluster) to your pod<br />
 <strong>Kubernetes doesn't manage data persistance!</strong></p>
 
+<ul>
+<li>PersistentVolumes<br />
+<ul><br />
+<li>define a storage volumes in the cluster</li><br />
+<li>Independent lifecycle</li><br />
+<li>otherwise : ephemeral data inside the pods (= if pod dies, data is gone)</li><br />
+</ul></li>
+<li>PersistentVolumeClaims<br />
+<ul><br />
+<li>Requests to obtain acess to a PersistentVolume</li><br />
+<li>Volumes will be mounted to a pod</li><br />
+</ul></li>
+</ul>
+
 <h3 id="deployment-statefulset">Deployment &amp; StatefulSet</h3>
 
 <p><img src="Pasted image 20211114123921.png" alt="Pasted image 20211114123921.png" /><br />
@@ -176,15 +201,22 @@ To have no downtime (if application pod crashes/unavailable) node are duplicated
 
 <ul>
 <li>In practice you don't work with pods but with Deployments. </li>
-<li>Deployments are abstraction of Pods</li>
-<li>with Deployments you can define how many duplicates you want running based on blueprint of my-apps Pod. </li>
+<li>Deployments are abstraction of Pods </li>
+<li>Deployment is a YAML object</li>
+<li>with Deployments you can define how many duplicates (replicas) you want running based on blueprint of Pod. </li>
+<li>you define the number of replicas you want to have running in the cluster via a <strong>ReplicaSet</strong> (which is part of the deployment object)</li>
+<li><strong>DaemonSets</strong>  ensure that all (or some) Nodes run a copy of a Pod.<br />
+As nodes are added to the cluster, Pods are added to them. As nodes are removed from the cluster, those Pods are garbage collected. Deleting a DaemonSet will clean up the Pods it created. example: cluster storage daemon (glusterd, ceph) on each node, logs collection daemon one every node (fluentd, filebeat)</li>
 <li><strong>DB can't be replicated via Deployments !</strong> &gt; because DB has state (=data)<br />
 StatefulSet is for replication of DB/StateFUL applications (Mongodb, MySQL, ...)<br />
-In practice DB are often hosted outside of Kubernetes Cluster becuase it isn't easy. </li>
+In practice DB are often hosted outside of Kubernetes Cluster because it isn't easy to setup. </li>
 </ul>
 
-<p>Setting up Kubernetes Cluster<br />
-<img src="Pasted image 20211114125527.png" alt="Pasted image 20211114125527.png" /><br />
+<p><span class="tag">todo</span> difference replicaset vs daemonset</p>
+
+<h2 id="setting-up-kubernetes-cluster">Setting up Kubernetes Cluster</h2>
+
+<p><img src="Pasted image 20211114125527.png" alt="Pasted image 20211114125527.png" /><br />
 In the configuration you tell what you want and Kubernetes tries to meet those requirements.<br />
 <img src="Pasted image 20211114125606.png" alt="Pasted image 20211114125606.png" /><br />
 Deployment and Service Configuration file :</p>

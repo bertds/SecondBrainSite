@@ -287,8 +287,75 @@ Where does K8S get status data ?<br />
 
 <h3 id="what-is-helm">What is Helm ?</h3>
 
-<p>Helm is an application <strong>package management registry for Kubernetes</strong>. Help charts are pre-configured software application resources you can download and deploy in your Kubernetes environment. <strong>You can create custom Helm charts.</strong><br />
-<img src="Pasted image 20211114184935.png" alt="Pasted image 20211114184935.png" /></p>
+<ul>
+<li><p><strong>Helm</strong> is an application <strong>package management registry for Kubernetes</strong>.<br />
+To package YAML files and distribute them in public and private repositories.</p></li>
+<li><p><strong>Helm charts</strong> are pre-configured software application resources you can download (Helm repository) and deploy in your Kubernetes environment. (= bundle of YAML files) <strong>You can create custom Helm charts.</strong><br />
+You can (re)use existing Helm Charts for Database Apps (Mongodb, ElasticSearch, ...) or Minitoring Apps (Prometheus)<br />
+<img src="Pasted image 20211114184935.png" alt="Pasted image 20211114184935.png" /></p></li>
+</ul>
+
+<p>How to look for Helm charts ? </p>
+
+<ul>
+<li><code>helm search &lt;keyword&gt;</code></li>
+<li>Helm hub: <a href="https://www.youtube.com/redirect?event=video_description&amp;redir_token=QUFFLUhqbWRXcEU3eHJGMlZlUjRESlFQTkhyazRZaXhHQXxBQ3Jtc0tsbURqeEQ3UG9Yc2FVcWowMTlFcHM0NjFNU2NFcGFqdFM1a09HUW8xbjNqb2lmb19iYjhOeml1WGpyMm0xNUpBbmthZGlVblJKaTVzYW95c282RlZ5QjhVZnMtbnB3ZmxNMGs1bVlyUnA5VE9fdlhHbw&amp;q=https%3A%2F%2Fhub.helm.sh%2F">https://hub.helm.sh/</a> </li>
+<li>Helm charts GitHub Project: <a href="https://www.youtube.com/redirect?event=video_description&amp;redir_token=QUFFLUhqbURkdkcxallnekpOXzZuWjAwR3czYnI2N09Fd3xBQ3Jtc0trNl9MbDBFLVFaNW9xR0pqQU5kR1cyaGJFS3lFNlREX0lCS1VsRm1SaVBVbVdvQVVKdVEwcXNJZDVJdWUyeFVqV1lGREphdXMxbFNaQmJTQ0FFZXlZcGFJNEkyVEtLbHhhNWt3WFd3SkFfWXNVbDVBRQ&amp;q=https%3A%2F%2Fgithub.com%2Fhelm%2Fcharts">https://github.com/helm/charts</a></li>
+</ul>
+
+<h3 id="features">Features</h3>
+
+<h4 id="templating-engine">Templating Engine</h4>
+
+<ul>
+<li>define a common blueprint</li>
+<li>dynamic {{values}} in template file are replaced by placeholders </li>
+<li>advantage :<br />
+<ul><br />
+<li>you have less yaml files to maintain</li><br />
+<li>Practical for CI/CD : In your build you can replace the values on the fly<br /><br />
+<img src="Pasted image 20211115102042.png" alt="Pasted image 20211115102042.png" /><br /><br />
+<img src="Pasted image 20211115102122.png" alt="Pasted image 20211115102122.png" /></li><br />
+</ul></li>
+</ul>
+
+<p>Use Case for Helm features : deploy same applications accross different environments (dev, staging, production).<br />
+<img src="Pasted image 20211115102325.png" alt="Pasted image 20211115102325.png" /></p>
+
+<h4 id="helm-chart-structure">Helm Chart Structure</h4>
+
+<p><img src="Pasted image 20211115102439.png" alt="Pasted image 20211115102439.png" /><br />
+<code>helm install &lt;chartname&gt;</code></p>
+
+<h4 id="value-injection-into-template-files">Value injection into template files</h4>
+
+<p><img src="Pasted image 20211115102636.png" alt="Pasted image 20211115102636.png" /><br />
+You can change values using a my-values.yaml file<br />
+<img src="Pasted image 20211115102705.png" alt="Pasted image 20211115102705.png" /><br />
+You can also change it manually in the command line<br />
+<img src="Pasted image 20211115102717.png" alt="Pasted image 20211115102717.png" /></p>
+
+<h4 id="release-management">Release management</h4>
+
+<h5 id="v2">V2</h5>
+
+<p>Client (Helm CLI) - Server (Tiller)<br />
+When you <code>helm install chart</code> the client will send the requests to Tiller.<br />
+Tiller will store all versions of the helm chart. The changes are applied to existing deployment instead of creating a new one.<br />
+You can also rollback the upgrade (<code>helm rollback.</code>)<br />
+<img src="Pasted image 20211115102811.png" alt="Pasted image 20211115102811.png" /><br />
+<img src="Pasted image 20211115102909.png" alt="Pasted image 20211115102909.png" /><br />
+Downside of Tiller :</p>
+
+<ul>
+<li>Tiller has too much power inside of K8s cluster (create, delete, update components) &gt; too much permissions</li>
+<li>Security issue</li>
+</ul>
+
+<h5 id="v3">V3</h5>
+
+<p><strong>Tiller is removed</strong> because of security issue in V2<br />
+<img src="Pasted image 20211115103031.png" alt="Pasted image 20211115103031.png" /></p>
 
 <h2 id="rancher">Rancher</h2>
 
@@ -301,7 +368,8 @@ It addresses operational and security challengers for managing multiple Kubernet
 <li>simple/intuitive UI to get started with Kubernetes</li>
 <li>multi-cloud and hybrid-cloud Kubernetes solutions</li>
 <li>fast way to set up on-premises Kubernetes clusters</li>
-<li>includes CI/CD pipelines for DevOps operations</li>
+<li>includes CI/CD pipelines for DevOps operations<br />
+<img src="Pasted image 20211115104504.png" alt="Pasted image 20211115104504.png" /></li>
 </ul>
 
 <h2 id="minikube-and-kubectl">Minikube and Kubectl</h2>
@@ -312,6 +380,10 @@ Kubectl = command line tool for K8s which communicates through API server of the
 <p>How to get own application in Kubernetes<br />
 <img src="Pasted image 20211114131909.png" alt="Pasted image 20211114131909.png" /><br />
 <img src="Pasted image 20211114132617.png" alt="Pasted image 20211114132617.png" /></p>
+
+<h2 id="what-we-learned">What we learned</h2>
+
+<p><img src="Pasted image 20211115104516.png" alt="Pasted image 20211115104516.png" /></p>
 </div>
 
       

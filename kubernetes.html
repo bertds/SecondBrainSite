@@ -58,7 +58,7 @@
 <h2 id="architecture">Architecture</h2></li>
 </ul>
 
-<p><img src="Pasted image 20211114130216.png" alt="Pasted image 20211114130216.png" /><br />
+<p><img src="Kubernetes_architecture_production.png" alt="Kubernetes_architecture_production.png" /><br />
 Master Node &gt; Worker nodes (different  containers from application deployed/running)<br />
 Worker Nodes have most resources, high workload<br />
 Master node is more important than worker node because if you lose worker node you can start up a new one but if master node goes down, you can't access the cluster anymore. That's why in production environment you have at least two masters in Kuberneter cluster. </p>
@@ -158,7 +158,7 @@ These entities represent state of your cluster :</p>
 
 <h3 id="configmap-and-secret">ConfigMap and Secret :</h3>
 
-<p><img src="Pasted image 20211114122815.png" alt="Pasted image 20211114122815.png" /><br />
+<p><img src="Kubernetes_configmap_secret.png" alt="Kubernetes_configmap_secret.png" /><br />
  External Configuration of your application with</p>
 
 <ul>
@@ -204,7 +204,7 @@ Connects physical storage (local or external remote/cloud  storage - outside kub
 
 <h3 id="deployment-statefulset">Deployment &amp; StatefulSet</h3>
 
-<p><img src="Pasted image 20211114123921.png" alt="Pasted image 20211114123921.png" /><br />
+<p><img src="Kubernetes_service_usage.png" alt="Kubernetes_service_usage.png" /><br />
 To have no downtime (if application pod crashes/unavailable) node are duplicated but are linked to same service. Pod are duplicated using blueprints and you specify how many replicas you want to run. </p>
 
 <ul>
@@ -224,7 +224,7 @@ In practice DB are often hosted outside of Kubernetes Cluster because it isn't e
 
 <h3 id="load-balancer">Load balancer</h3>
 
-<p><img src="Pasted image 20211114182629.png" alt="Pasted image 20211114182629.png" /></p>
+<p><img src="Kubernetes_loadbalancer.png" alt="Kubernetes_loadbalancer.png" /></p>
 
 <ul>
 <li>L4 (TCP)<br />
@@ -247,7 +247,7 @@ In practice DB are often hosted outside of Kubernetes Cluster because it isn't e
 
 <h3 id="autoscaler-hpa-horizontal-pod-autoscaler">Autoscaler - HPA - horizontal pod autoscaler</h3>
 
-<p><img src="Pasted image 20211114183400.png" alt="Pasted image 20211114183400.png" /></p>
+<p><img src="Kubernetes_autoscaler.png" alt="Kubernetes_autoscaler.png" /></p>
 
 <ul>
 <li>min and max number of replicas</li>
@@ -257,9 +257,9 @@ In practice DB are often hosted outside of Kubernetes Cluster because it isn't e
 
 <h2 id="setting-up-kubernetes-cluster">Setting up Kubernetes Cluster</h2>
 
-<p><img src="Pasted image 20211114125527.png" alt="Pasted image 20211114125527.png" /><br />
+<p><img src="Kubernetes_config1.png" alt="Kubernetes_config1.png" /><br />
 In the configuration you tell what you want and Kubernetes tries to meet those requirements.<br />
-<img src="Pasted image 20211114125606.png" alt="Pasted image 20211114125606.png" /><br />
+<img src="Kubernetes_config2.png" alt="Kubernetes_config2.png" /><br />
 Deployment and Service Configuration file :</p>
 
 <ul>
@@ -273,12 +273,12 @@ Deployment and Service Configuration file :</p>
 <li>replicas : amount of pods to start up with this template</li><br />
 </ul></li>
 <li>status &gt; <strong>automatically generated and added by Kubernetes</strong><br />
-<img src="Pasted image 20211114184441.png" alt="Pasted image 20211114184441.png" /></li>
+<img src="Kubernetes_yaml_file.png" alt="Kubernetes_yaml_file.png" /></li>
 </ul>
 
 <p>K8s  compares status constantly &gt; if difference takes action<br />
 Where does K8S get status data ?<br />
-    <img src="Pasted image 20211114125940.png" alt="Pasted image 20211114125940.png" /><br />
+    <img src="Kubernetes_statusdata.png" alt="Kubernetes_statusdata.png" /><br />
     K8s gets it from etcd which holds current status of any K8s component.</p>
 
 <p>Format of the configuration file = yaml &gt; store the config files with your code (or own git repo for config files)</p>
@@ -292,7 +292,7 @@ Where does K8S get status data ?<br />
 To package YAML files and distribute them in public and private repositories.</p></li>
 <li><p><strong>Helm charts</strong> are pre-configured software application resources you can download (Helm repository) and deploy in your Kubernetes environment. (= bundle of YAML files) <strong>You can create custom Helm charts.</strong><br />
 You can (re)use existing Helm Charts for Database Apps (Mongodb, ElasticSearch, ...) or Minitoring Apps (Prometheus)<br />
-<img src="Pasted image 20211114184935.png" alt="Pasted image 20211114184935.png" /></p></li>
+<img src="Kubernetes_helm.png" alt="Kubernetes_helm.png" /></p></li>
 </ul>
 
 <p>How to look for Helm charts ? </p>
@@ -314,26 +314,26 @@ You can (re)use existing Helm Charts for Database Apps (Mongodb, ElasticSearch, 
 <ul><br />
 <li>you have less yaml files to maintain</li><br />
 <li>Practical for CI/CD : In your build you can replace the values on the fly<br /><br />
-<img src="Pasted image 20211115102042.png" alt="Pasted image 20211115102042.png" /><br /><br />
-<img src="Pasted image 20211115102122.png" alt="Pasted image 20211115102122.png" /></li><br />
+<img src="Kubernetes_templatingengine1.png" alt="Kubernetes_templatingengine1.png" /><br /><br />
+<img src="Kubernetes_templatingengine2.png" alt="Kubernetes_templatingengine2.png" /></li><br />
 </ul></li>
 </ul>
 
 <p>Use Case for Helm features : deploy same applications accross different environments (dev, staging, production).<br />
-<img src="Pasted image 20211115102325.png" alt="Pasted image 20211115102325.png" /></p>
+<img src="Kubernetes_helm_acrossenv.png" alt="Kubernetes_helm_acrossenv.png" /></p>
 
 <h4 id="helm-chart-structure">Helm Chart Structure</h4>
 
-<p><img src="Pasted image 20211115102439.png" alt="Pasted image 20211115102439.png" /><br />
+<p><img src="Kubernetes_helm_strtucture.png" alt="Kubernetes_helm_strtucture.png" /><br />
 <code>helm install &lt;chartname&gt;</code></p>
 
 <h4 id="value-injection-into-template-files">Value injection into template files</h4>
 
-<p><img src="Pasted image 20211115102636.png" alt="Pasted image 20211115102636.png" /><br />
+<p><img src="Kubernetes_valueinjection1.png" alt="Kubernetes_valueinjection1.png" /><br />
 You can change values using a my-values.yaml file<br />
-<img src="Pasted image 20211115102705.png" alt="Pasted image 20211115102705.png" /><br />
+<img src="Kubernetes_valueinjection2.png" alt="Kubernetes_valueinjection2.png" /><br />
 You can also change it manually in the command line<br />
-<img src="Pasted image 20211115102717.png" alt="Pasted image 20211115102717.png" /></p>
+<img src="Kubernetes_valueinjection3.png" alt="Kubernetes_valueinjection3.png" /></p>
 
 <h4 id="release-management">Release management</h4>
 
@@ -343,8 +343,8 @@ You can also change it manually in the command line<br />
 When you <code>helm install chart</code> the client will send the requests to Tiller.<br />
 Tiller will store all versions of the helm chart. The changes are applied to existing deployment instead of creating a new one.<br />
 You can also rollback the upgrade (<code>helm rollback.</code>)<br />
-<img src="Pasted image 20211115102811.png" alt="Pasted image 20211115102811.png" /><br />
-<img src="Pasted image 20211115102909.png" alt="Pasted image 20211115102909.png" /><br />
+<img src="Kubernetes_releasemng1.png" alt="Kubernetes_releasemng1.png" /><br />
+<img src="Kubernetes_releasemng2.png" alt="Kubernetes_releasemng2.png" /><br />
 Downside of Tiller :</p>
 
 <ul>
@@ -355,7 +355,7 @@ Downside of Tiller :</p>
 <h5 id="v3">V3</h5>
 
 <p><strong>Tiller is removed</strong> because of security issue in V2<br />
-<img src="Pasted image 20211115103031.png" alt="Pasted image 20211115103031.png" /></p>
+<img src="Kubernetes_releasemng3.png" alt="Kubernetes_releasemng3.png" /></p>
 
 <h2 id="rancher">Rancher</h2>
 
@@ -369,7 +369,7 @@ It addresses operational and security challengers for managing multiple Kubernet
 <li>multi-cloud and hybrid-cloud Kubernetes solutions</li>
 <li>fast way to set up on-premises Kubernetes clusters</li>
 <li>includes CI/CD pipelines for DevOps operations<br />
-<img src="Pasted image 20211115104504.png" alt="Pasted image 20211115104504.png" /></li>
+<img src="Kubernetes_rancher.png" alt="Kubernetes_rancher.png" /></li>
 </ul>
 
 <h2 id="minikube-and-kubectl">Minikube and Kubectl</h2>
@@ -378,8 +378,7 @@ It addresses operational and security challengers for managing multiple Kubernet
 Kubectl = command line tool for K8s which communicates through API server of the K8s cluster</p>
 
 <p>How to get own application in Kubernetes<br />
-<img src="Pasted image 20211114131909.png" alt="Pasted image 20211114131909.png" /><br />
-<img src="Pasted image 20211114132617.png" alt="Pasted image 20211114132617.png" /></p>
+<img src="Kubernetes_yourapp_ink8s1.png" alt="Kubernetes_yourapp_ink8s1.png" /></p>
 
 <h2 id="what-we-learned">What we learned</h2>
 
